@@ -9,7 +9,7 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ZTn.Tests</RootNamespace>
+    <RootNamespace>ZTnDroid.D3Calculator</RootNamespace>
     <AssemblyName>ZTn Android Tests</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidApplication>true</AndroidApplication>
@@ -56,16 +56,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Storage\CareersDB.cs" />
+    <Compile Include="Storage\CareersOpenHelper.cs" />
     <Compile Include="ViewCareerActivity.cs" />
     <Compile Include="HomeActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AddNewProfileActivity.cs" />
+    <Compile Include="AddNewAccountActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\Layout\AddNewProfile.axml">
+    <AndroidResource Include="Resources\Layout\AddNewAccount.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\Layout\ViewCareer.axml">
@@ -95,8 +97,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml" />
-    <AndroidResource Include="Resources\Menu\MainActivity.xml" />
-    <AndroidResource Include="Resources\Menu\AddNewProfileActivity.xml" />
+    <AndroidResource Include="Resources\Menu\HomeActivity.xml" />
+    <AndroidResource Include="Resources\Menu\AddNewAccountActivity.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

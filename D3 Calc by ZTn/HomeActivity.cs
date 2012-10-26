@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Android.App;
 using Android.Content;
+using Android.Database;
+using Android.Database.Sqlite;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -11,37 +13,40 @@ using ZTn.BNet.D3;
 using ZTn.BNet.D3.Careers;
 using ZTn.BNet.D3.Heroes;
 
-namespace ZTn.Tests
+namespace ZTnDroid.D3Calculator
 {
     [Activity(Label = "D3 Calc by ZTn", MainLauncher = true, Icon = "@drawable/icon")]
     public class HomeActivity : Activity
     {
-        const int ADD_NEW_PROFILE = 0;
+        const int ADD_NEW_ACCOUNT = 0;
 
-        readonly String[] careersSimpleAdapterFrom = new String[] { "battleTag", "host" };
-        readonly int[] careersSimpleAdapterTo = new int[] { Android.Resource.Id.Text1, Android.Resource.Id.Text2 };
+        readonly String[] accountsFromColumns = new String[] { Storage.CareersOpenHelper.FIELD_BATTLETAG, Storage.CareersOpenHelper.FIELD_HOST };
+        readonly int[] accountsToId = new int[] { Android.Resource.Id.Text1, Android.Resource.Id.Text2 };
 
-        IList<IDictionary<String, Object>> careersList = new JavaList<IDictionary<String, Object>>();
+        IList<IDictionary<String, Object>> accountsList = new JavaList<IDictionary<String, Object>>();
+
+        Storage.CareersDB db;
+        ICursor cursor;
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
             switch (requestCode)
             {
-                case ADD_NEW_PROFILE:
+                case ADD_NEW_ACCOUNT:
                     String message = String.Format("Activity \"Add New Profile\" result: {0}", resultCode);
                     Toast.MakeText(this, message, ToastLength.Short).Show();
 
                     switch (resultCode)
                     {
                         case Result.Ok:
-                            JavaDictionary<String, Object> careerItem = new JavaDictionary<String, Object>();
-                            careerItem.Add("battleTag", data.GetStringExtra("battleTag"));
-                            careerItem.Add("host", data.GetStringExtra("host"));
-                            careersList.Add(careerItem);
+                            String battleTag = data.GetStringExtra("battleTag");
+                            String host = data.GetStringExtra("host");
 
-                            IListAdapter careerAdapter = new SimpleAdapter(this, careersList, Android.Resource.Layout.SimpleListItem2, careersSimpleAdapterFrom, careersSimpleAdapterTo);
+                            db.insert(battleTag, host);
 
-                            FindViewById<ListView>(Resource.Id.CareersListView).Adapter = careerAdapter;
+                            IListAdapter careerAdapter = new SimpleCursorAdapter(this, Android.Resource.Layout.SimpleListItem2, cursor, accountsFromColumns, accountsToId);
+
+                            FindViewById<ListView>(Resource.Id.AccountsListView).Adapter = careerAdapter;
                             break;
 
                         default:
@@ -56,13 +61,27 @@ namespace ZTn.Tests
             base.OnActivityResult(requestCode, resultCode, data);
         }
 
+        public override void OnBackPressed()
+        {
+            Finish();
+            base.OnBackPressed();
+        }
+
+        protected override void OnDestroy()
+        {
+            StopManagingCursor(cursor);
+            cursor.Close();
+
+            base.OnDestroy();
+        }
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
             SetContentView(Resource.Layout.Home);
 
-            ListView careerListView = FindViewById<ListView>(Resource.Id.CareersListView);
+            ListView careerListView = FindViewById<ListView>(Resource.Id.AccountsListView);
             careerListView.ItemClick += (Object sender, AdapterView.ItemClickEventArgs args) =>
             {
                 Intent viewCareerIntent = new Intent(this, typeof(ViewCareerActivity));
@@ -71,39 +90,39 @@ namespace ZTn.Tests
                 StartActivity(viewCareerIntent);
             };
 
-            careersList.Add(new JavaDictionary<String, Object>() { { "battleTag", "Tok#2360" }, { "host", "eu.battle.net" } });
-            IListAdapter careersAdapter = new SimpleAdapter(this, careersList, Android.Resource.Layout.SimpleListItem2, careersSimpleAdapterFrom, careersSimpleAdapterTo);
-            FindViewById<ListView>(Resource.Id.CareersListView).Adapter = careersAdapter;
+            db = new Storage.CareersDB(this);
+            cursor = db.getAccounts();
+            StartManagingCursor(cursor);
+
+            IListAdapter accountsAdapter = new SimpleCursorAdapter(this, Android.Resource.Layout.SimpleListItem2, cursor, accountsFromColumns, accountsToId);
+
+            FindViewById<ListView>(Resource.Id.AccountsListView).Adapter = accountsAdapter;
         }
 
-        /// <summary>
-        /// Called when creating action bar
-        /// </summary>
-        /// <param name="menu"></param>
-        /// <returns></returns>
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.MainActivity, menu);
+            MenuInflater.Inflate(Resource.Menu.HomeActivity, menu);
 
             return true;
         }
 
-        /// <summary>
-        /// Called when an item is selected in the action bar
-        /// </summary>
-        /// <param name="item"></param>
-        /// <returns></returns>
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             switch (item.ItemId)
             {
-                case Resource.Id.AddNewProfile:
-                    this.StartActivityForResult(typeof(AddNewProfileActivity), ADD_NEW_PROFILE);
+                case Resource.Id.AddNewAccount:
+                    this.StartActivityForResult(typeof(AddNewAccountActivity), ADD_NEW_ACCOUNT);
                     return true;
 
                 default:
                     return base.OnOptionsItemSelected(item);
             }
+        }
+
+        private void insertIntoCareersStorage(String battleTag, String host)
+        {
+            Storage.CareersDB db = new Storage.CareersDB(this);
+            db.insert(battleTag, host);
         }
     }
 }

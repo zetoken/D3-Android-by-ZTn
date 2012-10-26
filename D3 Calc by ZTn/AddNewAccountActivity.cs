@@ -11,10 +11,10 @@ using Android.Views;
 using Android.Widget;
 using ZTn.BNet.BattleNet;
 
-namespace ZTn.Tests
+namespace ZTnDroid.D3Calculator
 {
     [Activity(Label = "New D3 Profile", Icon = "@android:drawable/ic_menu_add")]
-    public class AddNewProfileActivity : Activity
+    public class AddNewAccountActivity : Activity
     {
         String[] items = new String[] { "eu.battle.net", "us.battle.net", "kr.battle.net", "tw.battle.net" };
 
@@ -25,14 +25,14 @@ namespace ZTn.Tests
         {
             base.OnCreate(bundle);
 
-            SetContentView(Resource.Layout.AddNewProfile);
+            SetContentView(Resource.Layout.AddNewAccount);
 
             ActionBar.SetDisplayHomeAsUpEnabled(true);
 
             ArrayAdapter adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, items);
             adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
 
-            serverSpinner = FindViewById<Spinner>(Resource.Id.serverSpinner);
+            serverSpinner = FindViewById<Spinner>(Resource.Id.hostSpinner);
             serverSpinner.Adapter = adapter;
 
             battleTagEditText = FindViewById<EditText>(Resource.Id.battleTagEditText);
@@ -40,7 +40,7 @@ namespace ZTn.Tests
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.AddNewProfileActivity, menu);
+            MenuInflater.Inflate(Resource.Menu.AddNewAccountActivity, menu);
 
             return true;
         }
@@ -49,12 +49,14 @@ namespace ZTn.Tests
         {
             switch (item.ItemId)
             {
-                case Resource.Id.SubmitNewProfile:
+                case Resource.Id.SubmitNewAccount:
                     onSubmit();
                     return true;
+
                 case Android.Resource.Id.Home:
                     Finish();
                     return true;
+
                 default:
                     return base.OnOptionsItemSelected(item);
             }

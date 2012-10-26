@@ -13,7 +13,7 @@ using ZTn.BNet.D3;
 using ZTn.BNet.D3.Careers;
 using ZTn.BNet.D3.Heroes;
 
-namespace ZTn.Tests
+namespace ZTnDroid.D3Calculator
 {
     [Activity(Label = "View Career")]
     public class ViewCareerActivity : Activity

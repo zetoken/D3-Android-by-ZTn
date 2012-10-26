@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ZTn.Tests
+namespace ZTnDroid.D3Calculator
 {
 	
 	
@@ -37,8 +37,11 @@ namespace ZTn.Tests
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f060004
+			public const int AccountsListView = 2131099652;
+			
 			// aapt resource value: 0x7f060009
-			public const int AddNewProfile = 2131099657;
+			public const int AddNewAccount = 2131099657;
 			
 			// aapt resource value: 0x7f060005
 			public const int BattleTagTextView = 2131099653;
@@ -46,20 +49,17 @@ namespace ZTn.Tests
 			// aapt resource value: 0x7f060006
 			public const int CareerStatsTextView = 2131099654;
 			
-			// aapt resource value: 0x7f060004
-			public const int CareersListView = 2131099652;
-			
 			// aapt resource value: 0x7f060007
 			public const int HeroesListView = 2131099655;
 			
 			// aapt resource value: 0x7f060008
-			public const int SubmitNewProfile = 2131099656;
+			public const int SubmitNewAccount = 2131099656;
 			
 			// aapt resource value: 0x7f060001
 			public const int battleTagEditText = 2131099649;
 			
 			// aapt resource value: 0x7f060003
-			public const int serverSpinner = 2131099651;
+			public const int hostSpinner = 2131099651;
 			
 			// aapt resource value: 0x7f060000
 			public const int textView1 = 2131099648;
@@ -76,7 +76,7 @@ namespace ZTn.Tests
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int AddNewProfile = 2130903040;
+			public const int AddNewAccount = 2130903040;
 			
 			// aapt resource value: 0x7f030001
 			public const int Home = 2130903041;
@@ -93,10 +93,10 @@ namespace ZTn.Tests
 		{
 			
 			// aapt resource value: 0x7f050000
-			public const int AddNewProfileActivity = 2131034112;
+			public const int AddNewAccountActivity = 2131034112;
 			
 			// aapt resource value: 0x7f050001
-			public const int MainActivity = 2131034113;
+			public const int HomeActivity = 2131034113;
 			
 			private Menu()
 			{
@@ -110,7 +110,7 @@ namespace ZTn.Tests
 			public const int Add = 2130968581;
 			
 			// aapt resource value: 0x7f040003
-			public const int AddNewProfile = 2130968579;
+			public const int AddNewAccount = 2130968579;
 			
 			// aapt resource value: 0x7f040001
 			public const int ApplicationName = 2130968577;
@@ -125,7 +125,7 @@ namespace ZTn.Tests
 			public const int Hello = 2130968576;
 			
 			// aapt resource value: 0x7f040004
-			public const int SubmitNewProfile = 2130968580;
+			public const int SubmitNewAccount = 2130968580;
 			
 			private String()
 			{

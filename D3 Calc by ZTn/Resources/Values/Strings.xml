@@ -3,8 +3,8 @@
   <string name="Hello">Hello World, Click Me!</string>
   <string name="ApplicationName">ZTn Android</string>
   <string name="FetchCareer">Retrieve Tok#2360</string>
-  <string name="AddNewProfile">New Profile</string>
-  <string name="SubmitNewProfile">Validate New Profile</string>
+  <string name="AddNewAccount">New Profile</string>
+  <string name="SubmitNewAccount">Validate New Account</string>
   <string name="Add">Add</string>
   <string name="Cancel">Cancel</string>
 </resources>
