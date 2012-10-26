@@ -20,12 +20,12 @@ namespace ZTnDroid.D3Calculator
     {
         const int ADD_NEW_ACCOUNT = 0;
 
-        readonly String[] accountsFromColumns = new String[] { Storage.CareersOpenHelper.FIELD_BATTLETAG, Storage.CareersOpenHelper.FIELD_HOST };
+        readonly String[] accountsFromColumns = new String[] { Storage.AccountsOpenHelper.FIELD_BATTLETAG, Storage.AccountsOpenHelper.FIELD_HOST };
         readonly int[] accountsToId = new int[] { Android.Resource.Id.Text1, Android.Resource.Id.Text2 };
 
         IList<IDictionary<String, Object>> accountsList = new JavaList<IDictionary<String, Object>>();
 
-        Storage.CareersDB db;
+        Storage.AccountsDB db;
         ICursor cursor;
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
@@ -42,7 +42,7 @@ namespace ZTnDroid.D3Calculator
                             String battleTag = data.GetStringExtra("battleTag");
                             String host = data.GetStringExtra("host");
 
-                            db.insert(battleTag, host);
+                            db.accountInsert(battleTag, host);
 
                             IListAdapter careerAdapter = new SimpleCursorAdapter(this, Android.Resource.Layout.SimpleListItem2, cursor, accountsFromColumns, accountsToId);
 
@@ -90,13 +90,18 @@ namespace ZTnDroid.D3Calculator
                 StartActivity(viewCareerIntent);
             };
 
-            db = new Storage.CareersDB(this);
+            db = new Storage.AccountsDB(this);
             cursor = db.getAccounts();
             StartManagingCursor(cursor);
 
             IListAdapter accountsAdapter = new SimpleCursorAdapter(this, Android.Resource.Layout.SimpleListItem2, cursor, accountsFromColumns, accountsToId);
 
             FindViewById<ListView>(Resource.Id.AccountsListView).Adapter = accountsAdapter;
+
+            // Always start D3Api with cache available and offline
+            DataProviders.CacheableDataProvider dataProvider = new DataProviders.CacheableDataProvider(this, new ZTn.BNet.D3.DataProviders.HttpRequestDataProvider());
+            dataProvider.online = false;
+            D3Api.dataProvider = dataProvider;
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -121,8 +126,8 @@ namespace ZTnDroid.D3Calculator
 
         private void insertIntoCareersStorage(String battleTag, String host)
         {
-            Storage.CareersDB db = new Storage.CareersDB(this);
-            db.insert(battleTag, host);
+            Storage.AccountsDB db = new Storage.AccountsDB(this);
+            db.accountInsert(battleTag, host);
         }
     }
 }

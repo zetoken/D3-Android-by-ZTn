@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace ZTnDroid.D3Calculator.Storage
 {
-    public class CareersOpenHelper : SQLiteOpenHelper
+    public class AccountsOpenHelper : SQLiteOpenHelper
     {
         private static readonly String DATABASE_NAME = "d3calculator.db";
         private static readonly int DATABASE_VERSION = 1;
@@ -28,7 +28,7 @@ namespace ZTnDroid.D3Calculator.Storage
             + FIELD_HOST + " TEXT"
             + ");";
 
-        public CareersOpenHelper(Context context)
+        public AccountsOpenHelper(Context context)
             : base(context, DATABASE_NAME, null, DATABASE_VERSION)
         {
         }

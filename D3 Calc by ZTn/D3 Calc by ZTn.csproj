@@ -56,8 +56,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Storage\CareersDB.cs" />
-    <Compile Include="Storage\CareersOpenHelper.cs" />
+    <Compile Include="DataProviders\CacheableDataProvider.cs" />
+    <Compile Include="Storage\AccountsDB.cs" />
+    <Compile Include="Storage\AccountsOpenHelper.cs" />
     <Compile Include="ViewCareerActivity.cs" />
     <Compile Include="HomeActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -99,7 +100,9 @@
     <Content Include="Properties\AndroidManifest.xml" />
     <AndroidResource Include="Resources\Menu\HomeActivity.xml" />
     <AndroidResource Include="Resources\Menu\AddNewAccountActivity.xml" />
+    <AndroidResource Include="Resources\Menu\ViewCareerActivity.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.

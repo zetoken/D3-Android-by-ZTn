@@ -52,6 +52,9 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f060007
 			public const int HeroesListView = 2131099655;
 			
+			// aapt resource value: 0x7f06000a
+			public const int RefreshContent = 2131099658;
+			
 			// aapt resource value: 0x7f060008
 			public const int SubmitNewAccount = 2131099656;
 			
@@ -98,6 +101,9 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f050001
 			public const int HomeActivity = 2131034113;
 			
+			// aapt resource value: 0x7f050002
+			public const int ViewCareerActivity = 2131034114;
+			
 			private Menu()
 			{
 			}
@@ -106,8 +112,8 @@ namespace ZTnDroid.D3Calculator
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040005
-			public const int Add = 2130968581;
+			// aapt resource value: 0x7f040006
+			public const int Add = 2130968582;
 			
 			// aapt resource value: 0x7f040003
 			public const int AddNewAccount = 2130968579;
@@ -115,14 +121,17 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f040001
 			public const int ApplicationName = 2130968577;
 			
-			// aapt resource value: 0x7f040006
-			public const int Cancel = 2130968582;
+			// aapt resource value: 0x7f040007
+			public const int Cancel = 2130968583;
 			
 			// aapt resource value: 0x7f040002
 			public const int FetchCareer = 2130968578;
 			
 			// aapt resource value: 0x7f040000
 			public const int Hello = 2130968576;
+			
+			// aapt resource value: 0x7f040005
+			public const int RefreshContent = 2130968581;
 			
 			// aapt resource value: 0x7f040004
 			public const int SubmitNewAccount = 2130968580;
