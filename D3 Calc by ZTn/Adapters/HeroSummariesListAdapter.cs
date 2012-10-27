@@ -59,6 +59,29 @@ namespace ZTnDroid.D3Calculator.Adapters
             view.FindViewById<TextView>(Resource.Id.heroParagon).Text = String.Format("+{0}", hero.paragonLevel);
             view.FindViewById<TextView>(Resource.Id.heroHardcore).Text = (hero.hardcore ? "hardcore" : "");
 
+            int imageResource = Resource.Drawable.Icon;
+            switch (hero.heroClass)
+            {
+                case "barbarian":
+                    imageResource = (hero.gender == "0" ? Resource.Drawable.barbarian_male : Resource.Drawable.barbarian_female);
+                    break;
+                case "demon-hunter":
+                    imageResource = (hero.gender == "0" ? Resource.Drawable.demonhunter_male : Resource.Drawable.demonhunter_female);
+                    break;
+                case "monk":
+                    imageResource = (hero.gender == "0" ? Resource.Drawable.monk_male : Resource.Drawable.monk_female);
+                    break;
+                case "witch-doctor":
+                    imageResource = (hero.gender == "0" ? Resource.Drawable.witchdoctor_male : Resource.Drawable.witchdoctor_female);
+                    break;
+                case "wizard":
+                    imageResource = (hero.gender == "0" ? Resource.Drawable.wizard_male : Resource.Drawable.wizard_female);
+                    break;
+                default:
+                    break;
+            }
+            view.FindViewById<ImageView>(Resource.Id.imageClass).SetImageResource(imageResource);
+
             return view;
         }
 

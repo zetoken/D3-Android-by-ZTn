@@ -105,6 +105,16 @@
     <AndroidResource Include="Resources\Menu\HomeActivity.xml" />
     <AndroidResource Include="Resources\Menu\AddNewAccountActivity.xml" />
     <AndroidResource Include="Resources\Menu\ViewCareerActivity.xml" />
+    <AndroidResource Include="Resources\Drawable\demonhunter_male.png" />
+    <AndroidResource Include="Resources\Drawable\barbarian_female.png" />
+    <AndroidResource Include="Resources\Drawable\barbarian_male.png" />
+    <AndroidResource Include="Resources\Drawable\demonhunter_female.png" />
+    <AndroidResource Include="Resources\Drawable\monk_female.png" />
+    <AndroidResource Include="Resources\Drawable\monk_male.png" />
+    <AndroidResource Include="Resources\Drawable\witchdoctor_female.png" />
+    <AndroidResource Include="Resources\Drawable\witchdoctor_male.png" />
+    <AndroidResource Include="Resources\Drawable\wizard_female.png" />
+    <AndroidResource Include="Resources\Drawable\wizard_male.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

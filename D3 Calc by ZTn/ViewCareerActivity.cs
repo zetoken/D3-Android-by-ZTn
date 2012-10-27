@@ -16,7 +16,7 @@ using ZTnDroid.D3Calculator.Adapters;
 
 namespace ZTnDroid.D3Calculator
 {
-    [Activity(Label = "View Career", Theme = "@android:style/Theme.Holo")]
+    [Activity(Label = "View Career", Theme = "@android:style/Theme.Holo", Icon = "@drawable/icon")]
     public class ViewCareerActivity : Activity
     {
         String battleTag;
