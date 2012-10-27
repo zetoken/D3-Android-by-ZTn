@@ -12,20 +12,13 @@ using ZTn.BNet.BattleNet;
 using ZTn.BNet.D3;
 using ZTn.BNet.D3.Careers;
 using ZTn.BNet.D3.Heroes;
+using ZTnDroid.D3Calculator.Adapters;
 
 namespace ZTnDroid.D3Calculator
 {
-    [Activity(Label = "View Career")]
+    [Activity(Label = "View Career", Theme = "@android:style/Theme.Holo")]
     public class ViewCareerActivity : Activity
     {
-        public static readonly String COLUMN_NAME = "name";
-        public static readonly String COLUMN_DETAILS = "details";
-
-        readonly String[] heroesSimpleAdapterFrom = new String[] { COLUMN_NAME, COLUMN_DETAILS };
-        readonly int[] heroesSimpleAdapterTo = new int[] { Android.Resource.Id.Text1, Android.Resource.Id.Text2 };
-
-        List<IDictionary<String, Object>> heroesList = new List<IDictionary<String, Object>>();
-
         String battleTag;
         String host;
 
@@ -37,10 +30,15 @@ namespace ZTnDroid.D3Calculator
 
             ActionBar.SetDisplayHomeAsUpEnabled(true);
 
-            FindViewById<TextView>(Resource.Id.BattleTagTextView).Text = Intent.GetStringExtra("battleTag");
-
             battleTag = Intent.GetStringExtra("battleTag");
             host = Intent.GetStringExtra("host");
+
+            Title = battleTag;
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
 
             updateCareerView(fetchCareer(battleTag, host));
         }
@@ -100,27 +98,19 @@ namespace ZTnDroid.D3Calculator
         {
             if (career != null)
             {
-                TextView textView = FindViewById<TextView>(Resource.Id.CareerStatsTextView);
-                textView.Text = String.Format("Elites: {0}", career.kills.elites)
-                    + System.Environment.NewLine
-                    + String.Format("Monsters: {0}", career.kills.monsters)
-                    + System.Environment.NewLine
-                    + String.Format("Hardcore: {0}", career.kills.hardcoreMonsters);
+                FindViewById<TextView>(Resource.Id.CareerKilledElites).Text = career.kills.elites.ToString();
+                FindViewById<TextView>(Resource.Id.CareerKilledMonsters).Text = career.kills.monsters.ToString();
+                FindViewById<TextView>(Resource.Id.CareerKilledHardcore).Text = career.kills.hardcoreMonsters.ToString();
 
                 if (career.heroes != null)
                 {
-                    foreach (HeroSummary hero in career.heroes)
-                    {
-                        JavaDictionary<String, Object> heroItem = new JavaDictionary<String, Object>();
-                        heroItem.Add(COLUMN_NAME, hero.name);
-                        heroItem.Add(COLUMN_DETAILS, String.Format("{0} Level {1} ({2})", hero.heroClass, hero.level, hero.paragonLevel));
-                        heroesList.Add(heroItem);
-                    }
-
-                    IListAdapter heroesAdapter = new SimpleAdapter(this, heroesList, Android.Resource.Layout.SimpleListItem2, heroesSimpleAdapterFrom, heroesSimpleAdapterTo);
                     ListView listView = FindViewById<ListView>(Resource.Id.HeroesListView);
-                    listView.Adapter = heroesAdapter;
-                    ((BaseAdapter)listView.Adapter).NotifyDataSetChanged();
+                    listView.Adapter = new HeroSummariesListAdapter(this, career.heroes);
+                    listView.ItemClick += (Object sender, Android.Widget.AdapterView.ItemClickEventArgs args) =>
+                    {
+                        HeroSummary hero = ((HeroSummariesListAdapter)listView.Adapter).getHeroSummaryAt(args.Position);
+                        Toast.MakeText(this, String.Format("Hero {0} was clicked", hero.name), ToastLength.Long).Show();
+                    };
                 }
             }
         }

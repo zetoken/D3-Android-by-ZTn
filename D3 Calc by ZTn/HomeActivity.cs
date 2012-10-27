@@ -15,7 +15,7 @@ using ZTn.BNet.D3.Heroes;
 
 namespace ZTnDroid.D3Calculator
 {
-    [Activity(Label = "D3 Calc by ZTn", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "D3 Calc by ZTn", MainLauncher = true, Theme = "@android:style/Theme.Holo", Icon = "@drawable/icon")]
     public class HomeActivity : Activity
     {
         const int ADD_NEW_ACCOUNT = 0;
@@ -33,9 +33,6 @@ namespace ZTnDroid.D3Calculator
             switch (requestCode)
             {
                 case ADD_NEW_ACCOUNT:
-                    String message = String.Format("Activity \"Add New Profile\" result: {0}", resultCode);
-                    Toast.MakeText(this, message, ToastLength.Short).Show();
-
                     switch (resultCode)
                     {
                         case Result.Ok:
@@ -45,8 +42,9 @@ namespace ZTnDroid.D3Calculator
                             db.accountInsert(battleTag, host);
 
                             IListAdapter careerAdapter = new SimpleCursorAdapter(this, Android.Resource.Layout.SimpleListItem2, cursor, accountsFromColumns, accountsToId);
-
                             FindViewById<ListView>(Resource.Id.AccountsListView).Adapter = careerAdapter;
+
+                            Toast.MakeText(this, "Account added", ToastLength.Short).Show();
                             break;
 
                         default:
@@ -67,17 +65,11 @@ namespace ZTnDroid.D3Calculator
             base.OnBackPressed();
         }
 
-        protected override void OnDestroy()
-        {
-            StopManagingCursor(cursor);
-            cursor.Close();
-
-            base.OnDestroy();
-        }
-
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+
+            this.Application.SetTheme(Android.Resource.Style.ThemeHolo);
 
             SetContentView(Resource.Layout.Home);
 
@@ -109,6 +101,14 @@ namespace ZTnDroid.D3Calculator
             MenuInflater.Inflate(Resource.Menu.HomeActivity, menu);
 
             return true;
+        }
+
+        protected override void OnDestroy()
+        {
+            StopManagingCursor(cursor);
+            cursor.Close();
+
+            base.OnDestroy();
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)

@@ -6,15 +6,63 @@
     android:minWidth="25px"
     android:minHeight="25px">
     <TextView
-        android:text="BattleTag"
+        android:text="@string/Statistics"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/BattleTagTextView" />
+        android:id="@+id/textView1"
+        android:textColor="?android:attr/textColorLink"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TableLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tableLayout1">
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="@string/KilledElites"
+                android:id="@+id/textView3"
+                android:layout_column="0" />
+            <TextView
+                android:text="0"
+                android:id="@+id/CareerKilledElites"
+                android:layout_column="1"
+                android:paddingLeft="6dip" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow2">
+            <TextView
+                android:text="@string/KilledMonsters"
+                android:id="@+id/textView3"
+                android:layout_column="0" />
+            <TextView
+                android:text="0"
+                android:id="@+id/CareerKilledMonsters"
+                android:layout_column="1"
+                android:paddingLeft="6dip" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow3">
+            <TextView
+                android:text="@string/KilledHardcore"
+                android:id="@+id/textView3"
+                android:layout_column="0" />
+            <TextView
+                android:text="0"
+                android:id="@+id/CareerKilledHardcore"
+                android:layout_column="1"
+                android:paddingLeft="6dip" />
+        </TableRow>
+    </TableLayout>
     <TextView
-        android:text="BattleTag"
+        android:text="@string/Heroes"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/CareerStatsTextView" />
+        android:id="@+id/textView2"
+        android:textColor="?android:attr/textColorLink" />
     <ListView
         android:minWidth="25px"
         android:minHeight="25px"
