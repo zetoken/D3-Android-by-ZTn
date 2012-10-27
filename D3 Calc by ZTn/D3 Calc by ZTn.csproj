@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ZTnDroid.D3Calculator</RootNamespace>
-    <AssemblyName>ZTn Android Tests</AssemblyName>
+    <AssemblyName>ZTnDroid.D3Calculator</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidApplication>true</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>

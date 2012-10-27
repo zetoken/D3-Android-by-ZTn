@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -73,7 +74,7 @@ namespace ZTnDroid.D3Calculator
         private Career fetchCareer(String battleTag, String host)
         {
             D3Api.host = host;
-            Career career;
+            Career career = null;
 
             try
             {
@@ -81,14 +82,13 @@ namespace ZTnDroid.D3Calculator
             }
             catch (ZTn.BNet.D3.DataProviders.FileNotInCacheException)
             {
-                Toast.MakeText(this, "Career not in cache: please use refresh action", ToastLength.Long).Show();
-                return null;
+                Toast.MakeText(this, "Career not in cache" + System.Environment.NewLine + "Please use refresh action", ToastLength.Long).Show();
+                career = null;
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 Toast.MakeText(this, "An error occured when retrieving the career", ToastLength.Long).Show();
-                Console.WriteLine(@"/!\ An error occured when retrieving the career" + System.Environment.NewLine + exception, ToastLength.Long);
-                return null;
+                career = null;
             }
 
             return career;
