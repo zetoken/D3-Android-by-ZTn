@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Android.Database;
 using ZTn.BNet.D3.DataProviders;
 
 namespace ZTnDroid.D3Calculator.DataProviders
@@ -15,6 +16,7 @@ namespace ZTnDroid.D3Calculator.DataProviders
 
         ID3DataProvider dataProvider;
         Android.Content.Context context;
+        static Storage.CacheDB db;
 
         public Boolean online = true;
 
@@ -26,6 +28,7 @@ namespace ZTnDroid.D3Calculator.DataProviders
         {
             this.dataProvider = dataProvider;
             this.context = context;
+            db = new Storage.CacheDB(context);
         }
 
         #endregion
@@ -48,9 +51,8 @@ namespace ZTnDroid.D3Calculator.DataProviders
 
         public Stream fetchData(string url)
         {
-            String cachedFilePath = context.FilesDir + "/cache/" + getCachedFileName(url);
-
-            Console.WriteLine("****** ONLINE MODE: " + online);
+            String cachedFileName = getCachedFileName(url);
+            String cachedFilePath = context.FilesDir + "/cache/" + cachedFileName;
 
             if (online)
             {
@@ -63,6 +65,8 @@ namespace ZTnDroid.D3Calculator.DataProviders
                         binaryReader.BaseStream.CopyTo(fileStream);
                     }
                 }
+
+                db.insertOrUpdate(url, cachedFileName);
             }
 
             if (!File.Exists(cachedFilePath))

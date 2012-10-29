@@ -1,36 +1,31 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Android.App;
 using Android.Content;
 using Android.Database.Sqlite;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 
 namespace ZTnDroid.D3Calculator.Storage
 {
-    public class AccountsOpenHelper : SQLiteOpenHelper
+    public class CacheOpenHelper : SQLiteOpenHelper
     {
-        private static readonly String DATABASE_NAME = "d3calculator.db";
+        private static readonly String DATABASE_NAME = "d3cache.db";
         private static readonly int DATABASE_VERSION = 1;
 
-        public static readonly String TABLE_NAME = "accounts";
-        public static readonly String FIELD_BATTLETAG = "battletag";
-        public static readonly String FIELD_HOST = "host";
+        public static readonly String TABLE_NAME = "cache";
+        public static readonly String FIELD_URL = "url";
+        public static readonly String FIELD_FILE = "file";
         public static readonly String FIELD_UPDATED = "updated";
 
         private static readonly String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME
             + " ("
             + "[_id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
-            + FIELD_BATTLETAG + " TEXT, "
-            + FIELD_HOST + " TEXT, "
+            + FIELD_URL + " TEXT, "
+            + FIELD_FILE + " TEXT, "
             + FIELD_UPDATED + " TEXT"
             + ");";
 
-        public AccountsOpenHelper(Context context)
+        public CacheOpenHelper(Context context)
             : base(context, DATABASE_NAME, null, DATABASE_VERSION)
         {
         }

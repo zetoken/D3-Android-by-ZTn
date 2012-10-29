@@ -47,6 +47,14 @@
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BNet API by ZTn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\BNet API by ZTn.dll</HintPath>
+    </Reference>
+    <Reference Include="D3 API by ZTn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\D3 API by ZTn.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
     <Reference Include="System" />
@@ -60,6 +68,8 @@
     <Compile Include="DataProviders\CacheableDataProvider.cs" />
     <Compile Include="Storage\AccountsDB.cs" />
     <Compile Include="Storage\AccountsOpenHelper.cs" />
+    <Compile Include="Storage\CacheDB.cs" />
+    <Compile Include="Storage\CacheOpenHelper.cs" />
     <Compile Include="ViewCareerActivity.cs" />
     <Compile Include="HomeActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -89,16 +99,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BNet API by ZTn\BNet API by ZTn.csproj">
-      <Project>{5305ad1d-aed6-4ccb-8f20-08353662bfc8}</Project>
-      <Name>BNet API by ZTn</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\D3 API by ZTn\D3 API by ZTn.csproj">
-      <Project>{013ab500-9996-439a-942a-e2c77b774971}</Project>
-      <Name>D3 API by ZTn</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml" />

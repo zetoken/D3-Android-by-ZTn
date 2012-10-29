@@ -58,6 +58,7 @@ namespace ZTnDroid.D3Calculator.Adapters
             view.FindViewById<TextView>(Resource.Id.heroLevel).Text = String.Format("{0}", hero.level);
             view.FindViewById<TextView>(Resource.Id.heroParagon).Text = String.Format("+{0}", hero.paragonLevel);
             view.FindViewById<TextView>(Resource.Id.heroHardcore).Text = (hero.hardcore ? "hardcore" : "");
+            view.FindViewById<TextView>(Resource.Id.heroLastUpdated).Text = hero.lastUpdated.ToString("dd/MM/yyyy hh:mm");
 
             int imageResource = Resource.Drawable.Icon;
             switch (hero.heroClass)

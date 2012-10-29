@@ -36,6 +36,16 @@
         android:layout_alignTop="@id/heroName"
         android:layout_marginLeft="?android:attr/listPreferredItemPaddingLeft" />
     <TextView
+        android:id="@+id/heroLastUpdated"
+        android:text="LastUpdated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="?android:attr/listPreferredItemPaddingLeft"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/heroName"
+        android:textStyle="italic"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+    <TextView
         android:id="@+id/heroClass"
         android:text="Class"
         android:layout_width="wrap_content"

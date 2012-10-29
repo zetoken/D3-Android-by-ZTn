@@ -5,11 +5,11 @@
   <string name="ApplicationName">ZTn Android</string>
   <string name="Cancel">Cancel</string>
   <string name="FetchCareer">Retrieve Tok#2360</string>
-  <string name="Heroes">Heroes</string>
+  <string name="Heroes">HEROES</string>
   <string name="KilledElites">Elites:</string>
   <string name="KilledMonsters">Monsters:</string>
   <string name="KilledHardcore">Hardcore:</string>
   <string name="RefreshContent">Refresh Content</string>
-  <string name="Statistics">Statistics</string>
+  <string name="KillsLifetime">KILLS LIFETIME</string>
   <string name="SubmitNewAccount">Validate New Account</string>
 </resources>

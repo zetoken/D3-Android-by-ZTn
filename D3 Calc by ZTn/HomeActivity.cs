@@ -39,7 +39,7 @@ namespace ZTnDroid.D3Calculator
                             String battleTag = data.GetStringExtra("battleTag");
                             String host = data.GetStringExtra("host");
 
-                            db.accountInsert(battleTag, host);
+                            db.insert(battleTag, host);
 
                             IListAdapter careerAdapter = new SimpleCursorAdapter(this, Android.Resource.Layout.SimpleListItem2, cursor, accountsFromColumns, accountsToId);
                             FindViewById<ListView>(Resource.Id.AccountsListView).Adapter = careerAdapter;
@@ -127,7 +127,7 @@ namespace ZTnDroid.D3Calculator
         private void insertIntoCareersStorage(String battleTag, String host)
         {
             Storage.AccountsDB db = new Storage.AccountsDB(this);
-            db.accountInsert(battleTag, host);
+            db.insert(battleTag, host);
         }
     }
 }

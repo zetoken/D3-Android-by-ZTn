@@ -22,34 +22,48 @@ namespace ZTnDroid.D3Calculator.Storage
             dbHelper = new AccountsOpenHelper(context);
         }
 
-        public long accountInsert(String battleTag, String host)
+        public long delete(String battleTag)
+        {
+            SQLiteDatabase db = dbHelper.WritableDatabase;
+            return db.Delete(AccountsOpenHelper.TABLE_NAME, AccountsOpenHelper.FIELD_BATTLETAG + "=?", new String[] { battleTag });
+        }
+
+        public long insert(String battleTag, String host)
         {
             SQLiteDatabase db = dbHelper.WritableDatabase;
             ContentValues values = new ContentValues();
             values.Put(AccountsOpenHelper.FIELD_BATTLETAG, battleTag);
             values.Put(AccountsOpenHelper.FIELD_HOST, host);
+            values.Put(AccountsOpenHelper.FIELD_UPDATED, DateTime.Today.ToString());
             return db.Insert(AccountsOpenHelper.TABLE_NAME, null, values);
         }
 
-        public long accountUpdate(String oldBattleTag, String battleTag, String host)
+        public long update(String oldBattleTag, String battleTag, String host)
         {
             SQLiteDatabase db = dbHelper.WritableDatabase;
             ContentValues values = new ContentValues();
             values.Put(AccountsOpenHelper.FIELD_BATTLETAG, battleTag);
             values.Put(AccountsOpenHelper.FIELD_HOST, host);
-            return db.Update(AccountsOpenHelper.TABLE_NAME, values, AccountsOpenHelper.FIELD_BATTLETAG + "=" + oldBattleTag, null);
-        }
-
-        public long accountDelete(String battleTag)
-        {
-            SQLiteDatabase db = dbHelper.WritableDatabase;
-            return db.Delete(AccountsOpenHelper.TABLE_NAME, AccountsOpenHelper.FIELD_BATTLETAG + "=" + battleTag, null);
+            values.Put(AccountsOpenHelper.FIELD_UPDATED, DateTime.Today.ToString());
+            return db.Update(AccountsOpenHelper.TABLE_NAME, values, AccountsOpenHelper.FIELD_BATTLETAG + "=?", new String[] { oldBattleTag });
         }
 
         public ICursor getAccounts()
         {
             SQLiteDatabase db = dbHelper.ReadableDatabase;
-            return db.RawQuery("SELECT * FROM " + AccountsOpenHelper.TABLE_NAME, null);
+            return db.Query(AccountsOpenHelper.TABLE_NAME,
+                new String[] { "_id", AccountsOpenHelper.FIELD_BATTLETAG, AccountsOpenHelper.FIELD_HOST, AccountsOpenHelper.FIELD_UPDATED },
+                null, null,
+                null, null, null);
+        }
+
+        public ICursor getAccount(String battleTag, String host)
+        {
+            SQLiteDatabase db = dbHelper.ReadableDatabase;
+            return db.Query(AccountsOpenHelper.TABLE_NAME,
+                new String[] { "_id", AccountsOpenHelper.FIELD_BATTLETAG, AccountsOpenHelper.FIELD_HOST, AccountsOpenHelper.FIELD_UPDATED },
+                AccountsOpenHelper.FIELD_BATTLETAG + "=? AND " + AccountsOpenHelper.FIELD_HOST + "=?", new String[] { battleTag, host },
+                null, null, null);
         }
     }
 }

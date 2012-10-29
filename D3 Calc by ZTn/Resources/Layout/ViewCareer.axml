@@ -6,12 +6,11 @@
     android:minWidth="25px"
     android:minHeight="25px">
     <TextView
-        android:text="@string/Statistics"
+        android:text="@string/KillsLifetime"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView1"
-        android:textColor="?android:attr/textColorLink"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textColor="?android:attr/textColorLink" />
     <TableLayout
         android:minWidth="25px"
         android:minHeight="25px"
@@ -58,7 +57,6 @@
     </TableLayout>
     <TextView
         android:text="@string/Heroes"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView2"
