@@ -2,14 +2,17 @@
 <resources>
   <string name="Add">Add</string>
   <string name="AddNewAccount">New Profile</string>
-  <string name="ApplicationName">ZTn Android</string>
+  <string name="ApplicationName">D3 Calc by ZTn</string>
   <string name="Cancel">Cancel</string>
-  <string name="FetchCareer">Retrieve Tok#2360</string>
+  <string name="Characteristics">CHARACTERISTICS</string>
+  <string name="DeleteContent">DELETE</string>
+  <string name="FetchCareer">Retrieve Career</string>
   <string name="Heroes">HEROES</string>
   <string name="KilledElites">Elites:</string>
   <string name="KilledMonsters">Monsters:</string>
   <string name="KilledHardcore">Hardcore:</string>
-  <string name="RefreshContent">Refresh Content</string>
+  <string name="Progress">PROGRESS</string>
+  <string name="RefreshContent">REFRESH</string>
   <string name="KillsLifetime">KILLS LIFETIME</string>
   <string name="SubmitNewAccount">Validate New Account</string>
 </resources>

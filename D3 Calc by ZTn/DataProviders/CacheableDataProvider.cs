@@ -65,8 +65,6 @@ namespace ZTnDroid.D3Calculator.DataProviders
                         binaryReader.BaseStream.CopyTo(fileStream);
                     }
                 }
-
-                db.insertOrUpdate(url, cachedFileName);
             }
 
             if (!File.Exists(cachedFilePath))

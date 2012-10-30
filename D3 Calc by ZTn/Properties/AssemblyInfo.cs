@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using Android.App;
 
 // General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values heroesSimpleAdapterTo modify the information
+// set of killsAttr. Change these attribute values heroesSimpleAdapterTo modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Android_Application_Test")]
 [assembly: AssemblyDescription("")]

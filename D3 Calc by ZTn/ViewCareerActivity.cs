@@ -14,6 +14,7 @@ using ZTn.BNet.D3;
 using ZTn.BNet.D3.Careers;
 using ZTn.BNet.D3.Heroes;
 using ZTnDroid.D3Calculator.Adapters;
+using ZTnDroid.D3Calculator.Storage;
 
 namespace ZTnDroid.D3Calculator
 {
@@ -22,6 +23,8 @@ namespace ZTnDroid.D3Calculator
     {
         String battleTag;
         String host;
+
+        Career career;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -34,14 +37,21 @@ namespace ZTnDroid.D3Calculator
             battleTag = Intent.GetStringExtra("battleTag");
             host = Intent.GetStringExtra("host");
 
+            D3Context.getInstance().battleTag = battleTag;
+            D3Context.getInstance().host = host;
+
+            ListView listView = FindViewById<ListView>(Resource.Id.HeroesListView);
+            listView.ItemClick += (Object sender, Android.Widget.AdapterView.ItemClickEventArgs args) =>
+            {
+                HeroSummary heroSummary = ((HeroSummariesListAdapter)listView.Adapter).getHeroSummaryAt(args.Position);
+                D3Context.getInstance().heroSummary = heroSummary;
+
+                Intent viewHeroIntent = new Intent(this, typeof(ViewHeroActivity));
+
+                StartActivity(viewHeroIntent);
+            };
+
             Title = battleTag;
-        }
-
-        protected override void OnResume()
-        {
-            base.OnResume();
-
-            updateCareerView(fetchCareer(battleTag, host));
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -59,11 +69,12 @@ namespace ZTnDroid.D3Calculator
                     Finish();
                     return true;
 
+                case Resource.Id.DeleteContent:
+                    deleteCareer();
+                    return true;
+
                 case Resource.Id.RefreshContent:
-                    DataProviders.CacheableDataProvider dataProvider = (DataProviders.CacheableDataProvider)D3Api.dataProvider;
-                    dataProvider.online = true;
-                    updateCareerView(fetchCareer(battleTag, host));
-                    dataProvider.online = false;
+                    deferredFetchAndUpdateCareer(true);
                     return true;
 
                 default:
@@ -71,46 +82,98 @@ namespace ZTnDroid.D3Calculator
             }
         }
 
-        private Career fetchCareer(String battleTag, String host)
+        protected override void OnResume()
+        {
+            base.OnResume();
+
+            deferredFetchAndUpdateCareer(false);
+        }
+
+        private void deferredFetchAndUpdateCareer(Boolean online)
+        {
+            ProgressDialog progressDialog = null;
+
+            if (online)
+                progressDialog = ProgressDialog.Show(this, "Loading Career", "Please wait while retrieving data", true);
+
+            new Thread(new ThreadStart(() =>
+            {
+                try
+                {
+                    fetchCareer(online);
+                    this.RunOnUiThread(() =>
+                    {
+                        if (online)
+                            progressDialog.Dismiss();
+                        updateCareerView();
+                    });
+                }
+                catch (ZTn.BNet.D3.DataProviders.FileNotInCacheException)
+                {
+                    this.RunOnUiThread(() =>
+                    {
+                        if (online)
+                            progressDialog.Dismiss();
+                        Toast.MakeText(this, "Career not in cache" + System.Environment.NewLine + "Please use refresh action", ToastLength.Long).Show();
+                    });
+                }
+                catch (Exception exception)
+                {
+                    this.RunOnUiThread(() =>
+                    {
+                        if (online)
+                            progressDialog.Dismiss();
+                        Toast.MakeText(this, "An error occured when retrieving the career", ToastLength.Long).Show();
+                        Console.WriteLine(exception);
+                    });
+                }
+            })).Start();
+        }
+
+        private void deleteCareer()
+        {
+            Toast.MakeText(this, "Career will be removed... when implemented", ToastLength.Short);
+            //...
+        }
+
+        private void fetchCareer(Boolean online)
         {
             D3Api.host = host;
-            Career career = null;
+            DataProviders.CacheableDataProvider dataProvider = (DataProviders.CacheableDataProvider)D3Api.dataProvider;
+            dataProvider.online = online;
 
             try
             {
                 career = Career.getCareerFromBattleTag(new BattleTag(battleTag));
             }
-            catch (ZTn.BNet.D3.DataProviders.FileNotInCacheException)
+            catch (Exception exception)
             {
-                Toast.MakeText(this, "Career not in cache" + System.Environment.NewLine + "Please use refresh action", ToastLength.Long).Show();
                 career = null;
+                throw exception;
             }
-            catch (Exception)
+            finally
             {
-                Toast.MakeText(this, "An error occured when retrieving the career", ToastLength.Long).Show();
-                career = null;
+                dataProvider.online = false;
             }
-
-            return career;
         }
 
-        private void updateCareerView(Career career)
+        private void updateCareerView()
         {
             if (career != null)
             {
-                FindViewById<TextView>(Resource.Id.CareerKilledElites).Text = career.kills.elites.ToString();
-                FindViewById<TextView>(Resource.Id.CareerKilledMonsters).Text = career.kills.monsters.ToString();
-                FindViewById<TextView>(Resource.Id.CareerKilledHardcore).Text = career.kills.hardcoreMonsters.ToString();
+                ListView killsListView = FindViewById<ListView>(Resource.Id.killsLifetimeListView);
+                List<AttributeDescriptor> attributes = new List<AttributeDescriptor>()
+                {
+                    new AttributeDescriptor("elites", career.kills.elites.ToString()),
+                    new AttributeDescriptor("monsters", career.kills.monsters.ToString()),
+                    new AttributeDescriptor("hardcore", career.kills.hardcoreMonsters.ToString())
+                };
+                killsListView.Adapter = new AttributesListAdapter(this, attributes.ToArray());
 
                 if (career.heroes != null)
                 {
                     ListView listView = FindViewById<ListView>(Resource.Id.HeroesListView);
                     listView.Adapter = new HeroSummariesListAdapter(this, career.heroes);
-                    listView.ItemClick += (Object sender, Android.Widget.AdapterView.ItemClickEventArgs args) =>
-                    {
-                        HeroSummary hero = ((HeroSummariesListAdapter)listView.Adapter).getHeroSummaryAt(args.Position);
-                        Toast.MakeText(this, String.Format("Hero {0} was clicked", hero.name), ToastLength.Long).Show();
-                    };
                 }
             }
         }

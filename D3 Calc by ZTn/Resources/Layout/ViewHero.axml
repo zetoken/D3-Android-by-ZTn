@@ -2,9 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:minWidth="25px"
-    android:minHeight="25px">
+    android:layout_height="fill_parent">
+    <TextView
+        android:text="@string/Progress"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        android:textColor="?android:attr/textColorLink" />
+    <ListView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressListView" />
     <TextView
         android:text="@string/KillsLifetime"
         android:layout_width="fill_parent"
@@ -18,7 +28,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/killsLifetimeListView" />
     <TextView
-        android:text="@string/Heroes"
+        android:text="@string/Characteristics"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView2"
@@ -28,5 +38,5 @@
         android:minHeight="25px"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/HeroesListView" />
+        android:id="@+id/characteristicsListView" />
 </LinearLayout>

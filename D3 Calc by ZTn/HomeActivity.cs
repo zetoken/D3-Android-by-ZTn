@@ -12,6 +12,7 @@ using ZTn.BNet.BattleNet;
 using ZTn.BNet.D3;
 using ZTn.BNet.D3.Careers;
 using ZTn.BNet.D3.Heroes;
+using ZTnDroid.D3Calculator.Storage;
 
 namespace ZTnDroid.D3Calculator
 {
@@ -87,7 +88,6 @@ namespace ZTnDroid.D3Calculator
             StartManagingCursor(cursor);
 
             IListAdapter accountsAdapter = new SimpleCursorAdapter(this, Android.Resource.Layout.SimpleListItem2, cursor, accountsFromColumns, accountsToId);
-
             FindViewById<ListView>(Resource.Id.AccountsListView).Adapter = accountsAdapter;
 
             // Always start D3Api with cache available and offline
@@ -126,7 +126,6 @@ namespace ZTnDroid.D3Calculator
 
         private void insertIntoCareersStorage(String battleTag, String host)
         {
-            Storage.AccountsDB db = new Storage.AccountsDB(this);
             db.insert(battleTag, host);
         }
     }

@@ -64,12 +64,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\AttributeDescriptor.cs" />
+    <Compile Include="Adapters\AttributesListAdapter.cs" />
     <Compile Include="Adapters\HeroSummariesListAdapter.cs" />
     <Compile Include="DataProviders\CacheableDataProvider.cs" />
     <Compile Include="Storage\AccountsDB.cs" />
     <Compile Include="Storage\AccountsOpenHelper.cs" />
     <Compile Include="Storage\CacheDB.cs" />
     <Compile Include="Storage\CacheOpenHelper.cs" />
+    <Compile Include="Storage\D3Context.cs" />
+    <Compile Include="ViewHeroActivity.cs" />
     <Compile Include="ViewCareerActivity.cs" />
     <Compile Include="HomeActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -86,6 +90,12 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\Layout\HeroesListItem.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\ViewHero.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\AttributeListItem.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -115,6 +125,7 @@
     <AndroidResource Include="Resources\Drawable\witchdoctor_male.png" />
     <AndroidResource Include="Resources\Drawable\wizard_female.png" />
     <AndroidResource Include="Resources\Drawable\wizard_male.png" />
+    <AndroidResource Include="Resources\Menu\ViewHeroActivity.xml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
