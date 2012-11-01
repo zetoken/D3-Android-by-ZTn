@@ -13,42 +13,48 @@ using ZTn.BNet.D3.Items;
 
 namespace ZTnDroid.D3Calculator.Adapters
 {
-    public class AttributeDescriptor
+    public class AttributeListItem : IListItem
     {
         public String name;
         public String value;
 
-        public AttributeDescriptor(String name, String value)
+        protected AttributeListItem()
+        {
+        }
+
+        public AttributeListItem(String name, String value)
         {
             this.name = name;
             this.value = value;
         }
 
-        public AttributeDescriptor(String name, ItemValueRange value)
+        public AttributeListItem(String name, ItemValueRange value)
         {
             this.name = name;
             this.value = value.min.ToString();
         }
 
-        public AttributeDescriptor(String name, long value)
+        public AttributeListItem(String name, long value)
         {
             this.name = name;
             this.value = value.ToString();
         }
 
-        public AttributeDescriptor(String name, double value)
+        public AttributeListItem(String name, double value)
         {
             this.name = name;
             this.value = String.Format("{0:0.00}", value);
         }
 
-        public AttributeDescriptor(String name, double value, Boolean percent)
+        public int getLayoutResource()
         {
-            this.name = name;
-            if (percent)
-                this.value = String.Format("{0:0.00} %", 100 * value);
-            else
-                this.value = String.Format("{0:0.00}", value);
+            return Resource.Layout.AttributeListItem;
+        }
+
+        public void updateInView(View view)
+        {
+            view.FindViewById<TextView>(Resource.Id.attributeName).Text = name;
+            view.FindViewById<TextView>(Resource.Id.attributeValue).Text = value;
         }
     }
 }

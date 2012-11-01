@@ -133,7 +133,8 @@ namespace ZTnDroid.D3Calculator
         private void deleteCareer()
         {
             Toast.MakeText(this, "Career will be removed... when implemented", ToastLength.Short);
-            //...
+            D3Context.getInstance().dbAccounts.delete(battleTag, host);
+            Finish();
         }
 
         private void fetchCareer(Boolean online)
@@ -148,6 +149,7 @@ namespace ZTnDroid.D3Calculator
             }
             catch (Exception exception)
             {
+                Console.WriteLine(exception);
                 career = null;
                 throw exception;
             }
@@ -162,13 +164,13 @@ namespace ZTnDroid.D3Calculator
             if (career != null)
             {
                 ListView killsListView = FindViewById<ListView>(Resource.Id.killsLifetimeListView);
-                List<AttributeDescriptor> attributes = new List<AttributeDescriptor>()
+                List<AttributeListItem> attributes = new List<AttributeListItem>()
                 {
-                    new AttributeDescriptor("elites", career.kills.elites.ToString()),
-                    new AttributeDescriptor("monsters", career.kills.monsters.ToString()),
-                    new AttributeDescriptor("hardcore", career.kills.hardcoreMonsters.ToString())
+                    new AttributeListItem("elites", career.kills.elites.ToString()),
+                    new AttributeListItem("monsters", career.kills.monsters.ToString()),
+                    new AttributeListItem("hardcore", career.kills.hardcoreMonsters.ToString())
                 };
-                killsListView.Adapter = new AttributesListAdapter(this, attributes.ToArray());
+                killsListView.Adapter = new SectionedListAdapter(this, attributes.ToArray());
 
                 if (career.heroes != null)
                 {

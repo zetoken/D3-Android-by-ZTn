@@ -21,6 +21,8 @@ namespace ZTnDroid.D3Calculator.Storage
         public HeroSummary heroSummary;
         public Hero hero;
 
+        public AccountsDB dbAccounts;
+
         static D3Context instance;
 
         public static D3Context getInstance()

@@ -67,23 +67,23 @@ namespace ZTnDroid.D3Calculator
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f06000d
-			public const int AccountsListView = 2131099661;
-			
-			// aapt resource value: 0x7f060013
-			public const int AddNewAccount = 2131099667;
-			
-			// aapt resource value: 0x7f060015
-			public const int DeleteContent = 2131099669;
-			
-			// aapt resource value: 0x7f06000f
-			public const int HeroesListView = 2131099663;
+			// aapt resource value: 0x7f06000e
+			public const int AccountsListView = 2131099662;
 			
 			// aapt resource value: 0x7f060014
-			public const int RefreshContent = 2131099668;
+			public const int AddNewAccount = 2131099668;
 			
-			// aapt resource value: 0x7f060012
-			public const int SubmitNewAccount = 2131099666;
+			// aapt resource value: 0x7f060016
+			public const int DeleteContent = 2131099670;
+			
+			// aapt resource value: 0x7f060011
+			public const int HeroesListView = 2131099665;
+			
+			// aapt resource value: 0x7f060015
+			public const int RefreshContent = 2131099669;
+			
+			// aapt resource value: 0x7f060013
+			public const int SubmitNewAccount = 2131099667;
 			
 			// aapt resource value: 0x7f060004
 			public const int attributeName = 2131099652;
@@ -94,38 +94,41 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f060001
 			public const int battleTagEditText = 2131099649;
 			
-			// aapt resource value: 0x7f060011
-			public const int characteristicsListView = 2131099665;
-			
-			// aapt resource value: 0x7f06000b
-			public const int heroClass = 2131099659;
+			// aapt resource value: 0x7f060006
+			public const int fragment_container = 2131099654;
 			
 			// aapt resource value: 0x7f06000c
-			public const int heroHardcore = 2131099660;
+			public const int heroClass = 2131099660;
 			
-			// aapt resource value: 0x7f06000a
-			public const int heroLastUpdated = 2131099658;
+			// aapt resource value: 0x7f06000d
+			public const int heroHardcore = 2131099661;
 			
-			// aapt resource value: 0x7f060008
-			public const int heroLevel = 2131099656;
-			
-			// aapt resource value: 0x7f060007
-			public const int heroName = 2131099655;
+			// aapt resource value: 0x7f06000b
+			public const int heroLastUpdated = 2131099659;
 			
 			// aapt resource value: 0x7f060009
-			public const int heroParagon = 2131099657;
+			public const int heroLevel = 2131099657;
+			
+			// aapt resource value: 0x7f060008
+			public const int heroName = 2131099656;
+			
+			// aapt resource value: 0x7f06000a
+			public const int heroParagon = 2131099658;
+			
+			// aapt resource value: 0x7f060012
+			public const int heroStatsListView = 2131099666;
 			
 			// aapt resource value: 0x7f060003
 			public const int hostSpinner = 2131099651;
 			
-			// aapt resource value: 0x7f060006
-			public const int imageClass = 2131099654;
-			
-			// aapt resource value: 0x7f06000e
-			public const int killsLifetimeListView = 2131099662;
+			// aapt resource value: 0x7f060007
+			public const int imageClass = 2131099655;
 			
 			// aapt resource value: 0x7f060010
-			public const int progressListView = 2131099664;
+			public const int killsLifetimeListView = 2131099664;
+			
+			// aapt resource value: 0x7f06000f
+			public const int sectionLabel = 2131099663;
 			
 			// aapt resource value: 0x7f060000
 			public const int textView1 = 2131099648;
@@ -148,16 +151,22 @@ namespace ZTnDroid.D3Calculator
 			public const int AttributeListItem = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int HeroesListItem = 2130903042;
+			public const int FragmentContainer = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int Home = 2130903043;
+			public const int HeroesListItem = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int ViewCareer = 2130903044;
+			public const int Home = 2130903044;
 			
 			// aapt resource value: 0x7f030005
-			public const int ViewHero = 2130903045;
+			public const int SectionHeaderListItem = 2130903045;
+			
+			// aapt resource value: 0x7f030006
+			public const int ViewCareer = 2130903046;
+			
+			// aapt resource value: 0x7f030007
+			public const int ViewHero = 2130903047;
 			
 			private Layout()
 			{

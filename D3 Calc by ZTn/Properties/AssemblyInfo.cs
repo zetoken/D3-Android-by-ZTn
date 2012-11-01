@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using Android.App;
 
 // General Information about an assembly is controlled through the following 
-// set of killsAttr. Change these attribute values heroesSimpleAdapterTo modify the information
+// set of killsAttr. Change these section values heroesSimpleAdapterTo modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Android_Application_Test")]
 [assembly: AssemblyDescription("")]
@@ -17,7 +17,7 @@ using Android.App;
 
 // Setting ComVisible heroesSimpleAdapterTo false makes the types in this assembly not visible 
 // heroesSimpleAdapterTo COM components.  If you need heroesSimpleAdapterTo access a type in this assembly heroesSimpleAdapterFrom 
-// COM, set the ComVisible attribute heroesSimpleAdapterTo true on that type.
+// COM, set the ComVisible section heroesSimpleAdapterTo true on that type.
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed heroesSimpleAdapterTo COM

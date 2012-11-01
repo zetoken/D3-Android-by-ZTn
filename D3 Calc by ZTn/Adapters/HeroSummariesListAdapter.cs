@@ -44,13 +44,9 @@ namespace ZTnDroid.D3Calculator.Adapters
         {
             View view;
             if (convertView == null)
-            {
                 view = ((Activity)context).LayoutInflater.Inflate(Resource.Layout.HeroesListItem, parent, false);
-            }
             else
-            {
                 view = convertView;
-            }
 
             HeroSummary hero = heroes[position];
             view.FindViewById<TextView>(Resource.Id.heroName).Text = heroes[position].name;

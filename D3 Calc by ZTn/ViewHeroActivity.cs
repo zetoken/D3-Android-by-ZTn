@@ -128,6 +128,7 @@ namespace ZTnDroid.D3Calculator
             }
             catch (Exception exception)
             {
+                Console.WriteLine(exception);
                 hero = null;
                 throw exception;
             }
@@ -143,45 +144,41 @@ namespace ZTnDroid.D3Calculator
         {
             if (hero != null)
             {
-                ListView progressListView = FindViewById<ListView>(Resource.Id.progressListView);
-                List<AttributeDescriptor> progressAttr = new List<AttributeDescriptor>()
+                ListView heroStatsListView = FindViewById<ListView>(Resource.Id.heroStatsListView);
+                List<IListItem> characteristicsAttr = new List<IListItem>()
                 {
-                    new AttributeDescriptor("level", hero.level),
-                    new AttributeDescriptor("paragon", hero.paragonLevel)
+                    new SectionHeaderListItem("PROGRESS"),
+                    new AttributeListItem("level", hero.level),
+                    new AttributeListItem("paragon", hero.paragonLevel),
+                    new SectionHeaderListItem("LIFETIME KILLS"),
+                    new AttributeListItem("elites", hero.kills.elites),
+                    new SectionHeaderListItem("CHARACTERISTICS"),
+                    new AttributeListItem("dexterity", hero.stats.dexterity),
+                    new AttributeListItem("intelligence", hero.stats.intelligence),
+                    new AttributeListItem("strength", hero.stats.strength),
+                    new AttributeListItem("vitality", hero.stats.vitality),
+                    new SectionHeaderListItem("DAMAGES"),
+                    new AttributeListItem("damage", hero.stats.damage),
+                    new AttributePercentListItem("critic chance", hero.stats.critChance),
+                    new AttributePercentListItem("critic damage", hero.stats.critDamage),
+                    new SectionHeaderListItem("LIFE"),
+                    new AttributeListItem("life", hero.stats.life),
+                    new AttributeListItem("life on hit", hero.stats.lifeOnHit),
+                    new AttributePercentListItem("life steal", hero.stats.lifeSteal),
+                    new AttributeListItem("life per kill", hero.stats.lifePerKill),
+                    new SectionHeaderListItem("DEFENSE"),
+                    new AttributeListItem("armor", hero.stats.armor),
+                    new AttributeListItem("arcane resist", hero.stats.arcaneResist),
+                    new AttributeListItem("cold resist", hero.stats.coldResist),
+                    new AttributeListItem("fire resist", hero.stats.fireResist),
+                    new AttributeListItem("lightning resist", hero.stats.lightningResist),
+                    new AttributeListItem("physical resist", hero.stats.physicalResist),
+                    new AttributeListItem("poison resist", hero.stats.poisonResist),
+                    new SectionHeaderListItem("BONUS"),
+                    new AttributePercentListItem("gold find", hero.stats.goldFind),
+                    new AttributePercentListItem("magic find", hero.stats.magicFind),
                 };
-                progressListView.Adapter = new AttributesListAdapter(this, progressAttr.ToArray());
-
-                ListView killsListView = FindViewById<ListView>(Resource.Id.killsLifetimeListView);
-                List<AttributeDescriptor> killsAttr = new List<AttributeDescriptor>()
-                {
-                    new AttributeDescriptor("elites", hero.kills.elites)
-                };
-                killsListView.Adapter = new AttributesListAdapter(this, killsAttr.ToArray());
-
-                ListView characteristicsListView = FindViewById<ListView>(Resource.Id.characteristicsListView);
-                List<AttributeDescriptor> characteristicsAttr = new List<AttributeDescriptor>()
-                {
-                    new AttributeDescriptor("damage", hero.stats.damage),
-                    new AttributeDescriptor("dexterity", hero.stats.dexterity),
-                    new AttributeDescriptor("intelligence", hero.stats.intelligence),
-                    new AttributeDescriptor("strength", hero.stats.strength),
-                    new AttributeDescriptor("vitality", hero.stats.vitality),
-                    new AttributeDescriptor("critic chance", hero.stats.critChance, true),
-                    new AttributeDescriptor("critic damage increase", hero.stats.critDamage, true),
-                    new AttributeDescriptor("life on hit", hero.stats.lifeOnHit),
-                    new AttributeDescriptor("life steal", hero.stats.lifeSteal, true),
-                    new AttributeDescriptor("life per kill", hero.stats.lifePerKill),
-                    new AttributeDescriptor("armor", hero.stats.armor),
-                    new AttributeDescriptor("arcane resist", hero.stats.arcaneResist),
-                    new AttributeDescriptor("cold resist", hero.stats.coldResist),
-                    new AttributeDescriptor("fire resist", hero.stats.fireResist),
-                    new AttributeDescriptor("lightning resist", hero.stats.lightningResist),
-                    new AttributeDescriptor("physical resist", hero.stats.physicalResist),
-                    new AttributeDescriptor("poison resist", hero.stats.poisonResist),
-                    new AttributeDescriptor("gold find", hero.stats.goldFind, true),
-                    new AttributeDescriptor("magic find", hero.stats.magicFind, true),
-                };
-                characteristicsListView.Adapter = new AttributesListAdapter(this, characteristicsAttr.ToArray());
+                heroStatsListView.Adapter = new SectionedListAdapter(this, characteristicsAttr.ToArray());
             }
         }
     }

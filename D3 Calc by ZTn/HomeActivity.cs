@@ -12,6 +12,7 @@ using ZTn.BNet.BattleNet;
 using ZTn.BNet.D3;
 using ZTn.BNet.D3.Careers;
 using ZTn.BNet.D3.Heroes;
+using ZTnDroid.D3Calculator.Fragments;
 using ZTnDroid.D3Calculator.Storage;
 
 namespace ZTnDroid.D3Calculator
@@ -19,47 +20,6 @@ namespace ZTnDroid.D3Calculator
     [Activity(Label = "D3 Calc by ZTn", MainLauncher = true, Theme = "@android:style/Theme.Holo", Icon = "@drawable/icon")]
     public class HomeActivity : Activity
     {
-        const int ADD_NEW_ACCOUNT = 0;
-
-        readonly String[] accountsFromColumns = new String[] { Storage.AccountsOpenHelper.FIELD_BATTLETAG, Storage.AccountsOpenHelper.FIELD_HOST };
-        readonly int[] accountsToId = new int[] { Android.Resource.Id.Text1, Android.Resource.Id.Text2 };
-
-        IList<IDictionary<String, Object>> accountsList = new JavaList<IDictionary<String, Object>>();
-
-        Storage.AccountsDB db;
-        ICursor cursor;
-
-        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
-        {
-            switch (requestCode)
-            {
-                case ADD_NEW_ACCOUNT:
-                    switch (resultCode)
-                    {
-                        case Result.Ok:
-                            String battleTag = data.GetStringExtra("battleTag");
-                            String host = data.GetStringExtra("host");
-
-                            db.insert(battleTag, host);
-
-                            IListAdapter careerAdapter = new SimpleCursorAdapter(this, Android.Resource.Layout.SimpleListItem2, cursor, accountsFromColumns, accountsToId);
-                            FindViewById<ListView>(Resource.Id.AccountsListView).Adapter = careerAdapter;
-
-                            Toast.MakeText(this, "Account added", ToastLength.Short).Show();
-                            break;
-
-                        default:
-                            break;
-                    }
-                    break;
-
-                default:
-                    break;
-            }
-
-            base.OnActivityResult(requestCode, resultCode, data);
-        }
-
         public override void OnBackPressed()
         {
             Finish();
@@ -72,61 +32,17 @@ namespace ZTnDroid.D3Calculator
 
             this.Application.SetTheme(Android.Resource.Style.ThemeHolo);
 
-            SetContentView(Resource.Layout.Home);
+            SetContentView(Resource.Layout.FragmentContainer);
 
-            ListView careerListView = FindViewById<ListView>(Resource.Id.AccountsListView);
-            careerListView.ItemClick += (Object sender, AdapterView.ItemClickEventArgs args) =>
-            {
-                Intent viewCareerIntent = new Intent(this, typeof(ViewCareerActivity));
-                viewCareerIntent.PutExtra("battleTag", args.View.FindViewById<TextView>(Android.Resource.Id.Text1).Text);
-                viewCareerIntent.PutExtra("host", args.View.FindViewById<TextView>(Android.Resource.Id.Text2).Text);
-                StartActivity(viewCareerIntent);
-            };
-
-            db = new Storage.AccountsDB(this);
-            cursor = db.getAccounts();
-            StartManagingCursor(cursor);
-
-            IListAdapter accountsAdapter = new SimpleCursorAdapter(this, Android.Resource.Layout.SimpleListItem2, cursor, accountsFromColumns, accountsToId);
-            FindViewById<ListView>(Resource.Id.AccountsListView).Adapter = accountsAdapter;
+            Fragment fragment = new CareersListFragment();
+            FragmentTransaction fragmentTransaction = FragmentManager.BeginTransaction();
+            fragmentTransaction.Add(Resource.Id.fragment_container, fragment);
+            fragmentTransaction.Commit();
 
             // Always start D3Api with cache available and offline
             DataProviders.CacheableDataProvider dataProvider = new DataProviders.CacheableDataProvider(this, new ZTn.BNet.D3.DataProviders.HttpRequestDataProvider());
             dataProvider.online = false;
             D3Api.dataProvider = dataProvider;
-        }
-
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
-            MenuInflater.Inflate(Resource.Menu.HomeActivity, menu);
-
-            return true;
-        }
-
-        protected override void OnDestroy()
-        {
-            StopManagingCursor(cursor);
-            cursor.Close();
-
-            base.OnDestroy();
-        }
-
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            switch (item.ItemId)
-            {
-                case Resource.Id.AddNewAccount:
-                    this.StartActivityForResult(typeof(AddNewAccountActivity), ADD_NEW_ACCOUNT);
-                    return true;
-
-                default:
-                    return base.OnOptionsItemSelected(item);
-            }
-        }
-
-        private void insertIntoCareersStorage(String battleTag, String host)
-        {
-            db.insert(battleTag, host);
         }
     }
 }

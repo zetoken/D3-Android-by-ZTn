@@ -22,10 +22,10 @@ namespace ZTnDroid.D3Calculator.Storage
             dbHelper = new AccountsOpenHelper(context);
         }
 
-        public long delete(String battleTag)
+        public long delete(String battleTag, String host)
         {
             SQLiteDatabase db = dbHelper.WritableDatabase;
-            return db.Delete(AccountsOpenHelper.TABLE_NAME, AccountsOpenHelper.FIELD_BATTLETAG + "=?", new String[] { battleTag });
+            return db.Delete(AccountsOpenHelper.TABLE_NAME, AccountsOpenHelper.FIELD_BATTLETAG + "=? AND " + AccountsOpenHelper.FIELD_HOST + "=?", new String[] { battleTag, host });
         }
 
         public long insert(String battleTag, String host)

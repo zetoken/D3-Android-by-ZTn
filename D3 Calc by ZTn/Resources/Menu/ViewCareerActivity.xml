@@ -7,5 +7,5 @@
   <item android:id="@+id/DeleteContent"
         android:icon="@android:drawable/ic_menu_delete"
         android:title="@string/DeleteContent"
-        android:showAsAction="collapseActionView"/>
+        android:showAsAction="never"/>
 </menu>

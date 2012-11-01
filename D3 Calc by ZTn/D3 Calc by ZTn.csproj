@@ -64,10 +64,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adapters\AttributeDescriptor.cs" />
-    <Compile Include="Adapters\AttributesListAdapter.cs" />
+    <Compile Include="Adapters\AttributeListItem.cs" />
+    <Compile Include="Adapters\AttributePercentListItem.cs" />
+    <Compile Include="Adapters\SectionedListAdapter.cs" />
     <Compile Include="Adapters\HeroSummariesListAdapter.cs" />
+    <Compile Include="Adapters\IListItem.cs" />
+    <Compile Include="Adapters\SectionHeaderListItem.cs" />
     <Compile Include="DataProviders\CacheableDataProvider.cs" />
+    <Compile Include="Fragments\CareersListFragment.cs" />
     <Compile Include="Storage\AccountsDB.cs" />
     <Compile Include="Storage\AccountsOpenHelper.cs" />
     <Compile Include="Storage\CacheDB.cs" />
@@ -96,6 +100,12 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\Layout\AttributeListItem.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\SectionHeaderListItem.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\FragmentContainer.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
