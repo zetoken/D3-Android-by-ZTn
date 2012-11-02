@@ -72,6 +72,8 @@
     <Compile Include="Adapters\SectionHeaderListItem.cs" />
     <Compile Include="DataProviders\CacheableDataProvider.cs" />
     <Compile Include="Fragments\CareersListFragment.cs" />
+    <Compile Include="Fragments\HeroCharacteristicsListFragment.cs" />
+    <Compile Include="Fragments\HeroesListFragment.cs" />
     <Compile Include="Storage\AccountsDB.cs" />
     <Compile Include="Storage\AccountsOpenHelper.cs" />
     <Compile Include="Storage\CacheDB.cs" />

@@ -14,6 +14,7 @@ using ZTn.BNet.D3;
 using ZTn.BNet.D3.Careers;
 using ZTn.BNet.D3.Heroes;
 using ZTnDroid.D3Calculator.Adapters;
+using ZTnDroid.D3Calculator.Fragments;
 using ZTnDroid.D3Calculator.Storage;
 
 namespace ZTnDroid.D3Calculator
@@ -21,47 +22,21 @@ namespace ZTnDroid.D3Calculator
     [Activity(Label = "View Career", Theme = "@android:style/Theme.Holo", Icon = "@drawable/icon")]
     public class ViewCareerActivity : Activity
     {
-        String battleTag;
-        String host;
-
-        Career career;
-
         protected override void OnCreate(Bundle bundle)
         {
             Console.WriteLine("ViewCareerActivity: OnCreate");
             base.OnCreate(bundle);
 
-            SetContentView(Resource.Layout.ViewCareer);
+            this.Application.SetTheme(Android.Resource.Style.ThemeHolo);
+
+            SetContentView(Resource.Layout.FragmentContainer);
 
             ActionBar.SetDisplayHomeAsUpEnabled(true);
 
-            battleTag = Intent.GetStringExtra("battleTag");
-            host = Intent.GetStringExtra("host");
-
-            D3Context.getInstance().battleTag = battleTag;
-            D3Context.getInstance().host = host;
-
-            ListView listView = FindViewById<ListView>(Resource.Id.HeroesListView);
-            listView.ItemClick += (Object sender, Android.Widget.AdapterView.ItemClickEventArgs args) =>
-            {
-                HeroSummary heroSummary = ((HeroSummariesListAdapter)listView.Adapter).getHeroSummaryAt(args.Position);
-                D3Context.getInstance().heroSummary = heroSummary;
-
-                Intent viewHeroIntent = new Intent(this, typeof(ViewHeroActivity));
-
-                StartActivity(viewHeroIntent);
-            };
-
-            Title = battleTag;
-
-            deferredFetchAndUpdateCareer(false);
-        }
-
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
-            MenuInflater.Inflate(Resource.Menu.ViewCareerActivity, menu);
-
-            return true;
+            Fragment fragment = new HeroesListFragment();
+            FragmentTransaction fragmentTransaction = FragmentManager.BeginTransaction();
+            fragmentTransaction.Add(Resource.Id.fragment_container, fragment);
+            fragmentTransaction.Commit();
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -72,107 +47,8 @@ namespace ZTnDroid.D3Calculator
                     Finish();
                     return true;
 
-                case Resource.Id.DeleteContent:
-                    deleteCareer();
-                    return true;
-
-                case Resource.Id.RefreshContent:
-                    deferredFetchAndUpdateCareer(true);
-                    return true;
-
                 default:
                     return base.OnOptionsItemSelected(item);
-            }
-        }
-
-        private void deferredFetchAndUpdateCareer(Boolean online)
-        {
-            ProgressDialog progressDialog = null;
-
-            if (online)
-                progressDialog = ProgressDialog.Show(this, "Loading Career", "Please wait while retrieving data", true);
-
-            new Thread(new ThreadStart(() =>
-            {
-                try
-                {
-                    fetchCareer(online);
-                    this.RunOnUiThread(() =>
-                    {
-                        if (online)
-                            progressDialog.Dismiss();
-                        updateCareerView();
-                    });
-                }
-                catch (ZTn.BNet.D3.DataProviders.FileNotInCacheException)
-                {
-                    this.RunOnUiThread(() =>
-                    {
-                        if (online)
-                            progressDialog.Dismiss();
-                        Toast.MakeText(this, "Career not in cache" + System.Environment.NewLine + "Please use refresh action", ToastLength.Long).Show();
-                    });
-                }
-                catch (Exception exception)
-                {
-                    this.RunOnUiThread(() =>
-                    {
-                        if (online)
-                            progressDialog.Dismiss();
-                        Toast.MakeText(this, "An error occured when retrieving the career", ToastLength.Long).Show();
-                        Console.WriteLine(exception);
-                    });
-                }
-            })).Start();
-        }
-
-        private void deleteCareer()
-        {
-            Toast.MakeText(this, "Career will be removed... when implemented", ToastLength.Short);
-            D3Context.getInstance().dbAccounts.delete(battleTag, host);
-            Finish();
-        }
-
-        private void fetchCareer(Boolean online)
-        {
-            D3Api.host = host;
-            DataProviders.CacheableDataProvider dataProvider = (DataProviders.CacheableDataProvider)D3Api.dataProvider;
-            dataProvider.online = online;
-
-            try
-            {
-                career = Career.getCareerFromBattleTag(new BattleTag(battleTag));
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine(exception);
-                career = null;
-                throw exception;
-            }
-            finally
-            {
-                dataProvider.online = false;
-            }
-        }
-
-        private void updateCareerView()
-        {
-            if (career != null)
-            {
-                ListView killsListView = FindViewById<ListView>(Resource.Id.killsLifetimeListView);
-                List<AttributeListItem> attributes = new List<AttributeListItem>()
-                {
-                    new AttributeListItem("elites", career.kills.elites.ToString()),
-                    new AttributeListItem("monsters", career.kills.monsters.ToString()),
-                    new AttributeListItem("hardcore", career.kills.hardcoreMonsters.ToString())
-                };
-                killsListView.Adapter = new SectionedListAdapter(this, attributes.ToArray());
-
-                if (career.heroes != null)
-                {
-                    ListView listView = FindViewById<ListView>(Resource.Id.HeroesListView);
-                    listView.Adapter = new HeroSummariesListAdapter(this, career.heroes);
-                }
             }
         }
     }

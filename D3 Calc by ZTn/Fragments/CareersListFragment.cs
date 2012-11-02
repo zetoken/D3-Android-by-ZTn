@@ -21,8 +21,6 @@ namespace ZTnDroid.D3Calculator.Fragments
         readonly String[] accountsFromColumns = new String[] { Storage.AccountsOpenHelper.FIELD_BATTLETAG, Storage.AccountsOpenHelper.FIELD_HOST };
         readonly int[] accountsToId = new int[] { Android.Resource.Id.Text1, Android.Resource.Id.Text2 };
 
-        IList<IDictionary<String, Object>> accountsList = new JavaList<IDictionary<String, Object>>();
-
         ICursor cursor;
 
         public override void OnActivityResult(int requestCode, Result resultCode, Intent data)
@@ -81,8 +79,8 @@ namespace ZTnDroid.D3Calculator.Fragments
             careerListView.ItemClick += (Object sender, AdapterView.ItemClickEventArgs args) =>
             {
                 Intent viewCareerIntent = new Intent(Activity, typeof(ViewCareerActivity));
-                viewCareerIntent.PutExtra("battleTag", args.View.FindViewById<TextView>(Android.Resource.Id.Text1).Text);
-                viewCareerIntent.PutExtra("host", args.View.FindViewById<TextView>(Android.Resource.Id.Text2).Text);
+                D3Context.getInstance().battleTag = args.View.FindViewById<TextView>(Android.Resource.Id.Text1).Text;
+                D3Context.getInstance().host = args.View.FindViewById<TextView>(Android.Resource.Id.Text2).Text;
                 StartActivity(viewCareerIntent);
             };
 
@@ -106,7 +104,7 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            Console.WriteLine("OnOptionsItemSelected");
+            Console.WriteLine("CareersListFragment: OnOptionsItemSelected");
             switch (item.ItemId)
             {
                 case Resource.Id.AddNewAccount:
