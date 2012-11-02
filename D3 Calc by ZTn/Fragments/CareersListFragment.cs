@@ -27,7 +27,7 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         public override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
-            Console.WriteLine("OnActivityResult");
+            Console.WriteLine("CareersListFragment: OnActivityResult");
             switch (requestCode)
             {
                 case ADD_NEW_ACCOUNT:
@@ -59,7 +59,7 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         public override void OnCreate(Bundle savedInstanceState)
         {
-            Console.WriteLine("OnCreate");
+            Console.WriteLine("CareersListFragment: OnCreate");
             base.OnCreate(savedInstanceState);
 
             SetHasOptionsMenu(true);
@@ -67,7 +67,6 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
         {
-            Console.WriteLine("OnCreateOptionsMenu");
             base.OnCreateOptionsMenu(menu, inflater);
 
             Activity.MenuInflater.Inflate(Resource.Menu.HomeActivity, menu);
@@ -75,18 +74,34 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            Console.WriteLine("OnCreateView");
+            Console.WriteLine("CareersListFragment: OnCreateView");
             View view = inflater.Inflate(Resource.Layout.Home, container, false);
+
+            ListView careerListView = view.FindViewById<ListView>(Resource.Id.AccountsListView);
+            careerListView.ItemClick += (Object sender, AdapterView.ItemClickEventArgs args) =>
+            {
+                Intent viewCareerIntent = new Intent(Activity, typeof(ViewCareerActivity));
+                viewCareerIntent.PutExtra("battleTag", args.View.FindViewById<TextView>(Android.Resource.Id.Text1).Text);
+                viewCareerIntent.PutExtra("host", args.View.FindViewById<TextView>(Android.Resource.Id.Text2).Text);
+                StartActivity(viewCareerIntent);
+            };
+
+            D3Context.getInstance().dbAccounts = new AccountsDB(Activity);
+            cursor = D3Context.getInstance().dbAccounts.getAccounts();
+            Activity.StartManagingCursor(cursor);
+
+            IListAdapter accountsAdapter = new SimpleCursorAdapter(Activity, Android.Resource.Layout.SimpleListItem2, cursor, accountsFromColumns, accountsToId);
+            view.FindViewById<ListView>(Resource.Id.AccountsListView).Adapter = accountsAdapter;
 
             return view;
         }
 
-        public override void OnDestroy()
+        public override void OnDestroyView()
         {
             Activity.StopManagingCursor(cursor);
             cursor.Close();
 
-            base.OnDestroy();
+            base.OnDestroyView();
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -102,28 +117,6 @@ namespace ZTnDroid.D3Calculator.Fragments
                 default:
                     return base.OnOptionsItemSelected(item);
             }
-        }
-
-        public override void OnResume()
-        {
-            Console.WriteLine("OnResume");
-            base.OnResume();
-
-            ListView careerListView = Activity.FindViewById<ListView>(Resource.Id.AccountsListView);
-            careerListView.ItemClick += (Object sender, AdapterView.ItemClickEventArgs args) =>
-            {
-                Intent viewCareerIntent = new Intent(Activity, typeof(ViewCareerActivity));
-                viewCareerIntent.PutExtra("battleTag", args.View.FindViewById<TextView>(Android.Resource.Id.Text1).Text);
-                viewCareerIntent.PutExtra("host", args.View.FindViewById<TextView>(Android.Resource.Id.Text2).Text);
-                StartActivity(viewCareerIntent);
-            };
-
-            D3Context.getInstance().dbAccounts = new AccountsDB(Activity);
-            cursor = D3Context.getInstance().dbAccounts.getAccounts();
-            Activity.StartManagingCursor(cursor);
-
-            IListAdapter accountsAdapter = new SimpleCursorAdapter(Activity, Android.Resource.Layout.SimpleListItem2, cursor, accountsFromColumns, accountsToId);
-            Activity.FindViewById<ListView>(Resource.Id.AccountsListView).Adapter = accountsAdapter;
         }
 
         private void insertIntoCareersStorage(String battleTag, String host)

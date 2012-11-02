@@ -28,6 +28,7 @@ namespace ZTnDroid.D3Calculator
 
         protected override void OnCreate(Bundle bundle)
         {
+            Console.WriteLine("HomeActivity: OnCreate");
             base.OnCreate(bundle);
 
             this.Application.SetTheme(Android.Resource.Style.ThemeHolo);

@@ -28,6 +28,7 @@ namespace ZTnDroid.D3Calculator
 
         protected override void OnCreate(Bundle bundle)
         {
+            Console.WriteLine("ViewHeroActivity: OnCreate");
             base.OnCreate(bundle);
 
             SetContentView(Resource.Layout.ViewHero);
@@ -40,6 +41,8 @@ namespace ZTnDroid.D3Calculator
 
             Title = heroSummary.name;
             ActionBar.Subtitle = battleTag;
+
+            deferredFetchAndUpdateHero(false);
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -64,13 +67,6 @@ namespace ZTnDroid.D3Calculator
                 default:
                     return base.OnOptionsItemSelected(item);
             }
-        }
-
-        protected override void OnResume()
-        {
-            base.OnResume();
-
-            deferredFetchAndUpdateHero(false);
         }
 
         private void deferredFetchAndUpdateHero(Boolean online)

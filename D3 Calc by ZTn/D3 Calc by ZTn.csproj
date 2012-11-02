@@ -51,7 +51,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\BNet API by ZTn.dll</HintPath>
     </Reference>
-    <Reference Include="D3 API by ZTn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="D3 API by ZTn, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\D3 API by ZTn.dll</HintPath>
     </Reference>
@@ -137,7 +137,6 @@
     <AndroidResource Include="Resources\Drawable\wizard_male.png" />
     <AndroidResource Include="Resources\Menu\ViewHeroActivity.xml" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.

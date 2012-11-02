@@ -28,6 +28,7 @@ namespace ZTnDroid.D3Calculator
 
         protected override void OnCreate(Bundle bundle)
         {
+            Console.WriteLine("ViewCareerActivity: OnCreate");
             base.OnCreate(bundle);
 
             SetContentView(Resource.Layout.ViewCareer);
@@ -52,6 +53,8 @@ namespace ZTnDroid.D3Calculator
             };
 
             Title = battleTag;
+
+            deferredFetchAndUpdateCareer(false);
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -80,13 +83,6 @@ namespace ZTnDroid.D3Calculator
                 default:
                     return base.OnOptionsItemSelected(item);
             }
-        }
-
-        protected override void OnResume()
-        {
-            base.OnResume();
-
-            deferredFetchAndUpdateCareer(false);
         }
 
         private void deferredFetchAndUpdateCareer(Boolean online)
