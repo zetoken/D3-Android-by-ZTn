@@ -16,7 +16,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <AndroidSupportedAbis>armeabi%3bx86</AndroidSupportedAbis>
+    <AndroidSupportedAbis>armeabi</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
@@ -74,11 +74,13 @@
     <Compile Include="Fragments\CareersListFragment.cs" />
     <Compile Include="Fragments\HeroCharacteristicsListFragment.cs" />
     <Compile Include="Fragments\HeroesListFragment.cs" />
+    <Compile Include="Fragments\SettingsFragment.cs" />
     <Compile Include="Storage\AccountsDB.cs" />
     <Compile Include="Storage\AccountsOpenHelper.cs" />
     <Compile Include="Storage\CacheDB.cs" />
     <Compile Include="Storage\CacheOpenHelper.cs" />
     <Compile Include="Storage\D3Context.cs" />
+    <Compile Include="SettingsActivity.cs" />
     <Compile Include="ViewHeroActivity.cs" />
     <Compile Include="ViewCareerActivity.cs" />
     <Compile Include="HomeActivity.cs" />
@@ -110,6 +112,9 @@
     <AndroidResource Include="Resources\Layout\FragmentContainer.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\Layout\Settings.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Home.axml" />
@@ -138,6 +143,10 @@
     <AndroidResource Include="Resources\Drawable\wizard_female.png" />
     <AndroidResource Include="Resources\Drawable\wizard_male.png" />
     <AndroidResource Include="Resources\Menu\ViewHeroActivity.xml" />
+    <AndroidResource Include="Resources\Menu\Settings.xml" />
+    <AndroidResource Include="Resources\Values-fr\Strings.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

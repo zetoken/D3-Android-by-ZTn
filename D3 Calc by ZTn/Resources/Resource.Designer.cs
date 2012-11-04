@@ -73,14 +73,17 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f060014
 			public const int AddNewAccount = 2131099668;
 			
-			// aapt resource value: 0x7f060016
-			public const int DeleteContent = 2131099670;
+			// aapt resource value: 0x7f060017
+			public const int DeleteContent = 2131099671;
 			
 			// aapt resource value: 0x7f060011
 			public const int HeroesListView = 2131099665;
 			
+			// aapt resource value: 0x7f060016
+			public const int RefreshContent = 2131099670;
+			
 			// aapt resource value: 0x7f060015
-			public const int RefreshContent = 2131099669;
+			public const int Settings = 2131099669;
 			
 			// aapt resource value: 0x7f060013
 			public const int SubmitNewAccount = 2131099667;
@@ -163,10 +166,13 @@ namespace ZTnDroid.D3Calculator
 			public const int SectionHeaderListItem = 2130903045;
 			
 			// aapt resource value: 0x7f030006
-			public const int ViewCareer = 2130903046;
+			public const int Settings = 2130903046;
 			
 			// aapt resource value: 0x7f030007
-			public const int ViewHero = 2130903047;
+			public const int ViewCareer = 2130903047;
+			
+			// aapt resource value: 0x7f030008
+			public const int ViewHero = 2130903048;
 			
 			private Layout()
 			{
@@ -183,10 +189,13 @@ namespace ZTnDroid.D3Calculator
 			public const int HomeActivity = 2131034113;
 			
 			// aapt resource value: 0x7f050002
-			public const int ViewCareerActivity = 2131034114;
+			public const int Settings = 2131034114;
 			
 			// aapt resource value: 0x7f050003
-			public const int ViewHeroActivity = 2131034115;
+			public const int ViewCareerActivity = 2131034115;
+			
+			// aapt resource value: 0x7f050004
+			public const int ViewHeroActivity = 2131034116;
 			
 			private Menu()
 			{
@@ -229,17 +238,20 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f040009
 			public const int KilledMonsters = 2130968585;
 			
-			// aapt resource value: 0x7f04000d
-			public const int KillsLifetime = 2130968589;
-			
-			// aapt resource value: 0x7f04000b
-			public const int Progress = 2130968587;
+			// aapt resource value: 0x7f04000e
+			public const int KillsLifetime = 2130968590;
 			
 			// aapt resource value: 0x7f04000c
-			public const int RefreshContent = 2130968588;
+			public const int Progress = 2130968588;
 			
-			// aapt resource value: 0x7f04000e
-			public const int SubmitNewAccount = 2130968590;
+			// aapt resource value: 0x7f04000d
+			public const int RefreshContent = 2130968589;
+			
+			// aapt resource value: 0x7f04000b
+			public const int Settings = 2130968587;
+			
+			// aapt resource value: 0x7f04000f
+			public const int SubmitNewAccount = 2130968591;
 			
 			private String()
 			{

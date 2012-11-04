@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="Add">Ajouter</string>
+  <string name="AddNewAccount">Nouveau Profil</string>
+  <string name="ApplicationName">D3 Calc by ZTn</string>
+  <string name="Cancel">Annuler</string>
+  <string name="Characteristics">CHARACTERISTIQUES</string>
+  <string name="DeleteContent">SUPPRIMER</string>
+  <string name="FetchCareer">Récupérer la carrière</string>
+  <string name="Heroes">HEROS</string>
+  <string name="KilledElites">Elites:</string>
+  <string name="KilledMonsters">Monstres:</string>
+  <string name="KilledHardcore">Extrême:</string>
+  <string name="Settings">Paramètres</string>
+  <string name="Progress">PROGRESSION</string>
+  <string name="RefreshContent">RAFRAICHIR</string>
+  <string name="KillsLifetime">TUES GLOBAUX</string>
+  <string name="SubmitNewAccount">Valider</string>
+</resources>

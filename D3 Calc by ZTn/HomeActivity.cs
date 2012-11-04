@@ -45,6 +45,31 @@ namespace ZTnDroid.D3Calculator
             dataProvider.online = false;
             D3Api.dataProvider = dataProvider;
         }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            base.OnCreateOptionsMenu(menu);
+
+            this.MenuInflater.Inflate(Resource.Menu.Settings, menu);
+
+            return true;
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            Console.WriteLine("CareersListFragment: OnOptionsItemSelected");
+            switch (item.ItemId)
+            {
+                case Resource.Id.Settings:
+                    Intent intent = new Intent(this, typeof(SettingsActivity));
+                    StartActivity(intent);
+                    return true;
+
+                default:
+                    return base.OnOptionsItemSelected(item);
+            }
+        }
+
     }
 }
 
