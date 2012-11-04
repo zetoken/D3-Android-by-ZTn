@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     style="@android:style/Animation.Translucent">
     <TextView
-        android:text="Battle Tag (name#code)"
+        android:text="@string/BattleTagExample"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView1" />
@@ -15,7 +15,7 @@
         android:id="@+id/battleTagEditText"
         android:inputType="text" />
     <TextView
-        android:text="Server"
+        android:text="@string/Host"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView2" />

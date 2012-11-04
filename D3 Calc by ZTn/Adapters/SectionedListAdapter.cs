@@ -51,7 +51,7 @@ namespace ZTnDroid.D3Calculator.Adapters
             //else
             //    view = convertView;
 
-            item.updateInView(view);
+            item.updateHeroView(view);
 
             return view;
         }

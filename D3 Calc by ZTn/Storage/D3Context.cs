@@ -18,6 +18,8 @@ namespace ZTnDroid.D3Calculator.Storage
     {
         public String battleTag;
         public String host;
+        public Boolean onlineMode;
+
         public HeroSummary heroSummary;
         public Hero hero;
 

@@ -41,8 +41,9 @@ namespace ZTnDroid.D3Calculator
             fragmentTransaction.Commit();
 
             // Always start D3Api with cache available and offline
+            D3Context.getInstance().onlineMode = false;
             DataProviders.CacheableDataProvider dataProvider = new DataProviders.CacheableDataProvider(this, new ZTn.BNet.D3.DataProviders.HttpRequestDataProvider());
-            dataProvider.online = false;
+            dataProvider.online = D3Context.getInstance().onlineMode;
             D3Api.dataProvider = dataProvider;
         }
 

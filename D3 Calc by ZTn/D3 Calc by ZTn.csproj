@@ -70,11 +70,15 @@
     <Compile Include="Adapters\HeroSummariesListAdapter.cs" />
     <Compile Include="Adapters\IListItem.cs" />
     <Compile Include="Adapters\SectionHeaderListItem.cs" />
+    <Compile Include="Adapters\SkillListItem.cs" />
     <Compile Include="DataProviders\CacheableDataProvider.cs" />
     <Compile Include="Fragments\CareersListFragment.cs" />
     <Compile Include="Fragments\HeroCharacteristicsListFragment.cs" />
     <Compile Include="Fragments\HeroesListFragment.cs" />
+    <Compile Include="Fragments\HeroGearListFragment.cs" />
+    <Compile Include="Fragments\HeroSkillsListFragment.cs" />
     <Compile Include="Fragments\SettingsFragment.cs" />
+    <Compile Include="Fragments\SimpleTabListener.cs" />
     <Compile Include="Storage\AccountsDB.cs" />
     <Compile Include="Storage\AccountsOpenHelper.cs" />
     <Compile Include="Storage\CacheDB.cs" />
@@ -115,6 +119,15 @@
     <AndroidResource Include="Resources\Layout\Settings.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\Layout\ViewHeroSkills.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\ViewHeroGear.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\SkillListItem.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Home.axml" />
@@ -143,7 +156,9 @@
     <AndroidResource Include="Resources\Drawable\wizard_female.png" />
     <AndroidResource Include="Resources\Drawable\wizard_male.png" />
     <AndroidResource Include="Resources\Menu\ViewHeroActivity.xml" />
-    <AndroidResource Include="Resources\Menu\Settings.xml" />
+    <AndroidResource Include="Resources\Menu\Settings.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\Values-fr\Strings.xml">
       <SubType>Designer</SubType>
     </AndroidResource>

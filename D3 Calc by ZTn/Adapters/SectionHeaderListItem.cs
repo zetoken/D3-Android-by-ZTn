@@ -19,7 +19,7 @@ namespace ZTnDroid.D3Calculator.Adapters
         public SectionHeaderListItem(String label)
             : base()
         {
-            this.label = label;
+            this.label = label.ToUpper();
         }
 
         public int getLayoutResource()
@@ -27,7 +27,7 @@ namespace ZTnDroid.D3Calculator.Adapters
             return Resource.Layout.SectionHeaderListItem;
         }
 
-        public void updateInView(View view)
+        public void updateHeroView(View view)
         {
             view.FindViewById<TextView>(Resource.Id.sectionLabel).Text = label;
         }

@@ -51,7 +51,7 @@ namespace ZTnDroid.D3Calculator.Adapters
             return Resource.Layout.AttributeListItem;
         }
 
-        public void updateInView(View view)
+        public void updateHeroView(View view)
         {
             view.FindViewById<TextView>(Resource.Id.attributeName).Text = name;
             view.FindViewById<TextView>(Resource.Id.attributeValue).Text = value;

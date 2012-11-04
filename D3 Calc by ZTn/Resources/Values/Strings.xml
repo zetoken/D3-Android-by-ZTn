@@ -4,7 +4,7 @@
   <string name="AddNewAccount">New Profile</string>
   <string name="ApplicationName">D3 Calc by ZTn</string>
   <string name="Cancel">Cancel</string>
-  <string name="Characteristics">CHARACTERISTICS</string>
+  <string name="Characteristics">Characteristics</string>
   <string name="DeleteContent">DELETE</string>
   <string name="FetchCareer">Retrieve Career</string>
   <string name="Heroes">HEROES</string>
@@ -12,8 +12,69 @@
   <string name="KilledMonsters">Monsters:</string>
   <string name="KilledHardcore">Hardcore:</string>
   <string name="Settings">Settings</string>
-  <string name="Progress">PROGRESS</string>
+  <string name="Progress">Progress</string>
   <string name="RefreshContent">REFRESH</string>
-  <string name="KillsLifetime">KILLS LIFETIME</string>
+  <string name="KillsLifetime">Kills Lifetime</string>
   <string name="SubmitNewAccount">Validate New Account</string>
+
+  <string name="details">details</string>
+
+  <!-- Settings -->
+  <string name="OnlineMode">Online by default</string>
+  <string name="Language">Language</string>
+  
+  <!-- Battle.net -->
+  <string name="BattleTag">Battle Tag</string>
+  <string name="BattleTagExample">Battle Tag (name#code)</string>
+  <string name="Host">Server</string>
+
+  <!-- Items -->
+  <string name="gear">gear</string>
+  
+  <!-- Skills -->
+  <string name="skill">skill</string>
+  <string name="skills">skills</string>
+  
+  <!-- Progress -->
+  <string name="level">level</string>
+  <string name="paragon">paragon</string>
+
+  <!-- Attributes -->
+  <string name="attributes">attributes</string>
+  <string name="dexterity">dexterity</string>
+  <string name="intelligence">intelligence</string>
+  <string name="strength">strength</string>
+  <string name="vitality">vitality</string>
+  
+  <!-- Kills -->
+  <string name="elites">elites</string>
+  
+  <!-- Damages -->
+  <string name="damages">damages</string>
+  <string name="damage">damage</string>
+  <string name="criticChance">critic chance</string>
+  <string name="criticDamage">critic damage</string>
+  <string name="attackSpeed">Attack speed</string>
+  
+  <!-- Life -->
+  <string name="life">life</string>
+  <string name="lifeOnHit">life on hit</string>
+  <string name="lifeSteal">life steal</string>
+  <string name="lifePerKill">life per kill</string>
+  
+  <!-- Defense -->
+  <string name="defense">defense</string>
+  <string name="armor">armor</string>
+  <string name="arcaneResist">arcane resist</string>
+  <string name="coldResist">cold resist</string>
+  <string name="fireResist">fire resist</string>
+  <string name="lightningResist">lightning resist</string>
+  <string name="poisonResist">poison resist</string>
+  <string name="physicalResist">physical resist</string>
+
+  <!-- Bonus -->
+  <string name="bonuses">bonuses</string>
+  <string name="goldFind">gold find</string>
+  <string name="magicFind">magic find</string>
+  
 </resources>

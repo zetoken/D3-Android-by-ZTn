@@ -16,6 +16,6 @@ namespace ZTnDroid.D3Calculator.Adapters
     {
         int getLayoutResource();
 
-        void updateInView(View view);
+        void updateHeroView(View view);
     }
 }

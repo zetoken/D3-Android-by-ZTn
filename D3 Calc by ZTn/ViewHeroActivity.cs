@@ -21,6 +21,10 @@ namespace ZTnDroid.D3Calculator
     [Activity(Label = "View Hero", Theme = "@android:style/Theme.Holo", Icon = "@drawable/icon")]
     public class ViewHeroActivity : Activity
     {
+        ActionBar.Tab tabCharacteristics;
+        ActionBar.Tab tabGear;
+        ActionBar.Tab tabSkills;
+
         protected override void OnCreate(Bundle bundle)
         {
             Console.WriteLine("ViewHeroActivity: OnCreate");
@@ -30,12 +34,27 @@ namespace ZTnDroid.D3Calculator
 
             SetContentView(Resource.Layout.FragmentContainer);
 
+            this.Title = D3Context.getInstance().heroSummary.name;
+            this.ActionBar.Subtitle = D3Context.getInstance().battleTag;
+
             ActionBar.SetDisplayHomeAsUpEnabled(true);
 
-            Fragment fragment = new HeroCharacteristicsListFragment();
-            FragmentTransaction fragmentTransaction = FragmentManager.BeginTransaction();
-            fragmentTransaction.Add(Resource.Id.fragment_container, fragment);
-            fragmentTransaction.Commit();
+            ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
+
+            tabCharacteristics = ActionBar.NewTab();
+            tabCharacteristics.SetText(Resources.GetString(Resource.String.details));
+            tabCharacteristics.SetTabListener(new SimpleTabListener<HeroCharacteristicsListFragment>());
+            ActionBar.AddTab(tabCharacteristics);
+
+            tabGear = ActionBar.NewTab();
+            tabGear.SetText(Resources.GetString(Resource.String.gear));
+            tabGear.SetTabListener(new SimpleTabListener<HeroGearListFragment>());
+            ActionBar.AddTab(tabGear);
+
+            tabSkills = ActionBar.NewTab();
+            tabSkills.SetText(Resources.GetString(Resource.String.skills));
+            tabSkills.SetTabListener(new SimpleTabListener<HeroSkillsListFragment>());
+            ActionBar.AddTab(tabSkills);
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)

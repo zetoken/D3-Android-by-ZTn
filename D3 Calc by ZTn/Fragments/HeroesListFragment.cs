@@ -35,10 +35,8 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            Console.WriteLine("HeroesListFragment: OnCreate");
+            Console.WriteLine("HeroesListFragment: OnCreateView");
             View view = inflater.Inflate(Resource.Layout.ViewCareer, container, false);
-            battleTag = Activity.Intent.GetStringExtra("battleTag");
-            host = Activity.Intent.GetStringExtra("host");
 
             battleTag = D3Context.getInstance().battleTag;
             host = D3Context.getInstance().host;
@@ -56,7 +54,7 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             Activity.Title = battleTag;
 
-            deferredFetchAndUpdateCareer(false);
+            deferredFetchAndUpdateCareer(D3Context.getInstance().onlineMode);
 
             return view;
         }
@@ -151,7 +149,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             }
             finally
             {
-                dataProvider.online = false;
+                dataProvider.online = D3Context.getInstance().onlineMode;
             }
         }
 
@@ -160,11 +158,12 @@ namespace ZTnDroid.D3Calculator.Fragments
             if (career != null)
             {
                 ListView killsListView = Activity.FindViewById<ListView>(Resource.Id.killsLifetimeListView);
-                List<AttributeListItem> attributes = new List<AttributeListItem>()
+                List<IListItem> attributes = new List<IListItem>()
                 {
-                    new AttributeListItem("elites", career.kills.elites.ToString()),
-                    new AttributeListItem("monsters", career.kills.monsters.ToString()),
-                    new AttributeListItem("hardcore", career.kills.hardcoreMonsters.ToString())
+                    new SectionHeaderListItem(Resources.GetString(Resource.String.KillsLifetime)),
+                    new AttributeListItem(Resources.GetString(Resource.String.elites), career.kills.elites.ToString()),
+                    new AttributeListItem(Resources.GetString(Resource.String.KilledMonsters), career.kills.monsters.ToString()),
+                    new AttributeListItem(Resources.GetString(Resource.String.KilledHardcore), career.kills.hardcoreMonsters.ToString())
                 };
                 killsListView.Adapter = new SectionedListAdapter(Activity, attributes.ToArray());
 

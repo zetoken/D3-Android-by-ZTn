@@ -5,12 +5,6 @@
     android:layout_height="wrap_content"
     android:minWidth="25px"
     android:minHeight="25px">
-    <TextView
-        android:text="@string/KillsLifetime"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView1"
-        android:textColor="?android:attr/textColorLink" />
     <ListView
         android:minWidth="25px"
         android:minHeight="25px"
