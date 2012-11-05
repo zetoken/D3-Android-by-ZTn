@@ -88,7 +88,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             ProgressDialog progressDialog = null;
 
             if (online)
-                progressDialog = ProgressDialog.Show(Activity, "Loading Career", "Please wait while retrieving data", true);
+                progressDialog = ProgressDialog.Show(Activity, Resources.GetString(Resource.String.LoadingCareer), Resources.GetString(Resource.String.WaitWhileRetrievingData), true);
 
             new Thread(new ThreadStart(() =>
             {
@@ -117,7 +117,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                     {
                         if (online)
                             progressDialog.Dismiss();
-                        Toast.MakeText(Activity, "An error occured when retrieving the career", ToastLength.Long).Show();
+                        Toast.MakeText(Activity, Resources.GetString(Resource.String.ErrorOccuredWhileRetrievingData), ToastLength.Long).Show();
                         Console.WriteLine(exception);
                     });
                 }

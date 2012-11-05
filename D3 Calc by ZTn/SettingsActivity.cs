@@ -27,10 +27,10 @@ namespace ZTnDroid.D3Calculator
 
             ActionBar.SetDisplayHomeAsUpEnabled(true);
 
-            Fragment fragment = new SettingsFragment();
-            FragmentTransaction fragmentTransaction = FragmentManager.BeginTransaction();
-            fragmentTransaction.Add(Resource.Id.fragment_container, fragment);
-            fragmentTransaction.Commit();
+            FragmentManager
+                .BeginTransaction()
+                .Add(Resource.Id.fragment_container, new SettingsFragment())
+                .Commit();
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)

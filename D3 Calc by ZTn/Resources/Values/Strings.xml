@@ -17,6 +17,15 @@
   <string name="KillsLifetime">Kills Lifetime</string>
   <string name="SubmitNewAccount">Validate New Account</string>
 
+  <!-- Waiting messages -->
+  <string name="Loading">Loading Hero</string>
+  <string name="LoadingCareer">Loading Career</string>
+  <string name="LoadingHero">Loading Hero</string>
+  <string name="WaitWhileRetrievingData">Please wait while retrieving data</string>
+
+  <!-- Errors messages -->
+  <string name="ErrorOccuredWhileRetrievingData">An error occured when retrieving data</string>
+
   <string name="details">details</string>
 
   <!-- Settings -->

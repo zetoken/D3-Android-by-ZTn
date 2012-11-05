@@ -39,17 +39,17 @@ namespace ZTnDroid.D3Calculator
 
             SetContentView(Resource.Layout.FragmentContainer);
 
-            Fragment fragment = new CareersListFragment();
-            FragmentTransaction fragmentTransaction = FragmentManager.BeginTransaction();
-            fragmentTransaction.Add(Resource.Id.fragment_container, fragment);
-            fragmentTransaction.Commit();
+            FragmentManager
+                .BeginTransaction()
+                .Add(Resource.Id.fragment_container, new CareersListFragment())
+                .Commit();
 
             // Load preferences
             preferences = GetSharedPreferences(SETTINGS_FILENAME, FileCreationMode.Private);
+            // Default offline mode
             D3Context.getInstance().onlineMode = preferences.GetBoolean(SETTINGS_ONLINEMODE, false);
 
-            // Always start D3Api with cache available and offline
-            D3Context.getInstance().onlineMode = false;
+            // Always start D3Api with cache available
             DataProviders.CacheableDataProvider dataProvider = new DataProviders.CacheableDataProvider(this, new ZTn.BNet.D3.DataProviders.HttpRequestDataProvider());
             dataProvider.online = D3Context.getInstance().onlineMode;
             D3Api.dataProvider = dataProvider;
@@ -57,6 +57,7 @@ namespace ZTnDroid.D3Calculator
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
+            Console.WriteLine("HomeActivity: OnCreateOptionsMenu");
             base.OnCreateOptionsMenu(menu);
 
             this.MenuInflater.Inflate(Resource.Menu.Settings, menu);

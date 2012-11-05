@@ -49,20 +49,23 @@ namespace ZTnDroid.D3Calculator
 
             ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
 
-            tabCharacteristics = ActionBar.NewTab();
-            tabCharacteristics.SetText(Resources.GetString(Resource.String.details));
-            tabCharacteristics.SetTabListener(new SimpleTabListener<HeroCharacteristicsListFragment>());
+            tabCharacteristics = ActionBar
+                .NewTab()
+                .SetText(Resources.GetString(Resource.String.details))
+                .SetTabListener(new SimpleTabListener<HeroCharacteristicsListFragment>(this));
             ActionBar.AddTab(tabCharacteristics);
 
-            tabGear = ActionBar.NewTab();
-            tabGear.SetText(Resources.GetString(Resource.String.gear));
-            tabGear.SetTabListener(new SimpleTabListener<HeroGearListFragment>());
-            ActionBar.AddTab(tabGear);
-
-            tabSkills = ActionBar.NewTab();
-            tabSkills.SetText(Resources.GetString(Resource.String.skills));
-            tabSkills.SetTabListener(new SimpleTabListener<HeroSkillsListFragment>());
+            tabSkills = ActionBar
+                .NewTab()
+                .SetText(Resources.GetString(Resource.String.skills))
+                .SetTabListener(new SimpleTabListener<HeroSkillsListFragment>(this));
             ActionBar.AddTab(tabSkills);
+
+            tabGear = ActionBar
+                .NewTab()
+                .SetText(Resources.GetString(Resource.String.gear))
+                .SetTabListener(new SimpleTabListener<HeroGearListFragment>(this));
+            ActionBar.AddTab(tabGear);
 
             D3Context.getInstance().hero = null;
             deferredFetchHero(D3Context.getInstance().onlineMode);
@@ -97,7 +100,7 @@ namespace ZTnDroid.D3Calculator
             ProgressDialog progressDialog = null;
 
             if (online)
-                progressDialog = ProgressDialog.Show(this, "Loading Hero", "Please wait while retrieving data", true);
+                progressDialog = ProgressDialog.Show(this, Resources.GetString(Resource.String.LoadingHero), Resources.GetString(Resource.String.WaitWhileRetrievingData), true);
 
             new Thread(new ThreadStart(() =>
             {
@@ -108,7 +111,7 @@ namespace ZTnDroid.D3Calculator
                     {
                         if (online)
                             progressDialog.Dismiss();
-                        ActionBar.SetSelectedNavigationItem(0);
+                        ActionBar.SelectTab(tabCharacteristics);
                     });
                 }
                 catch (ZTn.BNet.D3.DataProviders.FileNotInCacheException)
@@ -126,7 +129,7 @@ namespace ZTnDroid.D3Calculator
                     {
                         if (online)
                             progressDialog.Dismiss();
-                        Toast.MakeText(this, "An error occured when retrieving the hero", ToastLength.Long).Show();
+                        Toast.MakeText(this, Resources.GetString(Resource.String.ErrorOccuredWhileRetrievingData), ToastLength.Long).Show();
                         Console.WriteLine(exception);
                     });
                 }

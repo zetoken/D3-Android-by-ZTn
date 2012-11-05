@@ -19,6 +19,15 @@
 
   <string name="details">détails</string>
 
+  <!-- Waiting messages -->
+  <string name="Loading">Téléchargement en cours</string>
+  <string name="LoadingCareer">Téléchargement de la carrière</string>
+  <string name="LoadingHero">Téléchargement du Héro</string>
+  <string name="WaitWhileRetrievingData">Veuillez patienter, récupération des données en cours</string>
+
+  <!-- Errors messages -->
+  <string name="ErrorOccuredWhileRetrievingData">Une erreur s\'est produite lors du téléchargement</string>
+
   <!-- Settings -->
   <string name="OnlineMode">Connexion systématique</string>
   <string name="Language">Langue</string>
