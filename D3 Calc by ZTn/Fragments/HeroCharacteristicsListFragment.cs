@@ -19,27 +19,10 @@ namespace ZTnDroid.D3Calculator.Fragments
 {
     public class HeroCharacteristicsListFragment : Fragment
     {
-        String battleTag;
-        String host;
-        HeroSummary heroSummary;
-
         public override void OnCreate(Bundle savedInstanceState)
         {
             Console.WriteLine("HeroCharacteristicsListFragment: OnCreate");
             base.OnCreate(savedInstanceState);
-
-            SetHasOptionsMenu(true);
-
-            battleTag = D3Context.getInstance().battleTag;
-            host = D3Context.getInstance().host;
-            heroSummary = D3Context.getInstance().heroSummary;
-        }
-
-        public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
-        {
-            base.OnCreateOptionsMenu(menu, inflater);
-
-            Activity.MenuInflater.Inflate(Resource.Menu.ViewHeroActivity, menu);
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -47,97 +30,19 @@ namespace ZTnDroid.D3Calculator.Fragments
             Console.WriteLine("HeroCharacteristicsListFragment: OnCreateView");
             View view = inflater.Inflate(Resource.Layout.ViewHero, container, false);
 
-            deferredFetchAndUpdateHero(view, D3Context.getInstance().onlineMode);
+            updateHeroView(view);
 
             return view;
         }
 
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            switch (item.ItemId)
-            {
-                case Resource.Id.RefreshContent:
-                    deferredFetchAndUpdateHero(Activity.FindViewById<View>(Resource.Id.fragment_container), true);
-                    return true;
-
-                default:
-                    return base.OnOptionsItemSelected(item);
-            }
-        }
-
-        private void deferredFetchAndUpdateHero(View view, Boolean online)
-        {
-            ProgressDialog progressDialog = null;
-
-            if (online)
-                progressDialog = ProgressDialog.Show(Activity, "Loading Hero", "Please wait while retrieving data", true);
-
-            new Thread(new ThreadStart(() =>
-            {
-                try
-                {
-                    D3Context.getInstance().hero = fetchHero(online);
-                    Activity.RunOnUiThread(() =>
-                    {
-                        if (online)
-                            progressDialog.Dismiss();
-                        updateHeroView(view);
-                    });
-                }
-                catch (ZTn.BNet.D3.DataProviders.FileNotInCacheException)
-                {
-                    Activity.RunOnUiThread(() =>
-                    {
-                        if (online)
-                            progressDialog.Dismiss();
-                        Toast.MakeText(Activity, "Hero not in cache" + System.Environment.NewLine + "Please use refresh action", ToastLength.Long).Show();
-                    });
-                }
-                catch (Exception exception)
-                {
-                    Activity.RunOnUiThread(() =>
-                    {
-                        if (online)
-                            progressDialog.Dismiss();
-                        Toast.MakeText(Activity, "An error occured when retrieving the hero", ToastLength.Long).Show();
-                        Console.WriteLine(exception);
-                    });
-                }
-            })).Start();
-        }
-
-        private Hero fetchHero(Boolean online)
-        {
-            Hero hero = null;
-
-            D3Api.host = host;
-            DataProviders.CacheableDataProvider dataProvider = (DataProviders.CacheableDataProvider)D3Api.dataProvider;
-            dataProvider.online = online;
-
-            try
-            {
-                hero = Hero.getHeroFromHeroId(new BattleTag(battleTag), heroSummary.id);
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine(exception);
-                hero = null;
-                throw exception;
-            }
-            finally
-            {
-                dataProvider.online = D3Context.getInstance().onlineMode;
-            }
-
-            return hero;
-        }
-
         private void updateHeroView(View view)
         {
-            Hero hero = D3Context.getInstance().hero;
+            Console.WriteLine("HeroCharacteristicsListFragment: updateHeroView");
 
+            Hero hero = D3Context.getInstance().hero;
             if (hero != null)
             {
+                Console.WriteLine("HERO NOT NULL");
                 ListView heroStatsListView = view.FindViewById<ListView>(Resource.Id.heroStatsListView);
                 List<IListItem> characteristicsAttr = new List<IListItem>()
                 {

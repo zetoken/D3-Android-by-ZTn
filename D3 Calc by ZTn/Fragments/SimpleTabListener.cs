@@ -13,27 +13,31 @@ using Android.Widget;
 namespace ZTnDroid.D3Calculator.Fragments
 {
     public class SimpleTabListener<T> : Java.Lang.Object, ActionBar.ITabListener
-        where T: Fragment, new()
+        where T : Fragment, new()
     {
         Fragment fragment;
 
         public SimpleTabListener()
         {
-            this.fragment = new T();
         }
 
-         public void OnTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction)
+        public void OnTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction)
         {
-            // Nothing to do
+            Console.WriteLine("SimpleTabListener: OnTabReselected");
+            this.fragment = new T();
+            fragmentTransaction.Replace(Resource.Id.fragment_container, fragment);
         }
 
         public void OnTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction)
         {
-            fragmentTransaction.Add(Resource.Id.fragment_container, fragment, typeof(T).Name);
+            Console.WriteLine("SimpleTabListener: OnTabSelected");
+            this.fragment = new T();
+            fragmentTransaction.Add(Resource.Id.fragment_container, fragment);
         }
 
         public void OnTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction)
         {
+            Console.WriteLine("SimpleTabListener: OnTabUnselected");
             fragmentTransaction.Remove(fragment);
         }
     }

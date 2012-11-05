@@ -32,6 +32,7 @@
   <string name="gear">équipement</string>
 
   <!-- Skills -->
+  <string name="passiveSkill">compétence passive</string>
   <string name="skill">compétence</string>
   <string name="skills">compétences</string>
 
@@ -57,24 +58,24 @@
   <string name="attackSpeed">% de vitesse d\'attaque</string>
 
   <!-- Life -->
-  <string name="life">life</string>
+  <string name="life">vie</string>
   <string name="lifeOnHit">vie par coup</string>
   <string name="lifeSteal">vol de vie</string>
   <string name="lifePerKill">vie par victimes</string>
 
   <!-- Defense -->
-  <string name="defense">defense</string>
-  <string name="armor">armor</string>
-  <string name="arcaneResist">arcane resist</string>
-  <string name="coldResist">cold resist</string>
-  <string name="fireResist">fire resist</string>
-  <string name="lightningResist">lightning resist</string>
-  <string name="poisonResist">poison resist</string>
-  <string name="physicalResist">physical resist</string>
+  <string name="defense">défense</string>
+  <string name="armor">armure</string>
+  <string name="arcaneResist">résitance arcane</string>
+  <string name="coldResist">résitance froid</string>
+  <string name="fireResist">résitance feu</string>
+  <string name="lightningResist">résitance foudre</string>
+  <string name="poisonResist">résitance poison</string>
+  <string name="physicalResist">résitance physique</string>
 
   <!-- Bonus -->
-  <string name="bonuses">bonuses</string>
-  <string name="goldFind">gold find</string>
-  <string name="magicFind">magic find</string>
+  <string name="bonuses">bonus</string>
+  <string name="goldFind">découverte d\'or</string>
+  <string name="magicFind">découverte d\'objets magiques</string>
 
 </resources>

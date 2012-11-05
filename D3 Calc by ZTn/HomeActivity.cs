@@ -20,6 +20,10 @@ namespace ZTnDroid.D3Calculator
     [Activity(Label = "D3 Calc by ZTn", MainLauncher = true, Theme = "@android:style/Theme.Holo", Icon = "@drawable/icon")]
     public class HomeActivity : Activity
     {
+        public static readonly String SETTINGS_FILENAME = "settings";
+        public static readonly String SETTINGS_ONLINEMODE = "onlineMode";
+        public static ISharedPreferences preferences;
+
         public override void OnBackPressed()
         {
             Finish();
@@ -39,6 +43,10 @@ namespace ZTnDroid.D3Calculator
             FragmentTransaction fragmentTransaction = FragmentManager.BeginTransaction();
             fragmentTransaction.Add(Resource.Id.fragment_container, fragment);
             fragmentTransaction.Commit();
+
+            // Load preferences
+            preferences = GetSharedPreferences(SETTINGS_FILENAME, FileCreationMode.Private);
+            D3Context.getInstance().onlineMode = preferences.GetBoolean(SETTINGS_ONLINEMODE, false);
 
             // Always start D3Api with cache available and offline
             D3Context.getInstance().onlineMode = false;

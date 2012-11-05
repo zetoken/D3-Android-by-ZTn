@@ -21,6 +21,10 @@ namespace ZTnDroid.D3Calculator
     [Activity(Label = "View Hero", Theme = "@android:style/Theme.Holo", Icon = "@drawable/icon")]
     public class ViewHeroActivity : Activity
     {
+        String battleTag;
+        String host;
+        HeroSummary heroSummary;
+
         ActionBar.Tab tabCharacteristics;
         ActionBar.Tab tabGear;
         ActionBar.Tab tabSkills;
@@ -31,6 +35,10 @@ namespace ZTnDroid.D3Calculator
             base.OnCreate(bundle);
 
             this.Application.SetTheme(Android.Resource.Style.ThemeHolo);
+
+            battleTag = D3Context.getInstance().battleTag;
+            host = D3Context.getInstance().host;
+            heroSummary = D3Context.getInstance().heroSummary;
 
             SetContentView(Resource.Layout.FragmentContainer);
 
@@ -55,6 +63,16 @@ namespace ZTnDroid.D3Calculator
             tabSkills.SetText(Resources.GetString(Resource.String.skills));
             tabSkills.SetTabListener(new SimpleTabListener<HeroSkillsListFragment>());
             ActionBar.AddTab(tabSkills);
+
+            D3Context.getInstance().hero = null;
+            deferredFetchHero(D3Context.getInstance().onlineMode);
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.ViewHeroActivity, menu);
+
+            return base.OnCreateOptionsMenu(menu);
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -65,9 +83,81 @@ namespace ZTnDroid.D3Calculator
                     Finish();
                     return true;
 
+                case Resource.Id.RefreshContent:
+                    deferredFetchHero(true);
+                    return true;
+
                 default:
                     return base.OnOptionsItemSelected(item);
             }
+        }
+
+        private void deferredFetchHero(Boolean online)
+        {
+            ProgressDialog progressDialog = null;
+
+            if (online)
+                progressDialog = ProgressDialog.Show(this, "Loading Hero", "Please wait while retrieving data", true);
+
+            new Thread(new ThreadStart(() =>
+            {
+                try
+                {
+                    D3Context.getInstance().hero = fetchHero(online);
+                    RunOnUiThread(() =>
+                    {
+                        if (online)
+                            progressDialog.Dismiss();
+                        ActionBar.SetSelectedNavigationItem(0);
+                    });
+                }
+                catch (ZTn.BNet.D3.DataProviders.FileNotInCacheException)
+                {
+                    RunOnUiThread(() =>
+                    {
+                        if (online)
+                            progressDialog.Dismiss();
+                        Toast.MakeText(this, "Hero not in cache" + System.Environment.NewLine + "Please use refresh action", ToastLength.Long).Show();
+                    });
+                }
+                catch (Exception exception)
+                {
+                    RunOnUiThread(() =>
+                    {
+                        if (online)
+                            progressDialog.Dismiss();
+                        Toast.MakeText(this, "An error occured when retrieving the hero", ToastLength.Long).Show();
+                        Console.WriteLine(exception);
+                    });
+                }
+            })).Start();
+        }
+
+        private Hero fetchHero(Boolean online)
+        {
+            Console.WriteLine("ViewHeroActivity: fetchHero");
+            Hero hero = null;
+
+            D3Api.host = host;
+            DataProviders.CacheableDataProvider dataProvider = (DataProviders.CacheableDataProvider)D3Api.dataProvider;
+            dataProvider.online = online;
+
+            try
+            {
+                hero = Hero.getHeroFromHeroId(new BattleTag(battleTag), heroSummary.id);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                hero = null;
+                throw exception;
+            }
+            finally
+            {
+                dataProvider.online = D3Context.getInstance().onlineMode;
+            }
+
+            return hero;
         }
     }
 }

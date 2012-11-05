@@ -4,27 +4,27 @@
     android:layout_width="fill_parent"
     android:layout_height="match_parent">
     <ImageView
-        android:id="@+id/imageSkill"
+        android:id="@+id/imageRune"
         android:src="@android:drawable/ic_menu_gallery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minHeight="42px"
         android:minWidth="42px" />
     <TextView
-        android:id="@+id/skillName"
+        android:id="@+id/runeName"
         android:text="Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/imageSkill"
+        android:layout_toRightOf="@id/imageRune"
         android:layout_marginLeft="?android:attr/listPreferredItemPaddingLeft"
         android:textAppearance="?android:attr/textAppearanceListItem" />
     <TextView
-        android:id="@+id/skillDescription"
+        android:id="@+id/runeDescription"
         android:text="Description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/skillName"
-        android:layout_toRightOf="@id/imageSkill"
+        android:layout_below="@id/runeName"
+        android:layout_toRightOf="@id/imageRune"
         android:layout_marginLeft="?android:attr/listPreferredItemPaddingLeft"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 </RelativeLayout>

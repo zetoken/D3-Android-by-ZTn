@@ -32,6 +32,7 @@
   <string name="gear">gear</string>
   
   <!-- Skills -->
+  <string name="passiveSkill">passive skill</string>
   <string name="skill">skill</string>
   <string name="skills">skills</string>
   

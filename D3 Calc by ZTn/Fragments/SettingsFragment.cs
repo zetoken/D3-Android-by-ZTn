@@ -34,6 +34,10 @@ namespace ZTnDroid.D3Calculator.Fragments
             settingOnline.Checked = D3Context.getInstance().onlineMode;
             settingOnline.CheckedChange += delegate(object sender, CompoundButton.CheckedChangeEventArgs e)
             {
+                HomeActivity.preferences
+                    .Edit()
+                    .PutBoolean(HomeActivity.SETTINGS_ONLINEMODE, e.IsChecked)
+                    .Commit();
                 D3Context.getInstance().onlineMode = e.IsChecked;
             };
 

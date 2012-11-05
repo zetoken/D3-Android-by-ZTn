@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Adapters\AttributeListItem.cs" />
     <Compile Include="Adapters\AttributePercentListItem.cs" />
+    <Compile Include="Adapters\RuneListItem.cs" />
     <Compile Include="Adapters\SectionedListAdapter.cs" />
     <Compile Include="Adapters\HeroSummariesListAdapter.cs" />
     <Compile Include="Adapters\IListItem.cs" />
@@ -126,6 +127,9 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\Layout\SkillListItem.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\RuneListItem.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
