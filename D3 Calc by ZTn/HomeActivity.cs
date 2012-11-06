@@ -53,6 +53,9 @@ namespace ZTnDroid.D3Calculator
             DataProviders.CacheableDataProvider dataProvider = new DataProviders.CacheableDataProvider(this, new ZTn.BNet.D3.DataProviders.HttpRequestDataProvider());
             dataProvider.online = D3Context.getInstance().onlineMode;
             D3Api.dataProvider = dataProvider;
+
+            // Set english locale by default
+            D3Api.locale = "en";
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)

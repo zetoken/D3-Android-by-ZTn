@@ -12,6 +12,7 @@ using Android.Widget;
 using ZTn.BNet.BattleNet;
 using ZTn.BNet.D3;
 using ZTn.BNet.D3.Heroes;
+using ZTn.BNet.D3.Items;
 using ZTnDroid.D3Calculator.Adapters;
 using ZTnDroid.D3Calculator.Fragments;
 using ZTnDroid.D3Calculator.Storage;
@@ -107,6 +108,7 @@ namespace ZTnDroid.D3Calculator
                 try
                 {
                     D3Context.getInstance().hero = fetchHero(online);
+                    D3Context.getInstance().heroItems = fetchFullItems(online);
                     RunOnUiThread(() =>
                     {
                         if (online)
@@ -134,6 +136,43 @@ namespace ZTnDroid.D3Calculator
                     });
                 }
             })).Start();
+        }
+
+        private HeroItems fetchFullItems(Boolean online)
+        {
+            HeroItems heroItems = D3Context.getInstance().hero.items;
+
+            DataProviders.CacheableDataProvider dataProvider = (DataProviders.CacheableDataProvider)D3Api.dataProvider;
+            dataProvider.online = online;
+
+            try
+            {
+                heroItems.head = Item.getItemFromTooltipParams(heroItems.head.tooltipParams);
+                heroItems.torso = Item.getItemFromTooltipParams(heroItems.torso.tooltipParams);
+                heroItems.feet = Item.getItemFromTooltipParams(heroItems.feet.tooltipParams);
+                heroItems.hands = Item.getItemFromTooltipParams(heroItems.hands.tooltipParams);
+                heroItems.shoulders = Item.getItemFromTooltipParams(heroItems.shoulders.tooltipParams);
+                heroItems.legs = Item.getItemFromTooltipParams(heroItems.legs.tooltipParams);
+                heroItems.bracers = Item.getItemFromTooltipParams(heroItems.bracers.tooltipParams);
+                heroItems.mainHand = Item.getItemFromTooltipParams(heroItems.mainHand.tooltipParams);
+                heroItems.offHand = Item.getItemFromTooltipParams(heroItems.offHand.tooltipParams);
+                heroItems.waist = Item.getItemFromTooltipParams(heroItems.waist.tooltipParams);
+                heroItems.rightFinger = Item.getItemFromTooltipParams(heroItems.rightFinger.tooltipParams);
+                heroItems.leftFinger = Item.getItemFromTooltipParams(heroItems.leftFinger.tooltipParams);
+                heroItems.neck = Item.getItemFromTooltipParams(heroItems.neck.tooltipParams);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                D3Context.getInstance().heroItems = null;
+                throw exception;
+            }
+            finally
+            {
+                dataProvider.online = D3Context.getInstance().onlineMode;
+            }
+
+            return heroItems;
         }
 
         private Hero fetchHero(Boolean online)

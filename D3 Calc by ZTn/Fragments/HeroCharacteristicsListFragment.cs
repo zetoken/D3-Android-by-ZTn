@@ -42,7 +42,6 @@ namespace ZTnDroid.D3Calculator.Fragments
             Hero hero = D3Context.getInstance().hero;
             if (hero != null)
             {
-                Console.WriteLine("HERO NOT NULL");
                 ListView heroStatsListView = view.FindViewById<ListView>(Resource.Id.heroStatsListView);
                 List<IListItem> characteristicsAttr = new List<IListItem>()
                 {

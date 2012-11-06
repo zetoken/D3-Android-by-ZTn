@@ -75,16 +75,31 @@
   <!-- Defense -->
   <string name="defense">défense</string>
   <string name="armor">armure</string>
-  <string name="arcaneResist">résitance arcane</string>
-  <string name="coldResist">résitance froid</string>
-  <string name="fireResist">résitance feu</string>
-  <string name="lightningResist">résitance foudre</string>
-  <string name="poisonResist">résitance poison</string>
-  <string name="physicalResist">résitance physique</string>
+  <string name="arcaneResist">résistance arcane</string>
+  <string name="coldResist">résistance froid</string>
+  <string name="fireResist">résistance feu</string>
+  <string name="lightningResist">résistance foudre</string>
+  <string name="poisonResist">résistance poison</string>
+  <string name="physicalResist">résistance physique</string>
 
   <!-- Bonus -->
   <string name="bonuses">bonus</string>
   <string name="goldFind">découverte d\'or</string>
   <string name="magicFind">découverte d\'objets magiques</string>
+
+  <!-- Item parts -->
+  <string name="itemHead">casque</string>
+  <string name="itemTorso">torse</string>
+  <string name="itemFeet">bottes</string>
+  <string name="itemHands">gants</string>
+  <string name="itemShoulders">épaules</string>
+  <string name="itemLegs">jambières</string>
+  <string name="itemBracers">brassards</string>
+  <string name="itemMainHand">main principale</string>
+  <string name="itemOffHand">main secondaire</string>
+  <string name="itemWaist">ceinture</string>
+  <string name="itemRightFinger">anneau droit</string>
+  <string name="itemLeftFinger">anneau gauche</string>
+  <string name="itemNeck">amulette</string>
 
 </resources>

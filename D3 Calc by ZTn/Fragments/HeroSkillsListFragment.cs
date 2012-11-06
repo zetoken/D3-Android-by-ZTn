@@ -58,7 +58,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             return list;
         }
 
-        public void updateHeroView(View view)
+        private void updateHeroView(View view)
         {
             Console.WriteLine("HeroSkillsListFragment: updateHeroSkills");
 
@@ -66,7 +66,6 @@ namespace ZTnDroid.D3Calculator.Fragments
             if (hero != null)
             {
                 ListView heroSkillsListView = view.FindViewById<ListView>(Resource.Id.heroSkillsListView);
-
                 List<IListItem> skillsAttr = new List<IListItem>();
 
                 skillsAttr.AddRange(getPartialListViewForActiveSkill(Resources.GetString(Resource.String.skill) + " L", hero.skills.active[0]));

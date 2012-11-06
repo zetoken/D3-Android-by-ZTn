@@ -87,4 +87,19 @@
   <string name="goldFind">gold find</string>
   <string name="magicFind">magic find</string>
   
+  <!-- Item parts -->
+  <string name="itemHead">head</string>
+  <string name="itemTorso">torso</string>
+  <string name="itemFeet">feet</string>
+  <string name="itemHands">hands</string>
+  <string name="itemShoulders">shoulders</string>
+  <string name="itemLegs">legs</string>
+  <string name="itemBracers">bracers</string>
+  <string name="itemMainHand">main hand</string>
+  <string name="itemOffHand">off hand</string>
+  <string name="itemWaist">waist</string>
+  <string name="itemRightFinger">right finger</string>
+  <string name="itemLeftFinger">left finger</string>
+  <string name="itemNeck">neck</string>
+  
 </resources>

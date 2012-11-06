@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using ZTn.BNet.BattleNet;
 using ZTn.BNet.D3.Heroes;
+using ZTn.BNet.D3.Items;
 
 namespace ZTnDroid.D3Calculator.Storage
 {
@@ -22,6 +23,8 @@ namespace ZTnDroid.D3Calculator.Storage
 
         public HeroSummary heroSummary;
         public Hero hero;
+
+        public HeroItems heroItems;
 
         public AccountsDB dbAccounts;
 

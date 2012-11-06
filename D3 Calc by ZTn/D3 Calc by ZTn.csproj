@@ -16,7 +16,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <AndroidSupportedAbis>armeabi</AndroidSupportedAbis>
+    <AndroidSupportedAbis>armeabi%3barmeabi-v7a</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Adapters\AttributeListItem.cs" />
     <Compile Include="Adapters\AttributePercentListItem.cs" />
+    <Compile Include="Adapters\GearItemListItem.cs" />
     <Compile Include="Adapters\RuneListItem.cs" />
     <Compile Include="Adapters\SectionedListAdapter.cs" />
     <Compile Include="Adapters\HeroSummariesListAdapter.cs" />
@@ -130,6 +131,9 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\Layout\RuneListItem.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\GearItemListItem.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>

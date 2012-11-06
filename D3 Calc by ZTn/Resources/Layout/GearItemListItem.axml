@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/imageGearItem"
+        android:src="@android:drawable/ic_menu_gallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="42px"
+        android:minWidth="42px" />
+    <TextView
+        android:id="@+id/gearItemName"
+        android:text="Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/imageGearItem"
+        android:layout_marginLeft="?android:attr/listPreferredItemPaddingLeft"
+        android:textAppearance="?android:attr/textAppearanceListItem" />
+    <TextView
+        android:id="@+id/gearItemDescription"
+        android:text="Description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/gearItemName"
+        android:layout_toRightOf="@id/imageGearItem"
+        android:layout_marginLeft="?android:attr/listPreferredItemPaddingLeft"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+</RelativeLayout>
