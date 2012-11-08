@@ -147,19 +147,32 @@ namespace ZTnDroid.D3Calculator
 
             try
             {
-                heroItems.head = Item.getItemFromTooltipParams(heroItems.head.tooltipParams);
-                heroItems.torso = Item.getItemFromTooltipParams(heroItems.torso.tooltipParams);
-                heroItems.feet = Item.getItemFromTooltipParams(heroItems.feet.tooltipParams);
-                heroItems.hands = Item.getItemFromTooltipParams(heroItems.hands.tooltipParams);
-                heroItems.shoulders = Item.getItemFromTooltipParams(heroItems.shoulders.tooltipParams);
-                heroItems.legs = Item.getItemFromTooltipParams(heroItems.legs.tooltipParams);
-                heroItems.bracers = Item.getItemFromTooltipParams(heroItems.bracers.tooltipParams);
-                heroItems.mainHand = Item.getItemFromTooltipParams(heroItems.mainHand.tooltipParams);
-                heroItems.offHand = Item.getItemFromTooltipParams(heroItems.offHand.tooltipParams);
-                heroItems.waist = Item.getItemFromTooltipParams(heroItems.waist.tooltipParams);
-                heroItems.rightFinger = Item.getItemFromTooltipParams(heroItems.rightFinger.tooltipParams);
-                heroItems.leftFinger = Item.getItemFromTooltipParams(heroItems.leftFinger.tooltipParams);
-                heroItems.neck = Item.getItemFromTooltipParams(heroItems.neck.tooltipParams);
+                if (heroItems.head != null)
+                    heroItems.head = Item.getItemFromTooltipParams(heroItems.head.tooltipParams);
+                if (heroItems.torso != null)
+                    heroItems.torso = Item.getItemFromTooltipParams(heroItems.torso.tooltipParams);
+                if (heroItems.feet != null)
+                    heroItems.feet = Item.getItemFromTooltipParams(heroItems.feet.tooltipParams);
+                if (heroItems.hands != null)
+                    heroItems.hands = Item.getItemFromTooltipParams(heroItems.hands.tooltipParams);
+                if (heroItems.shoulders != null)
+                    heroItems.shoulders = Item.getItemFromTooltipParams(heroItems.shoulders.tooltipParams);
+                if (heroItems.legs != null)
+                    heroItems.legs = Item.getItemFromTooltipParams(heroItems.legs.tooltipParams);
+                if (heroItems.bracers != null)
+                    heroItems.bracers = Item.getItemFromTooltipParams(heroItems.bracers.tooltipParams);
+                if (heroItems.mainHand != null)
+                    heroItems.mainHand = Item.getItemFromTooltipParams(heroItems.mainHand.tooltipParams);
+                if (heroItems.offHand != null)
+                    heroItems.offHand = Item.getItemFromTooltipParams(heroItems.offHand.tooltipParams);
+                if (heroItems.waist != null)
+                    heroItems.waist = Item.getItemFromTooltipParams(heroItems.waist.tooltipParams);
+                if (heroItems.rightFinger != null)
+                    heroItems.rightFinger = Item.getItemFromTooltipParams(heroItems.rightFinger.tooltipParams);
+                if (heroItems.leftFinger != null)
+                    heroItems.leftFinger = Item.getItemFromTooltipParams(heroItems.leftFinger.tooltipParams);
+                if (heroItems.neck != null)
+                    heroItems.neck = Item.getItemFromTooltipParams(heroItems.neck.tooltipParams);
             }
             catch (Exception exception)
             {

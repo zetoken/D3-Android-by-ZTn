@@ -15,9 +15,10 @@ using ZTn.BNet.D3.Heroes;
 using ZTnDroid.D3Calculator.Fragments;
 using ZTnDroid.D3Calculator.Storage;
 
+[assembly: Application(Icon = "@drawable/icon", Label = "D3 Calc by ZTn", Theme = "@android:style/Theme.Holo", Debuggable = false)]
 namespace ZTnDroid.D3Calculator
 {
-    [Activity(Label = "D3 Calc by ZTn", MainLauncher = true, Theme = "@android:style/Theme.Holo", Icon = "@drawable/icon")]
+    [Activity(Label = "D3 Calc by ZTn", MainLauncher = true)]
     public class HomeActivity : Activity
     {
         public static readonly String SETTINGS_FILENAME = "settings";
@@ -61,11 +62,10 @@ namespace ZTnDroid.D3Calculator
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             Console.WriteLine("HomeActivity: OnCreateOptionsMenu");
-            base.OnCreateOptionsMenu(menu);
 
             this.MenuInflater.Inflate(Resource.Menu.Settings, menu);
 
-            return true;
+            return base.OnCreateOptionsMenu(menu); ;
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -82,7 +82,6 @@ namespace ZTnDroid.D3Calculator
                     return base.OnOptionsItemSelected(item);
             }
         }
-
     }
 }
 

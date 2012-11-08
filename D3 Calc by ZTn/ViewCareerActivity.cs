@@ -19,7 +19,7 @@ using ZTnDroid.D3Calculator.Storage;
 
 namespace ZTnDroid.D3Calculator
 {
-    [Activity(Label = "View Career", Theme = "@android:style/Theme.Holo", Icon = "@drawable/icon")]
+    [Activity(Label = "View Career")]
     public class ViewCareerActivity : Activity
     {
         protected override void OnCreate(Bundle bundle)

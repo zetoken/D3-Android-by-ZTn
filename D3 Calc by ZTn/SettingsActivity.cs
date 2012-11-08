@@ -13,7 +13,7 @@ using ZTnDroid.D3Calculator.Fragments;
 
 namespace ZTnDroid.D3Calculator
 {
-    [Activity(Label = "Settings", Theme = "@android:style/Theme.Holo", Icon = "@drawable/icon")]
+    [Activity(Label = "Settings")]
     public class SettingsActivity : Activity
     {
         protected override void OnCreate(Bundle bundle)

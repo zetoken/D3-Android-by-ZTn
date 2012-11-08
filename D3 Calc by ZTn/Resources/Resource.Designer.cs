@@ -23,6 +23,26 @@ namespace ZTnDroid.D3Calculator
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f040000
+			public const int blueItem = 2130968576;
+			
+			// aapt resource value: 0x7f040001
+			public const int greenItem = 2130968577;
+			
+			// aapt resource value: 0x7f040002
+			public const int orangeItem = 2130968578;
+			
+			// aapt resource value: 0x7f040003
+			public const int yellowItem = 2130968579;
+			
+			private Color()
+			{
+			}
+		}
+		
 		public partial class Drawable
 		{
 			
@@ -67,113 +87,113 @@ namespace ZTnDroid.D3Calculator
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060011
-			public const int AccountsListView = 2131099665;
+			// aapt resource value: 0x7f070011
+			public const int AccountsListView = 2131165201;
 			
-			// aapt resource value: 0x7f060020
-			public const int AddNewAccount = 2131099680;
+			// aapt resource value: 0x7f070020
+			public const int AddNewAccount = 2131165216;
 			
-			// aapt resource value: 0x7f060023
-			public const int DeleteContent = 2131099683;
+			// aapt resource value: 0x7f070023
+			public const int DeleteContent = 2131165219;
 			
-			// aapt resource value: 0x7f06001b
-			public const int HeroesListView = 2131099675;
+			// aapt resource value: 0x7f07001b
+			public const int HeroesListView = 2131165211;
 			
-			// aapt resource value: 0x7f060022
-			public const int RefreshContent = 2131099682;
+			// aapt resource value: 0x7f070022
+			public const int RefreshContent = 2131165218;
 			
-			// aapt resource value: 0x7f060021
-			public const int Settings = 2131099681;
+			// aapt resource value: 0x7f070021
+			public const int Settings = 2131165217;
 			
-			// aapt resource value: 0x7f06001f
-			public const int SubmitNewAccount = 2131099679;
+			// aapt resource value: 0x7f07001f
+			public const int SubmitNewAccount = 2131165215;
 			
-			// aapt resource value: 0x7f060004
-			public const int attributeName = 2131099652;
+			// aapt resource value: 0x7f070004
+			public const int attributeName = 2131165188;
 			
-			// aapt resource value: 0x7f060005
-			public const int attributeValue = 2131099653;
+			// aapt resource value: 0x7f070005
+			public const int attributeValue = 2131165189;
 			
-			// aapt resource value: 0x7f060001
-			public const int battleTagEditText = 2131099649;
+			// aapt resource value: 0x7f070001
+			public const int battleTagEditText = 2131165185;
 			
-			// aapt resource value: 0x7f060006
-			public const int fragment_container = 2131099654;
+			// aapt resource value: 0x7f070006
+			public const int fragment_container = 2131165190;
 			
-			// aapt resource value: 0x7f060009
-			public const int gearItemDescription = 2131099657;
+			// aapt resource value: 0x7f070009
+			public const int gearItemDescription = 2131165193;
 			
-			// aapt resource value: 0x7f060008
-			public const int gearItemName = 2131099656;
+			// aapt resource value: 0x7f070008
+			public const int gearItemName = 2131165192;
 			
-			// aapt resource value: 0x7f06000f
-			public const int heroClass = 2131099663;
+			// aapt resource value: 0x7f07000f
+			public const int heroClass = 2131165199;
 			
-			// aapt resource value: 0x7f06001d
-			public const int heroGearListView = 2131099677;
+			// aapt resource value: 0x7f07001d
+			public const int heroGearListView = 2131165213;
 			
-			// aapt resource value: 0x7f060010
-			public const int heroHardcore = 2131099664;
+			// aapt resource value: 0x7f070010
+			public const int heroHardcore = 2131165200;
 			
-			// aapt resource value: 0x7f06000e
-			public const int heroLastUpdated = 2131099662;
+			// aapt resource value: 0x7f07000e
+			public const int heroLastUpdated = 2131165198;
 			
-			// aapt resource value: 0x7f06000c
-			public const int heroLevel = 2131099660;
+			// aapt resource value: 0x7f07000c
+			public const int heroLevel = 2131165196;
 			
-			// aapt resource value: 0x7f06000b
-			public const int heroName = 2131099659;
+			// aapt resource value: 0x7f07000b
+			public const int heroName = 2131165195;
 			
-			// aapt resource value: 0x7f06000d
-			public const int heroParagon = 2131099661;
+			// aapt resource value: 0x7f07000d
+			public const int heroParagon = 2131165197;
 			
-			// aapt resource value: 0x7f06001e
-			public const int heroSkillsListView = 2131099678;
+			// aapt resource value: 0x7f07001e
+			public const int heroSkillsListView = 2131165214;
 			
-			// aapt resource value: 0x7f06001c
-			public const int heroStatsListView = 2131099676;
+			// aapt resource value: 0x7f07001c
+			public const int heroStatsListView = 2131165212;
 			
-			// aapt resource value: 0x7f060003
-			public const int hostSpinner = 2131099651;
+			// aapt resource value: 0x7f070003
+			public const int hostSpinner = 2131165187;
 			
-			// aapt resource value: 0x7f06000a
-			public const int imageClass = 2131099658;
+			// aapt resource value: 0x7f07000a
+			public const int imageClass = 2131165194;
 			
-			// aapt resource value: 0x7f060007
-			public const int imageGearItem = 2131099655;
+			// aapt resource value: 0x7f070007
+			public const int imageGearItem = 2131165191;
 			
-			// aapt resource value: 0x7f060012
-			public const int imageRune = 2131099666;
+			// aapt resource value: 0x7f070012
+			public const int imageRune = 2131165202;
 			
-			// aapt resource value: 0x7f060017
-			public const int imageSkill = 2131099671;
+			// aapt resource value: 0x7f070017
+			public const int imageSkill = 2131165207;
 			
-			// aapt resource value: 0x7f06001a
-			public const int killsLifetimeListView = 2131099674;
+			// aapt resource value: 0x7f07001a
+			public const int killsLifetimeListView = 2131165210;
 			
-			// aapt resource value: 0x7f060014
-			public const int runeDescription = 2131099668;
+			// aapt resource value: 0x7f070014
+			public const int runeDescription = 2131165204;
 			
-			// aapt resource value: 0x7f060013
-			public const int runeName = 2131099667;
+			// aapt resource value: 0x7f070013
+			public const int runeName = 2131165203;
 			
-			// aapt resource value: 0x7f060015
-			public const int sectionLabel = 2131099669;
+			// aapt resource value: 0x7f070015
+			public const int sectionLabel = 2131165205;
 			
-			// aapt resource value: 0x7f060016
-			public const int settingOnline = 2131099670;
+			// aapt resource value: 0x7f070016
+			public const int settingOnline = 2131165206;
 			
-			// aapt resource value: 0x7f060019
-			public const int skillDescription = 2131099673;
+			// aapt resource value: 0x7f070019
+			public const int skillDescription = 2131165209;
 			
-			// aapt resource value: 0x7f060018
-			public const int skillName = 2131099672;
+			// aapt resource value: 0x7f070018
+			public const int skillName = 2131165208;
 			
-			// aapt resource value: 0x7f060000
-			public const int textView1 = 2131099648;
+			// aapt resource value: 0x7f070000
+			public const int textView1 = 2131165184;
 			
-			// aapt resource value: 0x7f060002
-			public const int textView2 = 2131099650;
+			// aapt resource value: 0x7f070002
+			public const int textView2 = 2131165186;
 			
 			private Id()
 			{
@@ -233,20 +253,20 @@ namespace ZTnDroid.D3Calculator
 		public partial class Menu
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int AddNewAccountActivity = 2131034112;
+			// aapt resource value: 0x7f060000
+			public const int AddNewAccountActivity = 2131099648;
 			
-			// aapt resource value: 0x7f050001
-			public const int HomeActivity = 2131034113;
+			// aapt resource value: 0x7f060001
+			public const int HomeActivity = 2131099649;
 			
-			// aapt resource value: 0x7f050002
-			public const int Settings = 2131034114;
+			// aapt resource value: 0x7f060002
+			public const int Settings = 2131099650;
 			
-			// aapt resource value: 0x7f050003
-			public const int ViewCareerActivity = 2131034115;
+			// aapt resource value: 0x7f060003
+			public const int ViewCareerActivity = 2131099651;
 			
-			// aapt resource value: 0x7f050004
-			public const int ViewHeroActivity = 2131034116;
+			// aapt resource value: 0x7f060004
+			public const int ViewHeroActivity = 2131099652;
 			
 			private Menu()
 			{
@@ -256,221 +276,221 @@ namespace ZTnDroid.D3Calculator
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040000
-			public const int Add = 2130968576;
+			// aapt resource value: 0x7f050000
+			public const int Add = 2131034112;
 			
-			// aapt resource value: 0x7f040001
-			public const int AddNewAccount = 2130968577;
+			// aapt resource value: 0x7f050001
+			public const int AddNewAccount = 2131034113;
 			
-			// aapt resource value: 0x7f040002
-			public const int ApplicationName = 2130968578;
+			// aapt resource value: 0x7f050002
+			public const int ApplicationName = 2131034114;
 			
-			// aapt resource value: 0x7f040018
-			public const int BattleTag = 2130968600;
+			// aapt resource value: 0x7f050018
+			public const int BattleTag = 2131034136;
 			
-			// aapt resource value: 0x7f040019
-			public const int BattleTagExample = 2130968601;
+			// aapt resource value: 0x7f050019
+			public const int BattleTagExample = 2131034137;
 			
-			// aapt resource value: 0x7f040003
-			public const int Cancel = 2130968579;
+			// aapt resource value: 0x7f050003
+			public const int Cancel = 2131034115;
 			
-			// aapt resource value: 0x7f040004
-			public const int Characteristics = 2130968580;
+			// aapt resource value: 0x7f050004
+			public const int Characteristics = 2131034116;
 			
-			// aapt resource value: 0x7f040005
-			public const int DeleteContent = 2130968581;
+			// aapt resource value: 0x7f050005
+			public const int DeleteContent = 2131034117;
 			
-			// aapt resource value: 0x7f040014
-			public const int ErrorOccuredWhileRetrievingData = 2130968596;
+			// aapt resource value: 0x7f050014
+			public const int ErrorOccuredWhileRetrievingData = 2131034132;
 			
-			// aapt resource value: 0x7f040006
-			public const int FetchCareer = 2130968582;
+			// aapt resource value: 0x7f050006
+			public const int FetchCareer = 2131034118;
 			
-			// aapt resource value: 0x7f040007
-			public const int Heroes = 2130968583;
+			// aapt resource value: 0x7f050007
+			public const int Heroes = 2131034119;
 			
-			// aapt resource value: 0x7f04001a
-			public const int Host = 2130968602;
+			// aapt resource value: 0x7f05001a
+			public const int Host = 2131034138;
 			
-			// aapt resource value: 0x7f040008
-			public const int KilledElites = 2130968584;
+			// aapt resource value: 0x7f050008
+			public const int KilledElites = 2131034120;
 			
-			// aapt resource value: 0x7f04000a
-			public const int KilledHardcore = 2130968586;
+			// aapt resource value: 0x7f05000a
+			public const int KilledHardcore = 2131034122;
 			
-			// aapt resource value: 0x7f040009
-			public const int KilledMonsters = 2130968585;
+			// aapt resource value: 0x7f050009
+			public const int KilledMonsters = 2131034121;
 			
-			// aapt resource value: 0x7f04000e
-			public const int KillsLifetime = 2130968590;
+			// aapt resource value: 0x7f05000e
+			public const int KillsLifetime = 2131034126;
 			
-			// aapt resource value: 0x7f040017
-			public const int Language = 2130968599;
+			// aapt resource value: 0x7f050017
+			public const int Language = 2131034135;
 			
-			// aapt resource value: 0x7f040010
-			public const int Loading = 2130968592;
+			// aapt resource value: 0x7f050010
+			public const int Loading = 2131034128;
 			
-			// aapt resource value: 0x7f040011
-			public const int LoadingCareer = 2130968593;
+			// aapt resource value: 0x7f050011
+			public const int LoadingCareer = 2131034129;
 			
-			// aapt resource value: 0x7f040012
-			public const int LoadingHero = 2130968594;
+			// aapt resource value: 0x7f050012
+			public const int LoadingHero = 2131034130;
 			
-			// aapt resource value: 0x7f040016
-			public const int OnlineMode = 2130968598;
+			// aapt resource value: 0x7f050016
+			public const int OnlineMode = 2131034134;
 			
-			// aapt resource value: 0x7f04000c
-			public const int Progress = 2130968588;
+			// aapt resource value: 0x7f05000c
+			public const int Progress = 2131034124;
 			
-			// aapt resource value: 0x7f04000d
-			public const int RefreshContent = 2130968589;
+			// aapt resource value: 0x7f05000d
+			public const int RefreshContent = 2131034125;
 			
-			// aapt resource value: 0x7f04000b
-			public const int Settings = 2130968587;
+			// aapt resource value: 0x7f05000b
+			public const int Settings = 2131034123;
 			
-			// aapt resource value: 0x7f04000f
-			public const int SubmitNewAccount = 2130968591;
+			// aapt resource value: 0x7f05000f
+			public const int SubmitNewAccount = 2131034127;
 			
-			// aapt resource value: 0x7f040013
-			public const int WaitWhileRetrievingData = 2130968595;
+			// aapt resource value: 0x7f050013
+			public const int WaitWhileRetrievingData = 2131034131;
 			
-			// aapt resource value: 0x7f040032
-			public const int arcaneResist = 2130968626;
+			// aapt resource value: 0x7f050032
+			public const int arcaneResist = 2131034162;
 			
-			// aapt resource value: 0x7f040031
-			public const int armor = 2130968625;
+			// aapt resource value: 0x7f050031
+			public const int armor = 2131034161;
 			
-			// aapt resource value: 0x7f04002b
-			public const int attackSpeed = 2130968619;
+			// aapt resource value: 0x7f05002b
+			public const int attackSpeed = 2131034155;
 			
-			// aapt resource value: 0x7f040021
-			public const int attributes = 2130968609;
+			// aapt resource value: 0x7f050021
+			public const int attributes = 2131034145;
 			
-			// aapt resource value: 0x7f040038
-			public const int bonuses = 2130968632;
+			// aapt resource value: 0x7f050038
+			public const int bonuses = 2131034168;
 			
-			// aapt resource value: 0x7f040033
-			public const int coldResist = 2130968627;
+			// aapt resource value: 0x7f050033
+			public const int coldResist = 2131034163;
 			
-			// aapt resource value: 0x7f040029
-			public const int criticChance = 2130968617;
+			// aapt resource value: 0x7f050029
+			public const int criticChance = 2131034153;
 			
-			// aapt resource value: 0x7f04002a
-			public const int criticDamage = 2130968618;
+			// aapt resource value: 0x7f05002a
+			public const int criticDamage = 2131034154;
 			
-			// aapt resource value: 0x7f040028
-			public const int damage = 2130968616;
+			// aapt resource value: 0x7f050028
+			public const int damage = 2131034152;
 			
-			// aapt resource value: 0x7f040027
-			public const int damages = 2130968615;
+			// aapt resource value: 0x7f050027
+			public const int damages = 2131034151;
 			
-			// aapt resource value: 0x7f040030
-			public const int defense = 2130968624;
+			// aapt resource value: 0x7f050030
+			public const int defense = 2131034160;
 			
-			// aapt resource value: 0x7f040015
-			public const int details = 2130968597;
+			// aapt resource value: 0x7f050015
+			public const int details = 2131034133;
 			
-			// aapt resource value: 0x7f040022
-			public const int dexterity = 2130968610;
+			// aapt resource value: 0x7f050022
+			public const int dexterity = 2131034146;
 			
-			// aapt resource value: 0x7f040026
-			public const int elites = 2130968614;
+			// aapt resource value: 0x7f050026
+			public const int elites = 2131034150;
 			
-			// aapt resource value: 0x7f040034
-			public const int fireResist = 2130968628;
+			// aapt resource value: 0x7f050034
+			public const int fireResist = 2131034164;
 			
-			// aapt resource value: 0x7f04001b
-			public const int gear = 2130968603;
+			// aapt resource value: 0x7f05001b
+			public const int gear = 2131034139;
 			
-			// aapt resource value: 0x7f040039
-			public const int goldFind = 2130968633;
+			// aapt resource value: 0x7f050039
+			public const int goldFind = 2131034169;
 			
-			// aapt resource value: 0x7f040023
-			public const int intelligence = 2130968611;
+			// aapt resource value: 0x7f050023
+			public const int intelligence = 2131034147;
 			
-			// aapt resource value: 0x7f040041
-			public const int itemBracers = 2130968641;
+			// aapt resource value: 0x7f050041
+			public const int itemBracers = 2131034177;
 			
-			// aapt resource value: 0x7f04003d
-			public const int itemFeet = 2130968637;
+			// aapt resource value: 0x7f05003d
+			public const int itemFeet = 2131034173;
 			
-			// aapt resource value: 0x7f04003e
-			public const int itemHands = 2130968638;
+			// aapt resource value: 0x7f05003e
+			public const int itemHands = 2131034174;
 			
-			// aapt resource value: 0x7f04003b
-			public const int itemHead = 2130968635;
+			// aapt resource value: 0x7f05003b
+			public const int itemHead = 2131034171;
 			
-			// aapt resource value: 0x7f040046
-			public const int itemLeftFinger = 2130968646;
+			// aapt resource value: 0x7f050046
+			public const int itemLeftFinger = 2131034182;
 			
-			// aapt resource value: 0x7f040040
-			public const int itemLegs = 2130968640;
+			// aapt resource value: 0x7f050040
+			public const int itemLegs = 2131034176;
 			
-			// aapt resource value: 0x7f040042
-			public const int itemMainHand = 2130968642;
+			// aapt resource value: 0x7f050042
+			public const int itemMainHand = 2131034178;
 			
-			// aapt resource value: 0x7f040047
-			public const int itemNeck = 2130968647;
+			// aapt resource value: 0x7f050047
+			public const int itemNeck = 2131034183;
 			
-			// aapt resource value: 0x7f040043
-			public const int itemOffHand = 2130968643;
+			// aapt resource value: 0x7f050043
+			public const int itemOffHand = 2131034179;
 			
-			// aapt resource value: 0x7f040045
-			public const int itemRightFinger = 2130968645;
+			// aapt resource value: 0x7f050045
+			public const int itemRightFinger = 2131034181;
 			
-			// aapt resource value: 0x7f04003f
-			public const int itemShoulders = 2130968639;
+			// aapt resource value: 0x7f05003f
+			public const int itemShoulders = 2131034175;
 			
-			// aapt resource value: 0x7f04003c
-			public const int itemTorso = 2130968636;
+			// aapt resource value: 0x7f05003c
+			public const int itemTorso = 2131034172;
 			
-			// aapt resource value: 0x7f040044
-			public const int itemWaist = 2130968644;
+			// aapt resource value: 0x7f050044
+			public const int itemWaist = 2131034180;
 			
-			// aapt resource value: 0x7f04001f
-			public const int level = 2130968607;
+			// aapt resource value: 0x7f05001f
+			public const int level = 2131034143;
 			
-			// aapt resource value: 0x7f04002c
-			public const int life = 2130968620;
+			// aapt resource value: 0x7f05002c
+			public const int life = 2131034156;
 			
-			// aapt resource value: 0x7f04002d
-			public const int lifeOnHit = 2130968621;
+			// aapt resource value: 0x7f05002d
+			public const int lifeOnHit = 2131034157;
 			
-			// aapt resource value: 0x7f04002f
-			public const int lifePerKill = 2130968623;
+			// aapt resource value: 0x7f05002f
+			public const int lifePerKill = 2131034159;
 			
-			// aapt resource value: 0x7f04002e
-			public const int lifeSteal = 2130968622;
+			// aapt resource value: 0x7f05002e
+			public const int lifeSteal = 2131034158;
 			
-			// aapt resource value: 0x7f040035
-			public const int lightningResist = 2130968629;
+			// aapt resource value: 0x7f050035
+			public const int lightningResist = 2131034165;
 			
-			// aapt resource value: 0x7f04003a
-			public const int magicFind = 2130968634;
+			// aapt resource value: 0x7f05003a
+			public const int magicFind = 2131034170;
 			
-			// aapt resource value: 0x7f040020
-			public const int paragon = 2130968608;
+			// aapt resource value: 0x7f050020
+			public const int paragon = 2131034144;
 			
-			// aapt resource value: 0x7f04001c
-			public const int passiveSkill = 2130968604;
+			// aapt resource value: 0x7f05001c
+			public const int passiveSkill = 2131034140;
 			
-			// aapt resource value: 0x7f040037
-			public const int physicalResist = 2130968631;
+			// aapt resource value: 0x7f050037
+			public const int physicalResist = 2131034167;
 			
-			// aapt resource value: 0x7f040036
-			public const int poisonResist = 2130968630;
+			// aapt resource value: 0x7f050036
+			public const int poisonResist = 2131034166;
 			
-			// aapt resource value: 0x7f04001d
-			public const int skill = 2130968605;
+			// aapt resource value: 0x7f05001d
+			public const int skill = 2131034141;
 			
-			// aapt resource value: 0x7f04001e
-			public const int skills = 2130968606;
+			// aapt resource value: 0x7f05001e
+			public const int skills = 2131034142;
 			
-			// aapt resource value: 0x7f040024
-			public const int strength = 2130968612;
+			// aapt resource value: 0x7f050024
+			public const int strength = 2131034148;
 			
-			// aapt resource value: 0x7f040025
-			public const int vitality = 2130968613;
+			// aapt resource value: 0x7f050025
+			public const int vitality = 2131034149;
 			
 			private String()
 			{
