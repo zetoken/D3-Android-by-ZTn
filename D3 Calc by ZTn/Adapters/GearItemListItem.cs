@@ -2,19 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Android.Graphics;
+using Android.Graphics.Drawables;
 using Android.Views;
 using Android.Widget;
 using ZTn.BNet.D3.Items;
+using ZTn.BNet.D3.Medias;
 
 namespace ZTnDroid.D3Calculator.Adapters
 {
     public class GearItemListItem : IListItem
     {
         public Item item;
+        public D3Picture icon;
 
         public GearItemListItem(Item item)
         {
             this.item = item;
+        }
+
+        public GearItemListItem(Item item, D3Picture icon)
+        {
+            this.item = item;
+            this.icon = icon;
         }
 
         public int getLayoutResource()
@@ -49,7 +59,11 @@ namespace ZTnDroid.D3Calculator.Adapters
                 default:
                     break;
             }
-            //view.FindViewById<ImageView>(Resource.Id.imageGearItem).SetImageBitmap(...);
+            if (icon != null)
+            {
+                Bitmap bitmap = Android.Graphics.BitmapFactory.DecodeByteArray(icon.bytes, 0, (int)icon.bytes.Length);
+                view.FindViewById<ImageView>(Resource.Id.imageGearItem).SetImageBitmap(bitmap);
+            }
         }
     }
 }

@@ -82,6 +82,11 @@
   <string name="poisonResist">résistance poison</string>
   <string name="physicalResist">résistance physique</string>
 
+  <!-- Resources -->
+  <string name="resources">ressouces</string>
+  <string name="primaryResource">ressource principale</string>
+  <string name="secondaryResource">ressource secondaire</string>
+
   <!-- Bonus -->
   <string name="bonuses">bonus</string>
   <string name="goldFind">découverte d\'or</string>

@@ -366,8 +366,8 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f050021
 			public const int attributes = 2131034145;
 			
-			// aapt resource value: 0x7f050038
-			public const int bonuses = 2131034168;
+			// aapt resource value: 0x7f05003b
+			public const int bonuses = 2131034171;
 			
 			// aapt resource value: 0x7f050033
 			public const int coldResist = 2131034163;
@@ -402,50 +402,50 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f05001b
 			public const int gear = 2131034139;
 			
-			// aapt resource value: 0x7f050039
-			public const int goldFind = 2131034169;
+			// aapt resource value: 0x7f05003c
+			public const int goldFind = 2131034172;
 			
 			// aapt resource value: 0x7f050023
 			public const int intelligence = 2131034147;
 			
-			// aapt resource value: 0x7f050041
-			public const int itemBracers = 2131034177;
-			
-			// aapt resource value: 0x7f05003d
-			public const int itemFeet = 2131034173;
-			
-			// aapt resource value: 0x7f05003e
-			public const int itemHands = 2131034174;
-			
-			// aapt resource value: 0x7f05003b
-			public const int itemHead = 2131034171;
-			
-			// aapt resource value: 0x7f050046
-			public const int itemLeftFinger = 2131034182;
+			// aapt resource value: 0x7f050044
+			public const int itemBracers = 2131034180;
 			
 			// aapt resource value: 0x7f050040
-			public const int itemLegs = 2131034176;
+			public const int itemFeet = 2131034176;
 			
-			// aapt resource value: 0x7f050042
-			public const int itemMainHand = 2131034178;
+			// aapt resource value: 0x7f050041
+			public const int itemHands = 2131034177;
 			
-			// aapt resource value: 0x7f050047
-			public const int itemNeck = 2131034183;
+			// aapt resource value: 0x7f05003e
+			public const int itemHead = 2131034174;
+			
+			// aapt resource value: 0x7f050049
+			public const int itemLeftFinger = 2131034185;
 			
 			// aapt resource value: 0x7f050043
-			public const int itemOffHand = 2131034179;
+			public const int itemLegs = 2131034179;
 			
 			// aapt resource value: 0x7f050045
-			public const int itemRightFinger = 2131034181;
+			public const int itemMainHand = 2131034181;
+			
+			// aapt resource value: 0x7f05004a
+			public const int itemNeck = 2131034186;
+			
+			// aapt resource value: 0x7f050046
+			public const int itemOffHand = 2131034182;
+			
+			// aapt resource value: 0x7f050048
+			public const int itemRightFinger = 2131034184;
+			
+			// aapt resource value: 0x7f050042
+			public const int itemShoulders = 2131034178;
 			
 			// aapt resource value: 0x7f05003f
-			public const int itemShoulders = 2131034175;
+			public const int itemTorso = 2131034175;
 			
-			// aapt resource value: 0x7f05003c
-			public const int itemTorso = 2131034172;
-			
-			// aapt resource value: 0x7f050044
-			public const int itemWaist = 2131034180;
+			// aapt resource value: 0x7f050047
+			public const int itemWaist = 2131034183;
 			
 			// aapt resource value: 0x7f05001f
 			public const int level = 2131034143;
@@ -465,8 +465,8 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f050035
 			public const int lightningResist = 2131034165;
 			
-			// aapt resource value: 0x7f05003a
-			public const int magicFind = 2131034170;
+			// aapt resource value: 0x7f05003d
+			public const int magicFind = 2131034173;
 			
 			// aapt resource value: 0x7f050020
 			public const int paragon = 2131034144;
@@ -479,6 +479,15 @@ namespace ZTnDroid.D3Calculator
 			
 			// aapt resource value: 0x7f050036
 			public const int poisonResist = 2131034166;
+			
+			// aapt resource value: 0x7f050039
+			public const int primaryResource = 2131034169;
+			
+			// aapt resource value: 0x7f050038
+			public const int resources = 2131034168;
+			
+			// aapt resource value: 0x7f05003a
+			public const int secondaryResource = 2131034170;
 			
 			// aapt resource value: 0x7f05001d
 			public const int skill = 2131034141;

@@ -79,9 +79,13 @@ namespace ZTnDroid.D3Calculator.Fragments
                     new AttributeListItem(Resources.GetString(Resource.String.physicalResist), hero.stats.physicalResist),
                     new AttributeListItem(Resources.GetString(Resource.String.poisonResist), hero.stats.poisonResist),
 
+                    new SectionHeaderListItem(Resources.GetString(Resource.String.resources)),
+                    new AttributeListItem(Resources.GetString(Resource.String.primaryResource), hero.stats.primaryResource),
+                    new AttributeListItem(Resources.GetString(Resource.String.secondaryResource),hero.stats.secondaryResource),
+
                     new SectionHeaderListItem(Resources.GetString(Resource.String.bonuses)),
                     new AttributePercentListItem(Resources.GetString(Resource.String.goldFind), hero.stats.goldFind),
-                    new AttributePercentListItem(Resources.GetString(Resource.String.magicFind), hero.stats.magicFind),
+                    new AttributePercentListItem(Resources.GetString(Resource.String.magicFind), hero.stats.magicFind)
                 };
                 heroStatsListView.Adapter = new SectionedListAdapter(Activity, characteristicsAttr.ToArray());
             }

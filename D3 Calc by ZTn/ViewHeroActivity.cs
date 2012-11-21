@@ -148,31 +148,70 @@ namespace ZTnDroid.D3Calculator
             try
             {
                 if (heroItems.head != null)
+                {
                     heroItems.head = Item.getItemFromTooltipParams(heroItems.head.tooltipParams);
+                    D3Context.getInstance().headIcon = D3Api.getItemIcon(heroItems.head.icon);
+                }
                 if (heroItems.torso != null)
+                {
                     heroItems.torso = Item.getItemFromTooltipParams(heroItems.torso.tooltipParams);
+                    D3Context.getInstance().torsoIcon = D3Api.getItemIcon(heroItems.torso.icon);
+                }
                 if (heroItems.feet != null)
+                {
                     heroItems.feet = Item.getItemFromTooltipParams(heroItems.feet.tooltipParams);
+                    D3Context.getInstance().feetIcon = D3Api.getItemIcon(heroItems.feet.icon);
+                }
                 if (heroItems.hands != null)
+                {
                     heroItems.hands = Item.getItemFromTooltipParams(heroItems.hands.tooltipParams);
+                    D3Context.getInstance().handsIcon = D3Api.getItemIcon(heroItems.hands.icon);
+                }
                 if (heroItems.shoulders != null)
+                {
                     heroItems.shoulders = Item.getItemFromTooltipParams(heroItems.shoulders.tooltipParams);
+                    D3Context.getInstance().shouldersIcon = D3Api.getItemIcon(heroItems.shoulders.icon);
+                }
                 if (heroItems.legs != null)
+                {
                     heroItems.legs = Item.getItemFromTooltipParams(heroItems.legs.tooltipParams);
+                    D3Context.getInstance().legsIcon = D3Api.getItemIcon(heroItems.legs.icon);
+                }
                 if (heroItems.bracers != null)
+                {
                     heroItems.bracers = Item.getItemFromTooltipParams(heroItems.bracers.tooltipParams);
+                    D3Context.getInstance().bracersIcon = D3Api.getItemIcon(heroItems.bracers.icon);
+                }
                 if (heroItems.mainHand != null)
+                {
                     heroItems.mainHand = Item.getItemFromTooltipParams(heroItems.mainHand.tooltipParams);
+                    D3Context.getInstance().mainHandIcon = D3Api.getItemIcon(heroItems.mainHand.icon);
+                }
                 if (heroItems.offHand != null)
+                {
                     heroItems.offHand = Item.getItemFromTooltipParams(heroItems.offHand.tooltipParams);
+                    D3Context.getInstance().offHandIcon = D3Api.getItemIcon(heroItems.offHand.icon);
+                }
                 if (heroItems.waist != null)
+                {
                     heroItems.waist = Item.getItemFromTooltipParams(heroItems.waist.tooltipParams);
+                    D3Context.getInstance().waistIcon = D3Api.getItemIcon(heroItems.waist.icon);
+                }
                 if (heroItems.rightFinger != null)
+                {
                     heroItems.rightFinger = Item.getItemFromTooltipParams(heroItems.rightFinger.tooltipParams);
+                    D3Context.getInstance().rightFingerIcon = D3Api.getItemIcon(heroItems.rightFinger.icon);
+                }
                 if (heroItems.leftFinger != null)
+                {
                     heroItems.leftFinger = Item.getItemFromTooltipParams(heroItems.leftFinger.tooltipParams);
+                    D3Context.getInstance().leftFingerIcon = D3Api.getItemIcon(heroItems.leftFinger.icon);
+                }
                 if (heroItems.neck != null)
+                {
                     heroItems.neck = Item.getItemFromTooltipParams(heroItems.neck.tooltipParams);
+                    D3Context.getInstance().neckIcon = D3Api.getItemIcon(heroItems.neck.icon);
+                }
             }
             catch (Exception exception)
             {

@@ -50,7 +50,7 @@ namespace ZTnDroid.D3Calculator.Adapters
 
             HeroSummary hero = heroes[position];
             view.FindViewById<TextView>(Resource.Id.heroName).Text = heroes[position].name;
-            view.FindViewById<TextView>(Resource.Id.heroClass).Text = hero.heroClass;
+            view.FindViewById<TextView>(Resource.Id.heroClass).Text = hero.heroClass.ToString();
             view.FindViewById<TextView>(Resource.Id.heroLevel).Text = String.Format("{0}", hero.level);
             view.FindViewById<TextView>(Resource.Id.heroParagon).Text = String.Format("+{0}", hero.paragonLevel);
             view.FindViewById<TextView>(Resource.Id.heroHardcore).Text = (hero.hardcore ? "hardcore" : "");
@@ -59,20 +59,20 @@ namespace ZTnDroid.D3Calculator.Adapters
             int imageResource = Resource.Drawable.Icon;
             switch (hero.heroClass)
             {
-                case "barbarian":
-                    imageResource = (hero.gender == "0" ? Resource.Drawable.barbarian_male : Resource.Drawable.barbarian_female);
+                case HeroClass.Barbarian:
+                    imageResource = (hero.gender == HeroGender.Male ? Resource.Drawable.barbarian_male : Resource.Drawable.barbarian_female);
                     break;
-                case "demon-hunter":
-                    imageResource = (hero.gender == "0" ? Resource.Drawable.demonhunter_male : Resource.Drawable.demonhunter_female);
+                case HeroClass.DemonHunter:
+                    imageResource = (hero.gender == HeroGender.Male ? Resource.Drawable.demonhunter_male : Resource.Drawable.demonhunter_female);
                     break;
-                case "monk":
-                    imageResource = (hero.gender == "0" ? Resource.Drawable.monk_male : Resource.Drawable.monk_female);
+                case HeroClass.Monk:
+                    imageResource = (hero.gender == HeroGender.Male ? Resource.Drawable.monk_male : Resource.Drawable.monk_female);
                     break;
-                case "witch-doctor":
-                    imageResource = (hero.gender == "0" ? Resource.Drawable.witchdoctor_male : Resource.Drawable.witchdoctor_female);
+                case HeroClass.WitchDoctor:
+                    imageResource = (hero.gender == HeroGender.Male ? Resource.Drawable.witchdoctor_male : Resource.Drawable.witchdoctor_female);
                     break;
-                case "wizard":
-                    imageResource = (hero.gender == "0" ? Resource.Drawable.wizard_male : Resource.Drawable.wizard_female);
+                case HeroClass.Wizard:
+                    imageResource = (hero.gender == HeroGender.Male ? Resource.Drawable.wizard_male : Resource.Drawable.wizard_female);
                     break;
                 default:
                     break;
