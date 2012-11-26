@@ -46,6 +46,8 @@ namespace ZTnDroid.D3Calculator.Fragments
                 List<IListItem> characteristicsAttr = new List<IListItem>()
                 {
                     new SectionHeaderListItem(Resources.GetString(Resource.String.Progress)),
+                    new AttributeListItem(Resources.GetString(Resource.String.lastUpdated), hero.lastUpdated),
+                    new AttributeListItem(Resources.GetString(Resource.String.heroClass), hero.heroClass, Activity),
                     new AttributeListItem(Resources.GetString(Resource.String.level), hero.level),
                     new AttributeListItem(Resources.GetString(Resource.String.paragon), hero.paragonLevel),
 

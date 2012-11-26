@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using ZTn.BNet.D3.Heroes;
 using ZTn.BNet.D3.Items;
 
 namespace ZTnDroid.D3Calculator.Adapters
@@ -26,6 +26,38 @@ namespace ZTnDroid.D3Calculator.Adapters
         {
             this.name = name;
             this.value = value;
+        }
+
+        public AttributeListItem(String name, HeroClass value, Context context)
+        {
+            this.name = name;
+            switch (value)
+            {
+                case HeroClass.Barbarian:
+                    this.value = context.Resources.GetString(Resource.String.barbarian);
+                    break;
+                case HeroClass.DemonHunter:
+                    this.value = context.Resources.GetString(Resource.String.demonHunter);
+                    break;
+                case HeroClass.Monk:
+                    this.value = context.Resources.GetString(Resource.String.monk);
+                    break;
+                case HeroClass.WitchDoctor:
+                    this.value = context.Resources.GetString(Resource.String.witchDoctor);
+                    break;
+                case HeroClass.Wizard:
+                    this.value = context.Resources.GetString(Resource.String.wizard);
+                    break;
+                default:
+                    this.value = "Unknown";
+                    break;
+            }
+        }
+
+        public AttributeListItem(String name, DateTime value)
+        {
+            this.name = name;
+            this.value = value.ToString();
         }
 
         public AttributeListItem(String name, ItemValueRange value)

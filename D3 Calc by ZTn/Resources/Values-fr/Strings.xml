@@ -18,11 +18,14 @@
   <string name="SubmitNewAccount">Valider</string>
 
   <string name="details">détails</string>
+  <string name="computed">Calculs</string>
 
   <!-- Waiting messages -->
   <string name="Loading">Téléchargement en cours</string>
   <string name="LoadingCareer">Téléchargement de la carrière</string>
   <string name="LoadingHero">Téléchargement du Héro</string>
+  <string name="LoadingIcons">Téléchargement des icônes</string>
+  <string name="LoadingItems">Téléchargement de l\'équipement</string>
   <string name="WaitWhileRetrievingData">Veuillez patienter, récupération des données en cours</string>
 
   <!-- Errors messages -->
@@ -37,8 +40,16 @@
   <string name="BattleTagExample">Battle Tag (nom#code)</string>
   <string name="Host">Serveur</string>
 
+  <!-- Classes -->
+  <string name="barbarian">barbare</string>
+  <string name="demonHunter">chasseur de démon</string>
+  <string name="monk">moine</string>
+  <string name="witchDoctor">féticheur</string>
+  <string name="wizard">sorcier</string>
+
   <!-- Items -->
   <string name="gear">équipement</string>
+  <string name="setBonuses">bonus de set</string>
 
   <!-- Skills -->
   <string name="passiveSkill">compétence passive</string>
@@ -46,6 +57,8 @@
   <string name="skills">compétences</string>
 
   <!-- Progress -->
+  <string name="lastUpdated">dernière mise à jour</string>
+  <string name="heroClass">classe</string>
   <string name="level">niveau</string>
   <string name="paragon">parangon</string>
 
@@ -71,10 +84,15 @@
   <string name="lifeOnHit">vie par coup</string>
   <string name="lifeSteal">vol de vie</string>
   <string name="lifePerKill">vie par victimes</string>
+  <string name="lifeBonusPerGlobe">soin des globes amélioré</string>
+  <string name="lifeRegenPerSecond">vie par seconde</string>
+  <string name="effectiveHitpoints">vie effective (EHP)</string>
+  <string name="EHP_DPS">EHP * DPS</string>
 
   <!-- Defense -->
   <string name="defense">défense</string>
   <string name="armor">armure</string>
+  <string name="dodge">esquive</string>
   <string name="arcaneResist">résistance arcane</string>
   <string name="coldResist">résistance froid</string>
   <string name="fireResist">résistance feu</string>

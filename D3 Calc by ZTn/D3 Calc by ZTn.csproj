@@ -55,12 +55,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\D3 API by ZTn.dll</HintPath>
     </Reference>
+    <Reference Include="D3 Calculator Library by ZTn">
+      <HintPath>..\Libraries\D3 Calculator Library by ZTn.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Json" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web.Services" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -76,11 +81,14 @@
     <Compile Include="DataProviders\CacheableDataProvider.cs" />
     <Compile Include="Fragments\CareersListFragment.cs" />
     <Compile Include="Fragments\HeroCharacteristicsListFragment.cs" />
+    <Compile Include="Fragments\HeroComputedListFragment.cs" />
     <Compile Include="Fragments\HeroesListFragment.cs" />
     <Compile Include="Fragments\HeroGearListFragment.cs" />
     <Compile Include="Fragments\HeroSkillsListFragment.cs" />
     <Compile Include="Fragments\SettingsFragment.cs" />
     <Compile Include="Fragments\SimpleTabListener.cs" />
+    <Compile Include="Helpers\DownloadItemIconsTask.cs" />
+    <Compile Include="Storage\IconsContainer.cs" />
     <Compile Include="Storage\AccountsDB.cs" />
     <Compile Include="Storage\AccountsOpenHelper.cs" />
     <Compile Include="Storage\CacheDB.cs" />
@@ -95,8 +103,9 @@
     <Compile Include="AddNewAccountActivity.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\d3set.json" />
     <None Include="Resources\AboutResources.txt" />
-    <None Include="Assets\AboutAssets.txt" />
+    <AndroidAsset Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\Layout\AddNewAccount.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
@@ -174,6 +183,7 @@
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.

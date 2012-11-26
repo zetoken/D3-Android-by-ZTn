@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using ZTn.BNet.D3.Items;
 
 namespace ZTnDroid.D3Calculator.Adapters
 {
@@ -16,6 +17,11 @@ namespace ZTnDroid.D3Calculator.Adapters
     {
         public AttributePercentListItem(String name, long value)
             : base(name, String.Format("{0} %", value))
+        {
+        }
+
+        public AttributePercentListItem(String name, ItemValueRange value) :
+            base(name, String.Format("{0:0.00} %", 100 * value.min))
         {
         }
 

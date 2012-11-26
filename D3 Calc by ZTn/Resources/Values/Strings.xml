@@ -21,13 +21,16 @@
   <string name="Loading">Loading Hero</string>
   <string name="LoadingCareer">Loading Career</string>
   <string name="LoadingHero">Loading Hero</string>
+  <string name="LoadingIcons">Loading icons</string>
+  <string name="LoadingItems">Loading Hero items</string>
   <string name="WaitWhileRetrievingData">Please wait while retrieving data</string>
 
   <!-- Errors messages -->
   <string name="ErrorOccuredWhileRetrievingData">An error occured when retrieving data</string>
-
+  
   <string name="details">details</string>
-
+  <string name="computed">Computed</string>
+  
   <!-- Settings -->
   <string name="OnlineMode">Online by default</string>
   <string name="Language">Language</string>
@@ -37,8 +40,16 @@
   <string name="BattleTagExample">Battle Tag (name#code)</string>
   <string name="Host">Server</string>
 
+  <!-- Classes -->
+  <string name="barbarian">barbarian</string>
+  <string name="demonHunter">demon hunter</string>
+  <string name="monk">monk</string>
+  <string name="witchDoctor">witch doctor</string>
+  <string name="wizard">wizard</string>
+  
   <!-- Items -->
   <string name="gear">gear</string>
+  <string name="setBonuses">set bonus</string>
   
   <!-- Skills -->
   <string name="passiveSkill">passive skill</string>
@@ -46,6 +57,8 @@
   <string name="skills">skills</string>
   
   <!-- Progress -->
+  <string name="lastUpdated">last updated</string>
+  <string name="heroClass">class</string>
   <string name="level">level</string>
   <string name="paragon">paragon</string>
 
@@ -71,10 +84,15 @@
   <string name="lifeOnHit">life on hit</string>
   <string name="lifeSteal">life steal</string>
   <string name="lifePerKill">life per kill</string>
-  
+  <string name="lifeBonusPerGlobe">life bonus per globe</string>
+  <string name="lifeRegenPerSecond">life regen</string>
+  <string name="effectiveHitpoints">effective hitpoints</string>
+  <string name="EHP_DPS">EHP * DPS</string>
+
   <!-- Defense -->
   <string name="defense">defense</string>
   <string name="armor">armor</string>
+  <string name="dodge">dodge</string>
   <string name="arcaneResist">arcane resist</string>
   <string name="coldResist">cold resist</string>
   <string name="fireResist">fire resist</string>
