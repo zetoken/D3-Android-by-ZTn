@@ -14,7 +14,7 @@ using ZTn.BNet.BattleNet;
 namespace ZTnDroid.D3Calculator
 {
     [Activity(Label = "New D3 Profile")]
-    public class AddNewAccountActivity : Activity
+    public class AddNewAccountActivity : ZTnFragmentActivity
     {
         String[] items = new String[] { "eu.battle.net", "us.battle.net", "kr.battle.net", "tw.battle.net" };
 
@@ -51,10 +51,6 @@ namespace ZTnDroid.D3Calculator
             {
                 case Resource.Id.SubmitNewAccount:
                     onSubmit();
-                    return true;
-
-                case Android.Resource.Id.Home:
-                    Finish();
                     return true;
 
                 default:

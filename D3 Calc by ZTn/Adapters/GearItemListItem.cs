@@ -41,6 +41,14 @@ namespace ZTnDroid.D3Calculator.Adapters
                 foreach (String s in item.attributes)
                     description += s + System.Environment.NewLine;
             }
+            if (item.gems != null)
+            {
+                foreach (SocketedGem gem in item.gems)
+                {
+                    foreach (String s in gem.attributes)
+                        description += "gem " + s + System.Environment.NewLine;
+                }
+            }
             view.FindViewById<TextView>(Resource.Id.gearItemDescription).Text = description;
             switch (item.displayColor)
             {

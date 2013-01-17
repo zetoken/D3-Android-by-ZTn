@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using Android.App;
@@ -15,17 +16,21 @@ using ZTn.BNet.D3.Careers;
 using ZTn.BNet.D3.Heroes;
 using ZTnDroid.D3Calculator.Adapters;
 using ZTnDroid.D3Calculator.Fragments;
+using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
 
 namespace ZTnDroid.D3Calculator
 {
     [Activity(Label = "View Career")]
-    public class ViewCareerActivity : Activity
+    public class ViewCareerActivity : ZTnFragmentActivity
     {
-        protected override void OnCreate(Bundle bundle)
+        private static HeroesListFragment heroesListFragment;
+
+        protected override void OnCreate(Bundle savedInstanceState)
         {
-            Console.WriteLine("ViewCareerActivity: OnCreate");
-            base.OnCreate(bundle);
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
+            base.OnCreate(savedInstanceState);
 
             this.Application.SetTheme(Android.Resource.Style.ThemeHolo);
 
@@ -33,22 +38,13 @@ namespace ZTnDroid.D3Calculator
 
             ActionBar.SetDisplayHomeAsUpEnabled(true);
 
-            FragmentManager
-                .BeginTransaction()
-                .Add(Resource.Id.fragment_container, new HeroesListFragment())
-                .Commit();
-        }
-
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            switch (item.ItemId)
+            if (savedInstanceState == null)
             {
-                case Android.Resource.Id.Home:
-                    Finish();
-                    return true;
-
-                default:
-                    return base.OnOptionsItemSelected(item);
+                heroesListFragment = new HeroesListFragment();
+                SupportFragmentManager
+                    .BeginTransaction()
+                    .Add(Resource.Id.fragment_container, heroesListFragment)
+                    .Commit();
             }
         }
     }

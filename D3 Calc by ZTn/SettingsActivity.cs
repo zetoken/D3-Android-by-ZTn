@@ -14,12 +14,12 @@ using ZTnDroid.D3Calculator.Fragments;
 namespace ZTnDroid.D3Calculator
 {
     [Activity(Label = "Settings")]
-    public class SettingsActivity : Activity
+    public class SettingsActivity : ZTnFragmentActivity
     {
-        protected override void OnCreate(Bundle bundle)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
             Console.WriteLine("SettingsActivity: OnCreate");
-            base.OnCreate(bundle);
+            base.OnCreate(savedInstanceState);
 
             this.Application.SetTheme(Android.Resource.Style.ThemeHolo);
 
@@ -27,23 +27,10 @@ namespace ZTnDroid.D3Calculator
 
             ActionBar.SetDisplayHomeAsUpEnabled(true);
 
-            FragmentManager
+            SupportFragmentManager
                 .BeginTransaction()
                 .Add(Resource.Id.fragment_container, new SettingsFragment())
                 .Commit();
-        }
-
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            switch (item.ItemId)
-            {
-                case Android.Resource.Id.Home:
-                    Finish();
-                    return true;
-
-                default:
-                    return base.OnOptionsItemSelected(item);
-            }
         }
     }
 }

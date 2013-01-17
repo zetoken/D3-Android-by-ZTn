@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Android.App;
 using Android.OS;
 using Android.Views;
@@ -8,16 +9,20 @@ using ZTn.BNet.D3.Heroes;
 using ZTn.BNet.D3.Items;
 using ZTn.BNet.D3.Medias;
 using ZTnDroid.D3Calculator.Adapters;
+using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
+using Fragment = Android.Support.V4.App.Fragment;
 
 namespace ZTnDroid.D3Calculator.Fragments
 {
-    public class HeroGearListFragment : Fragment
+    public class HeroGearListFragment : ZTnFragment
     {
         public override void OnCreate(Bundle savedInstanceState)
         {
             Console.WriteLine("HeroGearListFragment: OnCreate");
             base.OnCreate(savedInstanceState);
+
+            RetainInstance = true;
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -25,7 +30,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             Console.WriteLine("HeroGearListFragment: OnCreateView");
             View view = inflater.Inflate(Resource.Layout.ViewHeroGear, container, false);
 
-            updateHeroView(view);
+            updateView(view);
 
             return view;
         }
@@ -44,7 +49,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             return list;
         }
 
-        private void updateHeroView(View view)
+        private void updateView(View view)
         {
             Console.WriteLine("HeroGearListFragment: updateHeroView");
 

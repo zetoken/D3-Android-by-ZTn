@@ -1,16 +1,15 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Reflection;
 using Android.App;
 using Android.Content;
 using Android.Database;
 using Android.OS;
-using Android.Runtime;
-using Android.Util;
 using Android.Views;
 using Android.Widget;
+using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
+
+using Fragment = Android.Support.V4.App.Fragment;
 
 namespace ZTnDroid.D3Calculator.Fragments
 {
@@ -23,15 +22,16 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         ICursor cursor;
 
-        public override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        public override void OnActivityResult(int requestCode, int resultCode, Intent data)
         {
-            Console.WriteLine("CareersListFragment: OnActivityResult");
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
             switch (requestCode)
             {
                 case ADD_NEW_ACCOUNT:
                     switch (resultCode)
                     {
-                        case Result.Ok:
+                        case -1:
                             String battleTag = data.GetStringExtra("battleTag");
                             String host = data.GetStringExtra("host");
 
@@ -57,22 +57,28 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         public override void OnCreate(Bundle savedInstanceState)
         {
-            Console.WriteLine("CareersListFragment: OnCreate");
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
             base.OnCreate(savedInstanceState);
+
+            RetainInstance = true;
 
             SetHasOptionsMenu(true);
         }
 
         public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
         {
-            base.OnCreateOptionsMenu(menu, inflater);
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
 
             Activity.MenuInflater.Inflate(Resource.Menu.HomeActivity, menu);
+
+            base.OnCreateOptionsMenu(menu, inflater);
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            Console.WriteLine("CareersListFragment: OnCreateView");
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
             View view = inflater.Inflate(Resource.Layout.Home, container, false);
 
             ListView careerListView = view.FindViewById<ListView>(Resource.Id.AccountsListView);
@@ -96,6 +102,8 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         public override void OnDestroyView()
         {
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
             Activity.StopManagingCursor(cursor);
             cursor.Close();
 
@@ -104,7 +112,8 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            Console.WriteLine("CareersListFragment: OnOptionsItemSelected");
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
             switch (item.ItemId)
             {
                 case Resource.Id.AddNewAccount:
@@ -119,6 +128,8 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         private void insertIntoCareersStorage(String battleTag, String host)
         {
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
             D3Context.getInstance().dbAccounts.insert(battleTag, host);
         }
     }

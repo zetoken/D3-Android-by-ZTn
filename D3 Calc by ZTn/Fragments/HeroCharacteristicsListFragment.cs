@@ -1,28 +1,27 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
+using System.Reflection;
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using ZTn.BNet.BattleNet;
-using ZTn.BNet.D3;
 using ZTn.BNet.D3.Heroes;
 using ZTnDroid.D3Calculator.Adapters;
+using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
+
+using Fragment = Android.Support.V4.App.Fragment;
 
 namespace ZTnDroid.D3Calculator.Fragments
 {
-    public class HeroCharacteristicsListFragment : Fragment
+    public class HeroCharacteristicsListFragment : ZTnFragment
     {
         public override void OnCreate(Bundle savedInstanceState)
         {
             Console.WriteLine("HeroCharacteristicsListFragment: OnCreate");
             base.OnCreate(savedInstanceState);
+
+            RetainInstance = true;
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -30,12 +29,12 @@ namespace ZTnDroid.D3Calculator.Fragments
             Console.WriteLine("HeroCharacteristicsListFragment: OnCreateView");
             View view = inflater.Inflate(Resource.Layout.ViewHero, container, false);
 
-            updateHeroView(view);
+            updateView(view);
 
             return view;
         }
 
-        private void updateHeroView(View view)
+        private void updateView(View view)
         {
             Console.WriteLine("HeroCharacteristicsListFragment: updateHeroView");
 

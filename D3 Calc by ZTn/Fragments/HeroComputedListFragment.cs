@@ -19,28 +19,37 @@ using ZTn.BNet.D3.Calculator;
 using System.Reflection;
 using ZTn.BNet.D3.Calculator.Sets;
 
+using Fragment = Android.Support.V4.App.Fragment;
+using ZTnDroid.D3Calculator.Helpers;
+
 namespace ZTnDroid.D3Calculator.Fragments
 {
-    public class HeroComputedListFragment : Fragment
+    public class HeroComputedListFragment : ZTnFragment
     {
         public override void OnCreate(Bundle savedInstanceState)
         {
-            Console.WriteLine("HeroComputedListFragment: OnCreate");
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
             base.OnCreate(savedInstanceState);
+
+            RetainInstance = true;
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            Console.WriteLine("HeroComputedListFragment: OnCreateView");
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
             View view = inflater.Inflate(Resource.Layout.ViewHero, container, false);
 
-            updateHeroView(view);
+            updateView(view);
 
             return view;
         }
 
         private ZTn.BNet.D3.Calculator.D3Calculator getCalculator()
         {
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
             Hero hero = D3Context.getInstance().hero;
             HeroItems heroItems = D3Context.getInstance().heroItems;
 
@@ -82,13 +91,13 @@ namespace ZTnDroid.D3Calculator.Fragments
             return d3Calculator;
         }
 
-        private void updateHeroView(View view)
+        private void updateView(View view)
         {
-            Console.WriteLine(MethodInfo.GetCurrentMethod().DeclaringType + ": " + MethodInfo.GetCurrentMethod());
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
 
             Hero hero = D3Context.getInstance().hero;
             HeroItems heroItems = D3Context.getInstance().heroItems;
-            if (heroItems != null)
+            if (hero != null && heroItems != null)
             {
                 ZTn.BNet.D3.Calculator.D3Calculator d3Calculator = getCalculator();
                 double dps = d3Calculator.getHeroDPS(new List<ZTn.BNet.D3.Calculator.Skills.D3SkillModifier>(), new List<ZTn.BNet.D3.Calculator.Skills.D3SkillModifier>());

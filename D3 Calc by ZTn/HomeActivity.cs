@@ -1,49 +1,46 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Reflection;
 using Android.App;
 using Android.Content;
-using Android.Database;
-using Android.Database.Sqlite;
 using Android.OS;
-using Android.Runtime;
+using Android.Support.V4.App;
 using Android.Views;
-using Android.Widget;
-using ZTn.BNet.BattleNet;
 using ZTn.BNet.D3;
-using ZTn.BNet.D3.Careers;
-using ZTn.BNet.D3.Heroes;
 using ZTnDroid.D3Calculator.Fragments;
+using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
+
+using Fragment = Android.Support.V4.App.Fragment;
 
 [assembly: Application(Icon = "@drawable/icon", Label = "D3 Calc by ZTn", Theme = "@android:style/Theme.Holo", Debuggable = false)]
 namespace ZTnDroid.D3Calculator
 {
     [Activity(Label = "D3 Calc by ZTn", MainLauncher = true)]
-    public class HomeActivity : Activity
+    public class HomeActivity : FragmentActivity
     {
         public static readonly String SETTINGS_FILENAME = "settings";
         public static readonly String SETTINGS_ONLINEMODE = "onlineMode";
+
         public static ISharedPreferences preferences;
+
+        private static Fragment careersListFragment;
 
         public override void OnBackPressed()
         {
-            Finish();
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
             base.OnBackPressed();
+
+            Finish();
         }
 
-        protected override void OnCreate(Bundle bundle)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
-            Console.WriteLine("HomeActivity: OnCreate");
-            base.OnCreate(bundle);
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
 
-            this.Application.SetTheme(Android.Resource.Style.ThemeHolo);
+            base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.FragmentContainer);
-
-            FragmentManager
-                .BeginTransaction()
-                .Add(Resource.Id.fragment_container, new CareersListFragment())
-                .Commit();
 
             // Load preferences
             preferences = GetSharedPreferences(SETTINGS_FILENAME, FileCreationMode.Private);
@@ -57,20 +54,31 @@ namespace ZTnDroid.D3Calculator
 
             // Set english locale by default
             D3Api.locale = "en";
+
+            // Update fragments
+            if (savedInstanceState == null)
+            {
+                careersListFragment = new CareersListFragment();
+                SupportFragmentManager
+                    .BeginTransaction()
+                    .Add(Resource.Id.fragment_container, careersListFragment)
+                    .Commit();
+            }
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            Console.WriteLine("HomeActivity: OnCreateOptionsMenu");
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
 
             this.MenuInflater.Inflate(Resource.Menu.Settings, menu);
 
-            return base.OnCreateOptionsMenu(menu); ;
+            return base.OnCreateOptionsMenu(menu);
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            Console.WriteLine("CareersListFragment: OnOptionsItemSelected");
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
             switch (item.ItemId)
             {
                 case Resource.Id.Settings:

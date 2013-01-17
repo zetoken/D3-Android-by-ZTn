@@ -59,6 +59,7 @@
       <HintPath>..\Libraries\D3 Calculator Library by ZTn.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Android" />
+    <Reference Include="Mono.Android.Support.v4" />
     <Reference Include="mscorlib" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -78,8 +79,10 @@
     <Compile Include="Adapters\IListItem.cs" />
     <Compile Include="Adapters\SectionHeaderListItem.cs" />
     <Compile Include="Adapters\SkillListItem.cs" />
+    <Compile Include="Adapters\ViewHeroViewPagerAdapter.cs" />
     <Compile Include="DataProviders\CacheableDataProvider.cs" />
     <Compile Include="Fragments\CareersListFragment.cs" />
+    <Compile Include="Fragments\FetchHeroFragment.cs" />
     <Compile Include="Fragments\HeroCharacteristicsListFragment.cs" />
     <Compile Include="Fragments\HeroComputedListFragment.cs" />
     <Compile Include="Fragments\HeroesListFragment.cs" />
@@ -87,7 +90,10 @@
     <Compile Include="Fragments\HeroSkillsListFragment.cs" />
     <Compile Include="Fragments\SettingsFragment.cs" />
     <Compile Include="Fragments\SimpleTabListener.cs" />
+    <Compile Include="Fragments\ZTnFragment.cs" />
+    <Compile Include="Helpers\AndroidHelper.cs" />
     <Compile Include="Helpers\DownloadItemIconsTask.cs" />
+    <Compile Include="Helpers\ZTnTrace.cs" />
     <Compile Include="Storage\IconsContainer.cs" />
     <Compile Include="Storage\AccountsDB.cs" />
     <Compile Include="Storage\AccountsOpenHelper.cs" />
@@ -101,6 +107,7 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AddNewAccountActivity.cs" />
+    <Compile Include="ZTnFragmentActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\d3set.json" />
@@ -145,6 +152,9 @@
     <AndroidResource Include="Resources\Layout\GearItemListItem.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\Layout\SimpleViewPager.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Home.axml" />
@@ -182,6 +192,7 @@
     <AndroidResource Include="Resources\Values\Color.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <Content Include="SupportLib\android-support-v4.jar" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
