@@ -12,7 +12,7 @@ using Fragment = Android.Support.V4.App.Fragment;
 
 namespace ZTnDroid.D3Calculator
 {
-    [Activity(Label = "Hero Informations")]
+    [Activity(Label = "@string/ViewHeroActivityLabel")]
     public class ViewHeroActivity : ZTnFragmentActivity
     {
         PagerAdapter pagerAdapter;

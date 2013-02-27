@@ -3,8 +3,8 @@ using Android.App;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using ZTn.BNet.D3.DataProviders;
 using ZTnDroid.D3Calculator.Storage;
-
 using Fragment = Android.Support.V4.App.Fragment;
 
 namespace ZTnDroid.D3Calculator.Fragments
@@ -27,14 +27,14 @@ namespace ZTnDroid.D3Calculator.Fragments
             Activity.Title = Resources.GetString(Resource.String.Settings);
 
             Switch settingOnline = view.FindViewById<Switch>(Resource.Id.settingOnline);
-            settingOnline.Checked = D3Context.getInstance().onlineMode;
+            settingOnline.Checked = (D3Context.getInstance().onlineMode == OnlineMode.Online);
             settingOnline.CheckedChange += delegate(object sender, CompoundButton.CheckedChangeEventArgs e)
             {
                 HomeActivity.preferences
                     .Edit()
                     .PutBoolean(HomeActivity.SETTINGS_ONLINEMODE, e.IsChecked)
                     .Commit();
-                D3Context.getInstance().onlineMode = e.IsChecked;
+                D3Context.getInstance().onlineMode = (e.IsChecked ? OnlineMode.Online : OnlineMode.Offline);
             };
 
             return view;

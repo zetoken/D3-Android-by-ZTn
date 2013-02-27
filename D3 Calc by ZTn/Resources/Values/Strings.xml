@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <!-- Activity labels -->
+  <string name="HomeActivityLabel">D3 Calc by ZTn</string>
+  <string name="AddNewAccountActivityLabel">New D3 Profile</string>
+  <string name="SettingsActivityLabel">Settings</string>
+  <string name="ViewCareerActivityLabel">View Career</string>
+  <string name="ViewHeroActivityLabel">Hero Informations</string>
+
+  <!-- Various texts -->  
   <string name="Add">Add</string>
   <string name="AddNewAccount">New Profile</string>
   <string name="ApplicationName">D3 Calc by ZTn</string>

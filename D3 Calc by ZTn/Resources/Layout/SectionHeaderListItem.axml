@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:text="SECTION LABEL"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <TextView
-        android:text="SECTION LABEL"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/sectionLabel"
-        android:textColor="?android:attr/textColorLink"
-        android:clickable="false" />
-</LinearLayout>
+    android:layout_height="wrap_content"
+    android:id="@+id/sectionLabel"
+    android:clickable="false"
+    android:textColor="?android:attr/textColorLink" />

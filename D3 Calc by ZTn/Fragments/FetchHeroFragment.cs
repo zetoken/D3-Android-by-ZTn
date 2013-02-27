@@ -9,11 +9,11 @@ using Android.Widget;
 using ZTn.BNet.BattleNet;
 using ZTn.BNet.D3;
 using ZTn.BNet.D3.Calculator.Sets;
+using ZTn.BNet.D3.DataProviders;
 using ZTn.BNet.D3.Heroes;
 using ZTn.BNet.D3.Items;
 using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
-
 using Fragment = Android.Support.V4.App.Fragment;
 
 namespace ZTnDroid.D3Calculator.Fragments
@@ -64,13 +64,13 @@ namespace ZTnDroid.D3Calculator.Fragments
             return base.OnCreateView(inflater, container, savedInstanceState);
         }
 
-        private void deferredFetchHero(Boolean online)
+        private void deferredFetchHero(OnlineMode online)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
 
             ProgressDialog progressDialog = null;
 
-            if (online)
+            if (online == OnlineMode.Online)
                 progressDialog = ProgressDialog.Show(this.Activity, Resources.GetString(Resource.String.LoadingHero), Resources.GetString(Resource.String.WaitWhileRetrievingData), true);
 
             new Thread(new ThreadStart(() =>
@@ -80,21 +80,28 @@ namespace ZTnDroid.D3Calculator.Fragments
                     D3Context.getInstance().hero = fetchHero(online);
                     this.Activity.RunOnUiThread(() =>
                     {
-                        if (online)
+                        if (online == OnlineMode.Online)
                             progressDialog.SetTitle(Resources.GetString(Resource.String.LoadingItems));
                     });
                     D3Context.getInstance().heroItems = fetchFullItems(online);
 
                     this.Activity.RunOnUiThread(() =>
                     {
-                        if (online)
+                        if (online == OnlineMode.Online)
                             progressDialog.SetTitle(Resources.GetString(Resource.String.LoadingIcons));
                     });
-                    D3Context.getInstance().icons = fetchIcons(online);
+
+                    // Icons are fetches with Online.OnlineIfMissing even if OnlineMode.Online is asked
+                    OnlineMode fetchIconsOnlineMode;
+                    if (online == OnlineMode.Online)
+                        fetchIconsOnlineMode = OnlineMode.OnlineIfMissing;
+                    else
+                        fetchIconsOnlineMode = online;
+                    D3Context.getInstance().icons = fetchIcons(fetchIconsOnlineMode);
 
                     this.Activity.RunOnUiThread(() =>
                     {
-                        if (online)
+                        if (online == OnlineMode.Online)
                             progressDialog.Dismiss();
                         fragmentCharacteristics.updateFragment();
                         fragmentComputed.updateFragment();
@@ -106,7 +113,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                 {
                     this.Activity.RunOnUiThread(() =>
                     {
-                        if (online)
+                        if (online == OnlineMode.Online)
                             progressDialog.Dismiss();
                         Toast.MakeText(this.Activity, "Hero not in cache" + System.Environment.NewLine + "Please use refresh action", ToastLength.Long).Show();
                     });
@@ -115,7 +122,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                 {
                     this.Activity.RunOnUiThread(() =>
                     {
-                        if (online)
+                        if (online == OnlineMode.Online)
                             progressDialog.Dismiss();
                         Toast.MakeText(this.Activity, Resources.GetString(Resource.String.ErrorOccuredWhileRetrievingData), ToastLength.Long).Show();
                         Console.WriteLine(exception);
@@ -124,14 +131,14 @@ namespace ZTnDroid.D3Calculator.Fragments
             })).Start();
         }
 
-        private HeroItems fetchFullItems(Boolean online)
+        private HeroItems fetchFullItems(OnlineMode online)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
 
             HeroItems heroItems = D3Context.getInstance().hero.items;
 
             DataProviders.CacheableDataProvider dataProvider = (DataProviders.CacheableDataProvider)D3Api.dataProvider;
-            dataProvider.online = online;
+            dataProvider.onlineMode = online;
 
             try
             {
@@ -207,13 +214,13 @@ namespace ZTnDroid.D3Calculator.Fragments
             }
             finally
             {
-                dataProvider.online = D3Context.getInstance().onlineMode;
+                dataProvider.onlineMode = D3Context.getInstance().onlineMode;
             }
 
             return heroItems;
         }
 
-        private IconsContainer fetchIcons(Boolean online)
+        private IconsContainer fetchIcons(OnlineMode online)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
 
@@ -222,7 +229,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             IconsContainer icons = new IconsContainer();
 
             DataProviders.CacheableDataProvider dataProvider = (DataProviders.CacheableDataProvider)D3Api.dataProvider;
-            dataProvider.online = online;
+            dataProvider.onlineMode = online;
 
             try
             {
@@ -281,13 +288,13 @@ namespace ZTnDroid.D3Calculator.Fragments
             }
             finally
             {
-                dataProvider.online = D3Context.getInstance().onlineMode;
+                dataProvider.onlineMode = D3Context.getInstance().onlineMode;
             }
 
             return icons;
         }
 
-        private Hero fetchHero(Boolean online)
+        private Hero fetchHero(OnlineMode online)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
 
@@ -295,7 +302,7 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             D3Api.host = host;
             DataProviders.CacheableDataProvider dataProvider = (DataProviders.CacheableDataProvider)D3Api.dataProvider;
-            dataProvider.online = online;
+            dataProvider.onlineMode = online;
 
             try
             {
@@ -309,7 +316,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             }
             finally
             {
-                dataProvider.online = D3Context.getInstance().onlineMode;
+                dataProvider.onlineMode = D3Context.getInstance().onlineMode;
             }
 
             return hero;
@@ -332,7 +339,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             switch (item.ItemId)
             {
                 case Resource.Id.RefreshContent:
-                    deferredFetchHero(true);
+                    deferredFetchHero(OnlineMode.Online);
                     return true;
 
                 default:

@@ -1,5 +1,5 @@
 using System;
-
+using ZTn.BNet.D3.DataProviders;
 using ZTn.BNet.D3.Heroes;
 using ZTn.BNet.D3.Items;
 
@@ -9,7 +9,7 @@ namespace ZTnDroid.D3Calculator.Storage
     {
         public String battleTag;
         public String host;
-        public Boolean onlineMode;
+        public OnlineMode onlineMode;
 
         public HeroSummary heroSummary;
         public Hero hero;

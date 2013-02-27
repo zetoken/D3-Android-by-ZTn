@@ -21,7 +21,7 @@ using ZTnDroid.D3Calculator.Storage;
 
 namespace ZTnDroid.D3Calculator
 {
-    [Activity(Label = "View Career")]
+    [Activity(Label = "@string/ViewCareerActivityLabel")]
     public class ViewCareerActivity : ZTnFragmentActivity
     {
         private static HeroesListFragment heroesListFragment;

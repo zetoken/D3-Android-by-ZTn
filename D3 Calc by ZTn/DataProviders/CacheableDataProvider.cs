@@ -15,7 +15,6 @@ namespace ZTnDroid.D3Calculator.DataProviders
         #region >> Fields
 
         Android.Content.Context context;
-        static Storage.CacheDB db;
 
         #endregion
 
@@ -25,7 +24,6 @@ namespace ZTnDroid.D3Calculator.DataProviders
             : base(dataProvider)
         {
             this.context = context;
-            db = new Storage.CacheDB(context);
         }
 
         #endregion

@@ -13,7 +13,7 @@ using ZTnDroid.D3Calculator.Fragments;
 
 namespace ZTnDroid.D3Calculator
 {
-    [Activity(Label = "Settings")]
+    [Activity(Label = "@string/SettingsActivityLabel")]
     public class SettingsActivity : ZTnFragmentActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)

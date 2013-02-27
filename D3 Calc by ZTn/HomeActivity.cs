@@ -6,16 +6,16 @@ using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
 using ZTn.BNet.D3;
+using ZTn.BNet.D3.DataProviders;
 using ZTnDroid.D3Calculator.Fragments;
 using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
-
 using Fragment = Android.Support.V4.App.Fragment;
 
-[assembly: Application(Icon = "@drawable/icon", Label = "D3 Calc by ZTn", Theme = "@android:style/Theme.Holo", Debuggable = false)]
+[assembly: Application(Icon = "@drawable/icon", Label = "D3 Calc by ZTn", Theme = "@android:style/Theme.Holo")]
 namespace ZTnDroid.D3Calculator
 {
-    [Activity(Label = "D3 Calc by ZTn", MainLauncher = true)]
+    [Activity(Label = "@string/HomeActivityLabel", MainLauncher = true, Icon = "@drawable/icon")]
     public class HomeActivity : FragmentActivity
     {
         public static readonly String SETTINGS_FILENAME = "settings";
@@ -45,11 +45,11 @@ namespace ZTnDroid.D3Calculator
             // Load preferences
             preferences = GetSharedPreferences(SETTINGS_FILENAME, FileCreationMode.Private);
             // Default offline mode
-            D3Context.getInstance().onlineMode = preferences.GetBoolean(SETTINGS_ONLINEMODE, false);
+            D3Context.getInstance().onlineMode = (preferences.GetBoolean(SETTINGS_ONLINEMODE, false) ? OnlineMode.Online : OnlineMode.Offline);
 
             // Always start D3Api with cache available
             DataProviders.CacheableDataProvider dataProvider = new DataProviders.CacheableDataProvider(this, new ZTn.BNet.D3.DataProviders.HttpRequestDataProvider());
-            dataProvider.online = D3Context.getInstance().onlineMode;
+            dataProvider.onlineMode = D3Context.getInstance().onlineMode;
             D3Api.dataProvider = dataProvider;
 
             // Set english locale by default

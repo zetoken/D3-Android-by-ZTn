@@ -13,7 +13,7 @@ using ZTn.BNet.BattleNet;
 
 namespace ZTnDroid.D3Calculator
 {
-    [Activity(Label = "New D3 Profile")]
+    [Activity(Label = "@string/AddNewAccountActivityLabel")]
     public class AddNewAccountActivity : ZTnFragmentActivity
     {
         String[] items = new String[] { "eu.battle.net", "us.battle.net", "kr.battle.net", "tw.battle.net" };
