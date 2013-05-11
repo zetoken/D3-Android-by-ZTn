@@ -12,7 +12,11 @@ using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
 using Fragment = Android.Support.V4.App.Fragment;
 
-[assembly: Application(Icon = "@drawable/icon", Label = "D3 Calc by ZTn", Theme = "@android:style/Theme.Holo")]
+#if DEBUG
+[assembly: Application(Icon = "@drawable/icon", Label = "D3 Calc by ZTn", Theme = "@android:style/Theme.Holo", Debuggable = true)]
+#else
+[assembly: Application(Icon = "@drawable/icon", Label = "D3 Calc by ZTn", Theme = "@android:style/Theme.Holo", Debuggable = false)]
+#endif
 namespace ZTnDroid.D3Calculator
 {
     [Activity(Label = "@string/HomeActivityLabel", MainLauncher = true, Icon = "@drawable/icon")]
@@ -48,12 +52,12 @@ namespace ZTnDroid.D3Calculator
             D3Context.getInstance().onlineMode = (preferences.GetBoolean(SETTINGS_ONLINEMODE, false) ? OnlineMode.Online : OnlineMode.Offline);
 
             // Always start D3Api with cache available
-            DataProviders.CacheableDataProvider dataProvider = new DataProviders.CacheableDataProvider(this, new ZTn.BNet.D3.DataProviders.HttpRequestDataProvider());
+            DataProviders.CacheableDataProvider dataProvider = new DataProviders.CacheableDataProvider(new ZTn.BNet.D3.DataProviders.HttpRequestDataProvider());
             dataProvider.onlineMode = D3Context.getInstance().onlineMode;
             D3Api.dataProvider = dataProvider;
 
             // Set english locale by default
-            D3Api.locale = "en";
+            D3Api.locale = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
 
             // Update fragments
             if (savedInstanceState == null)

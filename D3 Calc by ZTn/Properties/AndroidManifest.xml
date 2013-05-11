@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="ZTnDroid.D3Calculator" android:versionCode="1" android:versionName="0.0.1">
-  <uses-sdk android:targetSdkVersion="14" />
-  <application android:label="D3 Calc by ZTn">
-  </application>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="net.zetoken.d3calculator" android:versionCode="1" android:versionName="0.9.0">
+	<uses-sdk android:targetSdkVersion="17" />
+	<application android:label="D3 Calc by ZTn"></application>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.INTERNET" />
 </manifest>

@@ -1,9 +1,11 @@
 using System;
+using System.Reflection;
 using Android.App;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
 using ZTn.BNet.D3.DataProviders;
+using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
 using Fragment = Android.Support.V4.App.Fragment;
 
@@ -13,15 +15,13 @@ namespace ZTnDroid.D3Calculator.Fragments
     {
         public override void OnCreate(Bundle savedInstanceState)
         {
-            Console.WriteLine("SettingsFragment: OnCreate");
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
             base.OnCreate(savedInstanceState);
-
-            SetHasOptionsMenu(true);
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            Console.WriteLine("SettingsFragment: OnCreate");
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
             View view = inflater.Inflate(Resource.Layout.Settings, container, false);
 
             Activity.Title = Resources.GetString(Resource.String.Settings);

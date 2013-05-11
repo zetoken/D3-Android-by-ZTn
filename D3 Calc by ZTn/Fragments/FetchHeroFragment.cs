@@ -234,51 +234,51 @@ namespace ZTnDroid.D3Calculator.Fragments
             try
             {
                 if (heroItems.head != null && heroItems.head.icon != null)
-                    icons.head = D3Api.getItemIcon(heroItems.head.icon);
+                    icons.head = D3Api.getItemIcon(heroItems.head.icon, "large");
                 if (heroItems.torso != null && heroItems.torso.icon != null)
-                    icons.torso = D3Api.getItemIcon(heroItems.torso.icon);
+                    icons.torso = D3Api.getItemIcon(heroItems.torso.icon, "large");
                 if (heroItems.feet != null && heroItems.feet.icon != null)
-                    icons.feet = D3Api.getItemIcon(heroItems.feet.icon);
+                    icons.feet = D3Api.getItemIcon(heroItems.feet.icon, "large");
                 if (heroItems.hands != null && heroItems.hands.icon != null)
-                    icons.hands = D3Api.getItemIcon(heroItems.hands.icon);
+                    icons.hands = D3Api.getItemIcon(heroItems.hands.icon, "large");
                 if (heroItems.shoulders != null && heroItems.shoulders.icon != null)
-                    icons.shoulders = D3Api.getItemIcon(heroItems.shoulders.icon);
+                    icons.shoulders = D3Api.getItemIcon(heroItems.shoulders.icon, "large");
                 if (heroItems.legs != null && heroItems.legs.icon != null)
-                    icons.legs = D3Api.getItemIcon(heroItems.legs.icon);
+                    icons.legs = D3Api.getItemIcon(heroItems.legs.icon, "large");
                 if (heroItems.bracers != null && heroItems.bracers.icon != null)
-                    icons.bracers = D3Api.getItemIcon(heroItems.bracers.icon);
+                    icons.bracers = D3Api.getItemIcon(heroItems.bracers.icon, "large");
                 if (heroItems.mainHand != null && heroItems.mainHand.icon != null)
-                    icons.mainHand = D3Api.getItemIcon(heroItems.mainHand.icon);
+                    icons.mainHand = D3Api.getItemIcon(heroItems.mainHand.icon, "large");
                 if (heroItems.offHand != null && heroItems.offHand.icon != null)
-                    icons.offHand = D3Api.getItemIcon(heroItems.offHand.icon);
+                    icons.offHand = D3Api.getItemIcon(heroItems.offHand.icon, "large");
                 if (heroItems.waist != null && heroItems.waist.icon != null)
-                    icons.waist = D3Api.getItemIcon(heroItems.waist.icon);
+                    icons.waist = D3Api.getItemIcon(heroItems.waist.icon, "large");
                 if (heroItems.rightFinger != null && heroItems.rightFinger.icon != null)
-                    icons.rightFinger = D3Api.getItemIcon(heroItems.rightFinger.icon);
+                    icons.rightFinger = D3Api.getItemIcon(heroItems.rightFinger.icon, "large");
                 if (heroItems.leftFinger != null && heroItems.leftFinger.icon != null)
-                    icons.leftFinger = D3Api.getItemIcon(heroItems.leftFinger.icon);
+                    icons.leftFinger = D3Api.getItemIcon(heroItems.leftFinger.icon, "large");
                 if (heroItems.neck != null && heroItems.neck.icon != null)
-                    icons.neck = D3Api.getItemIcon(heroItems.neck.icon);
+                    icons.neck = D3Api.getItemIcon(heroItems.neck.icon, "large");
 
                 if (skills.active[0] != null && skills.active[0].skill != null)
-                    icons.activeSkill1 = D3Api.getSkillIcon(skills.active[0].skill.icon);
+                    icons.activeSkill1 = D3Api.getSkillIcon(skills.active[0].skill.icon, "64");
                 if (skills.active[1] != null && skills.active[1].skill != null)
-                    icons.activeSkill2 = D3Api.getSkillIcon(skills.active[1].skill.icon);
+                    icons.activeSkill2 = D3Api.getSkillIcon(skills.active[1].skill.icon, "64");
                 if (skills.active[2] != null && skills.active[2].skill != null)
-                    icons.activeSkill3 = D3Api.getSkillIcon(skills.active[2].skill.icon);
+                    icons.activeSkill3 = D3Api.getSkillIcon(skills.active[2].skill.icon, "64");
                 if (skills.active[3] != null && skills.active[3].skill != null)
-                    icons.activeSkill4 = D3Api.getSkillIcon(skills.active[3].skill.icon);
+                    icons.activeSkill4 = D3Api.getSkillIcon(skills.active[3].skill.icon, "64");
                 if (skills.active[4] != null && skills.active[4].skill != null)
-                    icons.activeSkill5 = D3Api.getSkillIcon(skills.active[4].skill.icon);
+                    icons.activeSkill5 = D3Api.getSkillIcon(skills.active[4].skill.icon, "64");
                 if (skills.active[5] != null && skills.active[5].skill != null)
-                    icons.activeSkill6 = D3Api.getSkillIcon(skills.active[5].skill.icon);
+                    icons.activeSkill6 = D3Api.getSkillIcon(skills.active[5].skill.icon, "64");
 
                 if (skills.passive[0] != null && skills.passive[0].skill != null)
-                    icons.passiveSkill1 = D3Api.getSkillIcon(skills.passive[0].skill.icon);
+                    icons.passiveSkill1 = D3Api.getSkillIcon(skills.passive[0].skill.icon, "64");
                 if (skills.passive[1] != null && skills.passive[1].skill != null)
-                    icons.passiveSkill2 = D3Api.getSkillIcon(skills.passive[1].skill.icon);
+                    icons.passiveSkill2 = D3Api.getSkillIcon(skills.passive[1].skill.icon, "64");
                 if (skills.passive[2] != null && skills.passive[2].skill != null)
-                    icons.passiveSkill3 = D3Api.getSkillIcon(skills.passive[2].skill.icon);
+                    icons.passiveSkill3 = D3Api.getSkillIcon(skills.passive[2].skill.icon, "64");
             }
             catch (Exception exception)
             {

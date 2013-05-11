@@ -56,7 +56,7 @@ namespace ZTnDroid.D3Calculator
             fragments.Add(fragmentFetchHero.fragmentGear);
             titles.Add(Resources.GetString(Resource.String.gear));
 
-            pagerAdapter = new Adapters.ViewHeroViewPagerAdapter(this, SupportFragmentManager, fragments, titles);
+            pagerAdapter = new Adapters.BasicViewPagerAdapter(SupportFragmentManager, fragments, titles);
 
             ViewPager viewPager = FindViewById<ViewPager>(Resource.Id.Pager);
             viewPager.Adapter = pagerAdapter;

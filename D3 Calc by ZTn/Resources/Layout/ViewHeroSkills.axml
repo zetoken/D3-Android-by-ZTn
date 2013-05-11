@@ -8,5 +8,6 @@
         android:minHeight="25px"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/heroSkillsListView" />
+        android:id="@+id/heroSkillsListView"
+        android:divider="@null" />
 </LinearLayout>

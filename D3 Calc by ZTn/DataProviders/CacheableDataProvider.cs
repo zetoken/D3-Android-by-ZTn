@@ -1,36 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using Android.Database;
+
 using ZTn.BNet.D3.DataProviders;
 
 namespace ZTnDroid.D3Calculator.DataProviders
 {
     public class CacheableDataProvider : ZTn.BNet.D3.DataProviders.CacheableDataProvider
     {
-        #region >> Fields
-
-        Android.Content.Context context;
-
-        #endregion
-
         #region >> Constructors
 
-        public CacheableDataProvider(Android.Content.Context context, ID3DataProvider dataProvider)
+        public CacheableDataProvider(ID3DataProvider dataProvider)
             : base(dataProvider)
         {
-            this.context = context;
         }
 
         #endregion
 
         public override String getCacheStoragePath()
         {
-            return context.FilesDir + "/cache/";
+            return Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, "D3CalcByZTn") + "/";
         }
     }
 }

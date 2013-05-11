@@ -3,10 +3,25 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
+    <TextView
+        android:text="@string/Careers"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sectionLabel"
+        android:clickable="false"
+        android:textColor="@android:color/holo_blue_light"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textAllCaps="true" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:id="@+id/divider"
+        android:background="@android:color/holo_blue_light" />
     <ListView
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/AccountsListView" />
+        android:id="@+id/AccountsListView"
+        android:divider="@null" />
 </LinearLayout>

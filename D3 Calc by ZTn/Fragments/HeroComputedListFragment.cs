@@ -100,9 +100,9 @@ namespace ZTnDroid.D3Calculator.Fragments
             if (hero != null && heroItems != null)
             {
                 ZTn.BNet.D3.Calculator.D3Calculator d3Calculator = getCalculator();
-                double dps = d3Calculator.getHeroDPS(new List<ZTn.BNet.D3.Calculator.Skills.D3SkillModifier>(), new List<ZTn.BNet.D3.Calculator.Skills.D3SkillModifier>());
+                double dps = d3Calculator.getHeroDPS(new List<ZTn.BNet.D3.Calculator.Skills.D3SkillModifier>(), new List<ZTn.BNet.D3.Calculator.Skills.D3SkillModifier>()).min;
 
-                ItemAttributes attr = d3Calculator.heroItemStats.attributesRaw;
+                ItemAttributes attr = d3Calculator.heroStatsItem.attributesRaw;
 
                 ListView heroStatsListView = view.FindViewById<ListView>(Resource.Id.heroStatsListView);
                 List<IListItem> characteristicsAttr = new List<IListItem>()

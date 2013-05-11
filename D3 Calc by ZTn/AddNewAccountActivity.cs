@@ -10,14 +10,13 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using ZTn.BNet.BattleNet;
+using ZTn.BNet.D3.Helpers;
 
 namespace ZTnDroid.D3Calculator
 {
     [Activity(Label = "@string/AddNewAccountActivityLabel")]
     public class AddNewAccountActivity : ZTnFragmentActivity
     {
-        String[] items = new String[] { "eu.battle.net", "us.battle.net", "kr.battle.net", "tw.battle.net" };
-
         Spinner serverSpinner;
         EditText battleTagEditText;
 
@@ -29,7 +28,9 @@ namespace ZTnDroid.D3Calculator
 
             ActionBar.SetDisplayHomeAsUpEnabled(true);
 
-            ArrayAdapter adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, items);
+            List<Host> hosts = JsonHelpers.getDataFromJSonStream<Host>(Assets.Open("hosts.json"));
+
+            ArrayAdapter adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, hosts.Select(h => h.url).ToArray());
             adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
 
             serverSpinner = FindViewById<Spinner>(Resource.Id.hostSpinner);
