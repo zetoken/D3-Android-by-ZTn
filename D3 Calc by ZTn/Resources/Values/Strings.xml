@@ -57,8 +57,14 @@
   <string name="wizard">wizard</string>
   
   <!-- Items -->
+  <string name="Armor">Armor</string>
+  <string name="AttacksPerSecond">Attacks per second</string>
+  <string name="Damages">Damage</string>
+  <string name="DamagePerSecond">Attacks per second</string>
+  <string name="damagePerSecond">attacks per second</string>
   <string name="gear">gear</string>
   <string name="setBonuses">set bonus</string>
+  <string name="Socket">Socket</string>
   
   <!-- Skills -->
   <string name="passiveSkill">passive skill</string>
