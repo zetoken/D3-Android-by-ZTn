@@ -125,7 +125,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                 if (attr.critPercentBonusCapped != null)
                     characteristicsAttr.Add(new AttributePercentListItem(Resources.GetString(Resource.String.criticChance), attr.critPercentBonusCapped));
                 if (attr.critDamagePercent != null)
-                    characteristicsAttr.Add(new AttributePercentListItem(Resources.GetString(Resource.String.criticDamage), attr.critDamagePercent));
+                    characteristicsAttr.Add(new AttributePercentListItem(Resources.GetString(Resource.String.criticDamage), attr.critDamagePercent + 1));
 
                 characteristicsAttr.AddRange(new List<IListItem>()
                 {
@@ -148,12 +148,12 @@ namespace ZTnDroid.D3Calculator.Fragments
 
                 characteristicsAttr.AddRange(new List<IListItem>()
                 {
-                    new AttributeListItem(Resources.GetString(Resource.String.effectiveHitpoints), d3Calculator.getHeroEffectiveHitpoints(hero.level+3)),
-                    new AttributeListItem(Resources.GetString(Resource.String.EHP_DPS), d3Calculator.getHeroEffectiveHitpoints(hero.level+3) * d3Calculator.getHeroDPS() / 1000000),
+                    new AttributeListItem(Resources.GetString(Resource.String.effectiveHitpoints), Math.Round(d3Calculator.getHeroEffectiveHitpoints(hero.level+3))),
+                    new AttributeListItem(Resources.GetString(Resource.String.EHP_DPS), Math.Round((d3Calculator.getHeroEffectiveHitpoints(hero.level+3) * d3Calculator.getHeroDPS()).min / 1000000)),
                     
                     new SectionHeaderListItem(Resources.GetString(Resource.String.defense)),
                     new AttributeListItem(Resources.GetString(Resource.String.dodge), d3Calculator.getHeroDodge()),
-                    new AttributeListItem(Resources.GetString(Resource.String.armor), d3Calculator.getHeroArmor()),
+                    new AttributeListItem(Resources.GetString(Resource.String.armor), Math.Round(d3Calculator.getHeroArmor().min)),
                     new AttributeListItem(Resources.GetString(Resource.String.arcaneResist), d3Calculator.getHeroResistance("Arcane")),
                     new AttributeListItem(Resources.GetString(Resource.String.coldResist), d3Calculator.getHeroResistance("Cold")),
                     new AttributeListItem(Resources.GetString(Resource.String.fireResist), d3Calculator.getHeroResistance("Fire")),

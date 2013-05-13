@@ -57,8 +57,14 @@
   <string name="wizard">sorcier</string>
 
   <!-- Items -->
+  <string name="Armor">Armure</string>
+  <string name="AttacksPerSecond">Attaque par seconde</string>
+  <string name="Damages">Points de dégâts</string>
+  <string name="DamagePerSecond">Dégâts par seconde</string>
+  <string name="damagePerSecond">dégâts par seconde</string>
   <string name="gear">équipement</string>
   <string name="setBonuses">bonus de set</string>
+  <string name="Socket">Chasse</string>
 
   <!-- Skills -->
   <string name="passiveSkill">compétence passive</string>
@@ -110,7 +116,7 @@
   <string name="physicalResist">résistance physique</string>
 
   <!-- Resources -->
-  <string name="resources">ressouces</string>
+  <string name="resources">ressources</string>
   <string name="primaryResource">ressource principale</string>
   <string name="secondaryResource">ressource secondaire</string>
 

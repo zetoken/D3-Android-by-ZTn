@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Android.App;
+using Android.Content.Res;
 using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.Views;
@@ -35,6 +37,40 @@ namespace ZTnDroid.D3Calculator.Adapters
         public void updateHeroView(View view)
         {
             view.FindViewById<TextView>(Resource.Id.gearItemName).Text = item.name;
+
+            if (item.armor != null)
+            {
+                view.FindViewById<LinearLayout>(Resource.Id.gearItemArmorLayout).Visibility = ViewStates.Visible;
+                view.FindViewById<TextView>(Resource.Id.gearItemArmor).Text = item.armor.min.ToString();
+            }
+            else
+                view.FindViewById<LinearLayout>(Resource.Id.gearItemArmorLayout).Visibility = ViewStates.Gone;
+
+            if (item.dps != null)
+            {
+                view.FindViewById<LinearLayout>(Resource.Id.gearItemDpsLayout).Visibility = ViewStates.Visible;
+                view.FindViewById<TextView>(Resource.Id.gearItemDps).Text = Math.Round(item.dps.min, 1).ToString();
+            }
+            else
+                view.FindViewById<LinearLayout>(Resource.Id.gearItemDpsLayout).Visibility = ViewStates.Gone;
+
+            if (item.minDamage != null && item.maxDamage != null)
+            {
+                view.FindViewById<LinearLayout>(Resource.Id.gearItemDamageLayout).Visibility = ViewStates.Visible;
+                view.FindViewById<TextView>(Resource.Id.gearItemDamageMin).Text = item.minDamage.min.ToString();
+                view.FindViewById<TextView>(Resource.Id.gearItemDamageMax).Text = item.maxDamage.min.ToString();
+            }
+            else
+                view.FindViewById<LinearLayout>(Resource.Id.gearItemDamageLayout).Visibility = ViewStates.Gone;
+
+            if (item.attacksPerSecond != null)
+            {
+                view.FindViewById<LinearLayout>(Resource.Id.gearItemAttacksPerSecondLayout).Visibility = ViewStates.Visible;
+                view.FindViewById<TextView>(Resource.Id.gearItemAttacksPerSecond).Text = item.attacksPerSecond.min.ToString();
+            }
+            else
+                view.FindViewById<LinearLayout>(Resource.Id.gearItemAttacksPerSecondLayout).Visibility = ViewStates.Gone;
+
             String description = "";
             if (item.attributes != null)
             {
@@ -46,10 +82,11 @@ namespace ZTnDroid.D3Calculator.Adapters
                 foreach (SocketedGem gem in item.gems)
                 {
                     foreach (String s in gem.attributes)
-                        description += "gem " + s + System.Environment.NewLine;
+                        description += Application.Context.Resources.GetString(Resource.String.Socket) + " " + s + System.Environment.NewLine;
                 }
             }
             view.FindViewById<TextView>(Resource.Id.gearItemDescription).Text = description;
+
             switch (item.displayColor)
             {
                 case "orange":
@@ -67,6 +104,7 @@ namespace ZTnDroid.D3Calculator.Adapters
                 default:
                     break;
             }
+
             if (icon != null)
             {
                 Bitmap bitmap = Android.Graphics.BitmapFactory.DecodeByteArray(icon.bytes, 0, (int)icon.bytes.Length);
