@@ -36,8 +36,8 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             SetHasOptionsMenu(true);
 
-            battleTag = D3Context.getInstance().battleTag;
-            host = D3Context.getInstance().host;
+            battleTag = D3Context.instance.battleTag;
+            host = D3Context.instance.host;
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -50,7 +50,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             listView.ItemClick += (Object sender, Android.Widget.AdapterView.ItemClickEventArgs args) =>
             {
                 HeroSummary heroSummary = ((HeroSummariesListAdapter)listView.Adapter).getHeroSummaryAt(args.Position);
-                D3Context.getInstance().heroSummary = heroSummary;
+                D3Context.instance.heroSummary = heroSummary;
 
                 Intent viewHeroIntent = new Intent(Activity, typeof(ViewHeroActivity));
 
@@ -59,7 +59,7 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             Activity.Title = battleTag;
 
-            deferredFetchAndUpdateCareer(D3Context.getInstance().onlineMode);
+            deferredFetchAndUpdateCareer(D3Context.instance.onlineMode);
 
             return view;
         }
@@ -140,7 +140,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
 
             Toast.MakeText(Activity, "Career will be removed...", ToastLength.Short);
-            D3Context.getInstance().dbAccounts.delete(battleTag, host);
+            D3Context.instance.dbAccounts.delete(battleTag, host);
             Activity.Finish();
         }
 
@@ -164,7 +164,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             }
             finally
             {
-                dataProvider.onlineMode = D3Context.getInstance().onlineMode;
+                dataProvider.onlineMode = D3Context.instance.onlineMode;
             }
         }
 

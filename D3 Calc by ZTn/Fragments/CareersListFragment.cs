@@ -35,7 +35,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                             String battleTag = data.GetStringExtra("battleTag");
                             String host = data.GetStringExtra("host");
 
-                            D3Context.getInstance().dbAccounts.insert(battleTag, host);
+                            D3Context.instance.dbAccounts.insert(battleTag, host);
 
                             IListAdapter careerAdapter = new SimpleCursorAdapter(Activity, Android.Resource.Layout.SimpleListItem2, cursor, accountsFromColumns, accountsToId);
                             Activity.FindViewById<ListView>(Resource.Id.AccountsListView).Adapter = careerAdapter;
@@ -85,13 +85,13 @@ namespace ZTnDroid.D3Calculator.Fragments
             careerListView.ItemClick += (Object sender, AdapterView.ItemClickEventArgs args) =>
             {
                 Intent viewCareerIntent = new Intent(Activity, typeof(ViewCareerActivity));
-                D3Context.getInstance().battleTag = args.View.FindViewById<TextView>(Android.Resource.Id.Text1).Text;
-                D3Context.getInstance().host = args.View.FindViewById<TextView>(Android.Resource.Id.Text2).Text;
+                D3Context.instance.battleTag = args.View.FindViewById<TextView>(Android.Resource.Id.Text1).Text;
+                D3Context.instance.host = args.View.FindViewById<TextView>(Android.Resource.Id.Text2).Text;
                 StartActivity(viewCareerIntent);
             };
 
-            D3Context.getInstance().dbAccounts = new AccountsDB(Activity);
-            cursor = D3Context.getInstance().dbAccounts.getAccounts();
+            D3Context.instance.dbAccounts = new AccountsDB(Activity);
+            cursor = D3Context.instance.dbAccounts.getAccounts();
             Activity.StartManagingCursor(cursor);
 
             IListAdapter accountsAdapter = new SimpleCursorAdapter(Activity, Android.Resource.Layout.SimpleListItem2, cursor, accountsFromColumns, accountsToId);
@@ -130,7 +130,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
 
-            D3Context.getInstance().dbAccounts.insert(battleTag, host);
+            D3Context.instance.dbAccounts.insert(battleTag, host);
         }
     }
 }

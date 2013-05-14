@@ -19,7 +19,8 @@ namespace ZTnDroid.D3Calculator.Fragments
     {
         public override void OnCreate(Bundle savedInstanceState)
         {
-            Console.WriteLine("HeroGearListFragment: OnCreate");
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
             base.OnCreate(savedInstanceState);
 
             RetainInstance = true;
@@ -27,7 +28,8 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            Console.WriteLine("HeroGearListFragment: OnCreateView");
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
             View view = inflater.Inflate(Resource.Layout.ViewHeroGear, container, false);
 
             updateView(view);
@@ -51,10 +53,10 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         private void updateView(View view)
         {
-            Console.WriteLine("HeroGearListFragment: updateHeroView");
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
 
-            Hero hero = D3Context.getInstance().hero;
-            IconsContainer icons = D3Context.getInstance().icons;
+            Hero hero = D3Context.instance.hero;
+            IconsContainer icons = D3Context.instance.icons;
             if (hero != null && hero.items != null)
             {
                 ListView heroGearListView = view.FindViewById<ListView>(Resource.Id.heroGearListView);
@@ -73,7 +75,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                 gearAttr.AddRange(getPartialViewForItem(Resources.GetString(Resource.String.itemRightFinger), hero.items.rightFinger, icons.rightFinger));
                 gearAttr.AddRange(getPartialViewForItem(Resources.GetString(Resource.String.itemLeftFinger), hero.items.leftFinger, icons.leftFinger));
                 gearAttr.AddRange(getPartialViewForItem(Resources.GetString(Resource.String.itemNeck), hero.items.neck, icons.neck));
-                gearAttr.AddRange(getPartialViewForItem(Resources.GetString(Resource.String.setBonuses), D3Context.getInstance().setBonus, null));
+                gearAttr.AddRange(getPartialViewForItem(Resources.GetString(Resource.String.setBonuses), D3Context.instance.setBonus, null));
 
                 heroGearListView.Adapter = new SectionedListAdapter(Activity, gearAttr.ToArray());
             }

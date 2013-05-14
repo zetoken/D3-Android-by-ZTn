@@ -16,6 +16,11 @@ namespace ZTnDroid.D3Calculator.Adapters
     {
         public String label;
 
+        public SectionHeaderListItem(int id)
+            : this(D3Calc.Context.Resources.GetString(id))
+        {
+        }
+
         public SectionHeaderListItem(String label)
             : base()
         {

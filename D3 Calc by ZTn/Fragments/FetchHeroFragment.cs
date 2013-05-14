@@ -20,10 +20,6 @@ namespace ZTnDroid.D3Calculator.Fragments
 {
     public class FetchHeroFragment : Fragment
     {
-        String battleTag;
-        String host;
-        HeroSummary heroSummary;
-
         public HeroCharacteristicsListFragment fragmentCharacteristics;
         public HeroComputedListFragment fragmentComputed;
         public HeroGearListFragment fragmentGear;
@@ -46,11 +42,6 @@ namespace ZTnDroid.D3Calculator.Fragments
             RetainInstance = true;
 
             SetHasOptionsMenu(true);
-
-            // Fragment initialization
-            battleTag = D3Context.getInstance().battleTag;
-            host = D3Context.getInstance().host;
-            heroSummary = D3Context.getInstance().heroSummary;
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -58,8 +49,8 @@ namespace ZTnDroid.D3Calculator.Fragments
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
 
             // Fetch hero from server
-            D3Context.getInstance().hero = null;
-            deferredFetchHero(D3Context.getInstance().onlineMode);
+            D3Context.instance.hero = null;
+            deferredFetchHero(D3Context.instance.onlineMode);
 
             return base.OnCreateView(inflater, container, savedInstanceState);
         }
@@ -77,13 +68,13 @@ namespace ZTnDroid.D3Calculator.Fragments
             {
                 try
                 {
-                    D3Context.getInstance().hero = fetchHero(online);
+                    D3Context.instance.hero = fetchHero(online);
                     this.Activity.RunOnUiThread(() =>
                     {
                         if (online == OnlineMode.Online)
                             progressDialog.SetTitle(Resources.GetString(Resource.String.LoadingItems));
                     });
-                    D3Context.getInstance().heroItems = fetchFullItems(online);
+                    D3Context.instance.heroItems = fetchFullItems(online);
 
                     this.Activity.RunOnUiThread(() =>
                     {
@@ -97,7 +88,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                         fetchIconsOnlineMode = OnlineMode.OnlineIfMissing;
                     else
                         fetchIconsOnlineMode = online;
-                    D3Context.getInstance().icons = fetchIcons(fetchIconsOnlineMode);
+                    D3Context.instance.icons = fetchIcons(fetchIconsOnlineMode);
 
                     this.Activity.RunOnUiThread(() =>
                     {
@@ -135,7 +126,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
 
-            HeroItems heroItems = D3Context.getInstance().hero.items;
+            HeroItems heroItems = D3Context.instance.hero.items;
 
             DataProviders.CacheableDataProvider dataProvider = (DataProviders.CacheableDataProvider)D3Api.dataProvider;
             dataProvider.onlineMode = online;
@@ -203,18 +194,18 @@ namespace ZTnDroid.D3Calculator.Fragments
                     items.Add((Item)heroItems.offHand);
 
                 KnownSets knownSets = KnownSets.getKnownSetsFromJSonStream(this.Activity.Assets.Open("d3set.json"));
-                D3Context.getInstance().setBonus = new Item(knownSets.getActivatedSetBonus(items));
+                D3Context.instance.setBonus = new Item(knownSets.getActivatedSetBonus(items));
             }
             catch (Exception exception)
             {
                 Console.WriteLine(exception);
-                D3Context.getInstance().heroItems = null;
-                D3Context.getInstance().setBonus = null;
+                D3Context.instance.heroItems = null;
+                D3Context.instance.setBonus = null;
                 throw exception;
             }
             finally
             {
-                dataProvider.onlineMode = D3Context.getInstance().onlineMode;
+                dataProvider.onlineMode = D3Context.instance.onlineMode;
             }
 
             return heroItems;
@@ -224,8 +215,8 @@ namespace ZTnDroid.D3Calculator.Fragments
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
 
-            HeroItems heroItems = D3Context.getInstance().hero.items;
-            HeroSkills skills = D3Context.getInstance().hero.skills;
+            HeroItems heroItems = D3Context.instance.hero.items;
+            HeroSkills skills = D3Context.instance.hero.skills;
             IconsContainer icons = new IconsContainer();
 
             DataProviders.CacheableDataProvider dataProvider = (DataProviders.CacheableDataProvider)D3Api.dataProvider;
@@ -283,12 +274,12 @@ namespace ZTnDroid.D3Calculator.Fragments
             catch (Exception exception)
             {
                 Console.WriteLine(exception);
-                D3Context.getInstance().icons = null;
+                D3Context.instance.icons = null;
                 throw exception;
             }
             finally
             {
-                dataProvider.onlineMode = D3Context.getInstance().onlineMode;
+                dataProvider.onlineMode = D3Context.instance.onlineMode;
             }
 
             return icons;
@@ -300,13 +291,13 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             Hero hero = null;
 
-            D3Api.host = host;
+            D3Api.host = D3Context.instance.host;
             DataProviders.CacheableDataProvider dataProvider = (DataProviders.CacheableDataProvider)D3Api.dataProvider;
             dataProvider.onlineMode = online;
 
             try
             {
-                hero = Hero.getHeroFromHeroId(new BattleTag(battleTag), heroSummary.id);
+                hero = Hero.getHeroFromHeroId(new BattleTag(D3Context.instance.battleTag), D3Context.instance.heroSummary.id);
             }
             catch (Exception exception)
             {
@@ -316,7 +307,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             }
             finally
             {
-                dataProvider.onlineMode = D3Context.getInstance().onlineMode;
+                dataProvider.onlineMode = D3Context.instance.onlineMode;
             }
 
             return hero;

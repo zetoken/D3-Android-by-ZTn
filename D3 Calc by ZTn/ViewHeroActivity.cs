@@ -28,8 +28,8 @@ namespace ZTnDroid.D3Calculator
 
             SetContentView(Resource.Layout.SimpleViewPager);
 
-            this.Title = D3Context.getInstance().heroSummary.name;
-            this.ActionBar.Subtitle = D3Context.getInstance().battleTag;
+            this.Title = D3Context.instance.heroSummary.name;
+            this.ActionBar.Subtitle = D3Context.instance.battleTag;
 
             // ViewPager initialization
             List<Fragment> fragments = new List<Fragment>();

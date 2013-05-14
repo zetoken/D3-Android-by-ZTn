@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using ZTnDroid.D3Calculator.Helpers;
 
 namespace ZTnDroid.D3Calculator.Fragments
 {
@@ -26,14 +27,16 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         public void OnTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction)
         {
-            Console.WriteLine("SimpleTabListener: OnTabReselected");
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
             fragmentTransaction.Detach(fragment);
-            fragmentTransaction.Attach(fragment);          
+            fragmentTransaction.Attach(fragment);
         }
 
         public void OnTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction)
         {
-            Console.WriteLine("SimpleTabListener: OnTabSelected");
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
             if (fragment == null)
             {
                 fragment = Fragment.Instantiate(context, typeof(T).Namespace.ToLower() + "." + typeof(T).Name);
@@ -47,7 +50,8 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         public void OnTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction)
         {
-            Console.WriteLine("SimpleTabListener: OnTabUnselected");
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
             if (fragment != null)
             {
                 fragmentTransaction.Detach(fragment);

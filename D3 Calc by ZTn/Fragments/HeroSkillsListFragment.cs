@@ -19,7 +19,8 @@ namespace ZTnDroid.D3Calculator.Fragments
     {
         public override void OnCreate(Bundle savedInstanceState)
         {
-            Console.WriteLine("HeroSkillsListFragment: OnCreate");
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
             base.OnCreate(savedInstanceState);
 
             RetainInstance = true;
@@ -27,7 +28,8 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            Console.WriteLine("HeroSkillsListFragment: OnCreateView");
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
             View view = inflater.Inflate(Resource.Layout.ViewHeroSkills, container, false);
 
             updateView(view);
@@ -62,10 +64,10 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         private void updateView(View view)
         {
-            Console.WriteLine("HeroSkillsListFragment: updateHeroSkills");
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
 
-            Hero hero = D3Context.getInstance().hero;
-            IconsContainer icons = D3Context.getInstance().icons;
+            Hero hero = D3Context.instance.hero;
+            IconsContainer icons = D3Context.instance.icons;
             if (hero != null)
             {
                 ListView heroSkillsListView = view.FindViewById<ListView>(Resource.Id.heroSkillsListView);

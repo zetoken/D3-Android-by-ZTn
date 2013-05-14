@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using ZTnDroid.D3Calculator.Fragments;
+using ZTnDroid.D3Calculator.Helpers;
 
 namespace ZTnDroid.D3Calculator
 {
@@ -18,7 +19,8 @@ namespace ZTnDroid.D3Calculator
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            Console.WriteLine("SettingsActivity: OnCreate");
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
             base.OnCreate(savedInstanceState);
 
             this.Application.SetTheme(Android.Resource.Style.ThemeHolo);

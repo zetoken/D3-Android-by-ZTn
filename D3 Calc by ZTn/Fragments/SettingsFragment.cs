@@ -27,14 +27,14 @@ namespace ZTnDroid.D3Calculator.Fragments
             Activity.Title = Resources.GetString(Resource.String.Settings);
 
             Switch settingOnline = view.FindViewById<Switch>(Resource.Id.settingOnline);
-            settingOnline.Checked = (D3Context.getInstance().onlineMode == OnlineMode.Online);
+            settingOnline.Checked = (D3Context.instance.onlineMode == OnlineMode.Online);
             settingOnline.CheckedChange += delegate(object sender, CompoundButton.CheckedChangeEventArgs e)
             {
                 D3Calc.preferences
                     .Edit()
                     .PutBoolean(D3Calc.SETTINGS_ONLINEMODE, e.IsChecked)
                     .Commit();
-                D3Context.getInstance().onlineMode = (e.IsChecked ? OnlineMode.Online : OnlineMode.Offline);
+                D3Context.instance.onlineMode = (e.IsChecked ? OnlineMode.Online : OnlineMode.Offline);
             };
 
             return view;
