@@ -78,8 +78,8 @@ namespace ZTnDroid.D3Calculator.Fragments
             if (heroItems.waist != null)
                 items.Add((Item)heroItems.waist);
 
-            if (D3Context.instance.setBonus != null)
-                items.Add(D3Context.instance.setBonus);
+            if (D3Context.instance.activatedSetBonus != null)
+                items.Add(D3Context.instance.activatedSetBonus);
 
             if (heroItems.mainHand == null)
                 heroItems.mainHand = new Item(new ItemAttributes());
@@ -123,7 +123,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                 };
 
                 if (attr.critPercentBonusCapped != null)
-                    characteristicsAttr.Add(new AttributePercentListItem(Resource.String.criticChance, attr.critPercentBonusCapped));
+                    characteristicsAttr.Add(new AttributePercentListItem(Resource.String.criticChance, attr.critPercentBonusCapped + 0.03));
                 if (attr.critDamagePercent != null)
                     characteristicsAttr.Add(new AttributePercentListItem(Resource.String.criticDamage, attr.critDamagePercent + 1));
 

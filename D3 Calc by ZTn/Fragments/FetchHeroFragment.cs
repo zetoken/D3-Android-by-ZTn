@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Threading;
 using Android.App;
@@ -12,6 +13,7 @@ using ZTn.BNet.D3.Calculator.Sets;
 using ZTn.BNet.D3.DataProviders;
 using ZTn.BNet.D3.Heroes;
 using ZTn.BNet.D3.Items;
+using ZTn.BNet.D3.Calculator.Helpers;
 using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
 using Fragment = Android.Support.V4.App.Fragment;
@@ -165,42 +167,31 @@ namespace ZTnDroid.D3Calculator.Fragments
                     heroItems.neck = heroItems.neck.getFullItem();
 
                 // Compute set items bonus
-                List<Item> items = new List<Item>();
-                if (heroItems.bracers != null)
-                    items.Add((Item)heroItems.bracers);
-                if (heroItems.feet != null)
-                    items.Add((Item)heroItems.feet);
-                if (heroItems.hands != null)
-                    items.Add((Item)heroItems.hands);
-                if (heroItems.head != null)
-                    items.Add((Item)heroItems.head);
-                if (heroItems.leftFinger != null)
-                    items.Add((Item)heroItems.leftFinger);
-                if (heroItems.legs != null)
-                    items.Add((Item)heroItems.legs);
-                if (heroItems.neck != null)
-                    items.Add((Item)heroItems.neck);
-                if (heroItems.rightFinger != null)
-                    items.Add((Item)heroItems.rightFinger);
-                if (heroItems.shoulders != null)
-                    items.Add((Item)heroItems.shoulders);
-                if (heroItems.torso != null)
-                    items.Add((Item)heroItems.torso);
-                if (heroItems.waist != null)
-                    items.Add((Item)heroItems.waist);
-                if (heroItems.mainHand != null)
-                    items.Add((Item)heroItems.mainHand);
-                if (heroItems.offHand != null)
-                    items.Add((Item)heroItems.offHand);
+                List<Item> items = new List<Item>() {
+                    (Item)heroItems.bracers,
+                    (Item)heroItems.feet,
+                    (Item)heroItems.hands,
+                    (Item)heroItems.head,
+                    (Item)heroItems.leftFinger,
+                    (Item)heroItems.legs,
+                    (Item)heroItems.neck,
+                    (Item)heroItems.rightFinger,
+                    (Item)heroItems.shoulders,
+                    (Item)heroItems.torso,
+                    (Item)heroItems.waist,
+                    (Item)heroItems.mainHand,
+                    (Item)heroItems.offHand
+                };
+                items = items.Where(i => i != null).ToList();
 
-                KnownSets knownSets = KnownSets.getKnownSetsFromJSonStream(this.Activity.Assets.Open("d3set.json"));
-                D3Context.instance.setBonus = new Item(knownSets.getActivatedSetBonus(items));
+                D3Context.instance.activatedSetBonus = new Item(items.getActivatedSetBonus());
+                D3Context.instance.activatedSets = items.getActivatedSets();
             }
             catch (Exception exception)
             {
                 Console.WriteLine(exception);
                 D3Context.instance.heroItems = null;
-                D3Context.instance.setBonus = null;
+                D3Context.instance.activatedSetBonus = null;
                 throw exception;
             }
             finally

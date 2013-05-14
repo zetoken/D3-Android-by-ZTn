@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using ZTn.BNet.D3.DataProviders;
 using ZTn.BNet.D3.Heroes;
 using ZTn.BNet.D3.Items;
@@ -16,7 +17,8 @@ namespace ZTnDroid.D3Calculator.Storage
 
         public HeroItems heroItems;
 
-        public Item setBonus;
+        public Item activatedSetBonus;
+        public List<Set> activatedSets;
 
         public IconsContainer icons;
 
