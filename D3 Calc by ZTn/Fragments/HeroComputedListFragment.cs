@@ -123,7 +123,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                 };
 
                 if (attr.critPercentBonusCapped != null)
-                    characteristicsAttr.Add(new AttributePercentListItem(Resource.String.criticChance, attr.critPercentBonusCapped + 0.03));
+                    characteristicsAttr.Add(new AttributePercentListItem(Resource.String.criticChance, attr.critPercentBonusCapped));
                 if (attr.critDamagePercent != null)
                     characteristicsAttr.Add(new AttributePercentListItem(Resource.String.criticDamage, attr.critDamagePercent + 1));
 
