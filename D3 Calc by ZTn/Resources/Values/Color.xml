@@ -1,8 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
+  <!-- Hero colors -->
+  <color name="heroname_text">#FFBF642F</color>
+  <color name="heroclass_text">#FFD4B473</color>
+  <color name="herolevel_text">#FFA791C2</color>
+  <color name="hardcore_text">#FFE60101</color>
+
+  <!-- Item colors -->
   <color name="blueItem">#FF7979D4</color>
   <color name="greenItem">#FF8BD442</color>
   <color name="orangeItem">#FFBF642F</color>
   <color name="yellowItem">#FFF8CC35</color>
-  <color name="rune_textcolor">#FF796D55</color>
+  <color name="itemstat_description">#FF909090</color>
+  <color name="item_description">#FF6969FF</color>
+  <color name="socket_description">#FFFFFFFF</color>
+  
+  <!-- Skill colors -->
+  <color name="skill_text">#FFF3E6D0</color>
+  <color name="skill_description">#FFC7B377</color>
+  <color name="rune_text">#FFA7851A</color>
+  <color name="rune_description">#FFC7B377</color>
 </resources>

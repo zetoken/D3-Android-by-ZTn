@@ -6,10 +6,8 @@
     <ImageView
         android:id="@+id/imageSkill"
         android:src="@android:drawable/ic_menu_gallery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minHeight="42px"
-        android:minWidth="42px" />
+        android:layout_width="48dp"
+        android:layout_height="48dp" />
     <TextView
         android:id="@+id/skillName"
         android:text="Name"
@@ -17,7 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/imageSkill"
         android:layout_marginLeft="?android:attr/listPreferredItemPaddingLeft"
-        android:textAppearance="?android:attr/textAppearanceListItem" />
+        android:textAppearance="?android:attr/textAppearanceListItem"
+        android:textColor="@color/skill_text" />
     <TextView
         android:id="@+id/skillDescription"
         android:text="Description"
@@ -26,5 +25,6 @@
         android:layout_below="@id/skillName"
         android:layout_toRightOf="@id/imageSkill"
         android:layout_marginLeft="?android:attr/listPreferredItemPaddingLeft"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/skill_description" />
 </RelativeLayout>

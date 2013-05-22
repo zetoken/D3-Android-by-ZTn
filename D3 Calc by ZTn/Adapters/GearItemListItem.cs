@@ -15,16 +15,19 @@ namespace ZTnDroid.D3Calculator.Adapters
 {
     public class GearItemListItem : IListItem
     {
+        public String label;
         public Item item;
         public D3Picture icon;
 
-        public GearItemListItem(Item item)
+        public GearItemListItem(String label, Item item)
         {
+            this.label = label;
             this.item = item;
         }
 
-        public GearItemListItem(Item item, D3Picture icon)
+        public GearItemListItem(String label, Item item, D3Picture icon)
         {
+            this.label = label;
             this.item = item;
             this.icon = icon;
         }
@@ -36,6 +39,8 @@ namespace ZTnDroid.D3Calculator.Adapters
 
         public void updateHeroView(View view)
         {
+            view.FindViewById<TextView>(Resource.Id.sectionLabel).Text = label;
+
             view.FindViewById<TextView>(Resource.Id.gearItemName).Text = item.name;
 
             if (item.armor != null)
@@ -71,21 +76,28 @@ namespace ZTnDroid.D3Calculator.Adapters
             else
                 view.FindViewById<LinearLayout>(Resource.Id.gearItemAttacksPerSecondLayout).Visibility = ViewStates.Gone;
 
-            String description = "";
             if (item.attributes != null)
             {
+                String description = String.Empty;
                 foreach (String s in item.attributes)
-                    description += s + System.Environment.NewLine;
+                    description += (description != String.Empty ? System.Environment.NewLine : String.Empty) + s;
+                view.FindViewById<TextView>(Resource.Id.gearItemDescription).Text = description;
             }
+            else
+                view.FindViewById<TextView>(Resource.Id.gearItemDescription).Visibility = ViewStates.Gone;
+
             if (item.gems != null)
             {
+                String socketsText = String.Empty;
                 foreach (SocketedGem gem in item.gems)
                 {
                     foreach (String s in gem.attributes)
-                        description += Application.Context.Resources.GetString(Resource.String.Socket) + " " + s + System.Environment.NewLine;
+                        socketsText += (socketsText != String.Empty ? System.Environment.NewLine : String.Empty) + Application.Context.Resources.GetString(Resource.String.Socket) + " " + s;
                 }
+                view.FindViewById<TextView>(Resource.Id.gearSocketsDescription).Text = socketsText;
             }
-            view.FindViewById<TextView>(Resource.Id.gearItemDescription).Text = description;
+            else
+                view.FindViewById<TextView>(Resource.Id.gearSocketsDescription).Visibility = ViewStates.Gone;
 
             switch (item.displayColor)
             {

@@ -40,23 +40,19 @@ namespace ZTnDroid.D3Calculator.Fragments
             return view;
         }
 
-        private List<IListItem> getDataForItem(int id, ItemSummary item, D3Picture icon)
+        private IListItem getDataForItem(int id, ItemSummary item, D3Picture icon)
         {
             return getDataForItem(Resources.GetString(id), item, icon);
         }
 
-        private List<IListItem> getDataForItem(String label, ItemSummary item, D3Picture icon)
+        private IListItem getDataForItem(String label, ItemSummary item, D3Picture icon)
         {
-            List<IListItem> list = new List<IListItem>() {
-                new SectionHeaderListItem(label)
-            };
-
+            IListItem listItem = null;
             if (item != null && (item is Item) && (icon != null))
-                list.Add(new GearItemListItem((Item)item, icon));
+                listItem = new GearItemListItem(label, (Item)item, icon);
             else if (item != null && (item is Item))
-                list.Add(new GearItemListItem((Item)item));
-
-            return list;
+                listItem = new GearItemListItem(label, (Item)item);
+            return listItem;
         }
 
         private void updateView(View view)
@@ -70,19 +66,19 @@ namespace ZTnDroid.D3Calculator.Fragments
                 ListView heroGearListView = view.FindViewById<ListView>(Resource.Id.heroGearListView);
                 List<IListItem> gearAttr = new List<IListItem>();
 
-                gearAttr.AddRange(getDataForItem(Resource.String.itemHead, hero.items.head, icons.head));
-                gearAttr.AddRange(getDataForItem(Resource.String.itemTorso, hero.items.torso, icons.torso));
-                gearAttr.AddRange(getDataForItem(Resource.String.itemFeet, hero.items.feet, icons.feet));
-                gearAttr.AddRange(getDataForItem(Resource.String.itemHands, hero.items.hands, icons.hands));
-                gearAttr.AddRange(getDataForItem(Resource.String.itemShoulders, hero.items.shoulders, icons.shoulders));
-                gearAttr.AddRange(getDataForItem(Resource.String.itemLegs, hero.items.legs, icons.legs));
-                gearAttr.AddRange(getDataForItem(Resource.String.itemBracers, hero.items.bracers, icons.bracers));
-                gearAttr.AddRange(getDataForItem(Resource.String.itemMainHand, hero.items.mainHand, icons.mainHand));
-                gearAttr.AddRange(getDataForItem(Resource.String.itemOffHand, hero.items.offHand, icons.offHand));
-                gearAttr.AddRange(getDataForItem(Resource.String.itemWaist, hero.items.waist, icons.waist));
-                gearAttr.AddRange(getDataForItem(Resource.String.itemRightFinger, hero.items.rightFinger, icons.rightFinger));
-                gearAttr.AddRange(getDataForItem(Resource.String.itemLeftFinger, hero.items.leftFinger, icons.leftFinger));
-                gearAttr.AddRange(getDataForItem(Resource.String.itemNeck, hero.items.neck, icons.neck));
+                gearAttr.Add(getDataForItem(Resource.String.itemHead, hero.items.head, icons.head));
+                gearAttr.Add(getDataForItem(Resource.String.itemTorso, hero.items.torso, icons.torso));
+                gearAttr.Add(getDataForItem(Resource.String.itemFeet, hero.items.feet, icons.feet));
+                gearAttr.Add(getDataForItem(Resource.String.itemHands, hero.items.hands, icons.hands));
+                gearAttr.Add(getDataForItem(Resource.String.itemShoulders, hero.items.shoulders, icons.shoulders));
+                gearAttr.Add(getDataForItem(Resource.String.itemLegs, hero.items.legs, icons.legs));
+                gearAttr.Add(getDataForItem(Resource.String.itemBracers, hero.items.bracers, icons.bracers));
+                gearAttr.Add(getDataForItem(Resource.String.itemMainHand, hero.items.mainHand, icons.mainHand));
+                gearAttr.Add(getDataForItem(Resource.String.itemOffHand, hero.items.offHand, icons.offHand));
+                gearAttr.Add(getDataForItem(Resource.String.itemWaist, hero.items.waist, icons.waist));
+                gearAttr.Add(getDataForItem(Resource.String.itemRightFinger, hero.items.rightFinger, icons.rightFinger));
+                gearAttr.Add(getDataForItem(Resource.String.itemLeftFinger, hero.items.leftFinger, icons.leftFinger));
+                gearAttr.Add(getDataForItem(Resource.String.itemNeck, hero.items.neck, icons.neck));
 
                 HeroItems heroItems = D3Context.instance.hero.items;
                 List<Item> items = new List<Item>() {
@@ -106,7 +102,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                 {
                     Item setItem = new Item() { name = set.name, attributes = set.getBonusAttributes(set.countItemsOfSet(items)), displayColor = "green" };
                     if (setItem.attributes.Length > 0)
-                        gearAttr.AddRange(getDataForItem(Resource.String.setBonuses, setItem, null));
+                        gearAttr.Add(getDataForItem(Resource.String.setBonuses, setItem, null));
                 }
 
                 heroGearListView.Adapter = new SectionedListAdapter(Activity, gearAttr.ToArray());
