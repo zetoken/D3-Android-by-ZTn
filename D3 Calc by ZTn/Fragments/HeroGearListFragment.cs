@@ -105,7 +105,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                         gearAttr.Add(getDataForItem(Resource.String.setBonuses, setItem, null));
                 }
 
-                heroGearListView.Adapter = new SectionedListAdapter(Activity, gearAttr.ToArray());
+                heroGearListView.Adapter = new SectionedListAdapter(Activity, gearAttr.Where(l => l != null).ToArray());
             }
         }
     }
