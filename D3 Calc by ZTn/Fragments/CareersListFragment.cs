@@ -1,11 +1,13 @@
 using System;
 using System.Reflection;
+
 using Android.App;
 using Android.Content;
 using Android.Database;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+
 using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
 
@@ -22,6 +24,9 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         ICursor cursor;
 
+        #region >> Fragment
+
+        /// <inheritdoc/>
         public override void OnActivityResult(int requestCode, int resultCode, Intent data)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -55,6 +60,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             base.OnActivityResult(requestCode, resultCode, data);
         }
 
+        /// <inheritdoc/>
         public override void OnCreate(Bundle savedInstanceState)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -66,6 +72,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             SetHasOptionsMenu(true);
         }
 
+        /// <inheritdoc/>
         public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -75,6 +82,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             base.OnCreateOptionsMenu(menu, inflater);
         }
 
+        /// <inheritdoc/>
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -100,6 +108,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             return view;
         }
 
+        /// <inheritdoc/>
         public override void OnDestroyView()
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -110,6 +119,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             base.OnDestroyView();
         }
 
+        /// <inheritdoc/>
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -125,6 +135,8 @@ namespace ZTnDroid.D3Calculator.Fragments
                     return base.OnOptionsItemSelected(item);
             }
         }
+
+        #endregion
 
         private void insertIntoCareersStorage(String battleTag, String host)
         {

@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
 using Android.Graphics;
 using Android.Views;
 using Android.Widget;
+
 using ZTn.BNet.D3.Medias;
 using ZTn.BNet.D3.Skills;
 
@@ -14,6 +13,8 @@ namespace ZTnDroid.D3Calculator.Adapters
     {
         public Skill skill;
         public D3Picture icon;
+
+        #region >> Constructors
 
         public SkillListItem(Skill skill)
         {
@@ -26,12 +27,29 @@ namespace ZTnDroid.D3Calculator.Adapters
             this.icon = icon;
         }
 
+        #endregion
+
+        #region >> IListItem
+
+        /// <inheritdoc/>
         public int getLayoutResource()
         {
             return Resource.Layout.SkillListItem;
         }
 
-        public void updateHeroView(View view)
+        /// <inheritdoc/>
+        public bool isEnabled()
+        {
+            return false;
+        }
+
+        /// <inheritdoc/>
+        public void removeView(View view)
+        {
+        }
+
+        /// <inheritdoc/>
+        public void updateView(View view, Boolean recycled)
         {
             view.FindViewById<TextView>(Resource.Id.skillName).Text = skill.name;
             view.FindViewById<TextView>(Resource.Id.skillDescription).Text = skill.description;
@@ -41,5 +59,7 @@ namespace ZTnDroid.D3Calculator.Adapters
                 view.FindViewById<ImageView>(Resource.Id.imageSkill).SetImageBitmap(bitmap);
             }
         }
+
+        #endregion
     }
 }

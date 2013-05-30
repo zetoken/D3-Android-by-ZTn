@@ -1,24 +1,31 @@
-using System;
 using System.Reflection;
+
 using Android.App;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+
 using ZTn.BNet.D3.DataProviders;
+
 using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
+
 using Fragment = Android.Support.V4.App.Fragment;
 
 namespace ZTnDroid.D3Calculator.Fragments
 {
     public class SettingsFragment : Fragment
     {
+        #region >> Fragment
+
+        /// <inheritdoc/>
         public override void OnCreate(Bundle savedInstanceState)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
             base.OnCreate(savedInstanceState);
         }
 
+        /// <inheritdoc/>
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -39,5 +46,7 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             return view;
         }
+
+        #endregion
     }
 }

@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:descendantFocusability="afterDescendants">
     <TextView
         android:text="Section Label"
         android:layout_width="fill_parent"
@@ -18,7 +19,7 @@
         android:background="@android:color/holo_blue_light" />
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/imageGearItem"
@@ -26,15 +27,39 @@
             android:layout_height="wrap_content" />
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/gearItemName"
-                android:text="Name"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="?android:attr/listPreferredItemPaddingLeft"
-                android:textAppearance="?android:attr/textAppearanceListItem" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/gearItemName"
+                    android:text="Name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="?android:attr/listPreferredItemPaddingLeft"
+                    android:textAppearance="?android:attr/textAppearanceListItem" />
+                <View
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:id="@+id/divider"
+                    android:layout_weight="1"
+                    android:scaleType="centerInside" />
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/divider"
+                    android:background="@android:color/holo_blue_light"
+                    android:layout_marginTop="5dip"
+                    android:layout_marginBottom="5dp" />
+                <ImageView
+                    android:src="@android:drawable/ic_menu_edit"
+                    android:id="@+id/gearItemEdit"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:scaleType="centerInside" />
+            </LinearLayout>
             <LinearLayout
                 android:id="@+id/gearItemDpsLayout"
                 android:orientation="horizontal"

@@ -12,6 +12,8 @@ namespace ZTnDroid.D3Calculator.Adapters
         List<Fragment> fragments;
         List<String> titles;
 
+        #region >> Constructors
+
         public BasicViewPagerAdapter(FragmentManager fragmentManager, List<Fragment> fragments, List<String> titles)
             : base(fragmentManager)
         {
@@ -19,19 +21,28 @@ namespace ZTnDroid.D3Calculator.Adapters
             this.titles = titles;
         }
 
+        #endregion
+
+        #region >> FragmentPagerAdapter
+
+        /// <inheritdoc/>
         public override int Count
         {
             get { return fragments.Count; }
         }
 
+        /// <inheritdoc/>
         public override Fragment GetItem(int position)
         {
             return fragments[position];
         }
 
+        /// <inheritdoc/>
         public override Java.Lang.ICharSequence GetPageTitleFormatted(int position)
         {
             return new Java.Lang.String(titles[position].ToUpper());
         }
+
+        #endregion
     }
 }

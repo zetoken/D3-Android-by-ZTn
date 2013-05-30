@@ -73,10 +73,10 @@
     <Compile Include="Adapters\AttributeListItem.cs" />
     <Compile Include="Adapters\AttributePercentListItem.cs" />
     <Compile Include="Adapters\GearItemListItem.cs" />
-    <Compile Include="Adapters\IListItem.cs" />
+    <Compile Include="Adapters\Delegated\IListItem.cs" />
     <Compile Include="Adapters\RuneListItem.cs" />
     <Compile Include="Adapters\HeroSummariesListAdapter.cs" />
-    <Compile Include="Adapters\SectionedListAdapter.cs" />
+    <Compile Include="Adapters\Delegated\ListAdapter.cs" />
     <Compile Include="Adapters\SectionHeaderListItem.cs" />
     <Compile Include="Adapters\SkillListItem.cs" />
     <Compile Include="Adapters\ViewHeroViewPagerAdapter.cs" />
@@ -91,8 +91,9 @@
     <Compile Include="Fragments\HeroSkillsListFragment.cs" />
     <Compile Include="Fragments\SettingsFragment.cs" />
     <Compile Include="Fragments\SimpleTabListener.cs" />
-    <Compile Include="Fragments\ZTnFragment.cs" />
+    <Compile Include="Fragments\UpdatableFragment.cs" />
     <Compile Include="Helpers\AndroidHelper.cs" />
+    <Compile Include="Helpers\JavaLangObject.cs" />
     <Compile Include="Helpers\ZTnTrace.cs" />
     <Compile Include="Storage\IconsContainer.cs" />
     <Compile Include="Storage\AccountsDB.cs" />

@@ -19,12 +19,19 @@ namespace ZTnDroid.D3Calculator.Fragments
         Fragment fragment;
         Context context;
 
+        #region >> Constructors
+
         public SimpleTabListener(Context context)
         {
             this.context = context;
             fragment = null;
         }
 
+        #endregion
+
+        #region >> ActionBar.ITabListener
+
+        /// <inheritdoc/>
         public void OnTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -33,6 +40,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             fragmentTransaction.Attach(fragment);
         }
 
+        /// <inheritdoc/>
         public void OnTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -48,6 +56,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             }
         }
 
+        /// <inheritdoc/>
         public void OnTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -57,5 +66,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                 fragmentTransaction.Detach(fragment);
             }
         }
+
+        #endregion
     }
 }

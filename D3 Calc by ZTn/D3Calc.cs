@@ -1,16 +1,12 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
 using Android.App;
 using Android.Content;
-using Android.Content.Res;
-using Android.OS;
 using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+
 using ZTn.BNet.D3;
 using ZTn.BNet.D3.DataProviders;
+
 using ZTnDroid.D3Calculator.Storage;
 
 namespace ZTnDroid.D3Calculator
@@ -55,6 +51,8 @@ namespace ZTnDroid.D3Calculator
 
         #endregion
 
+        #region >> Application
+
         public override void OnCreate()
         {
             base.OnCreate();
@@ -64,7 +62,7 @@ namespace ZTnDroid.D3Calculator
             // Load preferences
             preferences = GetSharedPreferences(SETTINGS_FILENAME, FileCreationMode.Private);
             // Default offline mode
-            D3Context.instance.onlineMode = (preferences.GetBoolean(SETTINGS_ONLINEMODE, false) ? OnlineMode.Online : OnlineMode.Offline);
+            D3Context.instance.onlineMode = (preferences.GetBoolean(SETTINGS_ONLINEMODE, false) ? OnlineMode.Online : OnlineMode.OnlineIfMissing);
 
             // Always start D3Api with cache available
             DataProviders.CacheableDataProvider dataProvider = new DataProviders.CacheableDataProvider(new ZTn.BNet.D3.DataProviders.HttpRequestDataProvider());
@@ -74,5 +72,7 @@ namespace ZTnDroid.D3Calculator
             // Set english locale by default
             D3Api.locale = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
         }
+
+        #endregion
     }
 }

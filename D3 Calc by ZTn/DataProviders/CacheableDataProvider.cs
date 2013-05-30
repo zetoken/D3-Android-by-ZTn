@@ -16,9 +16,14 @@ namespace ZTnDroid.D3Calculator.DataProviders
 
         #endregion
 
+        #region >> CacheableDataProvider
+
+        /// <inheritdoc/>
         public override String getCacheStoragePath()
         {
             return Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, "D3CalcByZTn") + "/";
         }
+
+        #endregion
     }
 }

@@ -1,31 +1,27 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using Android.App;
-using Android.Content;
+using System.Reflection;
+
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using ZTn.BNet.BattleNet;
-using ZTn.BNet.D3;
+
 using ZTn.BNet.D3.Heroes;
 using ZTn.BNet.D3.Items;
-using ZTnDroid.D3Calculator.Adapters;
-using ZTnDroid.D3Calculator.Storage;
-using ZTn.BNet.D3.Calculator;
-using System.Reflection;
-using ZTn.BNet.D3.Calculator.Sets;
 
-using Fragment = Android.Support.V4.App.Fragment;
+using ZTnDroid.D3Calculator.Adapters;
+using ZTnDroid.D3Calculator.Adapters.Delegated;
 using ZTnDroid.D3Calculator.Helpers;
+using ZTnDroid.D3Calculator.Storage;
 
 namespace ZTnDroid.D3Calculator.Fragments
 {
-    public class HeroComputedListFragment : ZTnFragment
+    public class HeroComputedListFragment : UpdatableFragment
     {
+        #region >> ZTnFragment
+
+        /// <inheritdoc/>
         public override void OnCreate(Bundle savedInstanceState)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -35,6 +31,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             RetainInstance = true;
         }
 
+        /// <inheritdoc/>
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -46,6 +43,8 @@ namespace ZTnDroid.D3Calculator.Fragments
             return view;
         }
 
+        #endregion
+
         private ZTn.BNet.D3.Calculator.D3Calculator getCalculator()
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -53,33 +52,23 @@ namespace ZTnDroid.D3Calculator.Fragments
             Hero hero = D3Context.instance.hero;
             HeroItems heroItems = D3Context.instance.heroItems;
 
-            // Retrieve weared items from the GUI
-            List<Item> items = new List<Item>();
-            if (heroItems.bracers != null)
-                items.Add((Item)heroItems.bracers);
-            if (heroItems.feet != null)
-                items.Add((Item)heroItems.feet);
-            if (heroItems.hands != null)
-                items.Add((Item)heroItems.hands);
-            if (heroItems.head != null)
-                items.Add((Item)heroItems.head);
-            if (heroItems.leftFinger != null)
-                items.Add((Item)heroItems.leftFinger);
-            if (heroItems.legs != null)
-                items.Add((Item)heroItems.legs);
-            if (heroItems.neck != null)
-                items.Add((Item)heroItems.neck);
-            if (heroItems.rightFinger != null)
-                items.Add((Item)heroItems.rightFinger);
-            if (heroItems.shoulders != null)
-                items.Add((Item)heroItems.shoulders);
-            if (heroItems.torso != null)
-                items.Add((Item)heroItems.torso);
-            if (heroItems.waist != null)
-                items.Add((Item)heroItems.waist);
-
-            if (D3Context.instance.activatedSetBonus != null)
-                items.Add(D3Context.instance.activatedSetBonus);
+            // Retrieve worn items
+            List<Item> items = new List<Item>()
+            {
+                (Item)heroItems.bracers,
+                (Item)heroItems.feet,
+                (Item)heroItems.hands,
+                (Item)heroItems.head,
+                (Item)heroItems.leftFinger,
+                (Item)heroItems.legs,
+                (Item)heroItems.neck,
+                (Item)heroItems.rightFinger,
+                (Item)heroItems.shoulders,
+                (Item)heroItems.torso,
+                (Item)heroItems.waist,
+                D3Context.instance.activatedSetBonus
+            };
+            items = items.Where(i => i != null).ToList();
 
             if (heroItems.mainHand == null)
                 heroItems.mainHand = new Item(new ItemAttributes());
@@ -169,7 +158,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                 if (attr.magicFind != null)
                     characteristicsAttr.Add(new AttributePercentListItem(Resource.String.magicFind, attr.magicFind));
 
-                heroStatsListView.Adapter = new SectionedListAdapter(Activity, characteristicsAttr.ToArray());
+                heroStatsListView.Adapter = new ListAdapter(Activity, characteristicsAttr.ToArray());
             }
         }
     }

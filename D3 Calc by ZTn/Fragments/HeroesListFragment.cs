@@ -2,19 +2,24 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
+
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+
 using ZTn.BNet.BattleNet;
 using ZTn.BNet.D3;
 using ZTn.BNet.D3.Careers;
 using ZTn.BNet.D3.DataProviders;
 using ZTn.BNet.D3.Heroes;
+
 using ZTnDroid.D3Calculator.Adapters;
+using ZTnDroid.D3Calculator.Adapters.Delegated;
 using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
+
 using Fragment = Android.Support.V4.App.Fragment;
 
 namespace ZTnDroid.D3Calculator.Fragments
@@ -26,6 +31,9 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         Career career;
 
+        #region >> Fragment
+
+        /// <inheritdoc/>
         public override void OnCreate(Bundle savedInstanceState)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -40,6 +48,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             host = D3Context.instance.host;
         }
 
+        /// <inheritdoc/>
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -64,6 +73,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             return view;
         }
 
+        /// <inheritdoc/>
         public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -73,6 +83,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             Activity.MenuInflater.Inflate(Resource.Menu.ViewCareerActivity, menu);
         }
 
+        /// <inheritdoc/>
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -91,6 +102,8 @@ namespace ZTnDroid.D3Calculator.Fragments
                     return base.OnOptionsItemSelected(item);
             }
         }
+
+        #endregion
 
         private void deferredFetchAndUpdateCareer(OnlineMode online)
         {
@@ -182,7 +195,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                     new AttributeListItem(Resources.GetString(Resource.String.KilledMonsters), career.kills.monsters.ToString()),
                     new AttributeListItem(Resources.GetString(Resource.String.KilledHardcore), career.kills.hardcoreMonsters.ToString())
                 };
-                killsListView.Adapter = new SectionedListAdapter(Activity, attributes.ToArray());
+                killsListView.Adapter = new ListAdapter(Activity, attributes.ToArray());
 
                 if (career.heroes != null)
                 {

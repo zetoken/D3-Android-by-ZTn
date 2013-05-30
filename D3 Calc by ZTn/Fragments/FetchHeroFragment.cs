@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
+
 using Android.App;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+
 using ZTn.BNet.BattleNet;
 using ZTn.BNet.D3;
-using ZTn.BNet.D3.Calculator.Sets;
+using ZTn.BNet.D3.Calculator.Helpers;
 using ZTn.BNet.D3.DataProviders;
 using ZTn.BNet.D3.Heroes;
 using ZTn.BNet.D3.Items;
-using ZTn.BNet.D3.Calculator.Helpers;
+
 using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
+
 using Fragment = Android.Support.V4.App.Fragment;
 
 namespace ZTnDroid.D3Calculator.Fragments
@@ -27,6 +30,8 @@ namespace ZTnDroid.D3Calculator.Fragments
         public HeroGearListFragment fragmentGear;
         public HeroSkillsListFragment fragmentSkills;
 
+        #region >> Constructors
+
         public FetchHeroFragment()
         {
             fragmentCharacteristics = new HeroCharacteristicsListFragment();
@@ -35,6 +40,11 @@ namespace ZTnDroid.D3Calculator.Fragments
             fragmentGear = new HeroGearListFragment();
         }
 
+        #endregion
+
+        #region >> Fragment
+
+        /// <inheritdoc/>
         public override void OnCreate(Bundle savedInstanceState)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -46,6 +56,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             SetHasOptionsMenu(true);
         }
 
+        /// <inheritdoc/>
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -57,14 +68,42 @@ namespace ZTnDroid.D3Calculator.Fragments
             return base.OnCreateView(inflater, container, savedInstanceState);
         }
 
+        /// <inheritdoc/>
+        public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
+        {
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
+            base.OnCreateOptionsMenu(menu, inflater);
+
+            inflater.Inflate(Resource.Menu.ViewHeroActivity, menu);
+
+        }
+
+        /// <inheritdoc/>
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
+            switch (item.ItemId)
+            {
+                case Resource.Id.RefreshContent:
+                    deferredFetchHero(OnlineMode.Online);
+                    return true;
+
+                default:
+                    return base.OnOptionsItemSelected(item);
+            }
+        }
+
+        #endregion
+
         private void deferredFetchHero(OnlineMode online)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
 
             ProgressDialog progressDialog = null;
 
-            if (online == OnlineMode.Online)
-                progressDialog = ProgressDialog.Show(this.Activity, Resources.GetString(Resource.String.LoadingHero), Resources.GetString(Resource.String.WaitWhileRetrievingData), true);
+            progressDialog = ProgressDialog.Show(this.Activity, Resources.GetString(Resource.String.LoadingHero), Resources.GetString(Resource.String.WaitWhileRetrievingData), true);
 
             new Thread(new ThreadStart(() =>
             {
@@ -73,18 +112,16 @@ namespace ZTnDroid.D3Calculator.Fragments
                     D3Context.instance.hero = fetchHero(online);
                     this.Activity.RunOnUiThread(() =>
                     {
-                        if (online == OnlineMode.Online)
-                            progressDialog.SetTitle(Resources.GetString(Resource.String.LoadingItems));
+                        progressDialog.SetTitle(Resources.GetString(Resource.String.LoadingItems));
                     });
                     D3Context.instance.heroItems = fetchFullItems(online);
 
                     this.Activity.RunOnUiThread(() =>
                     {
-                        if (online == OnlineMode.Online)
-                            progressDialog.SetTitle(Resources.GetString(Resource.String.LoadingIcons));
+                        progressDialog.SetTitle(Resources.GetString(Resource.String.LoadingIcons));
                     });
 
-                    // Icons are fetches with Online.OnlineIfMissing even if OnlineMode.Online is asked
+                    // Icons are fetched with Online.OnlineIfMissing even if OnlineMode.Online is asked
                     OnlineMode fetchIconsOnlineMode;
                     if (online == OnlineMode.Online)
                         fetchIconsOnlineMode = OnlineMode.OnlineIfMissing;
@@ -94,8 +131,7 @@ namespace ZTnDroid.D3Calculator.Fragments
 
                     this.Activity.RunOnUiThread(() =>
                     {
-                        if (online == OnlineMode.Online)
-                            progressDialog.Dismiss();
+                        progressDialog.Dismiss();
                         fragmentCharacteristics.updateFragment();
                         fragmentComputed.updateFragment();
                         fragmentSkills.updateFragment();
@@ -106,8 +142,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                 {
                     this.Activity.RunOnUiThread(() =>
                     {
-                        if (online == OnlineMode.Online)
-                            progressDialog.Dismiss();
+                        progressDialog.Dismiss();
                         Toast.MakeText(this.Activity, "Hero not in cache" + System.Environment.NewLine + "Please use refresh action", ToastLength.Long).Show();
                     });
                 }
@@ -115,8 +150,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                 {
                     this.Activity.RunOnUiThread(() =>
                     {
-                        if (online == OnlineMode.Online)
-                            progressDialog.Dismiss();
+                        progressDialog.Dismiss();
                         Toast.MakeText(this.Activity, Resources.GetString(Resource.String.ErrorOccuredWhileRetrievingData), ToastLength.Long).Show();
                         Console.WriteLine(exception);
                     });
@@ -302,31 +336,6 @@ namespace ZTnDroid.D3Calculator.Fragments
             }
 
             return hero;
-        }
-
-        public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
-        {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
-
-            base.OnCreateOptionsMenu(menu, inflater);
-
-            inflater.Inflate(Resource.Menu.ViewHeroActivity, menu);
-
-        }
-
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
-
-            switch (item.ItemId)
-            {
-                case Resource.Id.RefreshContent:
-                    deferredFetchHero(OnlineMode.Online);
-                    return true;
-
-                default:
-                    return base.OnOptionsItemSelected(item);
-            }
         }
     }
 }

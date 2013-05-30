@@ -1,21 +1,24 @@
-using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Android.App;
+
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+
 using ZTn.BNet.D3.Heroes;
+
 using ZTnDroid.D3Calculator.Adapters;
+using ZTnDroid.D3Calculator.Adapters.Delegated;
 using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
 
-using Fragment = Android.Support.V4.App.Fragment;
-
 namespace ZTnDroid.D3Calculator.Fragments
 {
-    public class HeroCharacteristicsListFragment : ZTnFragment
+    public class HeroCharacteristicsListFragment : UpdatableFragment
     {
+        #region >> ZTnFragment
+
+        /// <inheritdoc/>
         public override void OnCreate(Bundle savedInstanceState)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -25,6 +28,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             RetainInstance = true;
         }
 
+        /// <inheritdoc/>
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -35,6 +39,8 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             return view;
         }
+
+        #endregion
 
         private void updateView(View view)
         {
@@ -90,7 +96,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                     new AttributePercentListItem(Resource.String.goldFind, hero.stats.goldFind),
                     new AttributePercentListItem(Resource.String.magicFind, hero.stats.magicFind)
                 };
-                heroStatsListView.Adapter = new SectionedListAdapter(Activity, characteristicsAttr.ToArray());
+                heroStatsListView.Adapter = new ListAdapter(Activity, characteristicsAttr.ToArray());
             }
         }
     }

@@ -1,11 +1,14 @@
 using System.Reflection;
+
 using Android.App;
+
 using ZTnDroid.D3Calculator.Helpers;
+
 using Fragment = Android.Support.V4.App.Fragment;
 
 namespace ZTnDroid.D3Calculator.Fragments
 {
-    public abstract class ZTnFragment : Fragment
+    public abstract class UpdatableFragment : Fragment
     {
         public void updateFragment()
         {

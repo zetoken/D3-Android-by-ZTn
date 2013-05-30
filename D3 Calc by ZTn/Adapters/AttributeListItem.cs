@@ -1,13 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
+
 using Android.Views;
 using Android.Widget;
+
 using ZTn.BNet.D3.Heroes;
 using ZTn.BNet.D3.Items;
 
@@ -17,6 +12,8 @@ namespace ZTnDroid.D3Calculator.Adapters
     {
         public String name;
         public String value;
+
+        #region >> Constructors
 
         protected AttributeListItem()
         {
@@ -108,15 +105,34 @@ namespace ZTnDroid.D3Calculator.Adapters
             this.value = String.Format("{0:0.00}", value);
         }
 
+        #endregion
+
+        #region >> IListItem
+
+        /// <inheritdoc/>
         public int getLayoutResource()
         {
             return Resource.Layout.AttributeListItem;
         }
 
-        public void updateHeroView(View view)
+        /// <inheritdoc/>
+        public bool isEnabled()
+        {
+            return false;
+        }
+
+        /// <inheritdoc/>
+        public void removeView(View view)
+        {
+        }
+
+        /// <inheritdoc/>
+        public void updateView(View view, Boolean recycled)
         {
             view.FindViewById<TextView>(Resource.Id.attributeName).Text = name;
             view.FindViewById<TextView>(Resource.Id.attributeValue).Text = value;
         }
+
+        #endregion
     }
 }

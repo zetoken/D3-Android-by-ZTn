@@ -1,25 +1,29 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Linq;
-using Android.App;
+using System.Reflection;
+
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+
+using ZTn.BNet.D3.Calculator.Sets;
 using ZTn.BNet.D3.Heroes;
 using ZTn.BNet.D3.Items;
 using ZTn.BNet.D3.Medias;
-using ZTn.BNet.D3.Calculator.Sets;
-using ZTn.BNet.D3.Calculator.Helpers;
+
 using ZTnDroid.D3Calculator.Adapters;
+using ZTnDroid.D3Calculator.Adapters.Delegated;
 using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
-using Fragment = Android.Support.V4.App.Fragment;
 
 namespace ZTnDroid.D3Calculator.Fragments
 {
-    public class HeroGearListFragment : ZTnFragment
+    public class HeroGearListFragment : UpdatableFragment
     {
+        #region >> ZTnFragment
+
+        /// <inheritdoc/>
         public override void OnCreate(Bundle savedInstanceState)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -29,6 +33,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             RetainInstance = true;
         }
 
+        /// <inheritdoc/>
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -39,6 +44,8 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             return view;
         }
+
+        #endregion
 
         private IListItem getDataForItem(int id, ItemSummary item, D3Picture icon)
         {
@@ -105,7 +112,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                         gearAttr.Add(getDataForItem(Resource.String.setBonuses, setItem, null));
                 }
 
-                heroGearListView.Adapter = new SectionedListAdapter(Activity, gearAttr.Where(l => l != null).ToArray());
+                heroGearListView.Adapter = new ListAdapter(Activity, gearAttr.Where(l => l != null).ToArray()) { convertibleViews = true };
             }
         }
     }
