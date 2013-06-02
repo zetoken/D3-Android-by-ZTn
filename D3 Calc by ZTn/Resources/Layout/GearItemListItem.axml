@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:descendantFocusability="afterDescendants">
+    android:descendantFocusability="afterDescendants"
+    android:id="@+id/linearLayout"
+    android:layout_below="@+id/textView">
     <TextView
         android:text="Section Label"
         android:layout_width="fill_parent"
@@ -15,174 +17,162 @@
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dip"
-        android:id="@+id/divider"
-        android:background="@android:color/holo_blue_light" />
+        android:id="@+id/sectionDivider"
+        android:background="@android:color/holo_blue_light"
+        android:layout_below="@+id/sectionLabel" />
+    <ImageView
+        android:id="@+id/imageGearItem"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sectionDivider"
+        android:layout_alignParentStart="false" />
+    <View
+        android:layout_width="0.5dip"
+        android:layout_height="40dip"
+        android:id="@+id/editDivider"
+        android:background="@android:color/holo_blue_light"
+        android:layout_marginTop="5dip"
+        android:layout_marginBottom="5dp"
+        android:layout_alignLeft="@+id/gearItemEdit"
+        android:layout_below="@+id/sectionDivider" />
+    <ImageView
+        android:src="@android:drawable/ic_menu_edit"
+        android:id="@+id/gearItemEdit"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:scaleType="centerInside"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/sectionDivider" />
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/imageGearItem"
-            android:layout_width="48dp"
-            android:layout_height="wrap_content" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="false"
+        android:orientation="vertical"
+        android:layout_below="@+id/sectionDivider"
+        android:layout_toRightOf="@+id/imageGearItem"
+        android:layout_toLeftOf="@+id/gearItemEdit">
+        <TextView
+            android:id="@+id/gearItemName"
+            android:text="Name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceListItem" />
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left|center_vertical"
+            android:id="@+id/gearItemDpsLayout">
+            <TextView
+                android:id="@+id/gearItemDps"
+                android:text="Value"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/gearItemName"
-                    android:text="Name"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="?android:attr/listPreferredItemPaddingLeft"
-                    android:textAppearance="?android:attr/textAppearanceListItem" />
-                <View
-                    android:layout_width="0dip"
-                    android:layout_height="match_parent"
-                    android:id="@+id/divider"
-                    android:layout_weight="1"
-                    android:scaleType="centerInside" />
-                <View
-                    android:layout_width="0.5dp"
-                    android:layout_height="match_parent"
-                    android:id="@+id/divider"
-                    android:background="@android:color/holo_blue_light"
-                    android:layout_marginTop="5dip"
-                    android:layout_marginBottom="5dp" />
-                <ImageView
-                    android:src="@android:drawable/ic_menu_edit"
-                    android:id="@+id/gearItemEdit"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:scaleType="centerInside" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/gearItemDpsLayout"
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="?android:attr/listPreferredItemPaddingLeft">
-                <TextView
-                    android:id="@+id/gearItemDps"
-                    android:text="Value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceListItem" />
-                <TextView
-                    android:text=" "
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
-                <TextView
-                    android:text="@string/damagePerSecond"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/itemstat_description" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/gearItemDamageLayout"
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="?android:attr/listPreferredItemPaddingLeft">
-                <TextView
-                    android:id="@+id/gearItemDamageMin"
-                    android:text="Min"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
-                <TextView
-                    android:text=" - "
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
-                <TextView
-                    android:id="@+id/gearItemDamageMax"
-                    android:text="Max"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
-                <TextView
-                    android:text=" "
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
-                <TextView
-                    android:text="@string/Damages"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/itemstat_description" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/gearItemAttacksPerSecondLayout"
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="?android:attr/listPreferredItemPaddingLeft">
-                <TextView
-                    android:id="@+id/gearItemAttacksPerSecond"
-                    android:text="Value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
-                <TextView
-                    android:text=" "
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
-                <TextView
-                    android:text="@string/AttacksPerSecond"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/itemstat_description" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/gearItemArmorLayout"
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="?android:attr/listPreferredItemPaddingLeft">
-                <TextView
-                    android:id="@+id/gearItemArmor"
-                    android:text="Value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceListItem" />
-                <TextView
-                    android:text=" "
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
-                <TextView
-                    android:text="@string/armor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/itemstat_description" />
-            </LinearLayout>
+                android:textAppearance="?android:attr/textAppearanceListItem" />
             <TextView
-                android:id="@+id/gearItemDescription"
-                android:text="Description"
-                android:layout_width="fill_parent"
+                android:text=" "
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="?android:attr/listPreferredItemPaddingLeft"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/item_description" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
             <TextView
-                android:id="@+id/gearSocketsDescription"
-                android:text="Sockets"
-                android:layout_width="fill_parent"
+                android:text="@string/damagePerSecond"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="?android:attr/listPreferredItemPaddingLeft"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/socket_description" />
+                android:textColor="@color/itemstat_description" />
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left|center_vertical"
+            android:id="@+id/gearItemDamageLayout">
+            <TextView
+                android:id="@+id/gearItemDamageMin"
+                android:text="Min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+            <TextView
+                android:text=" - "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+            <TextView
+                android:id="@+id/gearItemDamageMax"
+                android:text="Max"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+            <TextView
+                android:text=" "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+            <TextView
+                android:text="@string/Damages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/itemstat_description" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left|center_vertical"
+            android:id="@+id/gearItemAttacksPerSecondLayout">
+            <TextView
+                android:id="@+id/gearItemAttacksPerSecond"
+                android:text="Value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+            <TextView
+                android:text=" "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+            <TextView
+                android:text="@string/AttacksPerSecond"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/itemstat_description" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left|center_vertical"
+            android:id="@+id/gearItemArmorLayout">
+            <TextView
+                android:id="@+id/gearItemArmor"
+                android:text="Value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceListItem" />
+            <TextView
+                android:text=" "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+            <TextView
+                android:text="@string/armor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/itemstat_description" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/gearItemDescription"
+            android:text="Item Details"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/item_description" />
+        <TextView
+            android:id="@+id/gearSocketsDescription"
+            android:text="Sockets Details"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/socket_description" />
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>
