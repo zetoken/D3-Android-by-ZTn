@@ -173,7 +173,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             {
                 Console.WriteLine(exception);
                 career = null;
-                throw exception;
+                throw;
             }
             finally
             {

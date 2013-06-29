@@ -226,7 +226,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                 Console.WriteLine(exception);
                 D3Context.instance.heroItems = null;
                 D3Context.instance.activatedSetBonus = null;
-                throw exception;
+                throw;
             }
             finally
             {
@@ -300,7 +300,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             {
                 Console.WriteLine(exception);
                 D3Context.instance.icons = null;
-                throw exception;
+                throw;
             }
             finally
             {
@@ -328,7 +328,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             {
                 Console.WriteLine(exception);
                 hero = null;
-                throw exception;
+                throw;
             }
             finally
             {
