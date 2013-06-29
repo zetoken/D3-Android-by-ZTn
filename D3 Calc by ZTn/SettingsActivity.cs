@@ -17,6 +17,9 @@ namespace ZTnDroid.D3Calculator
     [Activity(Label = "@string/SettingsActivityLabel")]
     public class SettingsActivity : ZTnFragmentActivity
     {
+        #region >> ZTnFragmentActivity
+
+        /// <inheritdoc/>
         protected override void OnCreate(Bundle savedInstanceState)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -34,5 +37,7 @@ namespace ZTnDroid.D3Calculator
                 .Add(Resource.Id.fragment_container, new SettingsFragment())
                 .Commit();
         }
+
+        #endregion
     }
 }

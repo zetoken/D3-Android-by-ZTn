@@ -20,6 +20,9 @@ namespace ZTnDroid.D3Calculator
         Spinner serverSpinner;
         EditText battleTagEditText;
 
+        #region >> ZTnFragmentActivity
+
+        /// <inheritdoc/>
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -39,6 +42,7 @@ namespace ZTnDroid.D3Calculator
             battleTagEditText = FindViewById<EditText>(Resource.Id.battleTagEditText);
         }
 
+        /// <inheritdoc/>
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.AddNewAccountActivity, menu);
@@ -46,6 +50,7 @@ namespace ZTnDroid.D3Calculator
             return true;
         }
 
+        /// <inheritdoc/>
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             switch (item.ItemId)
@@ -58,6 +63,8 @@ namespace ZTnDroid.D3Calculator
                     return base.OnOptionsItemSelected(item);
             }
         }
+
+        #endregion
 
         private void onSubmit()
         {

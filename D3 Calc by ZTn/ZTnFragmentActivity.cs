@@ -7,16 +7,18 @@ namespace ZTnDroid.D3Calculator
 {
     public class ZTnFragmentActivity : FragmentActivity
     {
+        #region >> FragmentActivity
+
+        /// <inheritdoc/>
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
-            SetTheme(Android.Resource.Style.ThemeHolo);
 
             ActionBar.SetDisplayHomeAsUpEnabled(true);
             ActionBar.SetIcon(Resource.Drawable.Icon);
         }
 
+        /// <inheritdoc/>
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             switch (item.ItemId)
@@ -29,5 +31,7 @@ namespace ZTnDroid.D3Calculator
                     return base.OnOptionsItemSelected(item);
             }
         }
+
+        #endregion
     }
 }

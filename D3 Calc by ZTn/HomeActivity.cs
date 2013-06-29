@@ -19,6 +19,9 @@ namespace ZTnDroid.D3Calculator
     {
         private static Fragment careersListFragment;
 
+        #region >> FragmentActivity
+
+        /// <inheritdoc/>
         public override void OnBackPressed()
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -28,6 +31,7 @@ namespace ZTnDroid.D3Calculator
             Finish();
         }
 
+        /// <inheritdoc/>
         protected override void OnCreate(Bundle savedInstanceState)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -47,6 +51,7 @@ namespace ZTnDroid.D3Calculator
             }
         }
 
+        /// <inheritdoc/>
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -56,6 +61,7 @@ namespace ZTnDroid.D3Calculator
             return base.OnCreateOptionsMenu(menu);
         }
 
+        /// <inheritdoc/>
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -71,6 +77,8 @@ namespace ZTnDroid.D3Calculator
                     return base.OnOptionsItemSelected(item);
             }
         }
+
+        #endregion
     }
 }
 
