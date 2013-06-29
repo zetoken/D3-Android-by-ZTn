@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Android.App;
+using Android.Content;
 using Android.Graphics;
 using Android.Views;
 using Android.Widget;
@@ -168,7 +169,12 @@ namespace ZTnDroid.D3Calculator.Adapters
 
         private void onClickEditEventHandler(Object sender, EventArgs e)
         {
+            ImageView view = (ImageView)sender;
+
             Toast.MakeText(D3Calc.Context, "Trying to edit " + item.name, ToastLength.Short).Show();
+
+            Intent editorIntent = new Intent(view.Context, typeof(GearItemEditorActivity));
+            view.Context.StartActivity(editorIntent);
         }
     }
 }

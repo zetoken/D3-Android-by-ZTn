@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <ScrollView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollViewContainer">
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editItemName" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layoutAttributes">
+                <TextView
+                    android:text="@string/attributes"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sectionLabelAttributes"
+                    android:textColor="@android:color/holo_blue_light"
+                    android:textAllCaps="true" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:id="@+id/sectionDivider"
+                    android:background="@android:color/holo_blue_light"
+                    android:layout_below="@+id/sectionDivider" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/addAttribute"
+                    android:layout_gravity="left|center_vertical"
+                    android:src="@android:drawable/ic_input_add"
+                    android:background="@android:color/transparent" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layoutResistances">
+                <TextView
+                    android:text="@string/defense"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sectionLabelSockets"
+                    android:textColor="@android:color/holo_blue_light"
+                    android:textAllCaps="true" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:id="@+id/sectionDivider"
+                    android:background="@android:color/holo_blue_light"
+                    android:layout_below="@+id/sectionDivider" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/addDefense"
+                    android:layout_gravity="left|center_vertical"
+                    android:src="@android:drawable/ic_input_add"
+                    android:background="@android:color/transparent" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layoutSockets">
+                <TextView
+                    android:text="@string/Socket"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sectionLabelSockets"
+                    android:textColor="@android:color/holo_blue_light"
+                    android:textAllCaps="true" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:id="@+id/sectionDivider"
+                    android:background="@android:color/holo_blue_light"
+                    android:layout_below="@+id/sectionDivider" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/addSocket"
+                    android:layout_gravity="left|center_vertical"
+                    android:src="@android:drawable/ic_input_add"
+                    android:background="@android:color/transparent" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

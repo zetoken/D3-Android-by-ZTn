@@ -84,6 +84,7 @@
     <Compile Include="DataProviders\CacheableDataProvider.cs" />
     <Compile Include="Fragments\CareersListFragment.cs" />
     <Compile Include="Fragments\FetchHeroFragment.cs" />
+    <Compile Include="Fragments\GearItemEditorFragment.cs" />
     <Compile Include="Fragments\HeroCharacteristicsListFragment.cs" />
     <Compile Include="Fragments\HeroComputedListFragment.cs" />
     <Compile Include="Fragments\HeroesListFragment.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Fragments\SettingsFragment.cs" />
     <Compile Include="Fragments\SimpleTabListener.cs" />
     <Compile Include="Fragments\UpdatableFragment.cs" />
+    <Compile Include="GearItemEditorActivity.cs" />
     <Compile Include="Helpers\AndroidHelper.cs" />
     <Compile Include="Helpers\JavaLangObject.cs" />
     <Compile Include="Helpers\ZTnTrace.cs" />
@@ -109,7 +111,6 @@
     <Compile Include="ZTnFragmentActivity.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\d3set.json" />
     <AndroidAsset Include="Assets\hosts.json" />
     <AndroidAsset Include="Assets\d3gem.json" />
     <None Include="Resources\AboutResources.txt" />
@@ -153,6 +154,12 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\Layout\SimpleViewPager.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\GearItemEditor.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\GearItemRowEditor.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
