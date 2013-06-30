@@ -21,7 +21,7 @@
     <ImageButton
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:id="@+id/removeAttribute"
+        android:id="@+id/remove"
         android:src="@android:drawable/ic_delete"
         android:background="@android:color/transparent" />
 </LinearLayout>

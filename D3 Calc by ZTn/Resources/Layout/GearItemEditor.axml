@@ -20,7 +20,7 @@
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editItemName" />
+                android:id="@+id/gearItemName" />
             <LinearLayout
                 android:orientation="vertical"
                 android:minWidth="25px"
@@ -33,20 +33,20 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/sectionLabelAttributes"
+                    android:id="@+id/labelAttributes"
                     android:textColor="@android:color/holo_blue_light"
                     android:textAllCaps="true" />
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="1dip"
-                    android:id="@+id/sectionDivider"
+                    android:id="@+id/divider"
                     android:background="@android:color/holo_blue_light"
-                    android:layout_below="@+id/sectionDivider" />
+                    android:layout_below="@+id/divider" />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/addAttribute"
-                    android:layout_gravity="left|center_vertical"
+                    android:id="@+id/add"
+                    android:layout_gravity="center_horizontal"
                     android:src="@android:drawable/ic_input_add"
                     android:background="@android:color/transparent" />
             </LinearLayout>
@@ -56,26 +56,26 @@
                 android:minHeight="25px"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/layoutResistances">
+                android:id="@+id/layoutDefense">
                 <TextView
                     android:text="@string/defense"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/sectionLabelSockets"
+                    android:id="@+id/labelDefense"
                     android:textColor="@android:color/holo_blue_light"
                     android:textAllCaps="true" />
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="1dip"
-                    android:id="@+id/sectionDivider"
+                    android:id="@+id/divider"
                     android:background="@android:color/holo_blue_light"
-                    android:layout_below="@+id/sectionDivider" />
+                    android:layout_below="@+id/divider" />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/addDefense"
-                    android:layout_gravity="left|center_vertical"
+                    android:id="@+id/add"
+                    android:layout_gravity="center_horizontal"
                     android:src="@android:drawable/ic_input_add"
                     android:background="@android:color/transparent" />
             </LinearLayout>
@@ -91,20 +91,20 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/sectionLabelSockets"
+                    android:id="@+id/labelSockets"
                     android:textColor="@android:color/holo_blue_light"
                     android:textAllCaps="true" />
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="1dip"
-                    android:id="@+id/sectionDivider"
+                    android:id="@+id/divider"
                     android:background="@android:color/holo_blue_light"
-                    android:layout_below="@+id/sectionDivider" />
+                    android:layout_below="@+id/divider" />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/addSocket"
-                    android:layout_gravity="left|center_vertical"
+                    android:id="@+id/add"
+                    android:layout_gravity="center_horizontal"
                     android:src="@android:drawable/ic_input_add"
                     android:background="@android:color/transparent" />
             </LinearLayout>

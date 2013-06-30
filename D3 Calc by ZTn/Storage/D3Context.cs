@@ -22,6 +22,8 @@ namespace ZTnDroid.D3Calculator.Storage
 
         public IconsContainer icons;
 
+        public Item editingItem;
+
         public AccountsDB dbAccounts;
 
         static D3Context _instance;

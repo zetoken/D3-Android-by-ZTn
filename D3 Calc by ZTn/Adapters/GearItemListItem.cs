@@ -10,6 +10,7 @@ using ZTn.BNet.D3.Items;
 using ZTn.BNet.D3.Medias;
 
 using ZTnDroid.D3Calculator.Helpers;
+using ZTnDroid.D3Calculator.Storage;
 
 namespace ZTnDroid.D3Calculator.Adapters
 {
@@ -172,6 +173,8 @@ namespace ZTnDroid.D3Calculator.Adapters
             ImageView view = (ImageView)sender;
 
             Toast.MakeText(D3Calc.Context, "Trying to edit " + item.name, ToastLength.Short).Show();
+
+            D3Context.instance.editingItem = item;
 
             Intent editorIntent = new Intent(view.Context, typeof(GearItemEditorActivity));
             view.Context.StartActivity(editorIntent);
