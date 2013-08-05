@@ -3,45 +3,45 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:minWidth="25px"
-    android:minHeight="25px">
+    android:minWidth="25dp"
+    android:minHeight="25dp">
     <ScrollView
-        android:minWidth="25px"
-        android:minHeight="25px"
+        android:minWidth="25dp"
+        android:minHeight="25dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/scrollViewContainer">
         <LinearLayout
             android:orientation="vertical"
-            android:minWidth="25px"
-            android:minHeight="25px"
+            android:minWidth="25dp"
+            android:minHeight="25dp"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="wrap_content">
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/gearItemName" />
+                android:id="@+id/gearItemName"
+                android:inputType="text" />
             <LinearLayout
                 android:orientation="vertical"
-                android:minWidth="25px"
-                android:minHeight="25px"
+                android:minWidth="25dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/layoutAttributes">
+                android:id="@+id/layoutAttributes"
+                android:minHeight="25dp">
                 <TextView
                     android:text="@string/attributes"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/labelAttributes"
+                    android:id="@+id/label"
                     android:textColor="@android:color/holo_blue_light"
                     android:textAllCaps="true" />
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="1dip"
                     android:id="@+id/divider"
-                    android:background="@android:color/holo_blue_light"
-                    android:layout_below="@+id/divider" />
+                    android:background="@android:color/holo_blue_light" />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -52,8 +52,36 @@
             </LinearLayout>
             <LinearLayout
                 android:orientation="vertical"
-                android:minWidth="25px"
-                android:minHeight="25px"
+                android:minWidth="25dp"
+                android:minHeight="25dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layoutDamage">
+                <TextView
+                    android:text="@string/damages"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/label"
+                    android:textColor="@android:color/holo_blue_light"
+                    android:textAllCaps="true" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:id="@+id/divider"
+                    android:background="@android:color/holo_blue_light" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/add"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@android:drawable/ic_input_add"
+                    android:background="@android:color/transparent" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25dp"
+                android:minHeight="25dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/layoutDefense">
@@ -62,15 +90,14 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/labelDefense"
+                    android:id="@+id/label"
                     android:textColor="@android:color/holo_blue_light"
                     android:textAllCaps="true" />
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="1dip"
                     android:id="@+id/divider"
-                    android:background="@android:color/holo_blue_light"
-                    android:layout_below="@+id/divider" />
+                    android:background="@android:color/holo_blue_light" />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -81,8 +108,8 @@
             </LinearLayout>
             <LinearLayout
                 android:orientation="vertical"
-                android:minWidth="25px"
-                android:minHeight="25px"
+                android:minWidth="25dp"
+                android:minHeight="25dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/layoutSockets">
@@ -91,15 +118,14 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/labelSockets"
+                    android:id="@+id/label"
                     android:textColor="@android:color/holo_blue_light"
                     android:textAllCaps="true" />
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="1dip"
                     android:id="@+id/divider"
-                    android:background="@android:color/holo_blue_light"
-                    android:layout_below="@+id/divider" />
+                    android:background="@android:color/holo_blue_light" />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

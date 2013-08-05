@@ -109,6 +109,7 @@
   <string name="defense">défense</string>
   <string name="armor">armure</string>
   <string name="dodge">esquive</string>
+  <string name="allResists">toutes résistances</string>
   <string name="arcaneResist">résistance arcane</string>
   <string name="coldResist">résistance froid</string>
   <string name="fireResist">résistance feu</string>

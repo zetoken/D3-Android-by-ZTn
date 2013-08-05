@@ -6,6 +6,7 @@ using Android.Graphics;
 using Android.Views;
 using Android.Widget;
 
+using ZTn.BNet.D3.Calculator.Helpers;
 using ZTn.BNet.D3.Items;
 using ZTn.BNet.D3.Medias;
 
@@ -174,7 +175,7 @@ namespace ZTnDroid.D3Calculator.Adapters
 
             Toast.MakeText(D3Calc.Context, "Trying to edit " + item.name, ToastLength.Short).Show();
 
-            D3Context.instance.editingItem = item;
+            D3Context.instance.editingItem = item.simplifyItem();
 
             Intent editorIntent = new Intent(view.Context, typeof(GearItemEditorActivity));
             view.Context.StartActivity(editorIntent);

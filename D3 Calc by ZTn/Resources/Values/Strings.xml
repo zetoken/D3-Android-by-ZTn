@@ -109,6 +109,7 @@
   <string name="defense">defense</string>
   <string name="armor">armor</string>
   <string name="dodge">dodge</string>
+  <string name="allResists">all resistances</string>
   <string name="arcaneResist">arcane resist</string>
   <string name="coldResist">cold resist</string>
   <string name="fireResist">fire resist</string>

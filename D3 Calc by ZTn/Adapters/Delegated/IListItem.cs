@@ -10,7 +10,7 @@ namespace ZTnDroid.D3Calculator.Adapters
     public interface IListItem
     {
         /// <summary>
-        /// Return the layout resource to be used to create the view for this item
+        /// Return the layout selectedResource to be used to create the view for this item
         /// </summary>
         /// <returns></returns>
         int getLayoutResource();
