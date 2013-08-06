@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Support.V4.View;
+using Android.Widget;
 using ZTnDroid.D3Calculator.Fragments;
 using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
-
 using Fragment = Android.Support.V4.App.Fragment;
 
 namespace ZTnDroid.D3Calculator
@@ -16,8 +17,33 @@ namespace ZTnDroid.D3Calculator
     public class ViewHeroActivity : ZTnFragmentActivity
     {
         PagerAdapter pagerAdapter;
+        bool forceRefresh = false;
 
         FetchHeroFragment fragmentFetchHero;
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
+            switch (requestCode)
+            {
+                case GearItemEditorActivity.ITEM_EDIT:
+                    switch (resultCode)
+                    {
+                        case Result.Ok:
+                            //forceRefresh = true;
+                            Toast.MakeText(this, "@string/ItemEditingFinished", ToastLength.Long).Show();
+                            break;
+
+                        default:
+                            break;
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+        }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -69,6 +95,27 @@ namespace ZTnDroid.D3Calculator
                     .Add(fragmentFetchHero, "fetchHero")
                     .Commit();
             }
+        }
+
+        protected override void OnResume()
+        {
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            base.OnResume();
+        }
+
+        protected override void OnStart()
+        {
+            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+
+            if (forceRefresh)
+            {
+                fragmentFetchHero.fragmentComputed.updateFragment();
+                fragmentFetchHero.fragmentSkills.updateFragment();
+                fragmentFetchHero.fragmentGear.updateFragment();
+                forceRefresh = false;
+            }
+
+            base.OnStart();
         }
     }
 }

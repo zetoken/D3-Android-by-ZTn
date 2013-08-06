@@ -142,4 +142,45 @@
   <string name="itemLeftFinger">anneau gauche</string>
   <string name="itemNeck">amulette</string>
 
+  <!-- Item Editor -->
+  <string name="WeaponOnlyDamage">Dégâts des armes</string>
+  <string name="BonusDamage">Dégâts des objets</string>
+  <string name="attacksPerSecond">attaque par seconde</string>
+  <string name="arcaneMin">arcane (min)</string>
+  <string name="arcaneMax">arcane (max)</string>
+  <string name="coldMin">froid (min)</string>
+  <string name="coldMax">froid (max)</string>
+  <string name="fireMin">feu (min)</string>
+  <string name="fireMax">feu (max)</string>
+  <string name="holyMin">sacré (min)</string>
+  <string name="holyMax">sacré (max)</string>
+  <string name="lightningMin">électrique (min)</string>
+  <string name="lightningMax">électrique (max)</string>
+  <string name="physicalMin">physique (min)</string>
+  <string name="physicalMax">physique (max)</string>
+  <string name="poisonMin">poison (min)</string>
+  <string name="poisonMax">poison (max)</string>
+  <string name="arcaneMinWeapon">arcane (min)</string>
+  <string name="arcaneMaxWeapon">arcane (max)</string>
+  <string name="coldMinWeapon">froid (min)</string>
+  <string name="coldMaxWeapon">froid (max)</string>
+  <string name="fireMinWeapon">feu (min)</string>
+  <string name="fireMaxWeapon">feu (max)</string>
+  <string name="holyMinWeapon">sacré (min)</string>
+  <string name="holyMaxWeapon">sacré (max)</string>
+  <string name="lightningMinWeapon">électrique (min)</string>
+  <string name="lightningMaxWeapon">électrique (max)</string>
+  <string name="physicalMinWeapon">physique (min)</string>
+  <string name="physicalMaxWeapon">physique (max)</string>
+  <string name="poisonMinWeapon">poison (min)</string>
+  <string name="poisonMaxWeapon">poison (max)</string>
+  <string name="damagePercent_Arcane">+% dégâts arcane</string>
+  <string name="damagePercent_Cold">+% dégâts froid</string>
+  <string name="damagePercent_Fire">+% dégâts feu</string>
+  <string name="damagePercent_Holy">+% dégâts sacré</string>
+  <string name="damagePercent_Lightning">+% dégâts électrique</string>
+  <string name="damagePercent_Physical">+% dégâts physique</string>
+  <string name="damagePercent_Poison">+% dégâts poison</string>
+  <string name="ItemEditingFinished">Edition de l\'objet terminée: le calculateur a été mis à jour.</string>
+
 </resources>

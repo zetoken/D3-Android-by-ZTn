@@ -11,6 +11,7 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using ZTn.BNet.D3.Items;
+using ZTn.BNet.D3.Calculator.Helpers;
 using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
 using Fragment = Android.Support.V4.App.Fragment;
@@ -23,72 +24,96 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         #region >> Constants
 
-        static readonly List<int> attributeResources = new List<int>()
+        static readonly Field[] attributeFields = 
         {
-            Resource.String.dexterity,
-            Resource.String.intelligence, 
-            Resource.String.strength, 
-            Resource.String.vitality 
+            new Field(Resource.String.dexterity, "dexterityItem"),
+            new Field(Resource.String.intelligence, "intelligenceItem"), 
+            new Field(Resource.String.strength, "strengthItem"), 
+            new Field(Resource.String.vitality , "vitalityItem")
         };
-        static readonly List<int> damageResources = new List<int>()
+        static readonly Field[] itemDamageFields = 
         {
-            Resource.String.attackSpeed,
-            Resource.String.damage,
-            Resource.String.criticChance,
-            Resource.String.criticDamage
+            new Field(Resource.String.criticChance, "critDamagePercent") { percent = true },
+            new Field(Resource.String.criticDamage, "critPercentBonusCapped") { percent = true },
+            new Field(Resource.String.attackSpeed, "attacksPerSecondPercent") { percent = true },
+            new Field(Resource.String.arcaneMin, "damageMin_Arcane"),
+            new Field(Resource.String.arcaneMax, "damageDelta_Arcane", "damageMin_Arcane"),
+            new Field(Resource.String.coldMin, "damageMin_Cold"),
+            new Field(Resource.String.coldMax, "damageDelta_Cold", "damageMin_Cold"),
+            new Field(Resource.String.fireMin, "damageMin_Fire"),
+            new Field(Resource.String.fireMax, "damageDelta_Fire", "damageMin_Fire"),
+            new Field(Resource.String.holyMin, "damageMin_Holy"),
+            new Field(Resource.String.holyMax, "damageDelta_Holy", "damageMin_Holy"),
+            new Field(Resource.String.lightningMin, "damageMin_Lightning"),
+            new Field(Resource.String.lightningMax, "damageDelta_Lightning", "damageMin_Lightning"),
+            new Field(Resource.String.physicalMin, "damageMin_Physical"),
+            new Field(Resource.String.physicalMax, "damageDelta_Physical", "damageMin_Physical"),
+            new Field(Resource.String.poisonMin, "damageMin_Poison"),
+            new Field(Resource.String.poisonMax, "damageDelta_Poison", "damageMin_Poison"),
+            new Field(Resource.String.damagePercent_Arcane, "damageTypePercentBonus_Arcane"),
+            new Field(Resource.String.damagePercent_Cold, "damageTypePercentBonus_Cold"),
+            new Field(Resource.String.damagePercent_Fire, "damageTypePercentBonus_Fire"),
+            new Field(Resource.String.damagePercent_Holy, "damageTypePercentBonus_Holy"),
+            new Field(Resource.String.damagePercent_Lightning, "damageTypePercentBonus_Lightning"),
+            new Field(Resource.String.damagePercent_Physical, "damageTypePercentBonus_Physical"),
+            new Field(Resource.String.damagePercent_Poison, "damageTypePercentBonus_Poison"),
         };
-        static readonly List<int> defenseResources = new List<int>()
+        static readonly Field[] weaponDamageFields = 
+        {
+            new Field(Resource.String.attacksPerSecond, "attacksPerSecondItem"),
+            new Field(Resource.String.arcaneMinWeapon, "damageWeaponMin_Arcane"),
+            new Field(Resource.String.arcaneMaxWeapon, "damageWeaponDelta_Arcane", "damageWeaponMin_Arcane"),
+            new Field(Resource.String.coldMinWeapon, "damageWeaponMin_Cold"),
+            new Field(Resource.String.coldMaxWeapon, "damageWeaponDelta_Cold", "damageWeaponMin_Cold"),
+            new Field(Resource.String.fireMinWeapon, "damageWeaponMin_Fire"),
+            new Field(Resource.String.fireMaxWeapon, "damageWeaponDelta_Fire", "damageWeaponMin_Fire"),
+            new Field(Resource.String.holyMinWeapon, "damageWeaponMin_Holy"),
+            new Field(Resource.String.holyMaxWeapon, "damageWeaponDelta_Holy", "damageWeaponMin_Holy"),
+            new Field(Resource.String.lightningMinWeapon, "damageWeaponMin_Lightning"),
+            new Field(Resource.String.lightningMaxWeapon, "damageWeaponDelta_Lightning", "damageWeaponMin_Lightning"),
+            new Field(Resource.String.physicalMinWeapon, "damageWeaponMin_Physical"),
+            new Field(Resource.String.physicalMaxWeapon, "damageWeaponDelta_Physical", "damageWeaponMin_Physical"),
+            new Field(Resource.String.poisonMinWeapon, "damageWeaponMin_Poison"),
+            new Field(Resource.String.poisonMaxWeapon, "damageWeaponDelta_Poison", "damageWeaponMin_Poison"),
+        };
+        static readonly Field[] defenseFields = 
         { 
-            Resource.String.armor, 
-            Resource.String.allResists,
-            Resource.String.arcaneResist, 
-            Resource.String.coldResist, 
-            Resource.String.fireResist, 
-            Resource.String.lightningResist, 
-            Resource.String.physicalResist, 
-            Resource.String.poisonResist ,
-            Resource.String.lifeBonusPerGlobe,
-            Resource.String.lifeOnHit,
-            Resource.String.lifeRegenPerSecond,
-            Resource.String.lifeSteal
+            new Field(Resource.String.armor, "armorItem"),
+            new Field(Resource.String.allResists, "resistance_All"),
+            new Field(Resource.String.arcaneResist, "resistance_Arcane"),
+            new Field(Resource.String.coldResist, "resistance_Cold"),
+            new Field(Resource.String.fireResist, "resistance_Fire"),
+            new Field(Resource.String.lightningResist, "resistance_Lightning"),
+            new Field(Resource.String.physicalResist, "resistance_Physical"),
+            new Field(Resource.String.poisonResist, "resistance_Poison"),
+            new Field(Resource.String.life, "hitpointsPercent") { percent = true },
+            new Field(Resource.String.lifeBonusPerGlobe, "healthGlobeBonusHealth"),
+            new Field(Resource.String.lifeOnHit, "hitpointsOnHit"),
+            new Field(Resource.String.lifeRegenPerSecond, "hitpointsRegenPerSecond"),
+            new Field(Resource.String.lifeSteal, "stealHealthPercent") { percent = true },
         };
-        static readonly List<int> socketsResources = new List<int>()
+        static readonly Field[] socketFields = 
         {
         };
 
         #endregion
 
+        #region >> Fields
+
         List<String> attributeLabels;
-        List<String> damageLabels;
+        List<String> itemDamageLabels;
         List<String> defenseLabels;
-        List<String> sockets;
+        List<String> socketLabels;
+        List<String> weaponDamageLabels;
+
+        LinearLayout layoutAttributes;
+        LinearLayout layoutItemDamage;
+        LinearLayout layoutWeaponDamage;
+        LinearLayout layoutDefense;
+
+        #endregion
 
         #region >> Fragment
-
-        /// <inheritdoc/>
-        public override void OnActivityResult(int requestCode, int resultCode, Intent data)
-        {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
-
-            switch (requestCode)
-            {
-                //case ADD_NEW_ACCOUNT:
-                //    switch (resultCode)
-                //    {
-                //        case -1:
-                //            break;
-
-                //        default:
-                //            break;
-                //    }
-                //    break;
-
-                default:
-                    break;
-            }
-
-            base.OnActivityResult(requestCode, resultCode, data);
-        }
 
         /// <inheritdoc/>
         public override void OnCreate(Bundle savedInstanceState)
@@ -103,10 +128,11 @@ namespace ZTnDroid.D3Calculator.Fragments
             layoutInflater = (LayoutInflater)Activity.GetSystemService(Context.LayoutInflaterService);
 
             // Build localized strings
-            attributeLabels = attributeResources.Select(id => Resources.GetString(id)).ToList();
-            damageLabels = damageResources.Select(id => Resources.GetString(id)).ToList();
-            defenseLabels = defenseResources.Select(id => Resources.GetString(id)).ToList();
-            sockets = socketsResources.Select(id => Resources.GetString(id)).ToList();
+            attributeLabels = attributeFields.Select(o => o.label).ToList();
+            itemDamageLabels = itemDamageFields.Select(o => o.label).ToList();
+            defenseLabels = defenseFields.Select(o => o.label).ToList();
+            socketLabels = socketFields.Select(o => o.label).ToList();
+            weaponDamageLabels = weaponDamageFields.Select(o => o.label).ToList();
         }
 
         /// <inheritdoc/>
@@ -128,50 +154,54 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             view.FindViewById<TextView>(Resource.Id.gearItemName).Text = D3Context.instance.editingItem.name;
 
+            Item editingItem = D3Context.instance.editingItem;
             ItemAttributes editingItemAttr = D3Context.instance.editingItem.attributesRaw;
+            editingItem.attributes = new String[] { "Edited Item" };
 
             // Attributes
-            LinearLayout layoutAttributes = view.FindViewById<LinearLayout>(Resource.Id.layoutAttributes);
+            layoutAttributes = view.FindViewById<LinearLayout>(Resource.Id.layoutAttributes);
             layoutAttributes.FindViewById<ImageButton>(Resource.Id.add).Click +=
-                (Object sender, EventArgs e) => layoutAttributes.AddView(createRowView(attributeLabels, attributeResources), layoutAttributes.ChildCount - 1);
+                (Object sender, EventArgs e) => layoutAttributes.AddView(createRowView(attributeLabels, attributeFields), layoutAttributes.ChildCount - 1);
 
-            createRowView(layoutAttributes, attributeLabels, attributeResources, Resource.String.dexterity, editingItemAttr.dexterityItem);
-            createRowView(layoutAttributes, attributeLabels, attributeResources, Resource.String.intelligence, editingItemAttr.intelligenceItem);
-            createRowView(layoutAttributes, attributeLabels, attributeResources, Resource.String.strength, editingItemAttr.strengthItem);
-            createRowView(layoutAttributes, attributeLabels, attributeResources, Resource.String.vitality, editingItemAttr.vitalityItem);
+            foreach (Field descriptor in attributeFields)
+            {
+                createAttributeRowView(descriptor);
+            }
 
             // Damages
-            LinearLayout layoutDamage = view.FindViewById<LinearLayout>(Resource.Id.layoutDamage);
-            layoutDamage.FindViewById<ImageButton>(Resource.Id.add).Click +=
-                (Object sender, EventArgs e) => layoutDamage.AddView(createRowView(damageLabels, damageResources), layoutDamage.ChildCount - 1);
+            layoutItemDamage = view.FindViewById<LinearLayout>(Resource.Id.layoutItemDamage);
+            layoutItemDamage.FindViewById<ImageButton>(Resource.Id.add).Click +=
+                (Object sender, EventArgs e) => layoutItemDamage.AddView(createRowView(itemDamageLabels, itemDamageFields), layoutItemDamage.ChildCount - 1);
 
-            createRowView(layoutDamage, damageLabels, damageResources, Resource.String.damage, editingItemAttr.damageWeaponMin_Physical);
-            createRowView(layoutDamage, damageLabels, damageResources, Resource.String.attackSpeed, editingItemAttr.attacksPerSecondItem);
-            createRowView(layoutDamage, damageLabels, damageResources, Resource.String.criticChance, editingItemAttr.critDamagePercent);
-            createRowView(layoutDamage, damageLabels, damageResources, Resource.String.criticDamage, editingItemAttr.critPercentBonusCapped);
+            foreach (Field descriptor in itemDamageFields)
+            {
+                createItemDamageRowView(descriptor);
+            }
+
+            // Damage Weapons
+            layoutWeaponDamage = view.FindViewById<LinearLayout>(Resource.Id.layoutWeaponDamage);
+            layoutWeaponDamage.FindViewById<ImageButton>(Resource.Id.add).Click +=
+                (Object sender, EventArgs e) => layoutWeaponDamage.AddView(createRowView(weaponDamageLabels, weaponDamageFields), layoutWeaponDamage.ChildCount - 1);
+
+            foreach (Field descriptor in weaponDamageFields)
+            {
+                createWeaponDamageRowView(descriptor);
+            }
 
             // Defense
-            LinearLayout layoutDefense = view.FindViewById<LinearLayout>(Resource.Id.layoutDefense);
+            layoutDefense = view.FindViewById<LinearLayout>(Resource.Id.layoutDefense);
             layoutDefense.FindViewById<ImageButton>(Resource.Id.add).Click +=
-                (Object sender, EventArgs e) => layoutDefense.AddView(createRowView(defenseLabels, defenseResources), layoutDefense.ChildCount - 1);
+                (Object sender, EventArgs e) => layoutDefense.AddView(createRowView(defenseLabels, defenseFields), layoutDefense.ChildCount - 1);
 
-            createRowView(layoutDefense, defenseLabels, defenseResources, Resource.String.armor, editingItemAttr.armorItem);
-            createRowView(layoutDefense, defenseLabels, defenseResources, Resource.String.allResists, editingItemAttr.resistance_All);
-            createRowView(layoutDefense, defenseLabels, defenseResources, Resource.String.arcaneResist, editingItemAttr.resistance_Arcane);
-            createRowView(layoutDefense, defenseLabels, defenseResources, Resource.String.coldResist, editingItemAttr.resistance_Cold);
-            createRowView(layoutDefense, defenseLabels, defenseResources, Resource.String.fireResist, editingItemAttr.resistance_Fire);
-            createRowView(layoutDefense, defenseLabels, defenseResources, Resource.String.lightningResist, editingItemAttr.resistance_Lightning);
-            createRowView(layoutDefense, defenseLabels, defenseResources, Resource.String.physicalResist, editingItemAttr.resistance_Physical);
-            createRowView(layoutDefense, defenseLabels, defenseResources, Resource.String.poisonResist, editingItemAttr.resistance_Poison);
-            createRowView(layoutDefense, defenseLabels, defenseResources, Resource.String.lifeRegenPerSecond, editingItemAttr.hitpointsRegenPerSecond);
-            createRowView(layoutDefense, defenseLabels, defenseResources, Resource.String.lifeOnHit, editingItemAttr.hitpointsOnHit);
-            createRowView(layoutDefense, defenseLabels, defenseResources, Resource.String.lifeSteal, editingItemAttr.stealHealthPercent);
-            createRowView(layoutDefense, defenseLabels, defenseResources, Resource.String.lifeBonusPerGlobe, editingItemAttr.healthGlobeBonusHealth);
+            foreach (Field descriptor in defenseFields)
+            {
+                createDefenseRowView(descriptor);
+            }
 
             // Sockets
             LinearLayout layoutSockets = view.FindViewById<LinearLayout>(Resource.Id.layoutSockets);
             layoutSockets.FindViewById<ImageButton>(Resource.Id.add).Click +=
-                (Object sender, EventArgs e) => layoutSockets.AddView(createRowView(sockets, socketsResources), layoutSockets.ChildCount - 1);
+                (Object sender, EventArgs e) => layoutSockets.AddView(createRowView(socketLabels, socketFields), layoutSockets.ChildCount - 1);
 
             return view;
         }
@@ -181,23 +211,119 @@ namespace ZTnDroid.D3Calculator.Fragments
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
 
+            D3Context.instance.editingItem.attributesRaw = new ItemAttributes();
+            updateEditedItem(layoutAttributes);
+            updateEditedItem(layoutDefense);
+            updateEditedItem(layoutItemDamage);
+            updateEditedItem(layoutWeaponDamage);
+
             base.OnDestroyView();
         }
 
         #endregion
 
-        void createRowView(LinearLayout layout, List<string> labels, List<int> resources, int selectedResource, ItemValueRange value)
+        #region >> Inner Classes
+
+        class Field
         {
-            if (value != null && value.min != 0)
-                layout.AddView(createRowView(labels, resources, selectedResource, value), layout.ChildCount - 1);
+            public int id;
+            public string targetAttribute;
+            public string refAttribute;
+            public string label;
+            public bool percent = false;
+
+            public Field(int id, string attribute)
+            {
+                this.id = id;
+                this.targetAttribute = attribute;
+                this.refAttribute = null;
+                this.label = D3Calc.Context.Resources.GetString(id);
+            }
+
+            public Field(int id, string targetAttribute, string refAttribute)
+            {
+                this.id = id;
+                this.targetAttribute = targetAttribute;
+                this.refAttribute = refAttribute;
+                this.label = D3Calc.Context.Resources.GetString(id);
+            }
+
+            public ItemValueRange getValue(ItemAttributes attributes)
+            {
+                ItemValueRange value;
+
+                if (refAttribute == null)
+                    value = attributes.getAttributeByName(targetAttribute);
+                else
+                    value = attributes.getAttributeByName(targetAttribute) + attributes.getAttributeByName(refAttribute);
+
+                if (percent)
+                    value *= 100;
+                return value;
+            }
+
+            public void setValue(ItemAttributes attributes, double value)
+            {
+                if (percent)
+                    value /= 100;
+
+                if (refAttribute == null)
+                    attributes.setAttributeByName(targetAttribute, new ItemValueRange(value));
+                else
+                    attributes.setAttributeByName(targetAttribute, new ItemValueRange(value) - attributes.getAttributeByName(refAttribute));
+            }
+
+            #region >> Object
+
+            /// <inheritdoc />
+            public override string ToString()
+            {
+                return "[id:" + id + " attribute:" + targetAttribute + " label:" + label + "]";
+            }
+
+            #endregion
         }
 
-        View createRowView(List<String> texts, List<int> resources)
+        #endregion
+
+        void createAttributeRowView(Field field)
+        {
+            ItemValueRange value = field.getValue(D3Context.instance.editingItem.attributesRaw);
+            if (value != null && value.min != 0)
+                layoutAttributes.AddView(createRowView(attributeLabels, attributeFields, field, value), layoutAttributes.ChildCount - 1);
+        }
+
+        void createItemDamageRowView(Field field)
+        {
+            ItemValueRange value = field.getValue(D3Context.instance.editingItem.attributesRaw);
+            if (value != null && value.min != 0)
+                layoutItemDamage.AddView(createRowView(itemDamageLabels, itemDamageFields, field, value), layoutItemDamage.ChildCount - 1);
+        }
+
+        void createWeaponDamageRowView(Field field)
+        {
+            ItemValueRange value = field.getValue(D3Context.instance.editingItem.attributesRaw);
+            if (value != null && value.min != 0)
+                layoutWeaponDamage.AddView(createRowView(weaponDamageLabels, weaponDamageFields, field, value), layoutWeaponDamage.ChildCount - 1);
+        }
+
+        void createDefenseRowView(Field field)
+        {
+            ItemValueRange value = field.getValue(D3Context.instance.editingItem.attributesRaw);
+            if (value != null && value.min != 0)
+                layoutDefense.AddView(createRowView(defenseLabels, defenseFields, field, value), layoutDefense.ChildCount - 1);
+        }
+
+        void createRowView(LinearLayout layout, List<string> labels, Field[] fields, Field selectedResource, ItemValueRange value)
+        {
+            if (value != null && value.min != 0)
+                layout.AddView(createRowView(labels, fields, selectedResource, value), layout.ChildCount - 1);
+        }
+
+        View createRowView(List<String> labels, Field[] fields)
         {
             // Get the view from inflater
             View rowView = layoutInflater.Inflate(Resource.Layout.GearItemRowEditor, null);
-
-            rowView.Tag = new JavaLangObject<List<int>>(resources);
 
             // Set "remove row" action
             rowView.FindViewById<ImageButton>(Resource.Id.remove).Click +=
@@ -208,24 +334,65 @@ namespace ZTnDroid.D3Calculator.Fragments
                     LinearLayout parentContainer = (LinearLayout)parent.Parent;
                     parentContainer.RemoveView(parent);
                 };
-            rowView.FindViewById<Spinner>(Resource.Id.attributeName).Adapter = new ArrayAdapter<String>(Activity, Android.Resource.Layout.SimpleSpinnerItem, texts);
+
+            Spinner spinner = rowView.FindViewById<Spinner>(Resource.Id.attributeName);
+            spinner.Adapter = new ArrayAdapter<String>(Activity, Android.Resource.Layout.SimpleSpinnerItem, labels);
+            spinner.ItemSelected +=
+                (Object sender, AdapterView.ItemSelectedEventArgs e) =>
+                {
+                    ((View)((Spinner)sender).Parent).Tag = new JavaLangObject<Field>(fields[e.Position]);
+                };
 
             return rowView;
         }
 
-        View createRowView(List<String> texts, List<int> resources, int selected, ItemValueRange value)
+        View createRowView(List<String> texts, Field[] resources, Field selected, ItemValueRange value)
         {
             View rowView = createRowView(texts, resources);
 
+            rowView.Tag = new JavaLangObject<Field>(selected);
+
             int index = 0;
-            for (; index < resources.Count; index++)
-                if (resources[index] == selected)
+            for (; index < resources.Length; index++)
+                if (resources[index].id == selected.id)
                     break;
 
-            rowView.FindViewById<Spinner>(Resource.Id.attributeName).SetSelection(index);
-            rowView.FindViewById<EditText>(Resource.Id.attributeValue).Text = value.min.ToString();
+            if (index != resources.Length)
+            {
+                rowView.FindViewById<Spinner>(Resource.Id.attributeName).SetSelection(index);
+                rowView.FindViewById<EditText>(Resource.Id.attributeValue).Text = value.min.ToString();
+            }
 
             return rowView;
+        }
+
+        void updateEditedItem(LinearLayout layout)
+        {
+            String numberDecimalSeparator = System.Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator;
+            ItemAttributes attr = new ItemAttributes();
+            for (int index = 0; index < layout.ChildCount; index++)
+            {
+                View view = layout.GetChildAt(index);
+                EditText editText = view.FindViewById<EditText>(Resource.Id.attributeValue);
+                if (editText != null)
+                {
+                    JavaLangObject<Field> tag = (JavaLangObject<Field>)(view.Tag);
+                    Console.WriteLine(tag.value + " = " + editText.Text);
+
+                    string text;
+                    if (numberDecimalSeparator == ",")
+                        text = editText.Text.Replace(".", numberDecimalSeparator);
+                    else
+                        text = editText.Text.Replace(",", numberDecimalSeparator);
+
+                    double value;
+                    if (Double.TryParse(text, out value))
+                    {
+                        tag.value.setValue(attr, value);
+                    }
+                }
+            }
+            D3Context.instance.editingItem.attributesRaw += attr;
         }
     }
 }

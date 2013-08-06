@@ -93,7 +93,7 @@
   <string name="damage">damage</string>
   <string name="criticChance">critic chance</string>
   <string name="criticDamage">critic damage</string>
-  <string name="attackSpeed">Attack speed</string>
+  <string name="attackSpeed">attack speed</string>
   
   <!-- Life -->
   <string name="life">life</string>
@@ -141,5 +141,46 @@
   <string name="itemRightFinger">right finger</string>
   <string name="itemLeftFinger">left finger</string>
   <string name="itemNeck">neck</string>
-  
+
+  <!-- Item Editor -->
+  <string name="WeaponOnlyDamage">Weapon only damage</string>
+  <string name="BonusDamage">Bonus damage</string>
+  <string name="attacksPerSecond">attacks per second</string>
+  <string name="arcaneMin">arcane (min)</string>
+  <string name="arcaneMax">arcane (max)</string>
+  <string name="coldMin">cold (min)</string>
+  <string name="coldMax">cold (max)</string>
+  <string name="fireMin">fire (min)</string>
+  <string name="fireMax">fire (max)</string>
+  <string name="holyMin">holy (min)</string>
+  <string name="holyMax">holy (max)</string>
+  <string name="lightningMin">lightning (min)</string>
+  <string name="lightningMax">lightning (max)</string>
+  <string name="physicalMin">physical (min)</string>
+  <string name="physicalMax">physical (max)</string>
+  <string name="poisonMin">poison (min)</string>
+  <string name="poisonMax">poison (max)</string>
+  <string name="arcaneMinWeapon">arcane (min)</string>
+  <string name="arcaneMaxWeapon">arcane (max)</string>
+  <string name="coldMinWeapon">cold (min)</string>
+  <string name="coldMaxWeapon">cold (max)</string>
+  <string name="fireMinWeapon">fire (min)</string>
+  <string name="fireMaxWeapon">fire (max)</string>
+  <string name="holyMinWeapon">holy (min)</string>
+  <string name="holyMaxWeapon">holy (max)</string>
+  <string name="lightningMinWeapon">lightning (min)</string>
+  <string name="lightningMaxWeapon">lightning (max)</string>
+  <string name="physicalMinWeapon">physical (min)</string>
+  <string name="physicalMaxWeapon">physical (max)</string>
+  <string name="poisonMinWeapon">poison (min)</string>
+  <string name="poisonMaxWeapon">poison (max)</string>
+  <string name="damagePercent_Arcane">+% arcane damage</string>
+  <string name="damagePercent_Cold">+% cold damage</string>
+  <string name="damagePercent_Fire">+% fire damage</string>
+  <string name="damagePercent_Holy">+% holy damage</string>
+  <string name="damagePercent_Lightning">+% lightning damage</string>
+  <string name="damagePercent_Physical">+% physical damage</string>
+  <string name="damagePercent_Poison">+% poison damage</string>
+  <string name="ItemEditingFinished">Item edition is done: computed data are updated.</string>
+
 </resources>

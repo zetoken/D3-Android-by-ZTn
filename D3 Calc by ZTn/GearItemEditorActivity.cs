@@ -19,7 +19,9 @@ namespace ZTnDroid.D3Calculator
     [Activity(Label = "@string/GearItemEditorActivityLabel")]
     public class GearItemEditorActivity : ZTnFragmentActivity
     {
-        #region >> ZTnFragmentActivity
+        public const int ITEM_EDIT = 1;
+
+        #region >> Fragment
 
         /// <inheritdoc/>
         protected override void OnCreate(Bundle savedInstanceState)
@@ -36,6 +38,13 @@ namespace ZTnDroid.D3Calculator
                 .BeginTransaction()
                 .Add(Resource.Id.fragment_container, new GearItemEditorFragment())
                 .Commit();
+        }
+
+        public override void Finish()
+        {
+            SetResult(Result.Ok, new Intent());
+
+            base.Finish();
         }
 
         #endregion

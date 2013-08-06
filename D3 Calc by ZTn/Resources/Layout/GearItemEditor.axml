@@ -56,9 +56,37 @@
                 android:minHeight="25dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/layoutDamage">
+                android:id="@+id/layoutWeaponDamage">
                 <TextView
-                    android:text="@string/damages"
+                    android:text="@string/WeaponOnlyDamage"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/label"
+                    android:textColor="@android:color/holo_blue_light"
+                    android:textAllCaps="true" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:id="@+id/divider"
+                    android:background="@android:color/holo_blue_light" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/add"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@android:drawable/ic_input_add"
+                    android:background="@android:color/transparent" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25dp"
+                android:minHeight="25dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layoutItemDamage">
+                <TextView
+                    android:text="@string/BonusDamage"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"

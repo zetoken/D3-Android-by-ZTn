@@ -2,16 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-
+using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-
 using ZTn.BNet.D3.Calculator.Sets;
 using ZTn.BNet.D3.Heroes;
 using ZTn.BNet.D3.Items;
 using ZTn.BNet.D3.Medias;
-
 using ZTnDroid.D3Calculator.Adapters;
 using ZTnDroid.D3Calculator.Adapters.Delegated;
 using ZTnDroid.D3Calculator.Helpers;
@@ -21,7 +20,7 @@ namespace ZTnDroid.D3Calculator.Fragments
 {
     public class HeroGearListFragment : UpdatableFragment
     {
-        #region >> ZTnFragment
+        #region >> UpdatableFragment
 
         /// <inheritdoc/>
         public override void OnCreate(Bundle savedInstanceState)

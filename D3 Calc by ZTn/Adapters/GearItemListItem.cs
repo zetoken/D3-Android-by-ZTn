@@ -13,6 +13,9 @@ using ZTn.BNet.D3.Medias;
 using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
 
+using Android.Support.V4.App;
+using Fragment = Android.Support.V4.App.Fragment;
+
 namespace ZTnDroid.D3Calculator.Adapters
 {
     public class GearItemListItem : IListItem
@@ -175,10 +178,11 @@ namespace ZTnDroid.D3Calculator.Adapters
 
             Toast.MakeText(D3Calc.Context, "Trying to edit " + item.name, ToastLength.Short).Show();
 
-            D3Context.instance.editingItem = item.simplifyItem();
+            D3Context.instance.editingItem = (item.attributesRaw == null ? item : item.simplifyItem());
 
             Intent editorIntent = new Intent(view.Context, typeof(GearItemEditorActivity));
-            view.Context.StartActivity(editorIntent);
+
+            ((Activity)view.Context).StartActivityForResult(editorIntent, GearItemEditorActivity.ITEM_EDIT);
         }
     }
 }
