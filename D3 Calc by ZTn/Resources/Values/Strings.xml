@@ -27,6 +27,7 @@
   <string name="KillsLifetime">Kills Lifetime</string>
   <string name="SubmitNewAccount">Validate New Account</string>
   <string name="SubmitEditedItem">Validate Edited Item</string>
+  <string name="CancelEditedItem">Cancel Edition</string>
 
   <!-- Waiting messages -->
   <string name="Loading">Loading Hero</string>
@@ -183,5 +184,6 @@
   <string name="damagePercent_Physical">+% physical damage</string>
   <string name="damagePercent_Poison">+% poison damage</string>
   <string name="ItemEditingFinished">Item edition is done: computed data are updated.</string>
+  <string name="ItemEditingCanceled">Item edition is CANCELED: no change occurs.</string>
 
 </resources>

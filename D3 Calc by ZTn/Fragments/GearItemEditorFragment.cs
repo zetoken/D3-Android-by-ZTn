@@ -213,14 +213,20 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             switch (item.ItemId)
             {
+                case Resource.Id.CancelEditedItem:
+                    this.Activity.SetResult(Result.Canceled, new Intent());
+                    this.Activity.Finish();
+                    return true;
+
                 case Resource.Id.SubmitEditedItem:
                     D3Context.instance.editingItem.attributesRaw = new ItemAttributes();
                     updateEditedItem(layoutAttributes);
                     updateEditedItem(layoutDefense);
                     updateEditedItem(layoutItemDamage);
                     updateEditedItem(layoutWeaponDamage);
-                    Activity.SetResult(Result.Ok, new Intent());
-                    Activity.Finish();
+                    D3Context.instance.editingItem.UpdateStats();
+                    this.Activity.SetResult(Result.Ok, new Intent());
+                    this.Activity.Finish();
                     return true;
 
                 default:

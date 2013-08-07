@@ -205,7 +205,9 @@
     <AndroidResource Include="Resources\Drawable-ldpi\Icon.png" />
     <AndroidResource Include="Resources\Drawable-mdpi\Icon.png" />
     <AndroidResource Include="Resources\Drawable-xhdpi\Icon.png" />
-    <AndroidResource Include="Resources\Menu\GearItemEditorFragment.xml" />
+    <AndroidResource Include="Resources\Menu\GearItemEditorFragment.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <Content Include="SupportLib\android-support-v4.jar" />
   </ItemGroup>
   <ItemGroup />

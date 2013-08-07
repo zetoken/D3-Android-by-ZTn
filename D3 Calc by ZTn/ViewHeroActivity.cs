@@ -21,6 +21,8 @@ namespace ZTnDroid.D3Calculator
 
         FetchHeroFragment fragmentFetchHero;
 
+        #region >> Fragment
+
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
@@ -31,8 +33,12 @@ namespace ZTnDroid.D3Calculator
                     switch (resultCode)
                     {
                         case Result.Ok:
-                            forceRefresh = true;
                             Toast.MakeText(this, Resources.GetString(Resource.String.ItemEditingFinished), ToastLength.Long).Show();
+                            forceRefresh = true;
+                            break;
+
+                        case Result.Canceled:
+                            Toast.MakeText(this, Resources.GetString(Resource.String.ItemEditingCanceled), ToastLength.Long).Show();
                             break;
 
                         default:
@@ -43,6 +49,15 @@ namespace ZTnDroid.D3Calculator
                 default:
                     break;
             }
+
+            base.OnActivityResult(requestCode, resultCode, data);
+        }
+
+        public override void OnBackPressed()
+        {
+            Toast.MakeText(this, Resources.GetString(Resource.String.ItemEditingCanceled), ToastLength.Long).Show();
+
+            base.OnBackPressed();
         }
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -111,5 +126,7 @@ namespace ZTnDroid.D3Calculator
 
             base.OnResume();
         }
+
+        #endregion
     }
 }

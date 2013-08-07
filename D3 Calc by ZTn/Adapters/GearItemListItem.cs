@@ -176,7 +176,7 @@ namespace ZTnDroid.D3Calculator.Adapters
         {
             ImageView view = (ImageView)sender;
 
-            D3Context.instance.editingItem = (item.attributesRaw == null ? item : item.simplifyItem());
+            D3Context.instance.editingItem = (item.attributesRaw == null ? item : item.simplify());
 
             Intent editorIntent = new Intent(view.Context, typeof(GearItemEditorActivity));
 
