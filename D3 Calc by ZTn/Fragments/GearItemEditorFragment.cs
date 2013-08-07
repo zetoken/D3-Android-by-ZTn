@@ -33,8 +33,8 @@ namespace ZTnDroid.D3Calculator.Fragments
         };
         static readonly Field[] itemDamageFields = 
         {
-            new Field(Resource.String.criticChance, "critDamagePercent") { percent = true },
-            new Field(Resource.String.criticDamage, "critPercentBonusCapped") { percent = true },
+            new Field(Resource.String.criticChance, "critPercentBonusCapped") { percent = true },
+            new Field(Resource.String.criticDamage, "critDamagePercent") { percent = true },
             new Field(Resource.String.attackSpeed, "attacksPerSecondPercent") { percent = true },
             new Field(Resource.String.arcaneMin, "damageMin_Arcane"),
             new Field(Resource.String.arcaneMax, "damageDelta_Arcane", "damageMin_Arcane"),
