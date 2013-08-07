@@ -31,8 +31,8 @@ namespace ZTnDroid.D3Calculator
                     switch (resultCode)
                     {
                         case Result.Ok:
-                            //forceRefresh = true;
-                            Toast.MakeText(this, "@string/ItemEditingFinished", ToastLength.Long).Show();
+                            forceRefresh = true;
+                            Toast.MakeText(this, Resources.GetString(Resource.String.ItemEditingFinished), ToastLength.Long).Show();
                             break;
 
                         default:
@@ -100,12 +100,6 @@ namespace ZTnDroid.D3Calculator
         protected override void OnResume()
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
-            base.OnResume();
-        }
-
-        protected override void OnStart()
-        {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
 
             if (forceRefresh)
             {
@@ -115,7 +109,7 @@ namespace ZTnDroid.D3Calculator
                 forceRefresh = false;
             }
 
-            base.OnStart();
+            base.OnResume();
         }
     }
 }

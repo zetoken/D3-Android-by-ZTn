@@ -176,8 +176,6 @@ namespace ZTnDroid.D3Calculator.Adapters
         {
             ImageView view = (ImageView)sender;
 
-            Toast.MakeText(D3Calc.Context, "Trying to edit " + item.name, ToastLength.Short).Show();
-
             D3Context.instance.editingItem = (item.attributesRaw == null ? item : item.simplifyItem());
 
             Intent editorIntent = new Intent(view.Context, typeof(GearItemEditorActivity));

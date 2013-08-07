@@ -40,13 +40,6 @@ namespace ZTnDroid.D3Calculator
                 .Commit();
         }
 
-        public override void Finish()
-        {
-            SetResult(Result.Ok, new Intent());
-
-            base.Finish();
-        }
-
         #endregion
     }
 }

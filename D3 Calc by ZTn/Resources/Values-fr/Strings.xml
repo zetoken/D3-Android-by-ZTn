@@ -26,6 +26,7 @@
   <string name="RefreshContent">RAFRAICHIR</string>
   <string name="KillsLifetime">Victimes cumulées</string>
   <string name="SubmitNewAccount">Valider</string>
+  <string name="SubmitEditedItem">Valider</string>
 
   <string name="details">détails</string>
   <string name="computed">Calculs</string>

@@ -50,13 +50,13 @@ namespace ZTnDroid.D3Calculator.Fragments
             new Field(Resource.String.physicalMax, "damageDelta_Physical", "damageMin_Physical"),
             new Field(Resource.String.poisonMin, "damageMin_Poison"),
             new Field(Resource.String.poisonMax, "damageDelta_Poison", "damageMin_Poison"),
-            new Field(Resource.String.damagePercent_Arcane, "damageTypePercentBonus_Arcane"),
-            new Field(Resource.String.damagePercent_Cold, "damageTypePercentBonus_Cold"),
-            new Field(Resource.String.damagePercent_Fire, "damageTypePercentBonus_Fire"),
-            new Field(Resource.String.damagePercent_Holy, "damageTypePercentBonus_Holy"),
-            new Field(Resource.String.damagePercent_Lightning, "damageTypePercentBonus_Lightning"),
-            new Field(Resource.String.damagePercent_Physical, "damageTypePercentBonus_Physical"),
-            new Field(Resource.String.damagePercent_Poison, "damageTypePercentBonus_Poison"),
+            new Field(Resource.String.damagePercent_Arcane, "damageTypePercentBonus_Arcane") { percent = true },
+            new Field(Resource.String.damagePercent_Cold, "damageTypePercentBonus_Cold") { percent = true },
+            new Field(Resource.String.damagePercent_Fire, "damageTypePercentBonus_Fire") { percent = true },
+            new Field(Resource.String.damagePercent_Holy, "damageTypePercentBonus_Holy") { percent = true },
+            new Field(Resource.String.damagePercent_Lightning, "damageTypePercentBonus_Lightning") { percent = true },
+            new Field(Resource.String.damagePercent_Physical, "damageTypePercentBonus_Physical") { percent = true },
+            new Field(Resource.String.damagePercent_Poison, "damageTypePercentBonus_Poison") { percent = true },
         };
         static readonly Field[] weaponDamageFields = 
         {
@@ -140,7 +140,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
 
-            // Activity.MenuInflater.Inflate(Resource.Menu.GearItemEditorActivity, menu);
+            Activity.MenuInflater.Inflate(Resource.Menu.GearItemEditorFragment, menu);
 
             base.OnCreateOptionsMenu(menu, inflater);
         }
@@ -207,17 +207,25 @@ namespace ZTnDroid.D3Calculator.Fragments
         }
 
         /// <inheritdoc/>
-        public override void OnDestroyView()
+        public override bool OnOptionsItemSelected(IMenuItem item)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());
 
-            D3Context.instance.editingItem.attributesRaw = new ItemAttributes();
-            updateEditedItem(layoutAttributes);
-            updateEditedItem(layoutDefense);
-            updateEditedItem(layoutItemDamage);
-            updateEditedItem(layoutWeaponDamage);
+            switch (item.ItemId)
+            {
+                case Resource.Id.SubmitEditedItem:
+                    D3Context.instance.editingItem.attributesRaw = new ItemAttributes();
+                    updateEditedItem(layoutAttributes);
+                    updateEditedItem(layoutDefense);
+                    updateEditedItem(layoutItemDamage);
+                    updateEditedItem(layoutWeaponDamage);
+                    Activity.SetResult(Result.Ok, new Intent());
+                    Activity.Finish();
+                    return true;
 
-            base.OnDestroyView();
+                default:
+                    return base.OnOptionsItemSelected(item);
+            }
         }
 
         #endregion
@@ -314,10 +322,10 @@ namespace ZTnDroid.D3Calculator.Fragments
                 layoutDefense.AddView(createRowView(defenseLabels, defenseFields, field, value), layoutDefense.ChildCount - 1);
         }
 
-        void createRowView(LinearLayout layout, List<string> labels, Field[] fields, Field selectedResource, ItemValueRange value)
+        void createRowView(LinearLayout layout, List<string> labels, Field[] fields, Field selected, ItemValueRange value)
         {
             if (value != null && value.min != 0)
-                layout.AddView(createRowView(labels, fields, selectedResource, value), layout.ChildCount - 1);
+                layout.AddView(createRowView(labels, fields, selected, value), layout.ChildCount - 1);
         }
 
         View createRowView(List<String> labels, Field[] fields)
@@ -346,18 +354,18 @@ namespace ZTnDroid.D3Calculator.Fragments
             return rowView;
         }
 
-        View createRowView(List<String> texts, Field[] resources, Field selected, ItemValueRange value)
+        View createRowView(List<String> texts, Field[] fields, Field selected, ItemValueRange value)
         {
-            View rowView = createRowView(texts, resources);
+            View rowView = createRowView(texts, fields);
 
             rowView.Tag = new JavaLangObject<Field>(selected);
 
             int index = 0;
-            for (; index < resources.Length; index++)
-                if (resources[index].id == selected.id)
+            for (; index < fields.Length; index++)
+                if (fields[index].id == selected.id)
                     break;
 
-            if (index != resources.Length)
+            if (index != fields.Length)
             {
                 rowView.FindViewById<Spinner>(Resource.Id.attributeName).SetSelection(index);
                 rowView.FindViewById<EditText>(Resource.Id.attributeValue).Text = value.min.ToString();

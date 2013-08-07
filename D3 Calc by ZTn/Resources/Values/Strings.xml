@@ -26,6 +26,7 @@
   <string name="RefreshContent">REFRESH</string>
   <string name="KillsLifetime">Kills Lifetime</string>
   <string name="SubmitNewAccount">Validate New Account</string>
+  <string name="SubmitEditedItem">Validate Edited Item</string>
 
   <!-- Waiting messages -->
   <string name="Loading">Loading Hero</string>
