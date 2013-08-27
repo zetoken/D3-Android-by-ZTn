@@ -53,13 +53,6 @@ namespace ZTnDroid.D3Calculator
             base.OnActivityResult(requestCode, resultCode, data);
         }
 
-        public override void OnBackPressed()
-        {
-            Toast.MakeText(this, Resources.GetString(Resource.String.ItemEditingCanceled), ToastLength.Long).Show();
-
-            base.OnBackPressed();
-        }
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             ZTnTrace.trace(MethodInfo.GetCurrentMethod());

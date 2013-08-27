@@ -183,6 +183,8 @@
   <string name="damagePercent_Lightning">+% lightning damage</string>
   <string name="damagePercent_Physical">+% physical damage</string>
   <string name="damagePercent_Poison">+% poison damage</string>
+
+  <string name="EditedItem">Edited item.</string>
   <string name="ItemEditingFinished">Item edition is done: computed data are updated.</string>
   <string name="ItemEditingCanceled">Item edition is CANCELED: no change occurs.</string>
 

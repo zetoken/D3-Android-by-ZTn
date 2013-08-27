@@ -54,7 +54,7 @@ namespace ZTnDroid.D3Calculator.Storage
             return db.Query(AccountsOpenHelper.TABLE_NAME,
                 new String[] { "_id", AccountsOpenHelper.FIELD_BATTLETAG, AccountsOpenHelper.FIELD_HOST, AccountsOpenHelper.FIELD_UPDATED },
                 null, null,
-                null, null, null);
+				null, null, AccountsOpenHelper.FIELD_BATTLETAG);
         }
 
         public ICursor getAccount(String battleTag, String host)

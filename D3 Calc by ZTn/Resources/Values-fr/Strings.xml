@@ -183,6 +183,8 @@
   <string name="damagePercent_Lightning">+% dégâts électrique</string>
   <string name="damagePercent_Physical">+% dégâts physique</string>
   <string name="damagePercent_Poison">+% dégâts poison</string>
+
+  <string name="EditedItem">Caractéristiques éditées.</string>
   <string name="ItemEditingFinished">Edition de l\'objet terminée: le calculateur a été mis à jour.</string>
   <string name="ItemEditingCanceled">Edition de l\'objet ANNULEE: aucun changement n\'a été fait.</string>
 
