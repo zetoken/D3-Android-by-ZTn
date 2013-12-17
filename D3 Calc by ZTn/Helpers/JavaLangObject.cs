@@ -1,14 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 
 namespace ZTnDroid.D3Calculator.Helpers
 {
@@ -18,16 +8,16 @@ namespace ZTnDroid.D3Calculator.Helpers
     /// <typeparam name="T"></typeparam>
     public class JavaLangObject<T> : Java.Lang.Object
     {
-        T _value;
+        readonly T value;
 
-        public T value
+        public T Value
         {
-            get { return _value; }
+            get { return value; }
         }
 
         public JavaLangObject(T value)
         {
-            this._value = value;
+            this.value = value;
         }
     }
 }

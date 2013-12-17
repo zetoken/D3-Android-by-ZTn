@@ -1,18 +1,16 @@
-using System;
-
 using Android.App;
 using Android.Content;
 using Android.Views;
 using Android.Widget;
-
+using System;
 using ZTn.BNet.D3.Heroes;
 
 namespace ZTnDroid.D3Calculator.Adapters
 {
     public class HeroSummariesListAdapter : BaseAdapter
     {
-        Context context;
-        HeroSummary[] heroes;
+        readonly Context context;
+        readonly HeroSummary[] heroes;
 
         public HeroSummariesListAdapter(Context context, HeroSummary[] heroes)
         {
@@ -69,15 +67,13 @@ namespace ZTnDroid.D3Calculator.Adapters
                 case HeroClass.Wizard:
                     imageResource = (hero.gender == HeroGender.Male ? Resource.Drawable.wizard_male : Resource.Drawable.wizard_female);
                     break;
-                default:
-                    break;
             }
             view.FindViewById<ImageView>(Resource.Id.imageClass).SetImageResource(imageResource);
 
             return view;
         }
 
-        public HeroSummary getHeroSummaryAt(int position)
+        public HeroSummary GetHeroSummaryAt(int position)
         {
             return heroes[position];
         }

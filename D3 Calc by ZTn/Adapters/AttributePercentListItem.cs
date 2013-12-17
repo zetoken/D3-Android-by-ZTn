@@ -1,5 +1,5 @@
+using Android.App;
 using System;
-
 using ZTn.BNet.D3.Items;
 
 namespace ZTnDroid.D3Calculator.Adapters
@@ -9,7 +9,7 @@ namespace ZTnDroid.D3Calculator.Adapters
         #region >> Constructors
 
         public AttributePercentListItem(int id, long value) :
-            this(D3Calc.Context.Resources.GetString(id), value)
+            this(Application.Context.Resources.GetString(id), value)
         {
         }
 
@@ -19,7 +19,7 @@ namespace ZTnDroid.D3Calculator.Adapters
         }
 
         public AttributePercentListItem(int id, ItemValueRange value) :
-            this(D3Calc.Context.Resources.GetString(id), value)
+            this(Application.Context.Resources.GetString(id), value)
         {
         }
 
@@ -29,7 +29,7 @@ namespace ZTnDroid.D3Calculator.Adapters
         }
 
         public AttributePercentListItem(int id, double value) :
-            this(D3Calc.Context.Resources.GetString(id), value)
+            this(Application.Context.Resources.GetString(id), value)
         {
         }
 

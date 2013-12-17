@@ -1,7 +1,6 @@
+using Android.Support.V4.App;
 using System;
 using System.Collections.Generic;
-using Android.Support.V4.App;
-
 using Fragment = Android.Support.V4.App.Fragment;
 using FragmentManager = Android.Support.V4.App.FragmentManager;
 
@@ -9,8 +8,8 @@ namespace ZTnDroid.D3Calculator.Adapters
 {
     class BasicViewPagerAdapter : FragmentPagerAdapter
     {
-        List<Fragment> fragments;
-        List<String> titles;
+        readonly List<Fragment> fragments;
+        readonly List<String> titles;
 
         #region >> Constructors
 

@@ -17,10 +17,10 @@ namespace ZTnDroid.D3Calculator.Fragments
 {
     public class CareersListFragment : Fragment
     {
-        const int ADD_NEW_ACCOUNT = 0;
+        const int AddNewAccount = 0;
 
-        readonly String[] accountsFromColumns = new String[] { Storage.AccountsOpenHelper.FIELD_BATTLETAG, Storage.AccountsOpenHelper.FIELD_HOST };
-        readonly int[] accountsToId = new int[] { Android.Resource.Id.Text1, Android.Resource.Id.Text2 };
+        readonly String[] accountsFromColumns = { AccountsOpenHelper.FIELD_BATTLETAG, AccountsOpenHelper.FIELD_HOST };
+        readonly int[] accountsToId = { Android.Resource.Id.Text1, Android.Resource.Id.Text2 };
 
         ICursor cursor;
 
@@ -29,31 +29,25 @@ namespace ZTnDroid.D3Calculator.Fragments
         /// <inheritdoc/>
         public override void OnActivityResult(int requestCode, int resultCode, Intent data)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             switch (requestCode)
             {
-                case ADD_NEW_ACCOUNT:
+                case AddNewAccount:
                     switch (resultCode)
                     {
                         case -1:
-                            String battleTag = data.GetStringExtra("battleTag");
-                            String host = data.GetStringExtra("host");
+                            var battleTag = data.GetStringExtra("battleTag");
+                            var host = data.GetStringExtra("host");
 
-                            D3Context.instance.dbAccounts.insert(battleTag, host);
+                            D3Context.Instance.DBAccounts.Insert(battleTag, host);
 
                             IListAdapter careerAdapter = new SimpleCursorAdapter(Activity, Android.Resource.Layout.SimpleListItem2, cursor, accountsFromColumns, accountsToId);
                             Activity.FindViewById<ListView>(Resource.Id.AccountsListView).Adapter = careerAdapter;
 
                             Toast.MakeText(Activity, "Account added", ToastLength.Short).Show();
                             break;
-
-                        default:
-                            break;
                     }
-                    break;
-
-                default:
                     break;
             }
 
@@ -63,7 +57,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         /// <inheritdoc/>
         public override void OnCreate(Bundle savedInstanceState)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             base.OnCreate(savedInstanceState);
 
@@ -75,7 +69,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         /// <inheritdoc/>
         public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             Activity.MenuInflater.Inflate(Resource.Menu.HomeActivity, menu);
 
@@ -85,21 +79,21 @@ namespace ZTnDroid.D3Calculator.Fragments
         /// <inheritdoc/>
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
-            View view = inflater.Inflate(Resource.Layout.Home, container, false);
+            var view = inflater.Inflate(Resource.Layout.Home, container, false);
 
-            ListView careerListView = view.FindViewById<ListView>(Resource.Id.AccountsListView);
-            careerListView.ItemClick += (Object sender, AdapterView.ItemClickEventArgs args) =>
+            var careerListView = view.FindViewById<ListView>(Resource.Id.AccountsListView);
+            careerListView.ItemClick += (sender, args) =>
             {
-                Intent viewCareerIntent = new Intent(Activity, typeof(ViewCareerActivity));
-                D3Context.instance.battleTag = args.View.FindViewById<TextView>(Android.Resource.Id.Text1).Text;
-                D3Context.instance.host = args.View.FindViewById<TextView>(Android.Resource.Id.Text2).Text;
+                var viewCareerIntent = new Intent(Activity, typeof(ViewCareerActivity));
+                D3Context.Instance.BattleTag = args.View.FindViewById<TextView>(Android.Resource.Id.Text1).Text;
+                D3Context.Instance.Host = args.View.FindViewById<TextView>(Android.Resource.Id.Text2).Text;
                 StartActivity(viewCareerIntent);
             };
 
-            D3Context.instance.dbAccounts = new AccountsDB(Activity);
-            cursor = D3Context.instance.dbAccounts.getAccounts();
+            D3Context.Instance.DBAccounts = new AccountsDB(Activity);
+            cursor = D3Context.Instance.DBAccounts.GetAccounts();
             Activity.StartManagingCursor(cursor);
 
             IListAdapter accountsAdapter = new SimpleCursorAdapter(Activity, Android.Resource.Layout.SimpleListItem2, cursor, accountsFromColumns, accountsToId);
@@ -111,7 +105,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         /// <inheritdoc/>
         public override void OnDestroyView()
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             Activity.StopManagingCursor(cursor);
             cursor.Close();
@@ -122,13 +116,13 @@ namespace ZTnDroid.D3Calculator.Fragments
         /// <inheritdoc/>
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             switch (item.ItemId)
             {
                 case Resource.Id.AddNewAccount:
-                    Intent intent = new Intent(Activity, typeof(AddNewAccountActivity));
-                    StartActivityForResult(intent, ADD_NEW_ACCOUNT);
+                    var intent = new Intent(Activity, typeof(AddNewAccountActivity));
+                    StartActivityForResult(intent, AddNewAccount);
                     return true;
 
                 default:
@@ -138,11 +132,11 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         #endregion
 
-        private void insertIntoCareersStorage(String battleTag, String host)
+        private void InsertIntoCareersStorage(String battleTag, String host)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
-            D3Context.instance.dbAccounts.insert(battleTag, host);
+            D3Context.Instance.DBAccounts.Insert(battleTag, host);
         }
     }
 }

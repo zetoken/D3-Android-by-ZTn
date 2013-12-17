@@ -1,21 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Android.App;
 using Android.Content;
 using Android.Database.Sqlite;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+using System;
 
 namespace ZTnDroid.D3Calculator.Storage
 {
     public class AccountsOpenHelper : SQLiteOpenHelper
     {
-        private static readonly String DATABASE_NAME = "d3calculator.db";
-        private static readonly int DATABASE_VERSION = 1;
+        private const String DATABASE_NAME = "d3calculator.db";
+        private const int DatabaseVersion = 1;
 
         public static readonly String TABLE_NAME = "accounts";
         public static readonly String FIELD_BATTLETAG = "battletag";
@@ -31,7 +23,7 @@ namespace ZTnDroid.D3Calculator.Storage
             + ");";
 
         public AccountsOpenHelper(Context context)
-            : base(context, DATABASE_NAME, null, DATABASE_VERSION)
+            : base(context, DATABASE_NAME, null, DatabaseVersion)
         {
         }
 

@@ -1,15 +1,11 @@
-﻿using System;
-using System.Reflection;
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
-using ZTn.BNet.D3;
-using ZTn.BNet.D3.DataProviders;
+using System.Reflection;
 using ZTnDroid.D3Calculator.Fragments;
 using ZTnDroid.D3Calculator.Helpers;
-using ZTnDroid.D3Calculator.Storage;
 using Fragment = Android.Support.V4.App.Fragment;
 
 namespace ZTnDroid.D3Calculator
@@ -24,7 +20,7 @@ namespace ZTnDroid.D3Calculator
         /// <inheritdoc/>
         public override void OnBackPressed()
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             base.OnBackPressed();
 
@@ -34,7 +30,7 @@ namespace ZTnDroid.D3Calculator
         /// <inheritdoc/>
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             base.OnCreate(savedInstanceState);
 
@@ -54,9 +50,9 @@ namespace ZTnDroid.D3Calculator
         /// <inheritdoc/>
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
-            this.MenuInflater.Inflate(Resource.Menu.Settings, menu);
+            MenuInflater.Inflate(Resource.Menu.Settings, menu);
 
             return base.OnCreateOptionsMenu(menu);
         }
@@ -64,12 +60,12 @@ namespace ZTnDroid.D3Calculator
         /// <inheritdoc/>
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             switch (item.ItemId)
             {
                 case Resource.Id.Settings:
-                    Intent intent = new Intent(this, typeof(SettingsActivity));
+                    var intent = new Intent(this, typeof(SettingsActivity));
                     StartActivity(intent);
                     return true;
 

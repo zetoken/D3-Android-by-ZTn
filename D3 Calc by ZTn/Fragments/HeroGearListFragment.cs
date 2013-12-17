@@ -1,14 +1,11 @@
+using Android.OS;
+using Android.Views;
+using Android.Widget;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Views;
-using Android.Widget;
 using ZTn.BNet.D3.Calculator.Sets;
-using ZTn.BNet.D3.Heroes;
 using ZTn.BNet.D3.Items;
 using ZTn.BNet.D3.Medias;
 using ZTnDroid.D3Calculator.Adapters;
@@ -25,7 +22,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         /// <inheritdoc/>
         public override void OnCreate(Bundle savedInstanceState)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             base.OnCreate(savedInstanceState);
 
@@ -35,59 +32,67 @@ namespace ZTnDroid.D3Calculator.Fragments
         /// <inheritdoc/>
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
-            View view = inflater.Inflate(Resource.Layout.ViewHeroGear, container, false);
+            var view = inflater.Inflate(Resource.Layout.ViewHeroGear, container, false);
 
-            updateView(view);
+            UpdateView(view);
 
             return view;
         }
 
         #endregion
 
-        private IListItem getDataForItem(int id, ItemSummary item, D3Picture icon)
+        private IListItem GetDataForItem(int id, ItemSummary itemSummary, D3Picture icon)
         {
-            return getDataForItem(Resources.GetString(id), item, icon);
+            return GetDataForItem(Resources.GetString(id), itemSummary, icon);
         }
 
-        private IListItem getDataForItem(String label, ItemSummary item, D3Picture icon)
+        private static IListItem GetDataForItem(String label, ItemSummary itemSummary, D3Picture icon)
         {
-            IListItem listItem = null;
-            if (item != null && (item is Item) && (icon != null))
-                listItem = new GearItemListItem(label, (Item)item, icon);
-            else if (item != null && (item is Item))
-                listItem = new GearItemListItem(label, (Item)item);
-            return listItem;
+            var item = itemSummary as Item;
+
+            if (item == null)
+            {
+                return null;
+            }
+
+            if (icon != null)
+            {
+                return new GearItemListItem(label, (Item)itemSummary, icon);
+            }
+
+            return new GearItemListItem(label, (Item)itemSummary);
         }
 
-        private void updateView(View view)
+        private void UpdateView(View view)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
-            Hero hero = D3Context.instance.hero;
-            IconsContainer icons = D3Context.instance.icons;
+            var hero = D3Context.Instance.hero;
+            var icons = D3Context.Instance.Icons;
             if (hero != null && hero.items != null)
             {
-                ListView heroGearListView = view.FindViewById<ListView>(Resource.Id.heroGearListView);
-                List<IListItem> gearAttr = new List<IListItem>();
+                var heroGearListView = view.FindViewById<ListView>(Resource.Id.heroGearListView);
+                var gearAttr = new List<IListItem>
+                {
+                    GetDataForItem(Resource.String.itemHead, hero.items.head, icons.Head),
+                    GetDataForItem(Resource.String.itemTorso, hero.items.torso, icons.Torso),
+                    GetDataForItem(Resource.String.itemFeet, hero.items.feet, icons.Feet),
+                    GetDataForItem(Resource.String.itemHands, hero.items.hands, icons.Hands),
+                    GetDataForItem(Resource.String.itemShoulders, hero.items.shoulders, icons.Shoulders),
+                    GetDataForItem(Resource.String.itemLegs, hero.items.legs, icons.Legs),
+                    GetDataForItem(Resource.String.itemBracers, hero.items.bracers, icons.Bracers),
+                    GetDataForItem(Resource.String.itemMainHand, hero.items.mainHand, icons.MainHand),
+                    GetDataForItem(Resource.String.itemOffHand, hero.items.offHand, icons.OffHand),
+                    GetDataForItem(Resource.String.itemWaist, hero.items.waist, icons.Waist),
+                    GetDataForItem(Resource.String.itemRightFinger, hero.items.rightFinger, icons.RightFinger),
+                    GetDataForItem(Resource.String.itemLeftFinger, hero.items.leftFinger, icons.LeftFinger),
+                    GetDataForItem(Resource.String.itemNeck, hero.items.neck, icons.Neck)
+                };
 
-                gearAttr.Add(getDataForItem(Resource.String.itemHead, hero.items.head, icons.head));
-                gearAttr.Add(getDataForItem(Resource.String.itemTorso, hero.items.torso, icons.torso));
-                gearAttr.Add(getDataForItem(Resource.String.itemFeet, hero.items.feet, icons.feet));
-                gearAttr.Add(getDataForItem(Resource.String.itemHands, hero.items.hands, icons.hands));
-                gearAttr.Add(getDataForItem(Resource.String.itemShoulders, hero.items.shoulders, icons.shoulders));
-                gearAttr.Add(getDataForItem(Resource.String.itemLegs, hero.items.legs, icons.legs));
-                gearAttr.Add(getDataForItem(Resource.String.itemBracers, hero.items.bracers, icons.bracers));
-                gearAttr.Add(getDataForItem(Resource.String.itemMainHand, hero.items.mainHand, icons.mainHand));
-                gearAttr.Add(getDataForItem(Resource.String.itemOffHand, hero.items.offHand, icons.offHand));
-                gearAttr.Add(getDataForItem(Resource.String.itemWaist, hero.items.waist, icons.waist));
-                gearAttr.Add(getDataForItem(Resource.String.itemRightFinger, hero.items.rightFinger, icons.rightFinger));
-                gearAttr.Add(getDataForItem(Resource.String.itemLeftFinger, hero.items.leftFinger, icons.leftFinger));
-                gearAttr.Add(getDataForItem(Resource.String.itemNeck, hero.items.neck, icons.neck));
-
-                HeroItems heroItems = D3Context.instance.hero.items;
-                List<Item> items = new List<Item>() {
+                var heroItems = D3Context.Instance.hero.items;
+                var items = new List<Item>() {
                     (Item)heroItems.bracers,
                     (Item)heroItems.feet,
                     (Item)heroItems.hands,
@@ -104,14 +109,14 @@ namespace ZTnDroid.D3Calculator.Fragments
                 };
                 items = items.Where(i => i != null).ToList();
 
-                foreach (Set set in D3Context.instance.activatedSets)
+                foreach (var set in D3Context.Instance.ActivatedSets)
                 {
-                    Item setItem = new Item() { name = set.name, attributes = set.getBonusAttributes(set.countItemsOfSet(items)), displayColor = "green" };
+                    var setItem = new Item() { name = set.name, attributes = set.getBonusAttributes(set.countItemsOfSet(items)), displayColor = "green" };
                     if (setItem.attributes.Length > 0)
-                        gearAttr.Add(getDataForItem(Resource.String.setBonuses, setItem, null));
+                        gearAttr.Add(GetDataForItem(Resource.String.setBonuses, setItem, null));
                 }
 
-                heroGearListView.Adapter = new ListAdapter(Activity, gearAttr.Where(l => l != null).ToArray()) { convertibleViews = true };
+                heroGearListView.Adapter = new ListAdapter(Activity, gearAttr.Where(l => l != null).ToArray()) { ConvertibleViews = true };
             }
         }
     }

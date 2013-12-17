@@ -1,25 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Threading;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Threading;
 using ZTn.BNet.BattleNet;
 using ZTn.BNet.D3;
 using ZTn.BNet.D3.Careers;
 using ZTn.BNet.D3.DataProviders;
-using ZTn.BNet.D3.Heroes;
-
 using ZTnDroid.D3Calculator.Adapters;
 using ZTnDroid.D3Calculator.Adapters.Delegated;
 using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
-
 using Fragment = Android.Support.V4.App.Fragment;
 
 namespace ZTnDroid.D3Calculator.Fragments
@@ -36,7 +31,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         /// <inheritdoc/>
         public override void OnCreate(Bundle savedInstanceState)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             base.OnCreate(savedInstanceState);
 
@@ -44,31 +39,31 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             SetHasOptionsMenu(true);
 
-            battleTag = D3Context.instance.battleTag;
-            host = D3Context.instance.host;
+            battleTag = D3Context.Instance.BattleTag;
+            host = D3Context.Instance.Host;
         }
 
         /// <inheritdoc/>
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
-            View view = inflater.Inflate(Resource.Layout.ViewCareer, container, false);
+            var view = inflater.Inflate(Resource.Layout.ViewCareer, container, false);
 
-            ListView listView = view.FindViewById<ListView>(Resource.Id.HeroesListView);
-            listView.ItemClick += (Object sender, Android.Widget.AdapterView.ItemClickEventArgs args) =>
+            var listView = view.FindViewById<ListView>(Resource.Id.HeroesListView);
+            listView.ItemClick += (sender, args) =>
             {
-                HeroSummary heroSummary = ((HeroSummariesListAdapter)listView.Adapter).getHeroSummaryAt(args.Position);
-                D3Context.instance.heroSummary = heroSummary;
+                var heroSummary = ((HeroSummariesListAdapter)listView.Adapter).GetHeroSummaryAt(args.Position);
+                D3Context.Instance.heroSummary = heroSummary;
 
-                Intent viewHeroIntent = new Intent(Activity, typeof(ViewHeroActivity));
+                var viewHeroIntent = new Intent(Activity, typeof(ViewHeroActivity));
 
                 StartActivity(viewHeroIntent);
             };
 
             Activity.Title = battleTag;
 
-            deferredFetchAndUpdateCareer(D3Context.instance.onlineMode);
+            DeferredFetchAndUpdateCareer(D3Context.Instance.onlineMode);
 
             return view;
         }
@@ -76,7 +71,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         /// <inheritdoc/>
         public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             base.OnCreateOptionsMenu(menu, inflater);
 
@@ -86,16 +81,16 @@ namespace ZTnDroid.D3Calculator.Fragments
         /// <inheritdoc/>
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             switch (item.ItemId)
             {
                 case Resource.Id.DeleteContent:
-                    deleteCareer();
+                    DeleteCareer();
                     return true;
 
                 case Resource.Id.RefreshContent:
-                    deferredFetchAndUpdateCareer(OnlineMode.Online);
+                    DeferredFetchAndUpdateCareer(OnlineMode.Online);
                     return true;
 
                 default:
@@ -105,33 +100,37 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         #endregion
 
-        private void deferredFetchAndUpdateCareer(OnlineMode online)
+        private void DeferredFetchAndUpdateCareer(OnlineMode online)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             ProgressDialog progressDialog = null;
 
             if (online == OnlineMode.Online)
                 progressDialog = ProgressDialog.Show(Activity, Resources.GetString(Resource.String.LoadingCareer), Resources.GetString(Resource.String.WaitWhileRetrievingData), true);
 
-            new Thread(new ThreadStart(() =>
+            new Thread(() =>
             {
                 try
                 {
-                    fetchCareer(online);
+                    FetchCareer(online);
                     Activity.RunOnUiThread(() =>
                     {
                         if (online == OnlineMode.Online)
+                        {
                             progressDialog.Dismiss();
-                        updateCareerView();
+                        }
+                        UpdateCareerView();
                     });
                 }
-                catch (ZTn.BNet.D3.DataProviders.FileNotInCacheException)
+                catch (FileNotInCacheException)
                 {
                     Activity.RunOnUiThread(() =>
                     {
                         if (online == OnlineMode.Online)
+                        {
                             progressDialog.Dismiss();
+                        }
                         Toast.MakeText(Activity, "Career not in cache" + System.Environment.NewLine + "Please use refresh action", ToastLength.Long).Show();
                     });
                 }
@@ -140,29 +139,31 @@ namespace ZTnDroid.D3Calculator.Fragments
                     Activity.RunOnUiThread(() =>
                     {
                         if (online == OnlineMode.Online)
+                        {
                             progressDialog.Dismiss();
+                        }
                         Toast.MakeText(Activity, Resources.GetString(Resource.String.ErrorOccuredWhileRetrievingData), ToastLength.Long).Show();
                         Console.WriteLine(exception);
                     });
                 }
-            })).Start();
+            }).Start();
         }
 
-        private void deleteCareer()
+        private void DeleteCareer()
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             Toast.MakeText(Activity, "Career will be removed...", ToastLength.Short);
-            D3Context.instance.dbAccounts.delete(battleTag, host);
+            D3Context.Instance.DBAccounts.Delete(battleTag, host);
             Activity.Finish();
         }
 
-        private void fetchCareer(OnlineMode online)
+        private void FetchCareer(OnlineMode online)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             D3Api.host = host;
-            DataProviders.CacheableDataProvider dataProvider = (DataProviders.CacheableDataProvider)D3Api.dataProvider;
+            var dataProvider = (DataProviders.CacheableDataProvider)D3Api.dataProvider;
             dataProvider.onlineMode = online;
 
             try
@@ -177,18 +178,18 @@ namespace ZTnDroid.D3Calculator.Fragments
             }
             finally
             {
-                dataProvider.onlineMode = D3Context.instance.onlineMode;
+                dataProvider.onlineMode = D3Context.Instance.onlineMode;
             }
         }
 
-        private void updateCareerView()
+        private void UpdateCareerView()
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             if (career != null)
             {
-                ListView killsListView = Activity.FindViewById<ListView>(Resource.Id.killsLifetimeListView);
-                List<IListItem> attributes = new List<IListItem>()
+                var killsListView = Activity.FindViewById<ListView>(Resource.Id.killsLifetimeListView);
+                var attributes = new List<IListItem>
                 {
                     new SectionHeaderListItem(Resources.GetString(Resource.String.KillsLifetime)),
                     new AttributeListItem(Resources.GetString(Resource.String.elites), career.kills.elites.ToString()),
@@ -199,7 +200,7 @@ namespace ZTnDroid.D3Calculator.Fragments
 
                 if (career.heroes != null)
                 {
-                    ListView listView = Activity.FindViewById<ListView>(Resource.Id.HeroesListView);
+                    var listView = Activity.FindViewById<ListView>(Resource.Id.HeroesListView);
                     listView.Adapter = new HeroSummariesListAdapter(Activity, career.heroes);
                 }
             }

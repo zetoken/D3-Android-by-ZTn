@@ -1,14 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using System;
+using System.Linq;
 using ZTn.BNet.BattleNet;
 using ZTn.BNet.D3.Helpers;
 
@@ -31,9 +27,9 @@ namespace ZTnDroid.D3Calculator
 
             ActionBar.SetDisplayHomeAsUpEnabled(true);
 
-            List<Host> hosts = JsonHelpers.getDataFromJSonStream<Host>(Assets.Open("hosts.json"));
+            var hosts = JsonHelpers.getDataFromJSonStream<Host>(Assets.Open("hosts.json"));
 
-            ArrayAdapter adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, hosts.Select(h => h.url).ToArray());
+            var adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, hosts.Select(h => h.url).ToArray());
             adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
 
             serverSpinner = FindViewById<Spinner>(Resource.Id.hostSpinner);
@@ -56,7 +52,7 @@ namespace ZTnDroid.D3Calculator
             switch (item.ItemId)
             {
                 case Resource.Id.SubmitNewAccount:
-                    onSubmit();
+                    OnSubmit();
                     return true;
 
                 default:
@@ -66,14 +62,13 @@ namespace ZTnDroid.D3Calculator
 
         #endregion
 
-        private void onSubmit()
+        private void OnSubmit()
         {
-            BattleTag battleTag = null;
             try
             {
-                battleTag = new BattleTag(battleTagEditText.Text);
+                var battleTag = new BattleTag(battleTagEditText.Text);
 
-                Intent resultIntent = new Intent();
+                var resultIntent = new Intent();
                 resultIntent.PutExtra("battleTag", battleTag.ToString());
                 resultIntent.PutExtra("host", serverSpinner.SelectedItem.ToString());
 

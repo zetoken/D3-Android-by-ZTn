@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 namespace ZTnDroid.D3Calculator.Helpers
 {
@@ -14,8 +15,9 @@ namespace ZTnDroid.D3Calculator.Helpers
         /// </summary>
         /// <param name="type"><seealso cref="Type"/> of the .net class</param>
         /// <returns></returns>
-        public static String toAndroidClassName(this Type type)
+        public static String ToAndroidClassName(this Type type)
         {
+            Debug.Assert(type.Namespace != null, "type.Namespace != null");
             return type.Namespace.ToLower() + "." + type.Name;
         }
     }

@@ -1,25 +1,25 @@
-using System;
-
+using Android.App;
 using Android.Views;
 using Android.Widget;
+using System;
+using ZTnDroid.D3Calculator.Adapters.Delegated;
 
 namespace ZTnDroid.D3Calculator.Adapters
 {
     public class SectionHeaderListItem : IListItem
     {
-        public String label;
+        public String Label;
 
         #region >> Constructors
 
         public SectionHeaderListItem(int id)
-            : this(D3Calc.Context.Resources.GetString(id))
+            : this(Application.Context.Resources.GetString(id))
         {
         }
 
         public SectionHeaderListItem(String label)
-            : base()
         {
-            this.label = label.ToUpper();
+            Label = label.ToUpper();
         }
 
         #endregion
@@ -27,26 +27,26 @@ namespace ZTnDroid.D3Calculator.Adapters
         #region >> IListItem
 
         /// <inheritdoc/>
-        public int getLayoutResource()
+        public int GetLayoutResource()
         {
             return Resource.Layout.SectionHeaderListItem;
         }
 
         /// <inheritdoc/>
-        public bool isEnabled()
+        public bool IsEnabled()
         {
             return false;
         }
 
         /// <inheritdoc/>
-        public void removeView(View view)
+        public void RemoveView(View view)
         {
         }
 
         /// <inheritdoc/>
-        public void updateView(View view, Boolean recycled)
+        public void UpdateView(View view, Boolean recycled)
         {
-            view.FindViewById<TextView>(Resource.Id.sectionLabel).Text = label;
+            view.FindViewById<TextView>(Resource.Id.sectionLabel).Text = Label;
         }
 
         #endregion

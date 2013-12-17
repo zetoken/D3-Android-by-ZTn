@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -26,18 +27,18 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         #region >> Constants
 
-        static readonly Field[] attributeFields = 
+        static readonly Field[] AttributeFields = 
         {
             new Field(Resource.String.dexterity, "dexterityItem"),
             new Field(Resource.String.intelligence, "intelligenceItem"), 
             new Field(Resource.String.strength, "strengthItem"), 
             new Field(Resource.String.vitality , "vitalityItem")
         };
-        static readonly Field[] itemDamageFields = 
+        static readonly Field[] ItemDamageFields = 
         {
-            new Field(Resource.String.criticChance, "critPercentBonusCapped") { percent = true },
-            new Field(Resource.String.criticDamage, "critDamagePercent") { percent = true },
-            new Field(Resource.String.attackSpeed, "attacksPerSecondPercent") { percent = true },
+            new Field(Resource.String.criticChance, "critPercentBonusCapped") { Percent = true },
+            new Field(Resource.String.criticDamage, "critDamagePercent") { Percent = true },
+            new Field(Resource.String.attackSpeed, "attacksPerSecondPercent") { Percent = true },
             new Field(Resource.String.arcaneMin, "damageMin_Arcane"),
             new Field(Resource.String.arcaneMax, "damageDelta_Arcane", "damageMin_Arcane"),
             new Field(Resource.String.coldMin, "damageMin_Cold"),
@@ -52,15 +53,15 @@ namespace ZTnDroid.D3Calculator.Fragments
             new Field(Resource.String.physicalMax, "damageDelta_Physical", "damageMin_Physical"),
             new Field(Resource.String.poisonMin, "damageMin_Poison"),
             new Field(Resource.String.poisonMax, "damageDelta_Poison", "damageMin_Poison"),
-            new Field(Resource.String.damagePercent_Arcane, "damageTypePercentBonus_Arcane") { percent = true },
-            new Field(Resource.String.damagePercent_Cold, "damageTypePercentBonus_Cold") { percent = true },
-            new Field(Resource.String.damagePercent_Fire, "damageTypePercentBonus_Fire") { percent = true },
-            new Field(Resource.String.damagePercent_Holy, "damageTypePercentBonus_Holy") { percent = true },
-            new Field(Resource.String.damagePercent_Lightning, "damageTypePercentBonus_Lightning") { percent = true },
-            new Field(Resource.String.damagePercent_Physical, "damageTypePercentBonus_Physical") { percent = true },
-            new Field(Resource.String.damagePercent_Poison, "damageTypePercentBonus_Poison") { percent = true },
+            new Field(Resource.String.damagePercent_Arcane, "damageTypePercentBonus_Arcane") { Percent = true },
+            new Field(Resource.String.damagePercent_Cold, "damageTypePercentBonus_Cold") { Percent = true },
+            new Field(Resource.String.damagePercent_Fire, "damageTypePercentBonus_Fire") { Percent = true },
+            new Field(Resource.String.damagePercent_Holy, "damageTypePercentBonus_Holy") { Percent = true },
+            new Field(Resource.String.damagePercent_Lightning, "damageTypePercentBonus_Lightning") { Percent = true },
+            new Field(Resource.String.damagePercent_Physical, "damageTypePercentBonus_Physical") { Percent = true },
+            new Field(Resource.String.damagePercent_Poison, "damageTypePercentBonus_Poison") { Percent = true }
         };
-        static readonly Field[] weaponDamageFields = 
+        static readonly Field[] WeaponDamageFields = 
         {
             new Field(Resource.String.attacksPerSecond, "attacksPerSecondItem"),
             new Field(Resource.String.arcaneMinWeapon, "damageWeaponMin_Arcane"),
@@ -76,9 +77,9 @@ namespace ZTnDroid.D3Calculator.Fragments
             new Field(Resource.String.physicalMinWeapon, "damageWeaponMin_Physical"),
             new Field(Resource.String.physicalMaxWeapon, "damageWeaponDelta_Physical", "damageWeaponMin_Physical"),
             new Field(Resource.String.poisonMinWeapon, "damageWeaponMin_Poison"),
-            new Field(Resource.String.poisonMaxWeapon, "damageWeaponDelta_Poison", "damageWeaponMin_Poison"),
+            new Field(Resource.String.poisonMaxWeapon, "damageWeaponDelta_Poison", "damageWeaponMin_Poison")
         };
-        static readonly Field[] defenseFields = 
+        static readonly Field[] DefenseFields = 
         { 
             new Field(Resource.String.armor, "armorItem"),
             new Field(Resource.String.allResists, "resistance_All"),
@@ -88,14 +89,11 @@ namespace ZTnDroid.D3Calculator.Fragments
             new Field(Resource.String.lightningResist, "resistance_Lightning"),
             new Field(Resource.String.physicalResist, "resistance_Physical"),
             new Field(Resource.String.poisonResist, "resistance_Poison"),
-            new Field(Resource.String.life, "hitpointsPercent") { percent = true },
+            new Field(Resource.String.life, "hitpointsPercent") { Percent = true },
             new Field(Resource.String.lifeBonusPerGlobe, "healthGlobeBonusHealth"),
             new Field(Resource.String.lifeOnHit, "hitpointsOnHit"),
             new Field(Resource.String.lifeRegenPerSecond, "hitpointsRegenPerSecond"),
-            new Field(Resource.String.lifeSteal, "stealHealthPercent") { percent = true },
-        };
-        static /*readonly*/ Field[] socketFields = 
-        {
+            new Field(Resource.String.lifeSteal, "stealHealthPercent") { Percent = true }
         };
 
         #endregion
@@ -114,7 +112,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         LinearLayout layoutDefense;
         LinearLayout layoutSockets;
 
-        public static KnownGems knownGems = KnownGems.getKnownGemsFromJsonStream(D3Calc.instance.Assets.Open("d3gem.json"));
+        public static KnownGems KnownGems = KnownGems.getKnownGemsFromJsonStream(D3Calc.Instance.Assets.Open("d3gem.json"));
 
         #endregion
 
@@ -123,7 +121,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         /// <inheritdoc/>
         public override void OnCreate(Bundle savedInstanceState)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             base.OnCreate(savedInstanceState);
 
@@ -133,20 +131,22 @@ namespace ZTnDroid.D3Calculator.Fragments
             layoutInflater = (LayoutInflater)Activity.GetSystemService(Context.LayoutInflaterService);
 
             // Build localized strings
-            attributeLabels = attributeFields.Select(o => o.label).ToList();
-            itemDamageLabels = itemDamageFields.Select(o => o.label).ToList();
-            defenseLabels = defenseFields.Select(o => o.label).ToList();
-            weaponDamageLabels = weaponDamageFields.Select(o => o.label).ToList();
+            attributeLabels = AttributeFields.Select(o => o.Label).ToList();
+            itemDamageLabels = ItemDamageFields.Select(o => o.Label).ToList();
+            defenseLabels = DefenseFields.Select(o => o.Label).ToList();
+            weaponDamageLabels = WeaponDamageFields.Select(o => o.Label).ToList();
 
-            socketLabels = new List<string>();
-            socketLabels.Add("( no gem )");
-            socketLabels.AddRange(knownGems.getGemsForItem(D3Context.instance.editingItem).Select(g => g.attributes[0]));
+            socketLabels = new List<string>
+            {
+                "( no gem )"
+            };
+            socketLabels.AddRange(KnownGems.getGemsForItem(D3Context.Instance.EditingItem).Select(g => g.attributes[0]));
         }
 
         /// <inheritdoc/>
         public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             Activity.MenuInflater.Inflate(Resource.Menu.GearItemEditorFragment, menu);
 
@@ -156,67 +156,66 @@ namespace ZTnDroid.D3Calculator.Fragments
         /// <inheritdoc/>
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
-            View view = inflater.Inflate(Resource.Layout.GearItemEditor, container, false);
+            var view = inflater.Inflate(Resource.Layout.GearItemEditor, container, false);
 
-            view.FindViewById<TextView>(Resource.Id.gearItemName).Text = D3Context.instance.editingItem.name;
+            view.FindViewById<TextView>(Resource.Id.gearItemName).Text = D3Context.Instance.EditingItem.name;
 
-            Item editingItem = D3Context.instance.editingItem;
-            ItemAttributes editingItemAttr = D3Context.instance.editingItem.attributesRaw;
-            editingItem.attributes = new String[] { D3Calc.Context.Resources.GetString(Resource.String.EditedItem) };
+            var editingItem = D3Context.Instance.EditingItem;
+            editingItem.attributes = new[] { Application.Context.Resources.GetString(Resource.String.EditedItem) };
 
             // Attributes
             layoutAttributes = view.FindViewById<LinearLayout>(Resource.Id.layoutAttributes);
             layoutAttributes.FindViewById<ImageButton>(Resource.Id.add).Click +=
-                (Object sender, EventArgs e) => layoutAttributes.AddView(createRowView(attributeLabels, attributeFields), layoutAttributes.ChildCount - 1);
+                (sender, e) => layoutAttributes.AddView(CreateRowView(attributeLabels, AttributeFields), layoutAttributes.ChildCount - 1);
 
-            foreach (Field descriptor in attributeFields)
+            foreach (var descriptor in AttributeFields)
             {
-                createAttributeRowView(descriptor);
+                CreateAttributeRowView(descriptor);
             }
 
             // Damages
             layoutItemDamage = view.FindViewById<LinearLayout>(Resource.Id.layoutItemDamage);
             layoutItemDamage.FindViewById<ImageButton>(Resource.Id.add).Click +=
-                (Object sender, EventArgs e) => layoutItemDamage.AddView(createRowView(itemDamageLabels, itemDamageFields), layoutItemDamage.ChildCount - 1);
+                (sender, e) => layoutItemDamage.AddView(CreateRowView(itemDamageLabels, ItemDamageFields), layoutItemDamage.ChildCount - 1);
 
-            foreach (Field descriptor in itemDamageFields)
+            foreach (var descriptor in ItemDamageFields)
             {
-                createItemDamageRowView(descriptor);
+                CreateItemDamageRowView(descriptor);
             }
 
             // Damage Weapons
             layoutWeaponDamage = view.FindViewById<LinearLayout>(Resource.Id.layoutWeaponDamage);
             layoutWeaponDamage.FindViewById<ImageButton>(Resource.Id.add).Click +=
-                (Object sender, EventArgs e) => layoutWeaponDamage.AddView(createRowView(weaponDamageLabels, weaponDamageFields), layoutWeaponDamage.ChildCount - 1);
+                (sender, e) => layoutWeaponDamage.AddView(CreateRowView(weaponDamageLabels, WeaponDamageFields), layoutWeaponDamage.ChildCount - 1);
 
-            foreach (Field descriptor in weaponDamageFields)
+            foreach (var descriptor in WeaponDamageFields)
             {
-                createWeaponDamageRowView(descriptor);
+                CreateWeaponDamageRowView(descriptor);
             }
 
             // Defense
             layoutDefense = view.FindViewById<LinearLayout>(Resource.Id.layoutDefense);
             layoutDefense.FindViewById<ImageButton>(Resource.Id.add).Click +=
-                (Object sender, EventArgs e) => layoutDefense.AddView(createRowView(defenseLabels, defenseFields), layoutDefense.ChildCount - 1);
+                (sender, e) => layoutDefense.AddView(CreateRowView(defenseLabels, DefenseFields), layoutDefense.ChildCount - 1);
 
-            foreach (Field descriptor in defenseFields)
+            foreach (var descriptor in DefenseFields)
             {
-                createDefenseRowView(descriptor);
+                CreateDefenseRowView(descriptor);
             }
 
             // Sockets
             layoutSockets = view.FindViewById<LinearLayout>(Resource.Id.layoutSockets);
             layoutSockets.FindViewById<ImageButton>(Resource.Id.add).Click +=
-                (Object sender, EventArgs e) => layoutSockets.AddView(createSocketRowView(socketLabels, knownGems.getGemsForItem(D3Context.instance.editingItem)), layoutSockets.ChildCount - 1);
+                (sender, e) => layoutSockets.AddView(CreateSocketRowView(socketLabels, KnownGems.getGemsForItem(D3Context.Instance.EditingItem)), layoutSockets.ChildCount - 1);
 
-            SocketedGem[] itemGems = D3Context.instance.editingItem.gems;
+            var itemGems = D3Context.Instance.EditingItem.gems;
             if (itemGems != null)
             {
-                foreach (SocketedGem socketedGem in itemGems)
+                foreach (var socketedGem in itemGems)
                 {
-                    layoutSockets.AddView(createSocketRowView(socketLabels, knownGems.getGemsForItem(D3Context.instance.editingItem), socketedGem.item), layoutSockets.ChildCount - 1);
+                    layoutSockets.AddView(CreateSocketRowView(socketLabels, KnownGems.getGemsForItem(D3Context.Instance.EditingItem), socketedGem.item), layoutSockets.ChildCount - 1);
                 }
             }
 
@@ -226,25 +225,25 @@ namespace ZTnDroid.D3Calculator.Fragments
         /// <inheritdoc/>
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             switch (item.ItemId)
             {
                 case Resource.Id.CancelEditedItem:
-                    this.Activity.SetResult(Result.Canceled, new Intent());
-                    this.Activity.Finish();
+                    Activity.SetResult(Result.Canceled, new Intent());
+                    Activity.Finish();
                     return true;
 
                 case Resource.Id.SubmitEditedItem:
-                    D3Context.instance.editingItem.attributesRaw = new ItemAttributes();
-                    updateEditedItem(layoutAttributes);
-                    updateEditedItem(layoutDefense);
-                    updateEditedItem(layoutItemDamage);
-                    updateEditedItem(layoutWeaponDamage);
-                    updateEditedItemSockets(layoutSockets);
-                    D3Context.instance.editingItem.UpdateStats();
-                    this.Activity.SetResult(Result.Ok, new Intent());
-                    this.Activity.Finish();
+                    D3Context.Instance.EditingItem.attributesRaw = new ItemAttributes();
+                    UpdateEditedItem(layoutAttributes);
+                    UpdateEditedItem(layoutDefense);
+                    UpdateEditedItem(layoutItemDamage);
+                    UpdateEditedItem(layoutWeaponDamage);
+                    UpdateEditedItemSockets(layoutSockets);
+                    D3Context.Instance.EditingItem.UpdateStats();
+                    Activity.SetResult(Result.Ok, new Intent());
+                    Activity.Finish();
                     return true;
 
                 default:
@@ -258,11 +257,11 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         class Field
         {
-            public int id;
-            public string targetAttribute;
-            public string refAttribute;
-            public string label;
-            public bool percent = false;
+            public readonly int id;
+            private readonly string targetAttribute;
+            private readonly string refAttribute;
+            public readonly string Label;
+            public bool Percent = false;
 
             public Field(int id, string attribute)
                 : this(id, attribute, null)
@@ -274,10 +273,10 @@ namespace ZTnDroid.D3Calculator.Fragments
                 this.id = id;
                 this.targetAttribute = targetAttribute;
                 this.refAttribute = refAttribute;
-                this.label = D3Calc.Context.Resources.GetString(id);
+                Label = Application.Context.Resources.GetString(id);
             }
 
-            public ItemValueRange getValue(ItemAttributes attributes)
+            public ItemValueRange GetValue(ItemAttributes attributes)
             {
                 ItemValueRange value;
 
@@ -286,14 +285,14 @@ namespace ZTnDroid.D3Calculator.Fragments
                 else
                     value = attributes.getAttributeByName(targetAttribute) + attributes.getAttributeByName(refAttribute);
 
-                if (percent)
+                if (Percent)
                     value *= 100;
                 return value;
             }
 
-            public void setValue(ItemAttributes attributes, double value)
+            public void SetValue(ItemAttributes attributes, double value)
             {
-                if (percent)
+                if (Percent)
                     value /= 100;
 
                 if (refAttribute == null)
@@ -307,7 +306,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             /// <inheritdoc />
             public override string ToString()
             {
-                return "[id:" + id + " attribute:" + targetAttribute + " label:" + label + "]";
+                return "[id:" + id + " attribute:" + targetAttribute + " label:" + Label + "]";
             }
 
             #endregion
@@ -315,59 +314,59 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         #endregion
 
-        void createAttributeRowView(Field field)
+        void CreateAttributeRowView(Field field)
         {
-            ItemValueRange value = field.getValue(D3Context.instance.editingItem.attributesRaw);
+            var value = field.GetValue(D3Context.Instance.EditingItem.attributesRaw);
             if (value != null && value.min != 0)
-                layoutAttributes.AddView(createRowView(attributeLabels, attributeFields, field, value), layoutAttributes.ChildCount - 1);
+                layoutAttributes.AddView(CreateRowView(attributeLabels, AttributeFields, field, value), layoutAttributes.ChildCount - 1);
         }
 
-        void createItemDamageRowView(Field field)
+        void CreateItemDamageRowView(Field field)
         {
-            ItemValueRange value = field.getValue(D3Context.instance.editingItem.attributesRaw);
+            var value = field.GetValue(D3Context.Instance.EditingItem.attributesRaw);
             if (value != null && value.min != 0)
-                layoutItemDamage.AddView(createRowView(itemDamageLabels, itemDamageFields, field, value), layoutItemDamage.ChildCount - 1);
+                layoutItemDamage.AddView(CreateRowView(itemDamageLabels, ItemDamageFields, field, value), layoutItemDamage.ChildCount - 1);
         }
 
-        void createWeaponDamageRowView(Field field)
+        void CreateWeaponDamageRowView(Field field)
         {
-            ItemValueRange value = field.getValue(D3Context.instance.editingItem.attributesRaw);
+            var value = field.GetValue(D3Context.Instance.EditingItem.attributesRaw);
             if (value != null && value.min != 0)
-                layoutWeaponDamage.AddView(createRowView(weaponDamageLabels, weaponDamageFields, field, value), layoutWeaponDamage.ChildCount - 1);
+                layoutWeaponDamage.AddView(CreateRowView(weaponDamageLabels, WeaponDamageFields, field, value), layoutWeaponDamage.ChildCount - 1);
         }
 
-        void createDefenseRowView(Field field)
+        void CreateDefenseRowView(Field field)
         {
-            ItemValueRange value = field.getValue(D3Context.instance.editingItem.attributesRaw);
+            var value = field.GetValue(D3Context.Instance.EditingItem.attributesRaw);
             if (value != null && value.min != 0)
-                layoutDefense.AddView(createRowView(defenseLabels, defenseFields, field, value), layoutDefense.ChildCount - 1);
+                layoutDefense.AddView(CreateRowView(defenseLabels, DefenseFields, field, value), layoutDefense.ChildCount - 1);
         }
 
-        void createRowView(LinearLayout layout, List<string> labels, Field[] fields, Field selected, ItemValueRange value)
+        void CreateRowView(ViewGroup layout, List<string> labels, Field[] fields, Field selected, ItemValueRange value)
         {
             if (value != null && value.min != 0)
-                layout.AddView(createRowView(labels, fields, selected, value), layout.ChildCount - 1);
+                layout.AddView(CreateRowView(labels, fields, selected, value), layout.ChildCount - 1);
         }
 
-        View createRowView(List<String> labels, Field[] fields)
+        View CreateRowView(List<String> labels, Field[] fields)
         {
             // Get the view from inflater
-            View rowView = layoutInflater.Inflate(Resource.Layout.GearItemRowEditor, null);
+            var rowView = layoutInflater.Inflate(Resource.Layout.GearItemRowEditor, null);
 
             // Set "remove row" action
             rowView.FindViewById<ImageButton>(Resource.Id.remove).Click +=
-                (Object sender, EventArgs e) =>
+                (sender, e) =>
                 {
-                    ImageButton removeButton = (ImageButton)sender;
-                    View parent = (View)removeButton.Parent;
-                    LinearLayout parentContainer = (LinearLayout)parent.Parent;
+                    var removeButton = (ImageButton)sender;
+                    var parent = (View)removeButton.Parent;
+                    var parentContainer = (LinearLayout)parent.Parent;
                     parentContainer.RemoveView(parent);
                 };
 
-            Spinner spinner = rowView.FindViewById<Spinner>(Resource.Id.attributeName);
+            var spinner = rowView.FindViewById<Spinner>(Resource.Id.attributeName);
             spinner.Adapter = new ArrayAdapter<String>(Activity, Android.Resource.Layout.SimpleSpinnerItem, labels);
             spinner.ItemSelected +=
-                (Object sender, AdapterView.ItemSelectedEventArgs e) =>
+                (sender, e) =>
                 {
                     ((View)((Spinner)sender).Parent).Tag = new JavaLangObject<Field>(fields[e.Position]);
                 };
@@ -375,13 +374,13 @@ namespace ZTnDroid.D3Calculator.Fragments
             return rowView;
         }
 
-        View createRowView(List<String> labels, Field[] fields, Field selected, ItemValueRange value)
+        View CreateRowView(List<String> labels, Field[] fields, Field selected, ItemValueRange value)
         {
-            View rowView = createRowView(labels, fields);
+            var rowView = CreateRowView(labels, fields);
 
             rowView.Tag = new JavaLangObject<Field>(selected);
 
-            int index = 0;
+            var index = 0;
             for (; index < fields.Length; index++)
                 if (fields[index].id == selected.id)
                     break;
@@ -395,25 +394,25 @@ namespace ZTnDroid.D3Calculator.Fragments
             return rowView;
         }
 
-        View createSocketRowView(List<String> labels, List<Item> gems)
+        View CreateSocketRowView(List<String> labels, List<Item> gems)
         {
             // Get the view from inflater
-            View rowView = layoutInflater.Inflate(Resource.Layout.GearSocketRowEditor, null);
+            var rowView = layoutInflater.Inflate(Resource.Layout.GearSocketRowEditor, null);
 
             // Set "remove row" action
             rowView.FindViewById<ImageButton>(Resource.Id.remove).Click +=
-                (Object sender, EventArgs e) =>
+                (sender, e) =>
                 {
-                    ImageButton removeButton = (ImageButton)sender;
-                    View parent = (View)removeButton.Parent;
-                    LinearLayout parentContainer = (LinearLayout)parent.Parent;
+                    var removeButton = (ImageButton)sender;
+                    var parent = (View)removeButton.Parent;
+                    var parentContainer = (LinearLayout)parent.Parent;
                     parentContainer.RemoveView(parent);
                 };
 
-            Spinner spinner = rowView.FindViewById<Spinner>(Resource.Id.socketLabel);
+            var spinner = rowView.FindViewById<Spinner>(Resource.Id.socketLabel);
             spinner.Adapter = new ArrayAdapter<String>(Activity, Android.Resource.Layout.SimpleSpinnerItem, labels);
             spinner.ItemSelected +=
-                (Object sender, AdapterView.ItemSelectedEventArgs e) =>
+                (sender, e) =>
                 {
                     Console.WriteLine("OK: " + gems[e.Position]);
                     // Note: spinner has the additional "no gem" choice
@@ -426,11 +425,11 @@ namespace ZTnDroid.D3Calculator.Fragments
             return rowView;
         }
 
-        View createSocketRowView(List<String> labels, List<Item> gems, ItemSummary selected)
+        View CreateSocketRowView(List<String> labels, List<Item> gems, ItemSummary selected)
         {
-            View rowView = createSocketRowView(labels, gems);
+            var rowView = CreateSocketRowView(labels, gems);
 
-            int index = 0;
+            var index = 0;
             for (; index < gems.Count; index++)
                 if (gems[index].id == selected.id)
                     break;
@@ -444,18 +443,18 @@ namespace ZTnDroid.D3Calculator.Fragments
             return rowView;
         }
 
-        void updateEditedItem(LinearLayout layout)
+        static void UpdateEditedItem(ViewGroup layout)
         {
-            String numberDecimalSeparator = System.Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator;
-            ItemAttributes attr = new ItemAttributes();
-            for (int index = 0; index < layout.ChildCount; index++)
+            var numberDecimalSeparator = NumberFormatInfo.CurrentInfo.NumberDecimalSeparator;
+            var attr = new ItemAttributes();
+            for (var index = 0; index < layout.ChildCount; index++)
             {
-                View view = layout.GetChildAt(index);
-                EditText editText = view.FindViewById<EditText>(Resource.Id.attributeValue);
+                var view = layout.GetChildAt(index);
+                var editText = view.FindViewById<EditText>(Resource.Id.attributeValue);
                 if (editText != null)
                 {
-                    JavaLangObject<Field> tag = (JavaLangObject<Field>)(view.Tag);
-                    Console.WriteLine(tag.value + " = " + editText.Text);
+                    var tag = (JavaLangObject<Field>)(view.Tag);
+                    Console.WriteLine(tag.Value + " = " + editText.Text);
 
                     string text;
                     if (numberDecimalSeparator == ",")
@@ -466,30 +465,30 @@ namespace ZTnDroid.D3Calculator.Fragments
                     double value;
                     if (Double.TryParse(text, out value))
                     {
-                        tag.value.setValue(attr, value);
+                        tag.Value.SetValue(attr, value);
                     }
                 }
             }
-            D3Context.instance.editingItem.attributesRaw += attr;
+            D3Context.Instance.EditingItem.attributesRaw += attr;
         }
 
-        void updateEditedItemSockets(LinearLayout layout)
+        static void UpdateEditedItemSockets(ViewGroup layout)
         {
-            List<SocketedGem> editedGems = new List<SocketedGem>();
-            for (int index = 0; index < layout.ChildCount; index++)
+            var editedGems = new List<SocketedGem>();
+            for (var index = 0; index < layout.ChildCount; index++)
             {
-                View view = layout.GetChildAt(index);
+                var view = layout.GetChildAt(index);
                 if (view.FindViewById<Spinner>(Resource.Id.socketLabel) != null)
                 {
-                    JavaLangObject<Item> tag = (JavaLangObject<Item>)(view.Tag);
+                    var tag = (JavaLangObject<Item>)(view.Tag);
                     if (tag != null)
                     {
-                        Console.WriteLine(tag.value);
-                        editedGems.Add(new SocketedGem(tag.value));
+                        Console.WriteLine(tag.Value);
+                        editedGems.Add(new SocketedGem(tag.Value));
                     }
                 }
             }
-            D3Context.instance.editingItem.gems = editedGems.ToArray();
+            D3Context.Instance.EditingItem.gems = editedGems.ToArray();
         }
     }
 }

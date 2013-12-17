@@ -1,8 +1,7 @@
+using Android.Views;
 using System;
 
-using Android.Views;
-
-namespace ZTnDroid.D3Calculator.Adapters
+namespace ZTnDroid.D3Calculator.Adapters.Delegated
 {
     /// <summary>
     /// Interface to be respected when using <see cref="ListAdapter"/>
@@ -13,25 +12,25 @@ namespace ZTnDroid.D3Calculator.Adapters
         /// Return the layout selected to be used to create the view for this item
         /// </summary>
         /// <returns></returns>
-        int getLayoutResource();
+        int GetLayoutResource();
 
         /// <summary>
         /// Return true is the item at the specified position is not a separator
         /// </summary>
         /// <returns></returns>
-        bool isEnabled();
+        bool IsEnabled();
 
         /// <summary>
         /// Called when the view needs to be updated with new data
         /// </summary>
         /// <param name="view"><see cref="View"/> object to be updated</param>
         /// <param name="recycled">Should be <c>true</c> if the view is recycled and not a newly created one</param>
-        void updateView(View view, Boolean recycled);
+        void UpdateView(View view, Boolean recycled);
 
         /// <summary>
         /// Called when the view is to be removed or recycled
         /// </summary>
         /// <param name="view"><see cref="View"/> object to be removed</param>
-        void removeView(View view);
+        void RemoveView(View view);
     }
 }

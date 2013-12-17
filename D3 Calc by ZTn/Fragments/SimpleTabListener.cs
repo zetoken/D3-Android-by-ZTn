@@ -1,14 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
 using Android.App;
 using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+using System.Reflection;
 using ZTnDroid.D3Calculator.Helpers;
 
 namespace ZTnDroid.D3Calculator.Fragments
@@ -17,7 +9,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         where T : Fragment
     {
         Fragment fragment;
-        Context context;
+        readonly Context context;
 
         #region >> Constructors
 
@@ -34,7 +26,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         /// <inheritdoc/>
         public void OnTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             fragmentTransaction.Detach(fragment);
             fragmentTransaction.Attach(fragment);
@@ -43,7 +35,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         /// <inheritdoc/>
         public void OnTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             if (fragment == null)
             {
@@ -59,7 +51,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         /// <inheritdoc/>
         public void OnTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             if (fragment != null)
             {

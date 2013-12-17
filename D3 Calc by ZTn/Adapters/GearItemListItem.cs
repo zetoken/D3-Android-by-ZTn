@@ -1,42 +1,38 @@
-﻿using System;
-
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.Graphics;
 using Android.Views;
 using Android.Widget;
-
+using System;
 using ZTn.BNet.D3.Calculator.Helpers;
 using ZTn.BNet.D3.Items;
 using ZTn.BNet.D3.Medias;
-
+using ZTnDroid.D3Calculator.Adapters.Delegated;
 using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
 
-using Android.Support.V4.App;
-using Fragment = Android.Support.V4.App.Fragment;
 
 namespace ZTnDroid.D3Calculator.Adapters
 {
     public class GearItemListItem : IListItem
     {
-        public String label;
-        public Item item;
-        public D3Picture icon;
+        public String Label;
+        public Item Item;
+        public D3Picture Icon;
 
         #region >> Constructors
 
         public GearItemListItem(String label, Item item)
         {
-            this.label = label;
-            this.item = item;
+            Label = label;
+            Item = item;
         }
 
         public GearItemListItem(String label, Item item, D3Picture icon)
         {
-            this.label = label;
-            this.item = item;
-            this.icon = icon;
+            Label = label;
+            Item = item;
+            Icon = icon;
         }
 
         #endregion
@@ -44,101 +40,101 @@ namespace ZTnDroid.D3Calculator.Adapters
         #region >> IListItem
 
         /// <inheritdoc/>
-        public int getLayoutResource()
+        public int GetLayoutResource()
         {
             return Resource.Layout.GearItemListItem;
         }
 
         /// <inheritdoc/>
-        public bool isEnabled()
+        public bool IsEnabled()
         {
             return false;
         }
 
         /// <inheritdoc/>
-        public void removeView(View view)
+        public void RemoveView(View view)
         {
             // Remove previous "click" EventHandler
-            ImageView editView = view.FindViewById<ImageView>(Resource.Id.gearItemEdit);
-            editView.Click -= ((JavaLangObject<GearItemListItem>)view.Tag).value.onClickEditEventHandler;
+            var editView = view.FindViewById<ImageView>(Resource.Id.gearItemEdit);
+            editView.Click -= ((JavaLangObject<GearItemListItem>)view.Tag).Value.onClickEditEventHandler;
         }
 
         /// <inheritdoc/>
-        public void updateView(View view, Boolean recycled)
+        public void UpdateView(View view, Boolean recycled)
         {
             // Store current object in View Tag property
             view.Tag = new JavaLangObject<GearItemListItem>(this);
 
             // Update shown informations
-            view.FindViewById<TextView>(Resource.Id.sectionLabel).Text = label;
+            view.FindViewById<TextView>(Resource.Id.sectionLabel).Text = Label;
 
-            ImageView editView = view.FindViewById<ImageView>(Resource.Id.gearItemEdit);
+            var editView = view.FindViewById<ImageView>(Resource.Id.gearItemEdit);
             editView.Click += onClickEditEventHandler;
 
-            if (item != null)
+            if (Item != null)
             {
-                view.FindViewById<TextView>(Resource.Id.gearItemName).Text = item.name;
+                view.FindViewById<TextView>(Resource.Id.gearItemName).Text = Item.name;
 
-                if (item.armor != null)
+                if (Item.armor != null)
                 {
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemArmorLayout).Visibility = ViewStates.Visible;
-                    view.FindViewById<TextView>(Resource.Id.gearItemArmor).Text = item.armor.min.ToString();
+                    view.FindViewById<TextView>(Resource.Id.gearItemArmor).Text = Item.armor.min.ToString();
                 }
                 else
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemArmorLayout).Visibility = ViewStates.Gone;
 
-                if (item.dps != null)
+                if (Item.dps != null)
                 {
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemDpsLayout).Visibility = ViewStates.Visible;
-                    view.FindViewById<TextView>(Resource.Id.gearItemDps).Text = Math.Round(item.dps.min, 1).ToString();
+                    view.FindViewById<TextView>(Resource.Id.gearItemDps).Text = Math.Round(Item.dps.min, 1).ToString();
                 }
                 else
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemDpsLayout).Visibility = ViewStates.Gone;
 
-                if (item.minDamage != null && item.maxDamage != null)
+                if (Item.minDamage != null && Item.maxDamage != null)
                 {
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemDamageLayout).Visibility = ViewStates.Visible;
-                    view.FindViewById<TextView>(Resource.Id.gearItemDamageMin).Text = item.minDamage.min.ToString();
-                    view.FindViewById<TextView>(Resource.Id.gearItemDamageMax).Text = item.maxDamage.min.ToString();
+                    view.FindViewById<TextView>(Resource.Id.gearItemDamageMin).Text = Item.minDamage.min.ToString();
+                    view.FindViewById<TextView>(Resource.Id.gearItemDamageMax).Text = Item.maxDamage.min.ToString();
                 }
                 else
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemDamageLayout).Visibility = ViewStates.Gone;
 
-                if (item.attacksPerSecond != null)
+                if (Item.attacksPerSecond != null)
                 {
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemAttacksPerSecondLayout).Visibility = ViewStates.Visible;
-                    view.FindViewById<TextView>(Resource.Id.gearItemAttacksPerSecond).Text = Math.Round(item.attacksPerSecond.min, 2).ToString();
+                    view.FindViewById<TextView>(Resource.Id.gearItemAttacksPerSecond).Text = Math.Round(Item.attacksPerSecond.min, 2).ToString();
                 }
                 else
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemAttacksPerSecondLayout).Visibility = ViewStates.Gone;
 
-                if (item.attributes != null)
+                if (Item.attributes != null)
                 {
                     view.FindViewById<TextView>(Resource.Id.gearItemDescription).Visibility = ViewStates.Visible;
-                    String description = String.Empty;
-                    foreach (String s in item.attributes)
-                        description += (description != String.Empty ? System.Environment.NewLine : String.Empty) + s;
+                    var description = String.Empty;
+                    foreach (var s in Item.attributes)
+                        description += (description != String.Empty ? Environment.NewLine : String.Empty) + s;
                     view.FindViewById<TextView>(Resource.Id.gearItemDescription).Text = description;
                 }
                 else
                     view.FindViewById<TextView>(Resource.Id.gearItemDescription).Visibility = ViewStates.Gone;
 
-                if (item.gems != null)
+                if (Item.gems != null)
                 {
                     view.FindViewById<TextView>(Resource.Id.gearSocketsDescription).Visibility = ViewStates.Visible;
-                    String socketTranslation = Application.Context.Resources.GetString(Resource.String.Socket);
-                    String socketsText = String.Empty;
-                    foreach (SocketedGem gem in item.gems)
+                    var socketTranslation = Application.Context.Resources.GetString(Resource.String.Socket);
+                    var socketsText = String.Empty;
+                    foreach (var gem in Item.gems)
                     {
-                        foreach (String s in gem.attributes)
-                            socketsText += (socketsText != String.Empty ? System.Environment.NewLine : String.Empty) + socketTranslation + " " + s;
+                        foreach (var s in gem.attributes)
+                            socketsText += (socketsText != String.Empty ? Environment.NewLine : String.Empty) + socketTranslation + " " + s;
                     }
                     view.FindViewById<TextView>(Resource.Id.gearSocketsDescription).Text = socketsText;
                 }
                 else
                     view.FindViewById<TextView>(Resource.Id.gearSocketsDescription).Visibility = ViewStates.Gone;
 
-                switch (item.displayColor)
+                switch (Item.displayColor)
                 {
                     case "orange":
                         view.FindViewById<TextView>(Resource.Id.gearItemName).SetTextColor(view.Resources.GetColor(Resource.Color.orangeItem));
@@ -155,14 +151,12 @@ namespace ZTnDroid.D3Calculator.Adapters
                     case "white":
                         view.FindViewById<TextView>(Resource.Id.gearItemName).SetTextColor(view.Resources.GetColor(Resource.Color.whiteItem));
                         break;
-                    default:
-                        break;
                 }
 
-                if (icon != null)
+                if (Icon != null)
                 {
                     view.FindViewById<ImageView>(Resource.Id.imageGearItem).Visibility = ViewStates.Visible;
-                    Bitmap bitmap = Android.Graphics.BitmapFactory.DecodeByteArray(icon.bytes, 0, (int)icon.bytes.Length);
+                    var bitmap = BitmapFactory.DecodeByteArray(Icon.bytes, 0, Icon.bytes.Length);
                     view.FindViewById<ImageView>(Resource.Id.imageGearItem).SetImageBitmap(bitmap);
                 }
                 else
@@ -174,13 +168,13 @@ namespace ZTnDroid.D3Calculator.Adapters
 
         private void onClickEditEventHandler(Object sender, EventArgs e)
         {
-            ImageView view = (ImageView)sender;
+            var view = (ImageView)sender;
 
-            D3Context.instance.editingItem = (item.attributesRaw == null ? item : item.simplify());
+            D3Context.Instance.EditingItem = (Item.attributesRaw == null ? Item : Item.simplify());
 
-            Intent editorIntent = new Intent(view.Context, typeof(GearItemEditorActivity));
+            var editorIntent = new Intent(view.Context, typeof(GearItemEditorActivity));
 
-            ((Activity)view.Context).StartActivityForResult(editorIntent, GearItemEditorActivity.ITEM_EDIT);
+            ((Activity)view.Context).StartActivityForResult(editorIntent, GearItemEditorActivity.ItemEdit);
         }
     }
 }

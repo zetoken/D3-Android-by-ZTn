@@ -1,24 +1,23 @@
-using System;
-
 using Android.App;
 using Android.Content;
 using Android.Views;
 using Android.Widget;
+using System;
 
 namespace ZTnDroid.D3Calculator.Adapters.Delegated
 {
     public class ListAdapter : BaseAdapter
     {
-        Context context;
-        IListItem[] items;
-        public Boolean convertibleViews = false;
+        readonly Context context;
+        readonly IListItem[] items;
+        public Boolean ConvertibleViews = false;
 
         #region >> Constructors
 
         public ListAdapter(Context context, IListItem[] attributes)
         {
             this.context = context;
-            this.items = attributes;
+            items = attributes;
         }
 
         #endregion
@@ -51,16 +50,16 @@ namespace ZTnDroid.D3Calculator.Adapters.Delegated
 
             IListItem item = items[position];
 
-            if (!convertibleViews || (convertView == null))
-                view = ((Activity)context).LayoutInflater.Inflate(item.getLayoutResource(), parent, false);
+            if (!ConvertibleViews || (convertView == null))
+                view = ((Activity)context).LayoutInflater.Inflate(item.GetLayoutResource(), parent, false);
             else
             {
-                item.removeView(convertView);
+                item.RemoveView(convertView);
                 view = convertView;
                 recycled = true;
             }
 
-            item.updateView(view, recycled);
+            item.UpdateView(view, recycled);
 
             return view;
         }
@@ -68,7 +67,7 @@ namespace ZTnDroid.D3Calculator.Adapters.Delegated
         /// <inheritdoc/>
         public override bool IsEnabled(int position)
         {
-            return items[position].isEnabled();
+            return items[position].IsEnabled();
         }
 
         #endregion

@@ -1,18 +1,15 @@
-using System.Reflection;
-
 using Android.App;
-
+using System.Reflection;
 using ZTnDroid.D3Calculator.Helpers;
-
 using Fragment = Android.Support.V4.App.Fragment;
 
 namespace ZTnDroid.D3Calculator.Fragments
 {
     public abstract class UpdatableFragment : Fragment
     {
-        public void updateFragment()
+        public void UpdateFragment()
         {
-            ZTnTrace.trace(this, MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(this, MethodBase.GetCurrentMethod());
 
             if (Activity != null)
             {

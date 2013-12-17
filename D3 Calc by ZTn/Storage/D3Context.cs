@@ -8,8 +8,8 @@ namespace ZTnDroid.D3Calculator.Storage
 {
     public class D3Context
     {
-        public String battleTag;
-        public String host;
+        public String BattleTag;
+        public String Host;
         public OnlineMode onlineMode;
 
         public HeroSummary heroSummary;
@@ -17,24 +17,24 @@ namespace ZTnDroid.D3Calculator.Storage
 
         public HeroItems heroItems;
 
-        public Item activatedSetBonus;
-        public List<Set> activatedSets;
+        public Item ActivatedSetBonus;
+        public List<Set> ActivatedSets;
 
-        public IconsContainer icons;
+        public IconsContainer Icons;
 
-        public Item editingItem;
+        public Item EditingItem;
 
-        public AccountsDB dbAccounts;
+        public AccountsDB DBAccounts;
 
-        static D3Context _instance;
+        static D3Context instance;
 
-        public static D3Context instance
+        public static D3Context Instance
         {
             get
             {
-                if (_instance == null)
-                    _instance = new D3Context();
-                return _instance;
+                if (instance == null)
+                    instance = new D3Context();
+                return instance;
             }
         }
     }

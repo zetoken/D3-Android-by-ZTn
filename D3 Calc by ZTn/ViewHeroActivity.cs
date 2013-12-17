@@ -1,11 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Reflection;
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Support.V4.View;
 using Android.Widget;
+using System.Collections.Generic;
+using System.Reflection;
+using ZTnDroid.D3Calculator.Adapters;
 using ZTnDroid.D3Calculator.Fragments;
 using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
@@ -25,11 +25,11 @@ namespace ZTnDroid.D3Calculator
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             switch (requestCode)
             {
-                case GearItemEditorActivity.ITEM_EDIT:
+                case GearItemEditorActivity.ItemEdit:
                     switch (resultCode)
                     {
                         case Result.Ok:
@@ -55,19 +55,19 @@ namespace ZTnDroid.D3Calculator
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             // Activity initialization
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.SimpleViewPager);
 
-            this.Title = D3Context.instance.heroSummary.name;
-            this.ActionBar.Subtitle = D3Context.instance.battleTag;
+            Title = D3Context.Instance.heroSummary.name;
+            ActionBar.Subtitle = D3Context.Instance.BattleTag;
 
             // ViewPager initialization
-            List<Fragment> fragments = new List<Fragment>();
-            List<String> titles = new List<string>();
+            var fragments = new List<Fragment>();
+            var titles = new List<string>();
 
             if (savedInstanceState == null)
             {
@@ -78,21 +78,21 @@ namespace ZTnDroid.D3Calculator
                 fragmentFetchHero = (FetchHeroFragment)SupportFragmentManager.FindFragmentByTag("fetchHero");
             }
 
-            fragments.Add(fragmentFetchHero.fragmentCharacteristics);
+            fragments.Add(fragmentFetchHero.FragmentCharacteristics);
             titles.Add(Resources.GetString(Resource.String.details));
 
-            fragments.Add(fragmentFetchHero.fragmentComputed);
+            fragments.Add(fragmentFetchHero.FragmentComputed);
             titles.Add(Resources.GetString(Resource.String.computed));
 
-            fragments.Add(fragmentFetchHero.fragmentSkills);
+            fragments.Add(fragmentFetchHero.FragmentSkills);
             titles.Add(Resources.GetString(Resource.String.skills));
 
-            fragments.Add(fragmentFetchHero.fragmentGear);
+            fragments.Add(fragmentFetchHero.FragmentGear);
             titles.Add(Resources.GetString(Resource.String.gear));
 
-            pagerAdapter = new Adapters.BasicViewPagerAdapter(SupportFragmentManager, fragments, titles);
+            pagerAdapter = new BasicViewPagerAdapter(SupportFragmentManager, fragments, titles);
 
-            ViewPager viewPager = FindViewById<ViewPager>(Resource.Id.Pager);
+            var viewPager = FindViewById<ViewPager>(Resource.Id.Pager);
             viewPager.Adapter = pagerAdapter;
 
             // Fragment in charge of fetching hero initialization
@@ -107,13 +107,13 @@ namespace ZTnDroid.D3Calculator
 
         protected override void OnResume()
         {
-            ZTnTrace.trace(MethodInfo.GetCurrentMethod());
+            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             if (forceRefresh)
             {
-                fragmentFetchHero.fragmentComputed.updateFragment();
-                fragmentFetchHero.fragmentSkills.updateFragment();
-                fragmentFetchHero.fragmentGear.updateFragment();
+                fragmentFetchHero.FragmentComputed.UpdateFragment();
+                fragmentFetchHero.FragmentSkills.UpdateFragment();
+                fragmentFetchHero.FragmentGear.UpdateFragment();
                 forceRefresh = false;
             }
 

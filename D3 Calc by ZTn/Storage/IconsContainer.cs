@@ -4,29 +4,29 @@ namespace ZTnDroid.D3Calculator.Storage
 {
     public class IconsContainer
     {
-        public D3Picture activeSkill1;
-        public D3Picture activeSkill2;
-        public D3Picture activeSkill3;
-        public D3Picture activeSkill4;
-        public D3Picture activeSkill5;
-        public D3Picture activeSkill6;
+        public D3Picture ActiveSkill1;
+        public D3Picture ActiveSkill2;
+        public D3Picture ActiveSkill3;
+        public D3Picture ActiveSkill4;
+        public D3Picture ActiveSkill5;
+        public D3Picture ActiveSkill6;
 
-        public D3Picture passiveSkill1;
-        public D3Picture passiveSkill2;
-        public D3Picture passiveSkill3;
+        public D3Picture PassiveSkill1;
+        public D3Picture PassiveSkill2;
+        public D3Picture PassiveSkill3;
 
-        public D3Picture head;
-        public D3Picture torso;
-        public D3Picture feet;
-        public D3Picture hands;
-        public D3Picture shoulders;
-        public D3Picture legs;
-        public D3Picture bracers;
-        public D3Picture mainHand;
-        public D3Picture offHand;
-        public D3Picture waist;
-        public D3Picture rightFinger;
-        public D3Picture leftFinger;
-        public D3Picture neck;
+        public D3Picture Head;
+        public D3Picture Torso;
+        public D3Picture Feet;
+        public D3Picture Hands;
+        public D3Picture Shoulders;
+        public D3Picture Legs;
+        public D3Picture Bracers;
+        public D3Picture MainHand;
+        public D3Picture OffHand;
+        public D3Picture Waist;
+        public D3Picture RightFinger;
+        public D3Picture LeftFinger;
+        public D3Picture Neck;
     }
 }
