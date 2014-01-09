@@ -73,7 +73,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         {
             ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
-            var hero = D3Context.Instance.hero;
+            var hero = D3Context.Instance.CurrentHero;
             var icons = D3Context.Instance.Icons;
             if (hero != null)
             {

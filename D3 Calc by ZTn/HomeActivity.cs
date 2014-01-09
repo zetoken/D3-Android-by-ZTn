@@ -13,7 +13,7 @@ namespace ZTnDroid.D3Calculator
     [Activity(Label = "@string/HomeActivityLabel", MainLauncher = true, Icon = "@drawable/icon")]
     public class HomeActivity : FragmentActivity
     {
-        private static Fragment careersListFragment;
+        private static Fragment CareersListFragment;
 
         #region >> FragmentActivity
 
@@ -39,10 +39,10 @@ namespace ZTnDroid.D3Calculator
             // Update fragments
             if (savedInstanceState == null)
             {
-                careersListFragment = new CareersListFragment();
+                CareersListFragment = new CareersListFragment();
                 SupportFragmentManager
                     .BeginTransaction()
-                    .Add(Resource.Id.fragment_container, careersListFragment)
+                    .Add(Resource.Id.fragment_container, CareersListFragment)
                     .Commit();
             }
         }

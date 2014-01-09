@@ -10,12 +10,12 @@ namespace ZTnDroid.D3Calculator.Storage
     {
         public String BattleTag;
         public String Host;
-        public OnlineMode onlineMode;
+        public OnlineMode FetchMode;
 
-        public HeroSummary heroSummary;
-        public Hero hero;
+        public HeroSummary CurrentHeroSummary;
+        public Hero CurrentHero;
 
-        public HeroItems heroItems;
+        public HeroItems CurrentHeroItems;
 
         public Item ActivatedSetBonus;
         public List<Set> ActivatedSets;

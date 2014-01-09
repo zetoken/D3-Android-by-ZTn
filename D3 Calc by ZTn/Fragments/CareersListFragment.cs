@@ -1,7 +1,5 @@
 using System;
 using System.Reflection;
-
-using Android.App;
 using Android.Content;
 using Android.Database;
 using Android.OS;
@@ -131,12 +129,5 @@ namespace ZTnDroid.D3Calculator.Fragments
         }
 
         #endregion
-
-        private void InsertIntoCareersStorage(String battleTag, String host)
-        {
-            ZTnTrace.Trace(MethodBase.GetCurrentMethod());
-
-            D3Context.Instance.DBAccounts.Insert(battleTag, host);
-        }
     }
 }

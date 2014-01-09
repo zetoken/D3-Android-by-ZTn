@@ -56,11 +56,11 @@ namespace ZTnDroid.D3Calculator
             // Load preferences
             Preferences = GetSharedPreferences(SettingsFilename, FileCreationMode.Private);
             // Default offline mode
-            D3Context.Instance.onlineMode = (Preferences.GetBoolean(SettingsOnlinemode, false) ? OnlineMode.Online : OnlineMode.OnlineIfMissing);
+            D3Context.Instance.FetchMode = (Preferences.GetBoolean(SettingsOnlinemode, false) ? OnlineMode.Online : OnlineMode.OnlineIfMissing);
 
             // Always start D3Api with cache available
             var dataProvider = new CacheableDataProvider(new HttpRequestDataProvider());
-            dataProvider.onlineMode = D3Context.Instance.onlineMode;
+            dataProvider.onlineMode = D3Context.Instance.FetchMode;
             D3Api.dataProvider = dataProvider;
 
             // Set english locale by default

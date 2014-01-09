@@ -1,4 +1,3 @@
-using Android.App;
 using System.Reflection;
 using ZTnDroid.D3Calculator.Helpers;
 using Fragment = Android.Support.V4.App.Fragment;

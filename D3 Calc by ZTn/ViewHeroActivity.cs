@@ -17,9 +17,14 @@ namespace ZTnDroid.D3Calculator
     public class ViewHeroActivity : ZTnFragmentActivity
     {
         PagerAdapter pagerAdapter;
-        bool forceRefresh = false;
+        bool forceRefresh;
 
         FetchHeroFragment fragmentFetchHero;
+
+        public ViewHeroActivity()
+        {
+            forceRefresh = false;
+        }
 
         #region >> Fragment
 
@@ -40,13 +45,7 @@ namespace ZTnDroid.D3Calculator
                         case Result.Canceled:
                             Toast.MakeText(this, Resources.GetString(Resource.String.ItemEditingCanceled), ToastLength.Long).Show();
                             break;
-
-                        default:
-                            break;
                     }
-                    break;
-
-                default:
                     break;
             }
 
@@ -62,7 +61,7 @@ namespace ZTnDroid.D3Calculator
 
             SetContentView(Resource.Layout.SimpleViewPager);
 
-            Title = D3Context.Instance.heroSummary.name;
+            Title = D3Context.Instance.CurrentHeroSummary.name;
             ActionBar.Subtitle = D3Context.Instance.BattleTag;
 
             // ViewPager initialization

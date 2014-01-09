@@ -9,7 +9,7 @@ namespace ZTnDroid.D3Calculator
     [Activity(Label = "@string/ViewCareerActivityLabel")]
     public class ViewCareerActivity : ZTnFragmentActivity
     {
-        private static HeroesListFragment heroesListFragment;
+        private static HeroesListFragment HeroesListFragment;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -25,10 +25,10 @@ namespace ZTnDroid.D3Calculator
 
             if (savedInstanceState == null)
             {
-                heroesListFragment = new HeroesListFragment();
+                HeroesListFragment = new HeroesListFragment();
                 SupportFragmentManager
                     .BeginTransaction()
-                    .Add(Resource.Id.fragment_container, heroesListFragment)
+                    .Add(Resource.Id.fragment_container, HeroesListFragment)
                     .Commit();
             }
         }

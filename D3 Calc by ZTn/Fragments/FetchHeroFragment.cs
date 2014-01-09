@@ -63,8 +63,8 @@ namespace ZTnDroid.D3Calculator.Fragments
             ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             // Fetch hero from server
-            D3Context.Instance.hero = null;
-            DeferredFetchHero(D3Context.Instance.onlineMode);
+            D3Context.Instance.CurrentHero = null;
+            DeferredFetchHero(D3Context.Instance.FetchMode);
 
             return base.OnCreateView(inflater, container, savedInstanceState);
         }
@@ -108,19 +108,19 @@ namespace ZTnDroid.D3Calculator.Fragments
             {
                 try
                 {
-                    D3Context.Instance.hero = FetchHero(online);
+                    D3Context.Instance.CurrentHero = FetchHero(online);
                     Activity.RunOnUiThread(() =>
                     {
                         progressDialog.SetTitle(Resources.GetString(Resource.String.LoadingItems));
                     });
-                    D3Context.Instance.heroItems = FetchFullItems(online);
+                    D3Context.Instance.CurrentHeroItems = FetchFullItems(online);
 
                     Activity.RunOnUiThread(() =>
                     {
                         progressDialog.SetTitle(Resources.GetString(Resource.String.LoadingIcons));
                     });
 
-                    // Icons are fetched with Online.OnlineIfMissing even if OnlineMode.Online is asked
+                    // Icons are fetched with Online.OnlineIfMissing even if FetchMode.Online is asked
                     OnlineMode fetchIconsOnlineMode;
                     if (online == OnlineMode.Online)
                         fetchIconsOnlineMode = OnlineMode.OnlineIfMissing;
@@ -161,7 +161,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         {
             ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
-            HeroItems heroItems = D3Context.Instance.hero.items;
+            HeroItems heroItems = D3Context.Instance.CurrentHero.items;
 
             var dataProvider = (CacheableDataProvider)D3Api.dataProvider;
             dataProvider.onlineMode = online;
@@ -224,13 +224,13 @@ namespace ZTnDroid.D3Calculator.Fragments
             catch (Exception exception)
             {
                 Console.WriteLine(exception);
-                D3Context.Instance.heroItems = null;
+                D3Context.Instance.CurrentHeroItems = null;
                 D3Context.Instance.ActivatedSetBonus = null;
                 throw;
             }
             finally
             {
-                dataProvider.onlineMode = D3Context.Instance.onlineMode;
+                dataProvider.onlineMode = D3Context.Instance.FetchMode;
             }
 
             return heroItems;
@@ -240,8 +240,8 @@ namespace ZTnDroid.D3Calculator.Fragments
         {
             ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
-            var heroItems = D3Context.Instance.hero.items;
-            var skills = D3Context.Instance.hero.skills;
+            var heroItems = D3Context.Instance.CurrentHero.items;
+            var skills = D3Context.Instance.CurrentHero.skills;
             var icons = new IconsContainer();
 
             var dataProvider = (CacheableDataProvider)D3Api.dataProvider;
@@ -304,7 +304,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             }
             finally
             {
-                dataProvider.onlineMode = D3Context.Instance.onlineMode;
+                dataProvider.onlineMode = D3Context.Instance.FetchMode;
             }
 
             return icons;
@@ -322,7 +322,7 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             try
             {
-                hero = Hero.getHeroFromHeroId(new BattleTag(D3Context.Instance.BattleTag), D3Context.Instance.heroSummary.id);
+                hero = Hero.getHeroFromHeroId(new BattleTag(D3Context.Instance.BattleTag), D3Context.Instance.CurrentHeroSummary.id);
             }
             catch (Exception exception)
             {
@@ -331,7 +331,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             }
             finally
             {
-                dataProvider.onlineMode = D3Context.Instance.onlineMode;
+                dataProvider.onlineMode = D3Context.Instance.FetchMode;
             }
 
             return hero;

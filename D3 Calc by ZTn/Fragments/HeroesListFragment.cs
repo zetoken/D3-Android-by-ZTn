@@ -15,6 +15,7 @@ using ZTnDroid.D3Calculator.Adapters;
 using ZTnDroid.D3Calculator.Adapters.Delegated;
 using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
+using Debug = System.Diagnostics.Debug;
 using Fragment = Android.Support.V4.App.Fragment;
 
 namespace ZTnDroid.D3Calculator.Fragments
@@ -54,7 +55,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             listView.ItemClick += (sender, args) =>
             {
                 var heroSummary = ((HeroSummariesListAdapter)listView.Adapter).GetHeroSummaryAt(args.Position);
-                D3Context.Instance.heroSummary = heroSummary;
+                D3Context.Instance.CurrentHeroSummary = heroSummary;
 
                 var viewHeroIntent = new Intent(Activity, typeof(ViewHeroActivity));
 
@@ -63,7 +64,7 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             Activity.Title = battleTag;
 
-            DeferredFetchAndUpdateCareer(D3Context.Instance.onlineMode);
+            DeferredFetchAndUpdateCareer(D3Context.Instance.FetchMode);
 
             return view;
         }
@@ -118,6 +119,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                     {
                         if (online == OnlineMode.Online)
                         {
+                            Debug.Assert(progressDialog != null, "progressDialog != null");
                             progressDialog.Dismiss();
                         }
                         UpdateCareerView();
@@ -129,6 +131,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                     {
                         if (online == OnlineMode.Online)
                         {
+                            Debug.Assert(progressDialog != null, "progressDialog != null");
                             progressDialog.Dismiss();
                         }
                         Toast.MakeText(Activity, "Career not in cache" + System.Environment.NewLine + "Please use refresh action", ToastLength.Long).Show();
@@ -140,6 +143,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                     {
                         if (online == OnlineMode.Online)
                         {
+                            Debug.Assert(progressDialog != null, "progressDialog != null");
                             progressDialog.Dismiss();
                         }
                         Toast.MakeText(Activity, Resources.GetString(Resource.String.ErrorOccuredWhileRetrievingData), ToastLength.Long).Show();
@@ -178,7 +182,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             }
             finally
             {
-                dataProvider.onlineMode = D3Context.Instance.onlineMode;
+                dataProvider.onlineMode = D3Context.Instance.FetchMode;
             }
         }
 

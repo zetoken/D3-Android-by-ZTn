@@ -69,7 +69,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         {
             ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
-            var hero = D3Context.Instance.hero;
+            var hero = D3Context.Instance.CurrentHero;
             var icons = D3Context.Instance.Icons;
             if (hero != null && hero.items != null)
             {
@@ -91,8 +91,9 @@ namespace ZTnDroid.D3Calculator.Fragments
                     GetDataForItem(Resource.String.itemNeck, hero.items.neck, icons.Neck)
                 };
 
-                var heroItems = D3Context.Instance.hero.items;
-                var items = new List<Item>() {
+                var heroItems = D3Context.Instance.CurrentHero.items;
+                var items = new List<Item>
+                {
                     (Item)heroItems.bracers,
                     (Item)heroItems.feet,
                     (Item)heroItems.hands,
@@ -111,7 +112,7 @@ namespace ZTnDroid.D3Calculator.Fragments
 
                 foreach (var set in D3Context.Instance.ActivatedSets)
                 {
-                    var setItem = new Item() { name = set.name, attributes = set.getBonusAttributes(set.countItemsOfSet(items)), displayColor = "green" };
+                    var setItem = new Item { name = set.name, attributes = set.getBonusAttributes(set.countItemsOfSet(items)), displayColor = "green" };
                     if (setItem.attributes.Length > 0)
                         gearAttr.Add(GetDataForItem(Resource.String.setBonuses, setItem, null));
                 }

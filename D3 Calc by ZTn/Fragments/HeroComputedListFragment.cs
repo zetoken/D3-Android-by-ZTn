@@ -45,8 +45,8 @@ namespace ZTnDroid.D3Calculator.Fragments
         {
             ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
-            var hero = D3Context.Instance.hero;
-            var heroItems = D3Context.Instance.heroItems;
+            var hero = D3Context.Instance.CurrentHero;
+            var heroItems = D3Context.Instance.CurrentHeroItems;
 
             // Retrieve worn items
             var items = new List<Item>
@@ -80,8 +80,8 @@ namespace ZTnDroid.D3Calculator.Fragments
         {
             ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
-            var hero = D3Context.Instance.hero;
-            var heroItems = D3Context.Instance.heroItems;
+            var hero = D3Context.Instance.CurrentHero;
+            var heroItems = D3Context.Instance.CurrentHeroItems;
 
             if (hero == null || heroItems == null)
             {

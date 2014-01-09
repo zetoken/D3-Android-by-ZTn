@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Util;
 using Android.Views;
 using Android.Widget;
 using ZTn.BNet.D3.Items;
@@ -17,7 +14,6 @@ using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
 using Fragment = Android.Support.V4.App.Fragment;
 using ZTn.BNet.D3.Calculator.Gems;
-using ZTn.BNet.D3.Helpers;
 
 namespace ZTnDroid.D3Calculator.Fragments
 {
@@ -261,7 +257,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             private readonly string targetAttribute;
             private readonly string refAttribute;
             public readonly string Label;
-            public bool Percent = false;
+            public bool Percent;
 
             public Field(int id, string attribute)
                 : this(id, attribute, null)
@@ -270,6 +266,7 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             public Field(int id, string targetAttribute, string refAttribute)
             {
+                Percent = false;
                 this.id = id;
                 this.targetAttribute = targetAttribute;
                 this.refAttribute = refAttribute;
@@ -342,11 +339,13 @@ namespace ZTnDroid.D3Calculator.Fragments
                 layoutDefense.AddView(CreateRowView(defenseLabels, DefenseFields, field, value), layoutDefense.ChildCount - 1);
         }
 
-        void CreateRowView(ViewGroup layout, List<string> labels, Field[] fields, Field selected, ItemValueRange value)
-        {
-            if (value != null && value.min != 0)
-                layout.AddView(CreateRowView(labels, fields, selected, value), layout.ChildCount - 1);
-        }
+        /*
+                void CreateRowView(ViewGroup layout, List<string> labels, Field[] fields, Field selected, ItemValueRange value)
+                {
+                    if (value != null && value.min != 0)
+                        layout.AddView(CreateRowView(labels, fields, selected, value), layout.ChildCount - 1);
+                }
+        */
 
         View CreateRowView(List<String> labels, Field[] fields)
         {
