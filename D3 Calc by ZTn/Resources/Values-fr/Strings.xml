@@ -50,6 +50,7 @@
   <!-- Battle.net -->
   <string name="BattleTag">Battle Tag</string>
   <string name="BattleTagExample">Battle Tag (nom#code)</string>
+  <string name="BattleTags">Battle Tags</string>
   <string name="Host">Serveur</string>
 
   <!-- Classes -->

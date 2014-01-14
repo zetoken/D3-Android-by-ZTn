@@ -17,14 +17,18 @@ namespace ZTnDroid.D3Calculator.Fragments
         public override void OnCreate(Bundle savedInstanceState)
         {
             ZTnTrace.Trace(MethodBase.GetCurrentMethod());
+
             base.OnCreate(savedInstanceState);
+
+            Activity.Title = Resources.GetString(Resource.String.SettingsActivityLabel);
         }
 
         /// <inheritdoc/>
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             ZTnTrace.Trace(MethodBase.GetCurrentMethod());
-            View view = inflater.Inflate(Resource.Layout.Settings, container, false);
+
+            var view = inflater.Inflate(Resource.Layout.Settings, container, false);
 
             Activity.Title = Resources.GetString(Resource.String.Settings);
 

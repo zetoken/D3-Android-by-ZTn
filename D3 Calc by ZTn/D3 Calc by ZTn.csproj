@@ -102,13 +102,13 @@
     <Compile Include="Storage\AccountsDB.cs" />
     <Compile Include="Storage\AccountsOpenHelper.cs" />
     <Compile Include="Storage\D3Context.cs" />
-    <Compile Include="SettingsActivity.cs" />
     <Compile Include="ViewHeroActivity.cs" />
     <Compile Include="ViewCareerActivity.cs" />
     <Compile Include="HomeActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AddNewAccountActivity.cs" />
+    <Compile Include="ZTnNavigationDrawerActivity.cs" />
     <Compile Include="ZTnFragmentActivity.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -196,9 +196,6 @@
     <AndroidResource Include="Resources\drawable\wizard_female.png" />
     <AndroidResource Include="Resources\drawable\wizard_male.png" />
     <AndroidResource Include="Resources\menu\ViewHeroActivity.xml" />
-    <AndroidResource Include="Resources\menu\Settings.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\values-fr\Strings.xml">
       <SubType>Designer</SubType>
     </AndroidResource>

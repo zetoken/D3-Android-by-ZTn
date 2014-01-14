@@ -20,12 +20,12 @@ namespace ZTnDroid.D3Calculator.Fragments
         /// <summary>
         /// Per the design guidelines, you should show the drawer on launch until the user manually expands it. This shared preference tracks this.
         /// </summary>
-        const String PrefUserLearnedDrawer = "navigation_drawer_learned";
+        const String PrefUserLearnedDrawer = "NavigationDrawerLearned";
 
         /// <summary>
         /// Remember the position of the selected item.
         /// </summary>
-        const String StateSelectedPosition = "selected_navigation_drawer_position";
+        const String StateSelectedPosition = "SelectedNavigationDrawerPosition";
 
         bool userLearnedDrawer;
 
@@ -49,7 +49,49 @@ namespace ZTnDroid.D3Calculator.Fragments
         /// </summary>
         private ICallbacks drawerCallbacks;
 
+        private void SelectItem(int position)
+        {
+            currentSelectedPosition = position;
+            if (drawerListView != null)
+            {
+                drawerListView.SetItemChecked(position, true);
+            }
+            if (drawerLayout != null)
+            {
+                drawerLayout.CloseDrawer(fragmentContainerView);
+            }
+            if (drawerCallbacks != null)
+            {
+                drawerCallbacks.OnNavigationDrawerItemSelected(position);
+            }
+        }
+
         #region >> Fragment
+
+        /// <inheritdoc />
+        public override void OnActivityCreated(Bundle savedInstanceState)
+        {
+            base.OnActivityCreated(savedInstanceState);
+
+            SetHasOptionsMenu(true);
+        }
+
+        /// <inheritdoc />
+        public override void OnAttach(Activity activity)
+        {
+            base.OnAttach(activity);
+
+            drawerCallbacks = activity as ICallbacks;
+            System.Diagnostics.Debug.Assert(drawerCallbacks != null);
+        }
+
+        /// <inheritdoc />
+        public override void OnConfigurationChanged(Configuration newConfig)
+        {
+            base.OnConfigurationChanged(newConfig);
+
+            drawerToggle.OnConfigurationChanged(newConfig);
+        }
 
         /// <inheritdoc />
         public override void OnCreate(Bundle savedInstanceState)
@@ -70,11 +112,15 @@ namespace ZTnDroid.D3Calculator.Fragments
         }
 
         /// <inheritdoc />
-        public override void OnActivityCreated(Bundle savedInstanceState)
+        public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
         {
-            base.OnActivityCreated(savedInstanceState);
+            if (IsDrawerOpen())
+            {
+                // TODO ? inflater.Inflate(Resource.Menu.SomeMenuDefinition, menu);
+                // TODO ? Activity.ActionBar.Title = Resources.GetString(Resource.String.ApplicationName);
+            }
 
-            SetHasOptionsMenu(true);
+            base.OnCreateOptionsMenu(menu, inflater);
         }
 
         /// <inheritdoc />
@@ -86,24 +132,21 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             drawerListView.ItemClick += (sender, e) => SelectItem(e.Position);
 
+            var listItems = new[]
+            {
+                Resources.GetString(Resource.String.BattleTags),
+                Resources.GetString(Resource.String.Settings)
+            };
+
             drawerListView.Adapter = new ArrayAdapter<string>(
                 Activity.ActionBar.ThemedContext,
                 Android.Resource.Layout.SimpleListItemActivated1,
                 Android.Resource.Id.Text1,
-				new[] { "Main", "Settings" });
+                listItems);
 
             drawerListView.SetItemChecked(currentSelectedPosition, true);
 
             return drawerListView;
-        }
-
-        /// <inheritdoc />
-        public override void OnAttach(Activity activity)
-        {
-            base.OnAttach(activity);
-
-            drawerCallbacks = activity as ICallbacks;
-            System.Diagnostics.Debug.Assert(drawerCallbacks != null);
         }
 
         /// <inheritdoc />
@@ -115,31 +158,23 @@ namespace ZTnDroid.D3Calculator.Fragments
         }
 
         /// <inheritdoc />
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            // This call allows the drawer to be automatically opened/closed when touching "Up" action bar button.
+            if (drawerToggle.OnOptionsItemSelected(item))
+            {
+                return true;
+            }
+
+            return base.OnOptionsItemSelected(item);
+        }
+
+        /// <inheritdoc />
         public override void OnSaveInstanceState(Bundle outState)
         {
             base.OnSaveInstanceState(outState);
 
             outState.PutInt(StateSelectedPosition, currentSelectedPosition);
-        }
-
-        /// <inheritdoc />
-        public override void OnConfigurationChanged(Configuration newConfig)
-        {
-            base.OnConfigurationChanged(newConfig);
-
-            drawerToggle.OnConfigurationChanged(newConfig);
-        }
-
-        /// <inheritdoc />
-        public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
-        {
-            if (IsDrawerOpen())
-            {
-                // TODO ? inflater.Inflate(Resource.Menu.AddNewAccountActivity, menu);
-                ShowGlobalContextActionBar();
-            }
-
-            base.OnCreateOptionsMenu(menu, inflater);
         }
 
         #endregion
@@ -151,23 +186,6 @@ namespace ZTnDroid.D3Calculator.Fragments
         public bool IsDrawerOpen()
         {
             return drawerLayout != null && drawerLayout.IsDrawerOpen(fragmentContainerView);
-        }
-
-        private void SelectItem(int position)
-        {
-            currentSelectedPosition = position;
-            if (drawerListView != null)
-            {
-                drawerListView.SetItemChecked(position, true);
-            }
-            if (drawerLayout != null)
-            {
-                drawerLayout.CloseDrawer(fragmentContainerView);
-            }
-            if (drawerCallbacks != null)
-            {
-                drawerCallbacks.OnNavigationDrawerItemSelected(position);
-            }
         }
 
         /// <summary>
@@ -207,17 +225,6 @@ namespace ZTnDroid.D3Calculator.Fragments
         }
 
         /// <summary>
-        /// Per the navigation drawer design guidelines, updates the action bar to show the global app 'context', rather than just what's in the current screen.
-        /// </summary>
-        private void ShowGlobalContextActionBar()
-        {
-            var actionBar = Activity.ActionBar;
-            actionBar.SetDisplayShowTitleEnabled(true);
-            actionBar.NavigationMode = ActionBarNavigationMode.Standard;
-            actionBar.SetTitle(Resource.String.ApplicationName);
-        }
-
-        /// <summary>
         /// Callbacks interface that all activities using this fragment must implement.
         /// </summary>
         public interface ICallbacks
@@ -235,7 +242,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         private class ActionBarToggle : ActionBarDrawerToggle
         {
             readonly NavigationDrawerFragment navigationDrawerFragment;
-            private readonly Activity activity;
+            readonly Activity activity;
 
             public ActionBarToggle(NavigationDrawerFragment navigationDrawerFragment, Activity activity, DrawerLayout drawerLayout, int drawerImageRes, int openDrawerContentDescRes, int closeDrawerContentDescRes)
                 : base(activity, drawerLayout, drawerImageRes, openDrawerContentDescRes, closeDrawerContentDescRes)
@@ -249,6 +256,8 @@ namespace ZTnDroid.D3Calculator.Fragments
             /// <inheritdoc />
             public override void OnDrawerClosed(View drawerView)
             {
+                ZTnTrace.Trace(MethodBase.GetCurrentMethod());
+
                 base.OnDrawerClosed(drawerView);
 
                 if (!navigationDrawerFragment.IsAdded)
@@ -263,6 +272,8 @@ namespace ZTnDroid.D3Calculator.Fragments
             /// <inheritdoc />
             public override void OnDrawerOpened(View drawerView)
             {
+                ZTnTrace.Trace(MethodBase.GetCurrentMethod());
+
                 base.OnDrawerOpened(drawerView);
 
                 if (!navigationDrawerFragment.IsAdded)
@@ -279,7 +290,6 @@ namespace ZTnDroid.D3Calculator.Fragments
                         .PutBoolean(PrefUserLearnedDrawer, true)
                         .Apply();
                 }
-
 
                 // Force call OnPrepareOptionsMenu()
                 activity.InvalidateOptionsMenu();
