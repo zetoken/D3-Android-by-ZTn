@@ -14,7 +14,7 @@ namespace ZTnDroid.D3Calculator
             base.OnCreate(bundle);
 
             ActionBar.SetDisplayHomeAsUpEnabled(true);
-            ActionBar.SetIcon(Resource.Drawable.Icon);
+            ActionBar.SetIcon(Resource.Drawable.ic_launcher);
         }
 
         /// <inheritdoc/>

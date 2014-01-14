@@ -11,6 +11,9 @@ namespace ZTnDroid.D3Calculator
     {
         private static HeroesListFragment HeroesListFragment;
 
+        #region >> FragmentActivity
+
+        /// <inheritdoc />
         protected override void OnCreate(Bundle savedInstanceState)
         {
             ZTnTrace.Trace(MethodBase.GetCurrentMethod());
@@ -32,5 +35,7 @@ namespace ZTnDroid.D3Calculator
                     .Commit();
             }
         }
+
+        #endregion
     }
 }

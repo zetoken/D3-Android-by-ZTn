@@ -29,7 +29,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
-    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -39,11 +39,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
-    <AndroidLinkSkip />
+    <AndroidLinkSkip>
+    </AndroidLinkSkip>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-    <AndroidStoreUncompressedFileExtensions />
-    <JavaMaximumHeapSize />
-    <JavaOptions />
+    <AndroidStoreUncompressedFileExtensions>
+    </AndroidStoreUncompressedFileExtensions>
+    <JavaMaximumHeapSize>
+    </JavaMaximumHeapSize>
+    <JavaOptions>
+    </JavaOptions>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="D3 Calculator Library by ZTn">
@@ -86,6 +90,7 @@
     <Compile Include="Fragments\HeroesListFragment.cs" />
     <Compile Include="Fragments\HeroGearListFragment.cs" />
     <Compile Include="Fragments\HeroSkillsListFragment.cs" />
+    <Compile Include="Fragments\NavigationDrawerFragment.cs" />
     <Compile Include="Fragments\SettingsFragment.cs" />
     <Compile Include="Fragments\SimpleTabListener.cs" />
     <Compile Include="Fragments\UpdatableFragment.cs" />
@@ -109,105 +114,120 @@
   <ItemGroup>
     <AndroidAsset Include="Assets\hosts.json" />
     <AndroidAsset Include="Assets\d3gem.json" />
-    <None Include="Resources\AboutResources.txt" />
-    <AndroidResource Include="Resources\Layout\AddNewAccount.axml">
+    <AndroidResource Include="Resources\layout\AddNewAccount.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Layout\ViewCareer.axml">
+    <AndroidResource Include="Resources\layout\ViewCareer.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Layout\HeroesListItem.axml">
+    <AndroidResource Include="Resources\layout\HeroesListItem.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Layout\ViewHero.axml">
+    <AndroidResource Include="Resources\layout\ViewHero.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Layout\AttributeListItem.axml">
+    <AndroidResource Include="Resources\layout\AttributeListItem.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Layout\SectionHeaderListItem.axml">
+    <AndroidResource Include="Resources\layout\SectionHeaderListItem.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Layout\FragmentContainer.axml">
+    <AndroidResource Include="Resources\layout\FragmentContainer.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Layout\Settings.axml">
+    <AndroidResource Include="Resources\layout\Settings.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Layout\ViewHeroSkills.axml">
+    <AndroidResource Include="Resources\layout\ViewHeroSkills.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Layout\ViewHeroGear.axml">
+    <AndroidResource Include="Resources\layout\ViewHeroGear.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Layout\SkillListItem.axml">
+    <AndroidResource Include="Resources\layout\SkillListItem.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Layout\RuneListItem.axml">
+    <AndroidResource Include="Resources\layout\RuneListItem.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Layout\GearItemListItem.axml">
+    <AndroidResource Include="Resources\layout\GearItemListItem.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Layout\SimpleViewPager.axml">
+    <AndroidResource Include="Resources\layout\SimpleViewPager.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Layout\GearItemEditor.axml">
+    <AndroidResource Include="Resources\layout\GearItemEditor.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Layout\GearItemRowEditor.axml">
+    <AndroidResource Include="Resources\layout\GearItemRowEditor.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Layout\GearSocketRowEditor.axml">
+    <AndroidResource Include="Resources\layout\GearSocketRowEditor.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\NavigationDrawer.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Layout\Home.axml" />
+    <AndroidResource Include="Resources\layout\Home.axml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Values\Strings.xml">
+    <AndroidResource Include="Resources\values\Strings.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Drawable\Icon.png" />
+    <AndroidResource Include="Resources\drawable\Icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml" />
-    <AndroidResource Include="Resources\Menu\HomeActivity.xml" />
-    <AndroidResource Include="Resources\Menu\AddNewAccountActivity.xml" />
-    <AndroidResource Include="Resources\Menu\ViewCareerActivity.xml" />
-    <AndroidResource Include="Resources\Drawable\demonhunter_male.png" />
-    <AndroidResource Include="Resources\Drawable\barbarian_female.png" />
-    <AndroidResource Include="Resources\Drawable\barbarian_male.png" />
-    <AndroidResource Include="Resources\Drawable\demonhunter_female.png" />
-    <AndroidResource Include="Resources\Drawable\monk_female.png" />
-    <AndroidResource Include="Resources\Drawable\monk_male.png" />
-    <AndroidResource Include="Resources\Drawable\witchdoctor_female.png" />
-    <AndroidResource Include="Resources\Drawable\witchdoctor_male.png" />
-    <AndroidResource Include="Resources\Drawable\wizard_female.png" />
-    <AndroidResource Include="Resources\Drawable\wizard_male.png" />
-    <AndroidResource Include="Resources\Menu\ViewHeroActivity.xml" />
-    <AndroidResource Include="Resources\Menu\Settings.xml">
+    <AndroidResource Include="Resources\menu\HomeActivity.xml" />
+    <AndroidResource Include="Resources\menu\AddNewAccountActivity.xml" />
+    <AndroidResource Include="Resources\menu\ViewCareerActivity.xml" />
+    <AndroidResource Include="Resources\drawable\demonhunter_male.png" />
+    <AndroidResource Include="Resources\drawable\barbarian_female.png" />
+    <AndroidResource Include="Resources\drawable\barbarian_male.png" />
+    <AndroidResource Include="Resources\drawable\demonhunter_female.png" />
+    <AndroidResource Include="Resources\drawable\monk_female.png" />
+    <AndroidResource Include="Resources\drawable\monk_male.png" />
+    <AndroidResource Include="Resources\drawable\witchdoctor_female.png" />
+    <AndroidResource Include="Resources\drawable\witchdoctor_male.png" />
+    <AndroidResource Include="Resources\drawable\wizard_female.png" />
+    <AndroidResource Include="Resources\drawable\wizard_male.png" />
+    <AndroidResource Include="Resources\menu\ViewHeroActivity.xml" />
+    <AndroidResource Include="Resources\menu\Settings.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Values-fr\Strings.xml">
+    <AndroidResource Include="Resources\values-fr\Strings.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Values\Color.xml">
+    <AndroidResource Include="Resources\values\Color.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Drawable-hdpi\Icon.png" />
-    <AndroidResource Include="Resources\Drawable-ldpi\Icon.png" />
-    <AndroidResource Include="Resources\Drawable-mdpi\Icon.png" />
-    <AndroidResource Include="Resources\Drawable-xhdpi\Icon.png" />
-    <AndroidResource Include="Resources\Menu\GearItemEditorFragment.xml">
+    <AndroidResource Include="Resources\menu\GearItemEditorFragment.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\drawer_shadow.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\drawer_shadow.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\drawer_shadow.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_navigation_drawer.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_navigation_drawer.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_navigation_drawer.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\drawer_shadow.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_navigation_drawer.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_launcher.png" />
     <Content Include="SupportLib\android-support-v4.jar" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\NavigationDrawerFragmentContainer.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.

@@ -49,7 +49,7 @@ namespace ZTnDroid.D3Calculator.Adapters
             view.FindViewById<TextView>(Resource.Id.heroHardcore).Text = (hero.hardcore ? "hardcore" : "");
             view.FindViewById<TextView>(Resource.Id.heroLastUpdated).Text = hero.lastUpdated.ToString("dd/MM/yyyy HH:mm");
 
-            int imageResource = Resource.Drawable.Icon;
+            int imageResource = Resource.Drawable.ic_launcher;
             switch (hero.heroClass)
             {
                 case HeroClass.Barbarian:
