@@ -54,7 +54,7 @@ namespace ZTnDroid.D3Calculator.Adapters
             view.FindViewById<TextView>(Resource.Id.skillDescription).Text = Skill.description;
             if (Icon != null)
             {
-                Bitmap bitmap = BitmapFactory.DecodeByteArray(Icon.bytes, 0, Icon.bytes.Length);
+                Bitmap bitmap = BitmapFactory.DecodeByteArray(Icon.Bytes, 0, Icon.Bytes.Length);
                 view.FindViewById<ImageView>(Resource.Id.imageSkill).SetImageBitmap(bitmap);
             }
         }

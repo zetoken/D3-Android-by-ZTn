@@ -91,7 +91,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                     return true;
 
                 case Resource.Id.RefreshContent:
-                    DeferredFetchAndUpdateCareer(OnlineMode.Online);
+                    DeferredFetchAndUpdateCareer(FetchMode.Online);
                     return true;
 
                 default:
@@ -101,13 +101,13 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         #endregion
 
-        private void DeferredFetchAndUpdateCareer(OnlineMode online)
+        private void DeferredFetchAndUpdateCareer(FetchMode online)
         {
             ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             ProgressDialog progressDialog = null;
 
-            if (online == OnlineMode.Online)
+            if (online == FetchMode.Online)
                 progressDialog = ProgressDialog.Show(Activity, Resources.GetString(Resource.String.LoadingCareer), Resources.GetString(Resource.String.WaitWhileRetrievingData), true);
 
             new Thread(() =>
@@ -117,7 +117,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                     FetchCareer(online);
                     Activity.RunOnUiThread(() =>
                     {
-                        if (online == OnlineMode.Online)
+                        if (online == FetchMode.Online)
                         {
                             Debug.Assert(progressDialog != null, "progressDialog != null");
                             progressDialog.Dismiss();
@@ -129,7 +129,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                 {
                     Activity.RunOnUiThread(() =>
                     {
-                        if (online == OnlineMode.Online)
+                        if (online == FetchMode.Online)
                         {
                             Debug.Assert(progressDialog != null, "progressDialog != null");
                             progressDialog.Dismiss();
@@ -141,7 +141,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                 {
                     Activity.RunOnUiThread(() =>
                     {
-                        if (online == OnlineMode.Online)
+                        if (online == FetchMode.Online)
                         {
                             Debug.Assert(progressDialog != null, "progressDialog != null");
                             progressDialog.Dismiss();
@@ -162,17 +162,17 @@ namespace ZTnDroid.D3Calculator.Fragments
             Activity.Finish();
         }
 
-        private void FetchCareer(OnlineMode online)
+        private void FetchCareer(FetchMode online)
         {
             ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
-            D3Api.host = host;
-            var dataProvider = (DataProviders.CacheableDataProvider)D3Api.dataProvider;
-            dataProvider.onlineMode = online;
+            D3Api.Host = host;
+            var dataProvider = (DataProviders.CacheableDataProvider)D3Api.DataProvider;
+            dataProvider.FetchMode = online;
 
             try
             {
-                career = Career.getCareerFromBattleTag(new BattleTag(battleTag));
+                career = Career.CreateFromBattleTag(new BattleTag(battleTag));
             }
             catch (Exception exception)
             {
@@ -182,7 +182,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             }
             finally
             {
-                dataProvider.onlineMode = D3Context.Instance.FetchMode;
+                dataProvider.FetchMode = D3Context.Instance.FetchMode;
             }
         }
 

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -27,9 +28,9 @@ namespace ZTnDroid.D3Calculator
 
             ActionBar.SetDisplayHomeAsUpEnabled(true);
 
-            var hosts = JsonHelpers.getDataFromJSonStream<Host>(Assets.Open("hosts.json"));
+            var hosts = Assets.Open("hosts.json").CreateFromJsonStream<List<Host>>();
 
-            var adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, hosts.Select(h => h.url).ToArray());
+            var adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, hosts.Select(h => h.Url).ToArray());
             adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
 
             serverSpinner = FindViewById<Spinner>(Resource.Id.hostSpinner);

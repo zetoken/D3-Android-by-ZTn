@@ -11,7 +11,6 @@ using ZTnDroid.D3Calculator.Adapters.Delegated;
 using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
 
-
 namespace ZTnDroid.D3Calculator.Adapters
 {
     public class GearItemListItem : IListItem
@@ -78,7 +77,7 @@ namespace ZTnDroid.D3Calculator.Adapters
                 if (Item.armor != null)
                 {
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemArmorLayout).Visibility = ViewStates.Visible;
-                    view.FindViewById<TextView>(Resource.Id.gearItemArmor).Text = Item.armor.min.ToString();
+                    view.FindViewById<TextView>(Resource.Id.gearItemArmor).Text = Item.armor.Min.ToString();
                 }
                 else
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemArmorLayout).Visibility = ViewStates.Gone;
@@ -86,7 +85,7 @@ namespace ZTnDroid.D3Calculator.Adapters
                 if (Item.dps != null)
                 {
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemDpsLayout).Visibility = ViewStates.Visible;
-                    view.FindViewById<TextView>(Resource.Id.gearItemDps).Text = Math.Round(Item.dps.min, 1).ToString();
+                    view.FindViewById<TextView>(Resource.Id.gearItemDps).Text = Math.Round(Item.dps.Min, 1).ToString();
                 }
                 else
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemDpsLayout).Visibility = ViewStates.Gone;
@@ -94,8 +93,8 @@ namespace ZTnDroid.D3Calculator.Adapters
                 if (Item.minDamage != null && Item.maxDamage != null)
                 {
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemDamageLayout).Visibility = ViewStates.Visible;
-                    view.FindViewById<TextView>(Resource.Id.gearItemDamageMin).Text = Item.minDamage.min.ToString();
-                    view.FindViewById<TextView>(Resource.Id.gearItemDamageMax).Text = Item.maxDamage.min.ToString();
+                    view.FindViewById<TextView>(Resource.Id.gearItemDamageMin).Text = Item.minDamage.Min.ToString();
+                    view.FindViewById<TextView>(Resource.Id.gearItemDamageMax).Text = Item.maxDamage.Min.ToString();
                 }
                 else
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemDamageLayout).Visibility = ViewStates.Gone;
@@ -103,7 +102,7 @@ namespace ZTnDroid.D3Calculator.Adapters
                 if (Item.attacksPerSecond != null)
                 {
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemAttacksPerSecondLayout).Visibility = ViewStates.Visible;
-                    view.FindViewById<TextView>(Resource.Id.gearItemAttacksPerSecond).Text = Math.Round(Item.attacksPerSecond.min, 2).ToString();
+                    view.FindViewById<TextView>(Resource.Id.gearItemAttacksPerSecond).Text = Math.Round(Item.attacksPerSecond.Min, 2).ToString();
                 }
                 else
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemAttacksPerSecondLayout).Visibility = ViewStates.Gone;
@@ -156,7 +155,7 @@ namespace ZTnDroid.D3Calculator.Adapters
                 if (Icon != null)
                 {
                     view.FindViewById<ImageView>(Resource.Id.imageGearItem).Visibility = ViewStates.Visible;
-                    var bitmap = BitmapFactory.DecodeByteArray(Icon.bytes, 0, Icon.bytes.Length);
+                    var bitmap = BitmapFactory.DecodeByteArray(Icon.Bytes, 0, Icon.Bytes.Length);
                     view.FindViewById<ImageView>(Resource.Id.imageGearItem).SetImageBitmap(bitmap);
                 }
                 else
@@ -170,7 +169,7 @@ namespace ZTnDroid.D3Calculator.Adapters
         {
             var view = (ImageView)sender;
 
-            D3Context.Instance.EditingItem = (Item.attributesRaw == null ? Item : Item.simplify());
+            D3Context.Instance.EditingItem = (Item.attributesRaw == null ? Item : Item.Simplify());
 
             var editorIntent = new Intent(view.Context, typeof(GearItemEditorActivity));
 

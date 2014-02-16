@@ -89,9 +89,9 @@ namespace ZTnDroid.D3Calculator.Fragments
             }
 
             var d3Calculator = GetCalculator();
-            var dps = d3Calculator.getHeroDPS(new List<ZTn.BNet.D3.Calculator.Skills.D3SkillModifier>(), new List<ZTn.BNet.D3.Calculator.Skills.D3SkillModifier>()).min;
+            var dps = d3Calculator.GetHeroDps(new List<ZTn.BNet.D3.Calculator.Skills.ID3SkillModifier>(), new List<ZTn.BNet.D3.Calculator.Skills.ID3SkillModifier>()).Min;
 
-            var attr = d3Calculator.heroStatsItem.attributesRaw;
+            var attr = d3Calculator.HeroStatsItem.attributesRaw;
 
             var heroStatsListView = view.FindViewById<ListView>(Resource.Id.heroStatsListView);
             var characteristicsAttr = new List<IListItem>
@@ -102,10 +102,10 @@ namespace ZTnDroid.D3Calculator.Fragments
                 new AttributeListItem(Resource.String.paragon, hero.paragonLevel),
 
                 new SectionHeaderListItem(Resource.String.attributes),
-                new AttributeListItem(Resource.String.dexterity, d3Calculator.getHeroDexterity()),
-                new AttributeListItem(Resource.String.intelligence, d3Calculator.getHeroIntelligence()),
-                new AttributeListItem(Resource.String.strength, d3Calculator.getHeroStrength()),
-                new AttributeListItem(Resource.String.vitality, d3Calculator.getHeroVitality()),
+                new AttributeListItem(Resource.String.dexterity, d3Calculator.GetHeroDexterity()),
+                new AttributeListItem(Resource.String.intelligence, d3Calculator.GetHeroIntelligence()),
+                new AttributeListItem(Resource.String.strength, d3Calculator.GetHeroStrength()),
+                new AttributeListItem(Resource.String.vitality, d3Calculator.GetHeroVitality()),
 
                 new SectionHeaderListItem(Resource.String.damages),
                 new AttributeListItem(Resource.String.damage, dps),
@@ -118,10 +118,10 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             characteristicsAttr.AddRange(new List<IListItem>
             {
-                new AttributePercentListItem(Resource.String.attackSpeed, d3Calculator.getActualAttackSpeed()),
+                new AttributePercentListItem(Resource.String.attackSpeed, d3Calculator.GetActualAttackSpeed()),
 
                 new SectionHeaderListItem(Resource.String.life),
-                new AttributeListItem(Resource.String.life, d3Calculator.getHeroHitpoints())
+                new AttributeListItem(Resource.String.life, d3Calculator.GetHeroHitpoints())
             });
 
             if (attr.hitpointsOnHit != null)
@@ -137,18 +137,18 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             characteristicsAttr.AddRange(new List<IListItem>
             {
-                new AttributeListItem(Resource.String.effectiveHitpoints, Math.Round(d3Calculator.getHeroEffectiveHitpoints(hero.level+3))),
-                new AttributeListItem(Resource.String.EHP_DPS, Math.Round((d3Calculator.getHeroEffectiveHitpoints(hero.level+3) * d3Calculator.getHeroDPS()).min / 1000000)),
+                new AttributeListItem(Resource.String.effectiveHitpoints, Math.Round(d3Calculator.GetHeroEffectiveHitpoints(hero.level+3))),
+                new AttributeListItem(Resource.String.EHP_DPS, Math.Round((d3Calculator.GetHeroEffectiveHitpoints(hero.level+3) * d3Calculator.GetHeroDps()).Min / 1000000)),
                     
                 new SectionHeaderListItem(Resource.String.defense),
-                new AttributeListItem(Resource.String.dodge, d3Calculator.getHeroDodge()),
-                new AttributeListItem(Resource.String.armor, Math.Round(d3Calculator.getHeroArmor().min)),
-                new AttributeListItem(Resource.String.arcaneResist, d3Calculator.getHeroResistance("Arcane")),
-                new AttributeListItem(Resource.String.coldResist, d3Calculator.getHeroResistance("Cold")),
-                new AttributeListItem(Resource.String.fireResist, d3Calculator.getHeroResistance("Fire")),
-                new AttributeListItem(Resource.String.lightningResist, d3Calculator.getHeroResistance("Lightning")),
-                new AttributeListItem(Resource.String.physicalResist, d3Calculator.getHeroResistance("Physical")),
-                new AttributeListItem(Resource.String.poisonResist, d3Calculator.getHeroResistance("Poison")),
+                new AttributeListItem(Resource.String.dodge, d3Calculator.GetHeroDodge()),
+                new AttributeListItem(Resource.String.armor, Math.Round(d3Calculator.GetHeroArmor().Min)),
+                new AttributeListItem(Resource.String.arcaneResist, d3Calculator.GetHeroResistance("Arcane")),
+                new AttributeListItem(Resource.String.coldResist, d3Calculator.GetHeroResistance("Cold")),
+                new AttributeListItem(Resource.String.fireResist, d3Calculator.GetHeroResistance("Fire")),
+                new AttributeListItem(Resource.String.lightningResist, d3Calculator.GetHeroResistance("Lightning")),
+                new AttributeListItem(Resource.String.physicalResist, d3Calculator.GetHeroResistance("Physical")),
+                new AttributeListItem(Resource.String.poisonResist, d3Calculator.GetHeroResistance("Poison")),
 
                 new SectionHeaderListItem(Resource.String.bonuses)
             });

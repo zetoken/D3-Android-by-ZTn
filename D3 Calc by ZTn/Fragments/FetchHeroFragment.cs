@@ -88,7 +88,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             switch (item.ItemId)
             {
                 case Resource.Id.RefreshContent:
-                    DeferredFetchHero(OnlineMode.Online);
+                    DeferredFetchHero(FetchMode.Online);
                     return true;
 
                 default:
@@ -98,7 +98,7 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         #endregion
 
-        private void DeferredFetchHero(OnlineMode online)
+        private void DeferredFetchHero(FetchMode online)
         {
             ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
@@ -121,9 +121,9 @@ namespace ZTnDroid.D3Calculator.Fragments
                     });
 
                     // Icons are fetched with Online.OnlineIfMissing even if FetchMode.Online is asked
-                    OnlineMode fetchIconsOnlineMode;
-                    if (online == OnlineMode.Online)
-                        fetchIconsOnlineMode = OnlineMode.OnlineIfMissing;
+                    FetchMode fetchIconsOnlineMode;
+                    if (online == FetchMode.Online)
+                        fetchIconsOnlineMode = FetchMode.OnlineIfMissing;
                     else
                         fetchIconsOnlineMode = online;
                     D3Context.Instance.Icons = FetchIcons(fetchIconsOnlineMode);
@@ -157,47 +157,47 @@ namespace ZTnDroid.D3Calculator.Fragments
             }).Start();
         }
 
-        private static HeroItems FetchFullItems(OnlineMode online)
+        private static HeroItems FetchFullItems(FetchMode online)
         {
             ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             HeroItems heroItems = D3Context.Instance.CurrentHero.items;
 
-            var dataProvider = (CacheableDataProvider)D3Api.dataProvider;
-            dataProvider.onlineMode = online;
+            var dataProvider = (CacheableDataProvider)D3Api.DataProvider;
+            dataProvider.FetchMode = online;
 
             try
             {
                 if (heroItems.head != null)
-                    heroItems.head = heroItems.head.getFullItem();
+                    heroItems.head = heroItems.head.GetFullItem();
                 if (heroItems.torso != null)
-                    heroItems.torso = heroItems.torso.getFullItem();
+                    heroItems.torso = heroItems.torso.GetFullItem();
                 if (heroItems.feet != null)
-                    heroItems.feet = heroItems.feet.getFullItem();
+                    heroItems.feet = heroItems.feet.GetFullItem();
                 if (heroItems.hands != null)
-                    heroItems.hands = heroItems.hands.getFullItem();
+                    heroItems.hands = heroItems.hands.GetFullItem();
                 if (heroItems.shoulders != null)
-                    heroItems.shoulders = heroItems.shoulders.getFullItem();
+                    heroItems.shoulders = heroItems.shoulders.GetFullItem();
                 if (heroItems.legs != null)
-                    heroItems.legs = heroItems.legs.getFullItem();
+                    heroItems.legs = heroItems.legs.GetFullItem();
                 if (heroItems.bracers != null)
-                    heroItems.bracers = heroItems.bracers.getFullItem();
+                    heroItems.bracers = heroItems.bracers.GetFullItem();
                 if (heroItems.mainHand != null)
-                    heroItems.mainHand = heroItems.mainHand.getFullItem();
+                    heroItems.mainHand = heroItems.mainHand.GetFullItem();
                 else
-                    heroItems.mainHand = ZTn.BNet.D3.Calculator.D3Calculator.nakedHandWeapon;
+                    heroItems.mainHand = ZTn.BNet.D3.Calculator.D3Calculator.NakedHandWeapon;
                 if (heroItems.offHand != null)
-                    heroItems.offHand = heroItems.offHand.getFullItem();
+                    heroItems.offHand = heroItems.offHand.GetFullItem();
                 else
-                    heroItems.offHand = ZTn.BNet.D3.Calculator.D3Calculator.blankWeapon;
+                    heroItems.offHand = ZTn.BNet.D3.Calculator.D3Calculator.BlankWeapon;
                 if (heroItems.waist != null)
-                    heroItems.waist = heroItems.waist.getFullItem();
+                    heroItems.waist = heroItems.waist.GetFullItem();
                 if (heroItems.rightFinger != null)
-                    heroItems.rightFinger = heroItems.rightFinger.getFullItem();
+                    heroItems.rightFinger = heroItems.rightFinger.GetFullItem();
                 if (heroItems.leftFinger != null)
-                    heroItems.leftFinger = heroItems.leftFinger.getFullItem();
+                    heroItems.leftFinger = heroItems.leftFinger.GetFullItem();
                 if (heroItems.neck != null)
-                    heroItems.neck = heroItems.neck.getFullItem();
+                    heroItems.neck = heroItems.neck.GetFullItem();
 
                 // Compute set items bonus
                 var items = new List<Item>
@@ -218,8 +218,8 @@ namespace ZTnDroid.D3Calculator.Fragments
                 };
                 items = items.Where(i => i != null).ToList();
 
-                D3Context.Instance.ActivatedSetBonus = new Item(items.getActivatedSetBonus());
-                D3Context.Instance.ActivatedSets = items.getActivatedSets();
+                D3Context.Instance.ActivatedSetBonus = new Item(items.GetActivatedSetBonus());
+                D3Context.Instance.ActivatedSets = items.GetActivatedSets();
             }
             catch (Exception exception)
             {
@@ -230,13 +230,13 @@ namespace ZTnDroid.D3Calculator.Fragments
             }
             finally
             {
-                dataProvider.onlineMode = D3Context.Instance.FetchMode;
+                dataProvider.FetchMode = D3Context.Instance.FetchMode;
             }
 
             return heroItems;
         }
 
-        private static IconsContainer FetchIcons(OnlineMode online)
+        private static IconsContainer FetchIcons(FetchMode online)
         {
             ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
@@ -244,57 +244,57 @@ namespace ZTnDroid.D3Calculator.Fragments
             var skills = D3Context.Instance.CurrentHero.skills;
             var icons = new IconsContainer();
 
-            var dataProvider = (CacheableDataProvider)D3Api.dataProvider;
-            dataProvider.onlineMode = online;
+            var dataProvider = (CacheableDataProvider)D3Api.DataProvider;
+            dataProvider.FetchMode = online;
 
             try
             {
                 if (heroItems.head != null && heroItems.head.icon != null)
-                    icons.Head = D3Api.getItemIcon(heroItems.head.icon, "large");
+                    icons.Head = D3Api.GetItemIcon(heroItems.head.icon, "large");
                 if (heroItems.torso != null && heroItems.torso.icon != null)
-                    icons.Torso = D3Api.getItemIcon(heroItems.torso.icon, "large");
+                    icons.Torso = D3Api.GetItemIcon(heroItems.torso.icon, "large");
                 if (heroItems.feet != null && heroItems.feet.icon != null)
-                    icons.Feet = D3Api.getItemIcon(heroItems.feet.icon, "large");
+                    icons.Feet = D3Api.GetItemIcon(heroItems.feet.icon, "large");
                 if (heroItems.hands != null && heroItems.hands.icon != null)
-                    icons.Hands = D3Api.getItemIcon(heroItems.hands.icon, "large");
+                    icons.Hands = D3Api.GetItemIcon(heroItems.hands.icon, "large");
                 if (heroItems.shoulders != null && heroItems.shoulders.icon != null)
-                    icons.Shoulders = D3Api.getItemIcon(heroItems.shoulders.icon, "large");
+                    icons.Shoulders = D3Api.GetItemIcon(heroItems.shoulders.icon, "large");
                 if (heroItems.legs != null && heroItems.legs.icon != null)
-                    icons.Legs = D3Api.getItemIcon(heroItems.legs.icon, "large");
+                    icons.Legs = D3Api.GetItemIcon(heroItems.legs.icon, "large");
                 if (heroItems.bracers != null && heroItems.bracers.icon != null)
-                    icons.Bracers = D3Api.getItemIcon(heroItems.bracers.icon, "large");
+                    icons.Bracers = D3Api.GetItemIcon(heroItems.bracers.icon, "large");
                 if (heroItems.mainHand != null && heroItems.mainHand.icon != null)
-                    icons.MainHand = D3Api.getItemIcon(heroItems.mainHand.icon, "large");
+                    icons.MainHand = D3Api.GetItemIcon(heroItems.mainHand.icon, "large");
                 if (heroItems.offHand != null && heroItems.offHand.icon != null)
-                    icons.OffHand = D3Api.getItemIcon(heroItems.offHand.icon, "large");
+                    icons.OffHand = D3Api.GetItemIcon(heroItems.offHand.icon, "large");
                 if (heroItems.waist != null && heroItems.waist.icon != null)
-                    icons.Waist = D3Api.getItemIcon(heroItems.waist.icon, "large");
+                    icons.Waist = D3Api.GetItemIcon(heroItems.waist.icon, "large");
                 if (heroItems.rightFinger != null && heroItems.rightFinger.icon != null)
-                    icons.RightFinger = D3Api.getItemIcon(heroItems.rightFinger.icon, "large");
+                    icons.RightFinger = D3Api.GetItemIcon(heroItems.rightFinger.icon, "large");
                 if (heroItems.leftFinger != null && heroItems.leftFinger.icon != null)
-                    icons.LeftFinger = D3Api.getItemIcon(heroItems.leftFinger.icon, "large");
+                    icons.LeftFinger = D3Api.GetItemIcon(heroItems.leftFinger.icon, "large");
                 if (heroItems.neck != null && heroItems.neck.icon != null)
-                    icons.Neck = D3Api.getItemIcon(heroItems.neck.icon, "large");
+                    icons.Neck = D3Api.GetItemIcon(heroItems.neck.icon, "large");
 
                 if (skills.active[0] != null && skills.active[0].skill != null)
-                    icons.ActiveSkill1 = D3Api.getSkillIcon(skills.active[0].skill.icon, "64");
+                    icons.ActiveSkill1 = D3Api.GetSkillIcon(skills.active[0].skill.icon, "64");
                 if (skills.active[1] != null && skills.active[1].skill != null)
-                    icons.ActiveSkill2 = D3Api.getSkillIcon(skills.active[1].skill.icon, "64");
+                    icons.ActiveSkill2 = D3Api.GetSkillIcon(skills.active[1].skill.icon, "64");
                 if (skills.active[2] != null && skills.active[2].skill != null)
-                    icons.ActiveSkill3 = D3Api.getSkillIcon(skills.active[2].skill.icon, "64");
+                    icons.ActiveSkill3 = D3Api.GetSkillIcon(skills.active[2].skill.icon, "64");
                 if (skills.active[3] != null && skills.active[3].skill != null)
-                    icons.ActiveSkill4 = D3Api.getSkillIcon(skills.active[3].skill.icon, "64");
+                    icons.ActiveSkill4 = D3Api.GetSkillIcon(skills.active[3].skill.icon, "64");
                 if (skills.active[4] != null && skills.active[4].skill != null)
-                    icons.ActiveSkill5 = D3Api.getSkillIcon(skills.active[4].skill.icon, "64");
+                    icons.ActiveSkill5 = D3Api.GetSkillIcon(skills.active[4].skill.icon, "64");
                 if (skills.active[5] != null && skills.active[5].skill != null)
-                    icons.ActiveSkill6 = D3Api.getSkillIcon(skills.active[5].skill.icon, "64");
+                    icons.ActiveSkill6 = D3Api.GetSkillIcon(skills.active[5].skill.icon, "64");
 
                 if (skills.passive[0] != null && skills.passive[0].skill != null)
-                    icons.PassiveSkill1 = D3Api.getSkillIcon(skills.passive[0].skill.icon, "64");
+                    icons.PassiveSkill1 = D3Api.GetSkillIcon(skills.passive[0].skill.icon, "64");
                 if (skills.passive[1] != null && skills.passive[1].skill != null)
-                    icons.PassiveSkill2 = D3Api.getSkillIcon(skills.passive[1].skill.icon, "64");
+                    icons.PassiveSkill2 = D3Api.GetSkillIcon(skills.passive[1].skill.icon, "64");
                 if (skills.passive[2] != null && skills.passive[2].skill != null)
-                    icons.PassiveSkill3 = D3Api.getSkillIcon(skills.passive[2].skill.icon, "64");
+                    icons.PassiveSkill3 = D3Api.GetSkillIcon(skills.passive[2].skill.icon, "64");
             }
             catch (Exception exception)
             {
@@ -304,25 +304,25 @@ namespace ZTnDroid.D3Calculator.Fragments
             }
             finally
             {
-                dataProvider.onlineMode = D3Context.Instance.FetchMode;
+                dataProvider.FetchMode = D3Context.Instance.FetchMode;
             }
 
             return icons;
         }
 
-        private static Hero FetchHero(OnlineMode online)
+        private static Hero FetchHero(FetchMode online)
         {
             ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             Hero hero;
 
-            D3Api.host = D3Context.Instance.Host;
-            var dataProvider = (CacheableDataProvider)D3Api.dataProvider;
-            dataProvider.onlineMode = online;
+            D3Api.Host = D3Context.Instance.Host;
+            var dataProvider = (CacheableDataProvider)D3Api.DataProvider;
+            dataProvider.FetchMode = online;
 
             try
             {
-                hero = Hero.getHeroFromHeroId(new BattleTag(D3Context.Instance.BattleTag), D3Context.Instance.CurrentHeroSummary.id);
+                hero = Hero.CreateFromHeroId(new BattleTag(D3Context.Instance.BattleTag), D3Context.Instance.CurrentHeroSummary.id);
             }
             catch (Exception exception)
             {
@@ -331,7 +331,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             }
             finally
             {
-                dataProvider.onlineMode = D3Context.Instance.FetchMode;
+                dataProvider.FetchMode = D3Context.Instance.FetchMode;
             }
 
             return hero;

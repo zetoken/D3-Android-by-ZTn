@@ -80,7 +80,7 @@ namespace ZTnDroid.D3Calculator.Adapters
         public AttributeListItem(String name, ItemValueRange value)
         {
             Name = name;
-            Value = value.min.ToString();
+            Value = value.Min.ToString();
         }
 
         public AttributeListItem(int id, long value)

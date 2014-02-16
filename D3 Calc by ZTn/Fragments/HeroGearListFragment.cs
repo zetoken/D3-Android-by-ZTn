@@ -74,7 +74,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             if (hero != null && hero.items != null)
             {
                 var heroGearListView = view.FindViewById<ListView>(Resource.Id.heroGearListView);
-                var gearAttr = new List<IListItem>
+                var gearListItems = new List<IListItem>
                 {
                     GetDataForItem(Resource.String.itemHead, hero.items.head, icons.Head),
                     GetDataForItem(Resource.String.itemTorso, hero.items.torso, icons.Torso),
@@ -112,12 +112,12 @@ namespace ZTnDroid.D3Calculator.Fragments
 
                 foreach (var set in D3Context.Instance.ActivatedSets)
                 {
-                    var setItem = new Item { name = set.name, attributes = set.getBonusAttributes(set.countItemsOfSet(items)), displayColor = "green" };
+                    var setItem = new Item { name = set.name, attributes = set.GetBonusAttributes(set.CountItemsOfSet(items)), displayColor = "green" };
                     if (setItem.attributes.Length > 0)
-                        gearAttr.Add(GetDataForItem(Resource.String.setBonuses, setItem, null));
+                        gearListItems.Add(GetDataForItem(Resource.String.setBonuses, setItem, null));
                 }
 
-                heroGearListView.Adapter = new ListAdapter(Activity, gearAttr.Where(l => l != null).ToArray()) { ConvertibleViews = true };
+                heroGearListView.Adapter = new ListAdapter(Activity, gearListItems.Where(l => l != null).ToArray()) { ConvertibleViews = true };
             }
         }
     }

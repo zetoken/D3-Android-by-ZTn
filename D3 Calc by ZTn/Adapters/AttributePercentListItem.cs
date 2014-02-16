@@ -24,7 +24,7 @@ namespace ZTnDroid.D3Calculator.Adapters
         }
 
         public AttributePercentListItem(String name, ItemValueRange value) :
-            base(name, String.Format("{0:0.00} %", 100 * value.min))
+            base(name, String.Format("{0:0.00} %", 100 * value.Min))
         {
         }
 

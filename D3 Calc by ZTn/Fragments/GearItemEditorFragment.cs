@@ -108,7 +108,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         LinearLayout layoutDefense;
         LinearLayout layoutSockets;
 
-        public static KnownGems KnownGems = KnownGems.getKnownGemsFromJsonStream(D3Calc.Instance.Assets.Open("d3gem.json"));
+        public static KnownGems KnownGems = KnownGems.GetKnownGemsFromJsonStream(D3Calc.Instance.Assets.Open("d3gem.json"));
 
         #endregion
 
@@ -136,7 +136,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             {
                 "( no gem )"
             };
-            socketLabels.AddRange(KnownGems.getGemsForItem(D3Context.Instance.EditingItem).Select(g => g.attributes[0]));
+            socketLabels.AddRange(KnownGems.GetGemsForItem(D3Context.Instance.EditingItem).Select(g => g.attributes[0]));
         }
 
         /// <inheritdoc/>
@@ -204,14 +204,14 @@ namespace ZTnDroid.D3Calculator.Fragments
             // Sockets
             layoutSockets = view.FindViewById<LinearLayout>(Resource.Id.layoutSockets);
             layoutSockets.FindViewById<ImageButton>(Resource.Id.add).Click +=
-                (sender, e) => layoutSockets.AddView(CreateSocketRowView(socketLabels, KnownGems.getGemsForItem(D3Context.Instance.EditingItem)), layoutSockets.ChildCount - 1);
+                (sender, e) => layoutSockets.AddView(CreateSocketRowView(socketLabels, KnownGems.GetGemsForItem(D3Context.Instance.EditingItem)), layoutSockets.ChildCount - 1);
 
             var itemGems = D3Context.Instance.EditingItem.gems;
             if (itemGems != null)
             {
                 foreach (var socketedGem in itemGems)
                 {
-                    layoutSockets.AddView(CreateSocketRowView(socketLabels, KnownGems.getGemsForItem(D3Context.Instance.EditingItem), socketedGem.item), layoutSockets.ChildCount - 1);
+                    layoutSockets.AddView(CreateSocketRowView(socketLabels, KnownGems.GetGemsForItem(D3Context.Instance.EditingItem), socketedGem.item), layoutSockets.ChildCount - 1);
                 }
             }
 
@@ -278,9 +278,9 @@ namespace ZTnDroid.D3Calculator.Fragments
                 ItemValueRange value;
 
                 if (refAttribute == null)
-                    value = attributes.getAttributeByName(targetAttribute);
+                    value = attributes.GetAttributeByName(targetAttribute);
                 else
-                    value = attributes.getAttributeByName(targetAttribute) + attributes.getAttributeByName(refAttribute);
+                    value = attributes.GetAttributeByName(targetAttribute) + attributes.GetAttributeByName(refAttribute);
 
                 if (Percent)
                     value *= 100;
@@ -293,9 +293,9 @@ namespace ZTnDroid.D3Calculator.Fragments
                     value /= 100;
 
                 if (refAttribute == null)
-                    attributes.setAttributeByName(targetAttribute, new ItemValueRange(value));
+                    attributes.SetAttributeByName(targetAttribute, new ItemValueRange(value));
                 else
-                    attributes.setAttributeByName(targetAttribute, new ItemValueRange(value) - attributes.getAttributeByName(refAttribute));
+                    attributes.SetAttributeByName(targetAttribute, new ItemValueRange(value) - attributes.GetAttributeByName(refAttribute));
             }
 
             #region >> Object
@@ -314,28 +314,28 @@ namespace ZTnDroid.D3Calculator.Fragments
         void CreateAttributeRowView(Field field)
         {
             var value = field.GetValue(D3Context.Instance.EditingItem.attributesRaw);
-            if (value != null && value.min != 0)
+            if (value != null && value.Min != 0)
                 layoutAttributes.AddView(CreateRowView(attributeLabels, AttributeFields, field, value), layoutAttributes.ChildCount - 1);
         }
 
         void CreateItemDamageRowView(Field field)
         {
             var value = field.GetValue(D3Context.Instance.EditingItem.attributesRaw);
-            if (value != null && value.min != 0)
+            if (value != null && value.Min != 0)
                 layoutItemDamage.AddView(CreateRowView(itemDamageLabels, ItemDamageFields, field, value), layoutItemDamage.ChildCount - 1);
         }
 
         void CreateWeaponDamageRowView(Field field)
         {
             var value = field.GetValue(D3Context.Instance.EditingItem.attributesRaw);
-            if (value != null && value.min != 0)
+            if (value != null && value.Min != 0)
                 layoutWeaponDamage.AddView(CreateRowView(weaponDamageLabels, WeaponDamageFields, field, value), layoutWeaponDamage.ChildCount - 1);
         }
 
         void CreateDefenseRowView(Field field)
         {
             var value = field.GetValue(D3Context.Instance.EditingItem.attributesRaw);
-            if (value != null && value.min != 0)
+            if (value != null && value.Min != 0)
                 layoutDefense.AddView(CreateRowView(defenseLabels, DefenseFields, field, value), layoutDefense.ChildCount - 1);
         }
 
@@ -387,7 +387,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             if (index != fields.Length)
             {
                 rowView.FindViewById<Spinner>(Resource.Id.attributeName).SetSelection(index);
-                rowView.FindViewById<EditText>(Resource.Id.attributeValue).Text = value.min.ToString();
+                rowView.FindViewById<EditText>(Resource.Id.attributeValue).Text = value.Min.ToString();
             }
 
             return rowView;
