@@ -1,12 +1,12 @@
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Threading;
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Threading;
 using ZTn.BNet.BattleNet;
 using ZTn.BNet.D3;
 using ZTn.BNet.D3.Careers;
@@ -22,10 +22,10 @@ namespace ZTnDroid.D3Calculator.Fragments
 {
     public class HeroesListFragment : Fragment
     {
-        String battleTag;
-        String host;
+        private String battleTag;
+        private String host;
 
-        Career career;
+        private Career career;
 
         #region >> Fragment
 
@@ -108,7 +108,9 @@ namespace ZTnDroid.D3Calculator.Fragments
             ProgressDialog progressDialog = null;
 
             if (online == FetchMode.Online)
+            {
                 progressDialog = ProgressDialog.Show(Activity, Resources.GetString(Resource.String.LoadingCareer), Resources.GetString(Resource.String.WaitWhileRetrievingData), true);
+            }
 
             new Thread(() =>
             {
@@ -134,7 +136,8 @@ namespace ZTnDroid.D3Calculator.Fragments
                             Debug.Assert(progressDialog != null, "progressDialog != null");
                             progressDialog.Dismiss();
                         }
-                        Toast.MakeText(Activity, "Career not in cache" + System.Environment.NewLine + "Please use refresh action", ToastLength.Long).Show();
+                        Toast.MakeText(Activity, "Career not in cache" + System.Environment.NewLine + "Please use refresh action", ToastLength.Long)
+                            .Show();
                     });
                 }
                 catch (Exception exception)
@@ -146,7 +149,8 @@ namespace ZTnDroid.D3Calculator.Fragments
                             Debug.Assert(progressDialog != null, "progressDialog != null");
                             progressDialog.Dismiss();
                         }
-                        Toast.MakeText(Activity, Resources.GetString(Resource.String.ErrorOccuredWhileRetrievingData), ToastLength.Long).Show();
+                        Toast.MakeText(Activity, Resources.GetString(Resource.String.ErrorOccuredWhileRetrievingData), ToastLength.Long)
+                            .Show();
                         Console.WriteLine(exception);
                     });
                 }
@@ -158,7 +162,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             Toast.MakeText(Activity, "Career will be removed...", ToastLength.Short);
-            D3Context.Instance.DBAccounts.Delete(battleTag, host);
+            D3Context.Instance.DbAccounts.Delete(battleTag, host);
             Activity.Finish();
         }
 
@@ -190,23 +194,26 @@ namespace ZTnDroid.D3Calculator.Fragments
         {
             ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
-            if (career != null)
+            if (career == null)
             {
-                var killsListView = Activity.FindViewById<ListView>(Resource.Id.killsLifetimeListView);
-                var attributes = new List<IListItem>
-                {
-                    new SectionHeaderListItem(Resources.GetString(Resource.String.KillsLifetime)),
-                    new AttributeListItem(Resources.GetString(Resource.String.elites), career.kills.elites.ToString()),
-                    new AttributeListItem(Resources.GetString(Resource.String.KilledMonsters), career.kills.monsters.ToString()),
-                    new AttributeListItem(Resources.GetString(Resource.String.KilledHardcore), career.kills.hardcoreMonsters.ToString())
-                };
-                killsListView.Adapter = new ListAdapter(Activity, attributes.ToArray());
+                return;
+            }
 
-                if (career.heroes != null)
-                {
-                    var listView = Activity.FindViewById<ListView>(Resource.Id.HeroesListView);
-                    listView.Adapter = new HeroSummariesListAdapter(Activity, career.heroes);
-                }
+            var killsListView = Activity.FindViewById<ListView>(Resource.Id.killsLifetimeListView);
+            var attributes = new List<IListItem>
+            {
+                new SectionHeaderListItem(Resources.GetString(Resource.String.KillsLifetime)),
+                new AttributeListItem(Resources.GetString(Resource.String.elites), career.Kills.elites),
+                new AttributeListItem(Resources.GetString(Resource.String.KilledMonsters), career.Kills.monsters),
+                new AttributeListItem(Resources.GetString(Resource.String.paragon), career.ParagonLevel),
+                new AttributeListItem(Resources.GetString(Resource.String.paragonHardcore), career.ParagonLevelHardcore)
+            };
+            killsListView.Adapter = new ListAdapter(Activity, attributes.ToArray());
+
+            if (career.Heroes != null)
+            {
+                var listView = Activity.FindViewById<ListView>(Resource.Id.HeroesListView);
+                listView.Adapter = new HeroSummariesListAdapter(Activity, career.Heroes);
             }
         }
     }

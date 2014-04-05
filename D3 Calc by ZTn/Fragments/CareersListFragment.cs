@@ -3,24 +3,22 @@ using System.Reflection;
 using Android.Content;
 using Android.Database;
 using Android.OS;
+using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
-
 using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
-
-using Fragment = Android.Support.V4.App.Fragment;
 
 namespace ZTnDroid.D3Calculator.Fragments
 {
     public class CareersListFragment : Fragment
     {
-        const int AddNewAccount = 0;
+        private const int AddNewAccount = 0;
 
-        readonly String[] accountsFromColumns = { AccountsOpenHelper.FIELD_BATTLETAG, AccountsOpenHelper.FIELD_HOST };
-        readonly int[] accountsToId = { Android.Resource.Id.Text1, Android.Resource.Id.Text2 };
+        private readonly String[] accountsFromColumns = { AccountsOpenHelper.FIELD_BATTLETAG, AccountsOpenHelper.FIELD_HOST };
+        private readonly int[] accountsToId = { Android.Resource.Id.Text1, Android.Resource.Id.Text2 };
 
-        ICursor cursor;
+        private ICursor cursor;
 
         #region >> Fragment
 
@@ -38,12 +36,14 @@ namespace ZTnDroid.D3Calculator.Fragments
                             var battleTag = data.GetStringExtra("battleTag");
                             var host = data.GetStringExtra("host");
 
-                            D3Context.Instance.DBAccounts.Insert(battleTag, host);
+                            D3Context.Instance.DbAccounts.Insert(battleTag, host);
 
                             IListAdapter careerAdapter = new SimpleCursorAdapter(Activity, Android.Resource.Layout.SimpleListItem2, cursor, accountsFromColumns, accountsToId);
-                            Activity.FindViewById<ListView>(Resource.Id.AccountsListView).Adapter = careerAdapter;
+                            Activity.FindViewById<ListView>(Resource.Id.AccountsListView)
+                                .Adapter = careerAdapter;
 
-                            Toast.MakeText(Activity, "Account added", ToastLength.Short).Show();
+                            Toast.MakeText(Activity, "Account added", ToastLength.Short)
+                                .Show();
                             break;
                     }
                     break;
@@ -87,17 +87,20 @@ namespace ZTnDroid.D3Calculator.Fragments
             careerListView.ItemClick += (sender, args) =>
             {
                 var viewCareerIntent = new Intent(Activity, typeof(ViewCareerActivity));
-                D3Context.Instance.BattleTag = args.View.FindViewById<TextView>(Android.Resource.Id.Text1).Text;
-                D3Context.Instance.Host = args.View.FindViewById<TextView>(Android.Resource.Id.Text2).Text;
+                D3Context.Instance.BattleTag = args.View.FindViewById<TextView>(Android.Resource.Id.Text1)
+                    .Text;
+                D3Context.Instance.Host = args.View.FindViewById<TextView>(Android.Resource.Id.Text2)
+                    .Text;
                 StartActivity(viewCareerIntent);
             };
 
-            D3Context.Instance.DBAccounts = new AccountsDB(Activity);
-            cursor = D3Context.Instance.DBAccounts.GetAccounts();
+            D3Context.Instance.DbAccounts = new AccountsDB(Activity);
+            cursor = D3Context.Instance.DbAccounts.GetAccounts();
             Activity.StartManagingCursor(cursor);
 
             IListAdapter accountsAdapter = new SimpleCursorAdapter(Activity, Android.Resource.Layout.SimpleListItem2, cursor, accountsFromColumns, accountsToId);
-            view.FindViewById<ListView>(Resource.Id.AccountsListView).Adapter = accountsAdapter;
+            view.FindViewById<ListView>(Resource.Id.AccountsListView)
+                .Adapter = accountsAdapter;
 
             return view;
         }

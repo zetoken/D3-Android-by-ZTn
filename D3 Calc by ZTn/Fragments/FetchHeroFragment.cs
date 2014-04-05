@@ -109,23 +109,13 @@ namespace ZTnDroid.D3Calculator.Fragments
                 try
                 {
                     D3Context.Instance.CurrentHero = FetchHero(online);
-                    Activity.RunOnUiThread(() =>
-                    {
-                        progressDialog.SetTitle(Resources.GetString(Resource.String.LoadingItems));
-                    });
+                    Activity.RunOnUiThread(() => progressDialog.SetTitle(Resources.GetString(Resource.String.LoadingItems)));
                     D3Context.Instance.CurrentHeroItems = FetchFullItems(online);
 
-                    Activity.RunOnUiThread(() =>
-                    {
-                        progressDialog.SetTitle(Resources.GetString(Resource.String.LoadingIcons));
-                    });
+                    Activity.RunOnUiThread(() => progressDialog.SetTitle(Resources.GetString(Resource.String.LoadingIcons)));
 
                     // Icons are fetched with Online.OnlineIfMissing even if FetchMode.Online is asked
-                    FetchMode fetchIconsOnlineMode;
-                    if (online == FetchMode.Online)
-                        fetchIconsOnlineMode = FetchMode.OnlineIfMissing;
-                    else
-                        fetchIconsOnlineMode = online;
+                    var fetchIconsOnlineMode = (online == FetchMode.Online ? FetchMode.OnlineIfMissing : online);
                     D3Context.Instance.Icons = FetchIcons(fetchIconsOnlineMode);
 
                     Activity.RunOnUiThread(() =>
@@ -249,32 +239,32 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             try
             {
-                if (heroItems.head != null && heroItems.head.icon != null)
-                    icons.Head = D3Api.GetItemIcon(heroItems.head.icon, "large");
-                if (heroItems.torso != null && heroItems.torso.icon != null)
-                    icons.Torso = D3Api.GetItemIcon(heroItems.torso.icon, "large");
-                if (heroItems.feet != null && heroItems.feet.icon != null)
-                    icons.Feet = D3Api.GetItemIcon(heroItems.feet.icon, "large");
-                if (heroItems.hands != null && heroItems.hands.icon != null)
-                    icons.Hands = D3Api.GetItemIcon(heroItems.hands.icon, "large");
-                if (heroItems.shoulders != null && heroItems.shoulders.icon != null)
-                    icons.Shoulders = D3Api.GetItemIcon(heroItems.shoulders.icon, "large");
-                if (heroItems.legs != null && heroItems.legs.icon != null)
-                    icons.Legs = D3Api.GetItemIcon(heroItems.legs.icon, "large");
-                if (heroItems.bracers != null && heroItems.bracers.icon != null)
-                    icons.Bracers = D3Api.GetItemIcon(heroItems.bracers.icon, "large");
-                if (heroItems.mainHand != null && heroItems.mainHand.icon != null)
-                    icons.MainHand = D3Api.GetItemIcon(heroItems.mainHand.icon, "large");
-                if (heroItems.offHand != null && heroItems.offHand.icon != null)
-                    icons.OffHand = D3Api.GetItemIcon(heroItems.offHand.icon, "large");
-                if (heroItems.waist != null && heroItems.waist.icon != null)
-                    icons.Waist = D3Api.GetItemIcon(heroItems.waist.icon, "large");
-                if (heroItems.rightFinger != null && heroItems.rightFinger.icon != null)
-                    icons.RightFinger = D3Api.GetItemIcon(heroItems.rightFinger.icon, "large");
-                if (heroItems.leftFinger != null && heroItems.leftFinger.icon != null)
-                    icons.LeftFinger = D3Api.GetItemIcon(heroItems.leftFinger.icon, "large");
-                if (heroItems.neck != null && heroItems.neck.icon != null)
-                    icons.Neck = D3Api.GetItemIcon(heroItems.neck.icon, "large");
+                if (heroItems.head != null && heroItems.head.Icon != null)
+                    icons.Head = D3Api.GetItemIcon(heroItems.head.Icon, "large");
+                if (heroItems.torso != null && heroItems.torso.Icon != null)
+                    icons.Torso = D3Api.GetItemIcon(heroItems.torso.Icon, "large");
+                if (heroItems.feet != null && heroItems.feet.Icon != null)
+                    icons.Feet = D3Api.GetItemIcon(heroItems.feet.Icon, "large");
+                if (heroItems.hands != null && heroItems.hands.Icon != null)
+                    icons.Hands = D3Api.GetItemIcon(heroItems.hands.Icon, "large");
+                if (heroItems.shoulders != null && heroItems.shoulders.Icon != null)
+                    icons.Shoulders = D3Api.GetItemIcon(heroItems.shoulders.Icon, "large");
+                if (heroItems.legs != null && heroItems.legs.Icon != null)
+                    icons.Legs = D3Api.GetItemIcon(heroItems.legs.Icon, "large");
+                if (heroItems.bracers != null && heroItems.bracers.Icon != null)
+                    icons.Bracers = D3Api.GetItemIcon(heroItems.bracers.Icon, "large");
+                if (heroItems.mainHand != null && heroItems.mainHand.Icon != null)
+                    icons.MainHand = D3Api.GetItemIcon(heroItems.mainHand.Icon, "large");
+                if (heroItems.offHand != null && heroItems.offHand.Icon != null)
+                    icons.OffHand = D3Api.GetItemIcon(heroItems.offHand.Icon, "large");
+                if (heroItems.waist != null && heroItems.waist.Icon != null)
+                    icons.Waist = D3Api.GetItemIcon(heroItems.waist.Icon, "large");
+                if (heroItems.rightFinger != null && heroItems.rightFinger.Icon != null)
+                    icons.RightFinger = D3Api.GetItemIcon(heroItems.rightFinger.Icon, "large");
+                if (heroItems.leftFinger != null && heroItems.leftFinger.Icon != null)
+                    icons.LeftFinger = D3Api.GetItemIcon(heroItems.leftFinger.Icon, "large");
+                if (heroItems.neck != null && heroItems.neck.Icon != null)
+                    icons.Neck = D3Api.GetItemIcon(heroItems.neck.Icon, "large");
 
                 if (skills.active[0] != null && skills.active[0].skill != null)
                     icons.ActiveSkill1 = D3Api.GetSkillIcon(skills.active[0].skill.icon, "64");

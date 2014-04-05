@@ -80,6 +80,7 @@
   <string name="heroClass">class</string>
   <string name="level">level</string>
   <string name="paragon">paragon</string>
+  <string name="paragonHardcore">paragon hardcore</string>
 
   <!-- Attributes -->
   <string name="attributes">attributes</string>

@@ -24,16 +24,18 @@ namespace ZTnDroid.D3Calculator.Storage
 
         public Item EditingItem;
 
-        public AccountsDB DBAccounts;
+        public AccountsDB DbAccounts;
 
-        static D3Context instance;
+        private static D3Context instance;
 
         public static D3Context Instance
         {
             get
             {
                 if (instance == null)
+                {
                     instance = new D3Context();
+                }
                 return instance;
             }
         }

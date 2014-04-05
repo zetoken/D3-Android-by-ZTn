@@ -1,6 +1,6 @@
+using System.Reflection;
 using Android.App;
 using Android.OS;
-using System.Reflection;
 using ZTnDroid.D3Calculator.Fragments;
 using ZTnDroid.D3Calculator.Helpers;
 
@@ -9,7 +9,7 @@ namespace ZTnDroid.D3Calculator
     [Activity(Label = "@string/ViewCareerActivityLabel")]
     public class ViewCareerActivity : ZTnFragmentActivity
     {
-        private static HeroesListFragment HeroesListFragment;
+        private static HeroesListFragment _heroesListFragment;
 
         #region >> FragmentActivity
 
@@ -28,10 +28,10 @@ namespace ZTnDroid.D3Calculator
 
             if (savedInstanceState == null)
             {
-                HeroesListFragment = new HeroesListFragment();
+                _heroesListFragment = new HeroesListFragment();
                 SupportFragmentManager
                     .BeginTransaction()
-                    .Add(Resource.Id.fragment_container, HeroesListFragment)
+                    .Add(Resource.Id.fragment_container, _heroesListFragment)
                     .Commit();
             }
         }

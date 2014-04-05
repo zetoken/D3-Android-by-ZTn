@@ -72,68 +72,76 @@ namespace ZTnDroid.D3Calculator.Adapters
 
             if (Item != null)
             {
-                view.FindViewById<TextView>(Resource.Id.gearItemName).Text = Item.name;
+                view.FindViewById<TextView>(Resource.Id.gearItemName).Text = Item.Name;
 
-                if (Item.armor != null)
+                if (Item.Armor != null)
                 {
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemArmorLayout).Visibility = ViewStates.Visible;
-                    view.FindViewById<TextView>(Resource.Id.gearItemArmor).Text = Item.armor.Min.ToString();
+                    view.FindViewById<TextView>(Resource.Id.gearItemArmor).Text = Item.Armor.Min.ToString();
                 }
                 else
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemArmorLayout).Visibility = ViewStates.Gone;
 
-                if (Item.dps != null)
+                if (Item.Dps != null)
                 {
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemDpsLayout).Visibility = ViewStates.Visible;
-                    view.FindViewById<TextView>(Resource.Id.gearItemDps).Text = Math.Round(Item.dps.Min, 1).ToString();
+                    view.FindViewById<TextView>(Resource.Id.gearItemDps).Text = Math.Round(Item.Dps.Min, 1).ToString();
                 }
                 else
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemDpsLayout).Visibility = ViewStates.Gone;
 
-                if (Item.minDamage != null && Item.maxDamage != null)
+                if (Item.MinDamage != null && Item.MaxDamage != null)
                 {
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemDamageLayout).Visibility = ViewStates.Visible;
-                    view.FindViewById<TextView>(Resource.Id.gearItemDamageMin).Text = Item.minDamage.Min.ToString();
-                    view.FindViewById<TextView>(Resource.Id.gearItemDamageMax).Text = Item.maxDamage.Min.ToString();
+                    view.FindViewById<TextView>(Resource.Id.gearItemDamageMin).Text = Item.MinDamage.Min.ToString();
+                    view.FindViewById<TextView>(Resource.Id.gearItemDamageMax).Text = Item.MaxDamage.Min.ToString();
                 }
                 else
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemDamageLayout).Visibility = ViewStates.Gone;
 
-                if (Item.attacksPerSecond != null)
+                if (Item.AttacksPerSecond != null)
                 {
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemAttacksPerSecondLayout).Visibility = ViewStates.Visible;
-                    view.FindViewById<TextView>(Resource.Id.gearItemAttacksPerSecond).Text = Math.Round(Item.attacksPerSecond.Min, 2).ToString();
+                    view.FindViewById<TextView>(Resource.Id.gearItemAttacksPerSecond).Text = Math.Round(Item.AttacksPerSecond.Min, 2).ToString();
                 }
                 else
                     view.FindViewById<LinearLayout>(Resource.Id.gearItemAttacksPerSecondLayout).Visibility = ViewStates.Gone;
 
-                if (Item.attributes != null)
+                if (Item.Attributes != null)
                 {
                     view.FindViewById<TextView>(Resource.Id.gearItemDescription).Visibility = ViewStates.Visible;
                     var description = String.Empty;
-                    foreach (var s in Item.attributes)
-                        description += (description != String.Empty ? Environment.NewLine : String.Empty) + s;
+                    foreach (var s in Item.Attributes.Primary)
+                        description += (description != String.Empty ? Environment.NewLine : String.Empty) + s.Text;
+                    foreach (var s in Item.Attributes.Secondary)
+                        description += (description != String.Empty ? Environment.NewLine : String.Empty) + s.Text;
+                    foreach (var s in Item.Attributes.Passive)
+                        description += (description != String.Empty ? Environment.NewLine : String.Empty) + s.Text;
                     view.FindViewById<TextView>(Resource.Id.gearItemDescription).Text = description;
                 }
                 else
                     view.FindViewById<TextView>(Resource.Id.gearItemDescription).Visibility = ViewStates.Gone;
 
-                if (Item.gems != null)
+                if (Item.Gems != null)
                 {
                     view.FindViewById<TextView>(Resource.Id.gearSocketsDescription).Visibility = ViewStates.Visible;
                     var socketTranslation = Application.Context.Resources.GetString(Resource.String.Socket);
                     var socketsText = String.Empty;
-                    foreach (var gem in Item.gems)
+                    foreach (var gem in Item.Gems)
                     {
-                        foreach (var s in gem.attributes)
-                            socketsText += (socketsText != String.Empty ? Environment.NewLine : String.Empty) + socketTranslation + " " + s;
+                        foreach (var s in gem.Attributes.Primary)
+                            socketsText += (socketsText != String.Empty ? Environment.NewLine : String.Empty) + socketTranslation + " " + s.Text;
+                        foreach (var s in gem.Attributes.Secondary)
+                            socketsText += (socketsText != String.Empty ? Environment.NewLine : String.Empty) + socketTranslation + " " + s.Text;
+                        foreach (var s in gem.Attributes.Passive)
+                            socketsText += (socketsText != String.Empty ? Environment.NewLine : String.Empty) + socketTranslation + " " + s.Text;
                     }
                     view.FindViewById<TextView>(Resource.Id.gearSocketsDescription).Text = socketsText;
                 }
                 else
                     view.FindViewById<TextView>(Resource.Id.gearSocketsDescription).Visibility = ViewStates.Gone;
 
-                switch (Item.displayColor)
+                switch (Item.DisplayColor)
                 {
                     case "orange":
                         view.FindViewById<TextView>(Resource.Id.gearItemName).SetTextColor(view.Resources.GetColor(Resource.Color.orangeItem));
@@ -169,7 +177,7 @@ namespace ZTnDroid.D3Calculator.Adapters
         {
             var view = (ImageView)sender;
 
-            D3Context.Instance.EditingItem = (Item.attributesRaw == null ? Item : Item.Simplify());
+            D3Context.Instance.EditingItem = (Item.AttributesRaw == null ? Item : Item.Simplify());
 
             var editorIntent = new Intent(view.Context, typeof(GearItemEditorActivity));
 

@@ -1,10 +1,10 @@
-using Android.OS;
-using Android.Views;
-using Android.Widget;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Android.OS;
+using Android.Views;
+using Android.Widget;
 using ZTn.BNet.D3.Calculator.Sets;
 using ZTn.BNet.D3.Items;
 using ZTn.BNet.D3.Medias;
@@ -91,33 +91,40 @@ namespace ZTnDroid.D3Calculator.Fragments
                     GetDataForItem(Resource.String.itemNeck, hero.items.neck, icons.Neck)
                 };
 
-                var heroItems = D3Context.Instance.CurrentHero.items;
-                var items = new List<Item>
-                {
-                    (Item)heroItems.bracers,
-                    (Item)heroItems.feet,
-                    (Item)heroItems.hands,
-                    (Item)heroItems.head,
-                    (Item)heroItems.leftFinger,
-                    (Item)heroItems.legs,
-                    (Item)heroItems.neck,
-                    (Item)heroItems.rightFinger,
-                    (Item)heroItems.shoulders,
-                    (Item)heroItems.torso,
-                    (Item)heroItems.waist,
-                    (Item)heroItems.mainHand,
-                    (Item)heroItems.offHand
-                };
-                items = items.Where(i => i != null).ToList();
+                // TODO: Integrate Set management
+                //var heroItems = D3Context.Instance.CurrentHero.items;
+                //var items = new List<Item>
+                //{
+                //    (Item)heroItems.bracers,
+                //    (Item)heroItems.feet,
+                //    (Item)heroItems.hands,
+                //    (Item)heroItems.head,
+                //    (Item)heroItems.leftFinger,
+                //    (Item)heroItems.legs,
+                //    (Item)heroItems.neck,
+                //    (Item)heroItems.rightFinger,
+                //    (Item)heroItems.shoulders,
+                //    (Item)heroItems.torso,
+                //    (Item)heroItems.waist,
+                //    (Item)heroItems.mainHand,
+                //    (Item)heroItems.offHand
+                //};
+                //items = items
+                //    .Where(i => i != null)
+                //    .ToList();
 
-                foreach (var set in D3Context.Instance.ActivatedSets)
-                {
-                    var setItem = new Item { name = set.name, attributes = set.GetBonusAttributes(set.CountItemsOfSet(items)), displayColor = "green" };
-                    if (setItem.attributes.Length > 0)
-                        gearListItems.Add(GetDataForItem(Resource.String.setBonuses, setItem, null));
-                }
+                //foreach (var set in D3Context.Instance.ActivatedSets)
+                //{
+                //    var setItem = new Item { Name = set.name, Attributes = set.GetBonusAttributes(set.CountItemsOfSet(items)), DisplayColor = "green" };
+                //    if (setItem.Attributes.Length > 0)
+                //    {
+                //        gearListItems.Add(GetDataForItem(Resource.String.setBonuses, setItem, null));
+                //    }
+                //}
 
-                heroGearListView.Adapter = new ListAdapter(Activity, gearListItems.Where(l => l != null).ToArray()) { ConvertibleViews = true };
+                heroGearListView.Adapter = new ListAdapter(Activity, gearListItems
+                    .Where(l => l != null)
+                    .ToArray()) { ConvertibleViews = true };
             }
         }
     }

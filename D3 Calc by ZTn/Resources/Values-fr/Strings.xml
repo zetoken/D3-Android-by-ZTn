@@ -80,6 +80,7 @@
   <string name="heroClass">classe</string>
   <string name="level">niveau</string>
   <string name="paragon">parangon</string>
+  <string name="paragonHardcore">parangon hardcore</string>
 
   <!-- Attributes -->
   <string name="attributes">attributs</string>
