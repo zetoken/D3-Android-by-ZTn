@@ -285,6 +285,8 @@ namespace ZTnDroid.D3Calculator.Fragments
                     icons.PassiveSkill2 = D3Api.GetSkillIcon(skills.passive[1].skill.icon, "64");
                 if (skills.passive[2] != null && skills.passive[2].skill != null)
                     icons.PassiveSkill3 = D3Api.GetSkillIcon(skills.passive[2].skill.icon, "64");
+                if (skills.passive[3] != null && skills.passive[3].skill != null)
+                    icons.PassiveSkill4 = D3Api.GetSkillIcon(skills.passive[3].skill.icon, "64");
             }
             catch (Exception exception)
             {

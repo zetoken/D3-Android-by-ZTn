@@ -14,6 +14,7 @@ namespace ZTnDroid.D3Calculator.Storage
         public D3Picture PassiveSkill1;
         public D3Picture PassiveSkill2;
         public D3Picture PassiveSkill3;
+        public D3Picture PassiveSkill4;
 
         public D3Picture Head;
         public D3Picture Torso;
