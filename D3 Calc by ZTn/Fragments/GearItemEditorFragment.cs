@@ -139,12 +139,24 @@ namespace ZTnDroid.D3Calculator.Fragments
             weaponDamageLabels = WeaponDamageFields.Select(o => o.Label)
                 .ToList();
 
-            socketLabels = new List<string>
+            socketLabels = new List<string> { "( no gem )" };
+            foreach (var gem in KnownGems.GetGemsForItem(D3Context.Instance.EditingItem))
             {
-                "( no gem )"
-            };
-            socketLabels.AddRange(KnownGems.GetGemsForItem(D3Context.Instance.EditingItem)
-                .Select(g => String.Format("{0}{1}{2}", g.Attributes.Primary.FirstOrDefault(), g.Attributes.Secondary.FirstOrDefault(), g.Attributes.Passive.FirstOrDefault())));
+                var text = string.Empty;
+                if (gem.Attributes.Primary != null && gem.Attributes.Primary.Any())
+                {
+                    text = gem.Attributes.Primary[0].Text;
+                }
+                if (gem.Attributes.Secondary != null && gem.Attributes.Secondary.Any())
+                {
+                    text = gem.Attributes.Secondary[0].Text;
+                }
+                if (gem.Attributes.Passive != null && gem.Attributes.Passive.Any())
+                {
+                    text = gem.Attributes.Passive[0].Text;
+                }
+                socketLabels.Add(text);
+            }
         }
 
         /// <inheritdoc/>
