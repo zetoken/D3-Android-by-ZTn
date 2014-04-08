@@ -96,7 +96,9 @@
     <Compile Include="Fragments\UpdatableFragment.cs" />
     <Compile Include="GearItemEditorActivity.cs" />
     <Compile Include="Helpers\AndroidHelper.cs" />
+    <Compile Include="Helpers\HeroClassExtension.cs" />
     <Compile Include="Helpers\JavaLangObject.cs" />
+    <Compile Include="Helpers\StringExtension.cs" />
     <Compile Include="Helpers\ZTnTrace.cs" />
     <Compile Include="Storage\IconsContainer.cs" />
     <Compile Include="Storage\AccountsDB.cs" />
@@ -218,6 +220,8 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable\crusader_female.png" />
+    <AndroidResource Include="Resources\drawable\crusader_male.png" />
     <Content Include="SupportLib\android-support-v4.jar" />
   </ItemGroup>
   <ItemGroup>

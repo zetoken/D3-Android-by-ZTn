@@ -5,6 +5,7 @@ using System;
 using ZTn.BNet.D3.Heroes;
 using ZTn.BNet.D3.Items;
 using ZTnDroid.D3Calculator.Adapters.Delegated;
+using ZTnDroid.D3Calculator.Helpers;
 
 namespace ZTnDroid.D3Calculator.Adapters
 {
@@ -38,27 +39,7 @@ namespace ZTnDroid.D3Calculator.Adapters
         public AttributeListItem(String name, HeroClass value)
         {
             Name = name;
-            switch (value)
-            {
-                case HeroClass.Barbarian:
-                    Value = Application.Context.Resources.GetString(Resource.String.barbarian);
-                    break;
-                case HeroClass.DemonHunter:
-                    Value = Application.Context.Resources.GetString(Resource.String.demonHunter);
-                    break;
-                case HeroClass.Monk:
-                    Value = Application.Context.Resources.GetString(Resource.String.monk);
-                    break;
-                case HeroClass.WitchDoctor:
-                    Value = Application.Context.Resources.GetString(Resource.String.witchDoctor);
-                    break;
-                case HeroClass.Wizard:
-                    Value = Application.Context.Resources.GetString(Resource.String.wizard);
-                    break;
-                default:
-                    Value = "Unknown";
-                    break;
-            }
+            Value = value.Translate();
         }
 
         public AttributeListItem(int id, DateTime value) :

@@ -55,6 +55,7 @@
 
   <!-- Classes -->
   <string name="barbarian">barbarian</string>
+  <string name="crusader">crusader</string>
   <string name="demonHunter">demon hunter</string>
   <string name="monk">monk</string>
   <string name="witchDoctor">witch doctor</string>

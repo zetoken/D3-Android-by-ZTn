@@ -54,7 +54,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             {
                 new SectionHeaderListItem(Resource.String.Progress),
                 new AttributeListItem(Resource.String.lastUpdated, hero.lastUpdated),
-                new AttributeListItem(Resource.String.heroClass, hero.heroClass),
+                new AttributeListItem(Resource.String.heroClass, hero.heroClass.Translate().CapitalizeFirstLetter()),
                 new AttributeListItem(Resource.String.level, hero.level),
                 new AttributeListItem(Resource.String.paragon, hero.paragonLevel),
 

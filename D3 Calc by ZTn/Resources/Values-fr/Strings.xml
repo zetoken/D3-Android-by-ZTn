@@ -55,6 +55,7 @@
 
   <!-- Classes -->
   <string name="barbarian">barbare</string>
+  <string name="crusader">croisé</string>
   <string name="demonHunter">chasseur de démon</string>
   <string name="monk">moine</string>
   <string name="witchDoctor">féticheur</string>
