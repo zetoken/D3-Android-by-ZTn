@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using Android.OS;
 using Android.Views;
@@ -97,10 +98,15 @@ namespace ZTnDroid.D3Calculator.Fragments
             skillsAttr.AddRange(GetPartialListViewForActiveSkill(Resources.GetString(Resource.String.skill) + " 3", hero.skills.active[4], icons.ActiveSkill5));
             skillsAttr.AddRange(GetPartialListViewForActiveSkill(Resources.GetString(Resource.String.skill) + " 4", hero.skills.active[5], icons.ActiveSkill6));
 
-            skillsAttr.AddRange(GetPartialListViewForPassiveSkill(Resources.GetString(Resource.String.passiveSkill) + " 1", hero.skills.passive[0], icons.PassiveSkill1));
-            skillsAttr.AddRange(GetPartialListViewForPassiveSkill(Resources.GetString(Resource.String.passiveSkill) + " 2", hero.skills.passive[1], icons.PassiveSkill2));
-            skillsAttr.AddRange(GetPartialListViewForPassiveSkill(Resources.GetString(Resource.String.passiveSkill) + " 3", hero.skills.passive[2], icons.PassiveSkill3));
-            skillsAttr.AddRange(GetPartialListViewForPassiveSkill(Resources.GetString(Resource.String.passiveSkill) + " 4", hero.skills.passive[3], icons.PassiveSkill4));
+            var passiveCount = hero.skills.passive.Count();
+            if (passiveCount >= 1)
+                skillsAttr.AddRange(GetPartialListViewForPassiveSkill(Resources.GetString(Resource.String.passiveSkill) + " 1", hero.skills.passive[0], icons.PassiveSkill1));
+            if (passiveCount >= 2)
+                skillsAttr.AddRange(GetPartialListViewForPassiveSkill(Resources.GetString(Resource.String.passiveSkill) + " 2", hero.skills.passive[1], icons.PassiveSkill2));
+            if (passiveCount >= 3)
+                skillsAttr.AddRange(GetPartialListViewForPassiveSkill(Resources.GetString(Resource.String.passiveSkill) + " 3", hero.skills.passive[2], icons.PassiveSkill3));
+            if (passiveCount >= 4)
+                skillsAttr.AddRange(GetPartialListViewForPassiveSkill(Resources.GetString(Resource.String.passiveSkill) + " 4", hero.skills.passive[3], icons.PassiveSkill4));
 
             heroSkillsListView.Adapter = new ListAdapter(Activity, skillsAttr.ToArray());
         }
