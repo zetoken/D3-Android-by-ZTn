@@ -18,9 +18,6 @@
   <string name="DeleteContent">SUPPRIMER</string>
   <string name="FetchCareer">Récupérer la carrière</string>
   <string name="Heroes">Héros</string>
-  <string name="KilledElites">Elites:</string>
-  <string name="KilledMonsters">Monstres:</string>
-  <string name="KilledHardcore">Extrême:</string>
   <string name="Settings">Paramètres</string>
   <string name="Progress">Progression</string>
   <string name="RefreshContent">RAFRAICHIR</string>
@@ -29,8 +26,8 @@
   <string name="SubmitEditedItem">Valider</string>
   <string name="CancelEditedItem">Annuler</string>
 
-  <string name="details">détails</string>
-  <string name="computed">Calculs</string>
+  <string name="details">détails par Blizzard</string>
+  <string name="computed">calculs</string>
 
   <!-- Waiting messages -->
   <string name="Loading">Téléchargement en cours</string>
@@ -63,9 +60,8 @@
 
   <!-- Items -->
   <string name="Armor">Armure</string>
-  <string name="AttacksPerSecond">Attaque par seconde</string>
+  <string name="AttacksPerSecond">Attaques par seconde</string>
   <string name="Damages">Points de dégâts</string>
-  <string name="DamagePerSecond">Dégâts par seconde</string>
   <string name="damagePerSecond">dégâts par seconde</string>
   <string name="gear">équipement</string>
   <string name="setBonuses">bonus de set</string>
@@ -92,6 +88,8 @@
 
   <!-- Kills -->
   <string name="elites">élites</string>
+  <string name="monsters">monstres</string>
+  <string name="monstersHardcore">extrême</string>
 
   <!-- Damages -->
   <string name="damages">dégâts</string>

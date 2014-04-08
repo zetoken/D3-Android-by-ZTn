@@ -204,7 +204,8 @@ namespace ZTnDroid.D3Calculator.Fragments
             {
                 new SectionHeaderListItem(Resources.GetString(Resource.String.KillsLifetime)),
                 new AttributeListItem(Resources.GetString(Resource.String.elites), career.Kills.elites),
-                new AttributeListItem(Resources.GetString(Resource.String.KilledMonsters), career.Kills.monsters),
+                new AttributeListItem(Resources.GetString(Resource.String.monsters), career.Kills.monsters),
+                new AttributeListItem(Resources.GetString(Resource.String.monstersHardcore), career.Kills.hardcoreMonsters),
                 new AttributeListItem(Resources.GetString(Resource.String.paragon), career.ParagonLevel),
                 new AttributeListItem(Resources.GetString(Resource.String.paragonHardcore), career.ParagonLevelHardcore)
             };

@@ -8,7 +8,7 @@
   <string name="ViewCareerActivityLabel">View Career</string>
   <string name="ViewHeroActivityLabel">Hero Informations</string>
 
-  <!-- Various texts -->  
+  <!-- Various texts -->
   <string name="Add">Add</string>
   <string name="AddNewAccount">New Profile</string>
   <string name="ApplicationName">D3 Calc by ZTn</string>
@@ -17,10 +17,7 @@
   <string name="Characteristics">Characteristics</string>
   <string name="DeleteContent">DELETE</string>
   <string name="FetchCareer">Retrieve Career</string>
-  <string name="Heroes">HEROES</string>
-  <string name="KilledElites">Elites:</string>
-  <string name="KilledMonsters">Monsters:</string>
-  <string name="KilledHardcore">Hardcore:</string>
+  <string name="Heroes">Heroes</string>
   <string name="Settings">Settings</string>
   <string name="Progress">Progress</string>
   <string name="RefreshContent">REFRESH</string>
@@ -39,14 +36,14 @@
 
   <!-- Errors messages -->
   <string name="ErrorOccuredWhileRetrievingData">An error occured when retrieving data</string>
-  
-  <string name="details">details</string>
-  <string name="computed">Computed</string>
-  
+
+  <string name="details">details by Blizzard</string>
+  <string name="computed">computed</string>
+
   <!-- Settings -->
   <string name="OnlineMode">Online by default</string>
   <string name="Language">Language</string>
-  
+
   <!-- Battle.net -->
   <string name="BattleTag">Battle Tag</string>
   <string name="BattleTagExample">Battle Tag (name#code)</string>
@@ -60,22 +57,21 @@
   <string name="monk">monk</string>
   <string name="witchDoctor">witch doctor</string>
   <string name="wizard">wizard</string>
-  
+
   <!-- Items -->
   <string name="Armor">Armor</string>
   <string name="AttacksPerSecond">Attacks per second</string>
   <string name="Damages">Damage</string>
-  <string name="DamagePerSecond">Attacks per second</string>
   <string name="damagePerSecond">attacks per second</string>
   <string name="gear">gear</string>
   <string name="setBonuses">set bonus</string>
   <string name="Socket">Socket</string>
-  
+
   <!-- Skills -->
   <string name="passiveSkill">passive skill</string>
   <string name="skill">skill</string>
   <string name="skills">skills</string>
-  
+
   <!-- Progress -->
   <string name="lastUpdated">last updated</string>
   <string name="heroClass">class</string>
@@ -89,17 +85,19 @@
   <string name="intelligence">intelligence</string>
   <string name="strength">strength</string>
   <string name="vitality">vitality</string>
-  
+
   <!-- Kills -->
   <string name="elites">elites</string>
-  
+  <string name="monsters">monsters</string>
+  <string name="monstersHardcore">hardcore</string>
+
   <!-- Damages -->
   <string name="damages">damages</string>
   <string name="damage">damage</string>
   <string name="criticChance">critic chance</string>
   <string name="criticDamage">critic damage</string>
   <string name="attackSpeed">attack speed</string>
-  
+
   <!-- Life -->
   <string name="life">life</string>
   <string name="lifeOnHit">life on hit</string>
@@ -126,12 +124,12 @@
   <string name="resources">resources</string>
   <string name="primaryResource">primary resource</string>
   <string name="secondaryResource">secondary resource</string>
-  
+
   <!-- Bonus -->
   <string name="bonuses">bonuses</string>
   <string name="goldFind">gold find</string>
   <string name="magicFind">magic find</string>
-  
+
   <!-- Item parts -->
   <string name="itemHead">head</string>
   <string name="itemTorso">torso</string>
