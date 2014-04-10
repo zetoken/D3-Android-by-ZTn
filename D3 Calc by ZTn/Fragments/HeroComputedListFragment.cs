@@ -5,6 +5,7 @@ using System.Reflection;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using ZTn.BNet.D3.Helpers;
 using ZTn.BNet.D3.Items;
 using ZTnDroid.D3Calculator.Adapters;
 using ZTnDroid.D3Calculator.Adapters.Delegated;
@@ -64,7 +65,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                 (Item)heroItems.waist,
                 D3Context.Instance.ActivatedSetBonus
             };
-            items = items.Where(i => i != null).ToList();
+            items = items.Where(i => i != null).Select(i => i.DeepClone()).ToList();
 
             if (heroItems.mainHand == null)
             {
@@ -75,7 +76,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                 heroItems.offHand = new Item(new ItemAttributes());
             }
 
-            var d3Calculator = new ZTn.BNet.D3.Calculator.D3Calculator(hero, (Item)heroItems.mainHand, (Item)heroItems.offHand, items.ToArray());
+            var d3Calculator = new ZTn.BNet.D3.Calculator.D3Calculator(hero, ((Item)heroItems.mainHand).DeepClone(), ((Item)heroItems.offHand).DeepClone(), items.ToArray());
 
             return d3Calculator;
         }
