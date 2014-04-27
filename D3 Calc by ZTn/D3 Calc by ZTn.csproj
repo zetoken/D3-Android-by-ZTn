@@ -56,6 +56,9 @@
     <Reference Include="Mono.Android" />
     <Reference Include="Mono.Android.Support.v4" />
     <Reference Include="mscorlib" />
+    <Reference Include="PCL Adapter">
+      <HintPath>..\Libraries\PCL Adapter.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml" />
@@ -228,6 +231,12 @@
     <AndroidResource Include="Resources\layout\NavigationDrawerFragmentContainer.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PCL Adapter for Android\PCL Adapter for Android.csproj">
+      <Project>{6d08fa58-738f-40b2-8260-d53dc215c8f0}</Project>
+      <Name>PCL Adapter for Android</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

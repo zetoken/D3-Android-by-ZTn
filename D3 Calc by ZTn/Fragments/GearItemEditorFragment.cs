@@ -75,7 +75,14 @@ namespace ZTnDroid.D3Calculator.Fragments
             new Field(Resource.String.physicalMinWeapon, "damageWeaponMin_Physical"),
             new Field(Resource.String.physicalMaxWeapon, "damageWeaponDelta_Physical", "damageWeaponMin_Physical"),
             new Field(Resource.String.poisonMinWeapon, "damageWeaponMin_Poison"),
-            new Field(Resource.String.poisonMaxWeapon, "damageWeaponDelta_Poison", "damageWeaponMin_Poison")
+            new Field(Resource.String.poisonMaxWeapon, "damageWeaponDelta_Poison", "damageWeaponMin_Poison"),
+            new Field(Resource.String.weaponPercent_Arcane, "damageWeaponPercentBonus_Arcane"),
+            new Field(Resource.String.weaponPercent_Cold, "damageWeaponPercentBonus_Cold"),
+            new Field(Resource.String.weaponPercent_Fire, "damageWeaponPercentBonus_Fire"),
+            new Field(Resource.String.weaponPercent_Holy, "damageWeaponPercentBonus_Holy"),
+            new Field(Resource.String.weaponPercent_Lightning, "damageWeaponPercentBonus_Lightning"),
+            new Field(Resource.String.weaponPercent_Physical, "damageWeaponPercentBonus_Physical"),
+            new Field(Resource.String.weaponPercent_Poison, "damageWeaponPercentBonus_Poison")
         };
 
         private static readonly Field[] DefenseFields =
