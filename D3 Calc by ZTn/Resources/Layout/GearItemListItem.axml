@@ -168,14 +168,48 @@
         </LinearLayout>
     </LinearLayout>
     <TextView
-        android:id="@+id/gearItemDescription"
-        android:text="Item Details"
+        android:id="@+id/gearPrimaryTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_below="@+id/basicValuesLayout"
+        android:layout_toRightOf="@+id/imageGearItem"
+        android:text="@string/primary" />
+    <TextView
+        android:id="@+id/gearPrimaryDescription"
+        android:text="Primary Details"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/item_description"
-        android:layout_below="@+id/basicValuesLayout"
+        android:layout_below="@+id/gearPrimaryTitle"
         android:layout_toRightOf="@+id/imageGearItem" />
+    <TextView
+        android:id="@+id/gearSecondaryTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_below="@+id/gearPrimaryDescription"
+        android:layout_toRightOf="@+id/imageGearItem"
+        android:text="@string/secondary" />
+    <TextView
+        android:id="@+id/gearSecondaryDescription"
+        android:text="Secondary Details"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/item_description"
+        android:layout_below="@+id/gearSecondaryTitle"
+        android:layout_toRightOf="@+id/imageGearItem" />
+    <TextView
+        android:id="@+id/gearPassiveDescription"
+        android:text="Passive Details"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_below="@+id/gearSecondaryDescription"
+        android:layout_toRightOf="@+id/imageGearItem"
+        android:textColor="@color/passive_description" />
     <TextView
         android:id="@+id/gearSocketsDescription"
         android:text="Sockets Details"
@@ -183,6 +217,6 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/socket_description"
-        android:layout_below="@+id/gearItemDescription"
+        android:layout_below="@+id/gearPassiveDescription"
         android:layout_toRightOf="@+id/imageGearItem" />
 </RelativeLayout>

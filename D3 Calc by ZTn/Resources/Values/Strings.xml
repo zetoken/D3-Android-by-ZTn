@@ -71,6 +71,8 @@
   <string name="passiveSkill">passive skill</string>
   <string name="skill">skill</string>
   <string name="skills">skills</string>
+  <string name="primary">primary</string>
+  <string name="secondary">secondary</string>
 
   <!-- Progress -->
   <string name="lastUpdated">last updated</string>

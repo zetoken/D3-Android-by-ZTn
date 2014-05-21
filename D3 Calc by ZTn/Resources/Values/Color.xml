@@ -21,4 +21,5 @@
   <color name="skill_description">#FFC7B377</color>
   <color name="rune_text">#FFA7851A</color>
   <color name="rune_description">#FFC7B377</color>
+  <color name="passive_description">#FFBF642F</color>
 </resources>

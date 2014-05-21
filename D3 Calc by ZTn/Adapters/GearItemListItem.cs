@@ -142,29 +142,50 @@ namespace ZTnDroid.D3Calculator.Adapters
 
             if (Item.Attributes != null)
             {
-                view.FindViewById<TextView>(Resource.Id.gearItemDescription)
-                    .Visibility = ViewStates.Visible;
-                var description = String.Empty;
-                if (Item.Attributes.Primary != null)
+                var primaryTitle = view.FindViewById<TextView>(Resource.Id.gearPrimaryTitle);
+                var primary = view.FindViewById<TextView>(Resource.Id.gearPrimaryDescription);
+                if (Item.Attributes.Primary != null && Item.Attributes.Primary.Any())
                 {
-                    description = Item.Attributes.Primary.Aggregate(description,
+                    primaryTitle.Visibility = ViewStates.Visible;
+                    primary.Visibility = ViewStates.Visible;
+                    primary.Text = Item.Attributes.Primary.Aggregate(String.Empty,
                         (current, s) => current + (current != String.Empty ? Environment.NewLine : String.Empty) + s.Text
                         );
                 }
-                if (Item.Attributes.Secondary != null)
+                else
                 {
-                    description = Item.Attributes.Secondary.Aggregate(description,
+                    primaryTitle.Visibility = ViewStates.Gone;
+                    primary.Visibility = ViewStates.Gone;
+                }
+
+                var secondaryTitle = view.FindViewById<TextView>(Resource.Id.gearSecondaryTitle);
+                var secondary = view.FindViewById<TextView>(Resource.Id.gearSecondaryDescription);
+                if (Item.Attributes.Secondary != null && Item.Attributes.Secondary.Any())
+                {
+                    secondaryTitle.Visibility = ViewStates.Visible;
+                    secondary.Visibility = ViewStates.Visible;
+                    secondary.Text = Item.Attributes.Secondary.Aggregate(String.Empty,
                         (current, s) => current + (current != String.Empty ? Environment.NewLine : String.Empty) + s.Text
                         );
                 }
-                if (Item.Attributes.Passive != null)
+                else
                 {
-                    description = Item.Attributes.Passive.Aggregate(description,
+                    secondaryTitle.Visibility = ViewStates.Gone;
+                    secondary.Visibility = ViewStates.Gone;
+                }
+
+                var passive = view.FindViewById<TextView>(Resource.Id.gearPassiveDescription);
+                if (Item.Attributes.Passive != null && Item.Attributes.Passive.Any())
+                {
+                    passive.Visibility = ViewStates.Visible;
+                    passive.Text = Item.Attributes.Passive.Aggregate(String.Empty,
                         (current, s) => current + (current != String.Empty ? Environment.NewLine : String.Empty) + s.Text
                         );
                 }
-                view.FindViewById<TextView>(Resource.Id.gearItemDescription)
-                    .Text = description;
+                else
+                {
+                    passive.Visibility = ViewStates.Gone;
+                }
             }
             else
             {
@@ -176,26 +197,26 @@ namespace ZTnDroid.D3Calculator.Adapters
             {
                 view.FindViewById<TextView>(Resource.Id.gearSocketsDescription)
                     .Visibility = ViewStates.Visible;
-                var socketTranslation = Application.Context.Resources.GetString(Resource.String.Socket);
+                // var socketTranslation = Application.Context.Resources.GetString(Resource.String.Socket);
                 var socketsText = String.Empty;
                 foreach (var gem in Item.Gems)
                 {
                     if (Item.Attributes.Primary != null)
                     {
                         socketsText = gem.Attributes.Primary.Aggregate(socketsText,
-                            (current, s) => current + (current != String.Empty ? Environment.NewLine : String.Empty) + socketTranslation + " " + s.Text
+                            (current, s) => current + (current != String.Empty ? Environment.NewLine : String.Empty) + " " + s.Text
                             );
                     }
                     if (Item.Attributes.Secondary != null)
                     {
                         socketsText = gem.Attributes.Secondary.Aggregate(socketsText,
-                            (current, s) => current + (current != String.Empty ? Environment.NewLine : String.Empty) + socketTranslation + " " + s.Text
+                            (current, s) => current + (current != String.Empty ? Environment.NewLine : String.Empty) + " " + s.Text
                             );
                     }
                     if (Item.Attributes.Passive != null)
                     {
                         socketsText = gem.Attributes.Passive.Aggregate(socketsText,
-                            (current, s) => current + (current != String.Empty ? Environment.NewLine : String.Empty) + socketTranslation + " " + s.Text
+                            (current, s) => current + (current != String.Empty ? Environment.NewLine : String.Empty) + " " + s.Text
                             );
                     }
                 }

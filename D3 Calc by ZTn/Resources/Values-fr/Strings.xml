@@ -71,6 +71,8 @@
   <string name="passiveSkill">compétence passive</string>
   <string name="skill">compétence</string>
   <string name="skills">compétences</string>
+  <string name="primary">primaires</string>
+  <string name="secondary">secondaires</string>
 
   <!-- Progress -->
   <string name="lastUpdated">dernière mise à jour</string>
