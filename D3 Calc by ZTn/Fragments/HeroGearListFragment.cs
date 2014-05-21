@@ -93,35 +93,48 @@ namespace ZTnDroid.D3Calculator.Fragments
                 GetDataForItem(Resource.String.itemNeck, heroItems.neck as Item, icons.Neck)
             };
 
-            // TODO: Integrate Set management
-            //var items = new List<Item>
-            //{
-            //    (Item)heroItems.bracers,
-            //    (Item)heroItems.feet,
-            //    (Item)heroItems.hands,
-            //    (Item)heroItems.head,
-            //    (Item)heroItems.leftFinger,
-            //    (Item)heroItems.legs,
-            //    (Item)heroItems.neck,
-            //    (Item)heroItems.rightFinger,
-            //    (Item)heroItems.shoulders,
-            //    (Item)heroItems.torso,
-            //    (Item)heroItems.waist,
-            //    (Item)heroItems.mainHand,
-            //    (Item)heroItems.offHand
-            //};
-            //items = items
-            //    .Where(i => i != null)
-            //    .ToList();
+            var items = new List<Item>
+            {
+                (Item)heroItems.bracers,
+                (Item)heroItems.feet,
+                (Item)heroItems.hands,
+                (Item)heroItems.head,
+                (Item)heroItems.leftFinger,
+                (Item)heroItems.legs,
+                (Item)heroItems.neck,
+                (Item)heroItems.rightFinger,
+                (Item)heroItems.shoulders,
+                (Item)heroItems.torso,
+                (Item)heroItems.waist,
+                (Item)heroItems.mainHand,
+                (Item)heroItems.offHand
+            };
+            items = items
+                .Where(i => i != null)
+                .ToList();
 
-            //foreach (var set in D3Context.Instance.ActivatedSets)
-            //{
-            //    var setItem = new Item { Name = set.name, Attributes = set.GetBonusAttributes(set.CountItemsOfSet(items)), DisplayColor = "green" };
-            //    if (setItem.Attributes.Length > 0)
-            //    {
-            //        gearListItems.Add(GetDataForItem(Resource.String.setBonuses, setItem, null));
-            //    }
-            //}
+            var setItemDiscount = items.Aggregate(ItemValueRange.Zero, (current, item) => current + item.AttributesRaw.AttributeSetItemDiscount);
+
+            foreach (var set in D3Context.Instance.ActivatedSets)
+            {
+                var setItemCount = set.CountItemsOfSet(items);
+
+                if (setItemCount >= 2)
+                {
+                    setItemCount += (int)setItemDiscount.Min;
+                }
+
+                foreach (var rank in set.ranks.Where(r => r.Required <= setItemCount))
+                {
+                    var setItem = new Item
+                    {
+                        Name = string.Format("{0} ({1})", set.name, rank.Required),
+                        Attributes = rank.Attributes,
+                        DisplayColor = "green"
+                    };
+                    gearListItems.Add(GetDataForItem(Resource.String.setBonuses, setItem, null));
+                }
+            }
 
             heroGearListView.Adapter = new ListAdapter(Activity, gearListItems
                 .Where(l => l != null)

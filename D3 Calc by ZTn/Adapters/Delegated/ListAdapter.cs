@@ -1,15 +1,15 @@
+using System;
 using Android.App;
 using Android.Content;
 using Android.Views;
 using Android.Widget;
-using System;
 
 namespace ZTnDroid.D3Calculator.Adapters.Delegated
 {
     public class ListAdapter : BaseAdapter
     {
-        readonly Context context;
-        readonly IListItem[] items;
+        private readonly Context context;
+        private readonly IListItem[] items;
         public Boolean ConvertibleViews = false;
 
         #region >> Constructors
@@ -51,7 +51,9 @@ namespace ZTnDroid.D3Calculator.Adapters.Delegated
             IListItem item = items[position];
 
             if (!ConvertibleViews || (convertView == null))
+            {
                 view = ((Activity)context).LayoutInflater.Inflate(item.GetLayoutResource(), parent, false);
+            }
             else
             {
                 item.RemoveView(convertView);
