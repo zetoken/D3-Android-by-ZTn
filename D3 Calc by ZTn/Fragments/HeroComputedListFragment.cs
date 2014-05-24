@@ -123,9 +123,39 @@ namespace ZTnDroid.D3Calculator.Fragments
                 characteristicsAttr.Add(new AttributePercentListItem(Resource.String.criticDamage, attr.critDamagePercent + 1));
             }
 
+            characteristicsAttr.Add(new AttributePercentListItem(Resource.String.attackSpeed, d3Calculator.GetActualAttackSpeed()));
+
+            if (attr.damageDealtPercentBonusArcane != null)
+            {
+                characteristicsAttr.Add(new AttributePercentListItem(Resource.String.damageDealtPercent_Arcane, attr.damageDealtPercentBonusArcane));
+            }
+            if (attr.damageDealtPercentBonusCold != null)
+            {
+                characteristicsAttr.Add(new AttributePercentListItem(Resource.String.damageDealtPercent_Cold, attr.damageDealtPercentBonusCold));
+            }
+            if (attr.damageDealtPercentBonusFire != null)
+            {
+                characteristicsAttr.Add(new AttributePercentListItem(Resource.String.damageDealtPercent_Fire, attr.damageDealtPercentBonusFire));
+            }
+            if (attr.damageDealtPercentBonusHoly != null)
+            {
+                characteristicsAttr.Add(new AttributePercentListItem(Resource.String.damageDealtPercent_Holy, attr.damageDealtPercentBonusHoly));
+            }
+            if (attr.damageDealtPercentBonusLightning != null)
+            {
+                characteristicsAttr.Add(new AttributePercentListItem(Resource.String.damageDealtPercent_Lightning, attr.damageDealtPercentBonusLightning));
+            }
+            if (attr.damageDealtPercentBonusPhysical != null)
+            {
+                characteristicsAttr.Add(new AttributePercentListItem(Resource.String.damageDealtPercent_Physical, attr.damageDealtPercentBonusPhysical));
+            }
+            if (attr.damageDealtPercentBonusPoison != null)
+            {
+                characteristicsAttr.Add(new AttributePercentListItem(Resource.String.damageDealtPercent_Poison, attr.damageDealtPercentBonusPoison));
+            }
+
             characteristicsAttr.AddRange(new List<IListItem>
             {
-                new AttributePercentListItem(Resource.String.attackSpeed, d3Calculator.GetActualAttackSpeed()),
                 new SectionHeaderListItem(Resource.String.life),
                 new AttributeListItem(Resource.String.life, d3Calculator.GetHeroHitpoints())
             });

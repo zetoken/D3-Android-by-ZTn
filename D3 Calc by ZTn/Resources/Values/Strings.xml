@@ -193,6 +193,13 @@
   <string name="weaponPercent_Lightning">+% lightning damage</string>
   <string name="weaponPercent_Physical">+% physical damage</string>
   <string name="weaponPercent_Poison">+% poison damage</string>
+  <string name="damageDealtPercent_Arcane">+% arcane skills</string>
+  <string name="damageDealtPercent_Cold">+% cold skills</string>
+  <string name="damageDealtPercent_Fire">+% fire skills</string>
+  <string name="damageDealtPercent_Holy">+% holy skills</string>
+  <string name="damageDealtPercent_Lightning">+% lightning skills</string>
+  <string name="damageDealtPercent_Physical">+% physical skills</string>
+  <string name="damageDealtPercent_Poison">+% poison skills</string>
 
   <string name="EditedItem">Edited item.</string>
   <string name="ItemEditingFinished">Item edition is done: computed data are updated.</string>

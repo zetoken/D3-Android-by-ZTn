@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="net.zetoken.d3calculator" android:versionCode="16" android:versionName="1.1.5">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="net.zetoken.d3calculator" android:versionCode="17" android:versionName="1.1.6">
 	<uses-sdk android:targetSdkVersion="17" />
 	<application android:label="D3 Calc by ZTn" android:icon="@drawable/Icon"></application>
 	<uses-permission android:name="android.permission.INTERNET" />

@@ -186,6 +186,13 @@
   <string name="damagePercent_Lightning">+% dégâts électrique</string>
   <string name="damagePercent_Physical">+% dégâts physique</string>
   <string name="damagePercent_Poison">+% dégâts poison</string>
+  <string name="damageDealtPercent_Arcane">+% compétences (arcane)</string>
+  <string name="damageDealtPercent_Cold">+% compétences (froid)</string>
+  <string name="damageDealtPercent_Fire">+% compétences (feu)</string>
+  <string name="damageDealtPercent_Holy">+% compétences (sacré)</string>
+  <string name="damageDealtPercent_Lightning">+% compétences (électrique)</string>
+  <string name="damageDealtPercent_Physical">+% compétences (physique)</string>
+  <string name="damageDealtPercent_Poison">+% compétences (poison)</string>
 
   <string name="EditedItem">Caractéristiques éditées.</string>
   <string name="ItemEditingFinished">Edition de l\'objet terminée: le calculateur a été mis à jour.</string>

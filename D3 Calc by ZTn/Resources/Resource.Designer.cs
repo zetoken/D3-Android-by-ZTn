@@ -552,8 +552,8 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f040051
 			public const int EHP_DPS = 2130968657;
 			
-			// aapt resource value: 0x7f04009c
-			public const int EditedItem = 2130968732;
+			// aapt resource value: 0x7f0400a3
+			public const int EditedItem = 2130968739;
 			
 			// aapt resource value: 0x7f04001d
 			public const int ErrorOccuredWhileRetrievingData = 2130968605;
@@ -576,11 +576,11 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f040025
 			public const int Host = 2130968613;
 			
-			// aapt resource value: 0x7f04009e
-			public const int ItemEditingCanceled = 2130968734;
+			// aapt resource value: 0x7f0400a5
+			public const int ItemEditingCanceled = 2130968741;
 			
-			// aapt resource value: 0x7f04009d
-			public const int ItemEditingFinished = 2130968733;
+			// aapt resource value: 0x7f0400a4
+			public const int ItemEditingFinished = 2130968740;
 			
 			// aapt resource value: 0x7f040013
 			public const int KillsLifetime = 2130968595;
@@ -704,6 +704,27 @@ namespace ZTnDroid.D3Calculator
 			
 			// aapt resource value: 0x7f040046
 			public const int damage = 2130968646;
+			
+			// aapt resource value: 0x7f04009c
+			public const int damageDealtPercent_Arcane = 2130968732;
+			
+			// aapt resource value: 0x7f04009d
+			public const int damageDealtPercent_Cold = 2130968733;
+			
+			// aapt resource value: 0x7f04009e
+			public const int damageDealtPercent_Fire = 2130968734;
+			
+			// aapt resource value: 0x7f04009f
+			public const int damageDealtPercent_Holy = 2130968735;
+			
+			// aapt resource value: 0x7f0400a0
+			public const int damageDealtPercent_Lightning = 2130968736;
+			
+			// aapt resource value: 0x7f0400a1
+			public const int damageDealtPercent_Physical = 2130968737;
+			
+			// aapt resource value: 0x7f0400a2
+			public const int damageDealtPercent_Poison = 2130968738;
 			
 			// aapt resource value: 0x7f04002f
 			public const int damagePerSecond = 2130968623;
