@@ -100,6 +100,7 @@
     <Compile Include="GearItemEditorActivity.cs" />
     <Compile Include="Helpers\AndroidHelper.cs" />
     <Compile Include="Helpers\HeroClassExtension.cs" />
+    <Compile Include="Helpers\HeroItemsExtension.cs" />
     <Compile Include="Helpers\JavaLangObject.cs" />
     <Compile Include="Helpers\StringExtension.cs" />
     <Compile Include="Helpers\ZTnTrace.cs" />
