@@ -56,7 +56,14 @@ namespace ZTnDroid.D3Calculator.Fragments
             new Field(Resource.String.damagePercent_Holy, "damageTypePercentBonus_Holy") { Percent = true },
             new Field(Resource.String.damagePercent_Lightning, "damageTypePercentBonus_Lightning") { Percent = true },
             new Field(Resource.String.damagePercent_Physical, "damageTypePercentBonus_Physical") { Percent = true },
-            new Field(Resource.String.damagePercent_Poison, "damageTypePercentBonus_Poison") { Percent = true }
+            new Field(Resource.String.damagePercent_Poison, "damageTypePercentBonus_Poison") { Percent = true },
+            new Field(Resource.String.damageDealtPercent_Arcane,"damageDealtPercentBonusArcane") {Percent = true},
+            new Field(Resource.String.damageDealtPercent_Cold,"damageDealtPercentBonusCold") {Percent = true},
+            new Field(Resource.String.damageDealtPercent_Fire,"damageDealtPercentBonusFire") {Percent = true},
+            new Field(Resource.String.damageDealtPercent_Holy,"damageDealtPercentBonusHoly") {Percent = true},
+            new Field(Resource.String.damageDealtPercent_Lightning,"damageDealtPercentBonusLightning") {Percent = true},
+            new Field(Resource.String.damageDealtPercent_Physical,"damageDealtPercentBonusPhysical") {Percent = true},
+            new Field(Resource.String.damageDealtPercent_Physical,"damageDealtPercentBonusPoison") {Percent = true}
         };
 
         private static readonly Field[] WeaponDamageFields =
@@ -281,7 +288,7 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         private class Field
         {
-            public readonly int id;
+            public readonly int Id;
             private readonly string targetAttribute;
             private readonly string refAttribute;
             public readonly string Label;
@@ -295,7 +302,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             public Field(int id, string targetAttribute, string refAttribute)
             {
                 Percent = false;
-                this.id = id;
+                Id = id;
                 this.targetAttribute = targetAttribute;
                 this.refAttribute = refAttribute;
                 Label = Application.Context.Resources.GetString(id);
@@ -343,7 +350,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             /// <inheritdoc />
             public override string ToString()
             {
-                return "[id:" + id + " attribute:" + targetAttribute + " label:" + Label + "]";
+                return "[Id:" + Id + " attribute:" + targetAttribute + " label:" + Label + "]";
             }
 
             #endregion
@@ -354,37 +361,45 @@ namespace ZTnDroid.D3Calculator.Fragments
         private void CreateAttributeRowView(Field field)
         {
             var value = field.GetValue(D3Context.Instance.EditingItem.AttributesRaw);
-            if (value != null && value.Min != 0)
+            if (value == null || value.IsZero() != false)
             {
-                layoutAttributes.AddView(CreateRowView(attributeLabels, AttributeFields, field, value), layoutAttributes.ChildCount - 1);
+                return;
             }
+
+            layoutAttributes.AddView(CreateRowView(attributeLabels, AttributeFields, field, value), layoutAttributes.ChildCount - 1);
         }
 
         private void CreateItemDamageRowView(Field field)
         {
             var value = field.GetValue(D3Context.Instance.EditingItem.AttributesRaw);
-            if (value != null && value.Min != 0)
+            if (value == null || value.IsZero() != false)
             {
-                layoutItemDamage.AddView(CreateRowView(itemDamageLabels, ItemDamageFields, field, value), layoutItemDamage.ChildCount - 1);
+                return;
             }
+
+            layoutItemDamage.AddView(CreateRowView(itemDamageLabels, ItemDamageFields, field, value), layoutItemDamage.ChildCount - 1);
         }
 
         private void CreateWeaponDamageRowView(Field field)
         {
             var value = field.GetValue(D3Context.Instance.EditingItem.AttributesRaw);
-            if (value != null && value.Min != 0)
+            if (value == null || value.IsZero() != false)
             {
-                layoutWeaponDamage.AddView(CreateRowView(weaponDamageLabels, WeaponDamageFields, field, value), layoutWeaponDamage.ChildCount - 1);
+                return;
             }
+
+            layoutWeaponDamage.AddView(CreateRowView(weaponDamageLabels, WeaponDamageFields, field, value), layoutWeaponDamage.ChildCount - 1);
         }
 
         private void CreateDefenseRowView(Field field)
         {
             var value = field.GetValue(D3Context.Instance.EditingItem.AttributesRaw);
-            if (value != null && value.Min != 0)
+            if (value == null || value.IsZero() != false)
             {
-                layoutDefense.AddView(CreateRowView(defenseLabels, DefenseFields, field, value), layoutDefense.ChildCount - 1);
+                return;
             }
+
+            layoutDefense.AddView(CreateRowView(defenseLabels, DefenseFields, field, value), layoutDefense.ChildCount - 1);
         }
 
         private View CreateRowView(List<String> labels, Field[] fields)
@@ -418,7 +433,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             var index = 0;
             for (; index < fields.Length; index++)
             {
-                if (fields[index].id == selected.id)
+                if (fields[index].Id == selected.Id)
                 {
                     break;
                 }

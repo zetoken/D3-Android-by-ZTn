@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using ZTn.BNet.D3.Heroes;
+﻿using ZTn.BNet.D3.Heroes;
 
 namespace ZTnDroid.D3Calculator.Helpers
 {
@@ -7,7 +6,6 @@ namespace ZTnDroid.D3Calculator.Helpers
     {
         public static string Translate(this HeroClass heroClass)
         {
-            ZTnTrace.Trace("J'Y SUIS !!!!" + heroClass, MethodBase.GetCurrentMethod());
             switch (heroClass)
             {
                 case HeroClass.Barbarian:

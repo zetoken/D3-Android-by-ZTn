@@ -5,6 +5,7 @@ using System.Reflection;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using ZTn.BNet.D3.Calculator.Skills;
 using ZTn.BNet.D3.Helpers;
 using ZTn.BNet.D3.Items;
 using ZTnDroid.D3Calculator.Adapters;
@@ -65,7 +66,9 @@ namespace ZTnDroid.D3Calculator.Fragments
                 (Item)heroItems.waist,
                 D3Context.Instance.ActivatedSetBonus
             };
-            items = items.Where(i => i != null).Select(i => i.DeepClone()).ToList();
+            items = items.Where(i => i != null)
+                .Select(i => i.DeepClone())
+                .ToList();
 
             if (heroItems.mainHand == null)
             {
@@ -94,7 +97,8 @@ namespace ZTnDroid.D3Calculator.Fragments
             }
 
             var d3Calculator = GetCalculator();
-            var dps = d3Calculator.GetHeroDps(new List<ZTn.BNet.D3.Calculator.Skills.ID3SkillModifier>(), new List<ZTn.BNet.D3.Calculator.Skills.ID3SkillModifier>()).Min;
+            var dps = d3Calculator.GetHeroDps(new List<ID3SkillModifier>(), new List<ID3SkillModifier>())
+                .Min;
 
             var attr = d3Calculator.HeroStatsItem.AttributesRaw;
 
@@ -114,45 +118,18 @@ namespace ZTnDroid.D3Calculator.Fragments
                 new AttributeListItem(Resource.String.damage, dps),
             };
 
-            if (attr.critPercentBonusCapped != null)
-            {
-                characteristicsAttr.Add(new AttributePercentListItem(Resource.String.criticChance, attr.critPercentBonusCapped));
-            }
-            if (attr.critDamagePercent != null)
-            {
-                characteristicsAttr.Add(new AttributePercentListItem(Resource.String.criticDamage, attr.critDamagePercent + 1));
-            }
+            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.criticChance, attr.critPercentBonusCapped);
+            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.criticDamage, attr.critDamagePercent + 1);
 
             characteristicsAttr.Add(new AttributePercentListItem(Resource.String.attackSpeed, d3Calculator.GetActualAttackSpeed()));
 
-            if (attr.damageDealtPercentBonusArcane != null)
-            {
-                characteristicsAttr.Add(new AttributePercentListItem(Resource.String.damageDealtPercent_Arcane, attr.damageDealtPercentBonusArcane));
-            }
-            if (attr.damageDealtPercentBonusCold != null)
-            {
-                characteristicsAttr.Add(new AttributePercentListItem(Resource.String.damageDealtPercent_Cold, attr.damageDealtPercentBonusCold));
-            }
-            if (attr.damageDealtPercentBonusFire != null)
-            {
-                characteristicsAttr.Add(new AttributePercentListItem(Resource.String.damageDealtPercent_Fire, attr.damageDealtPercentBonusFire));
-            }
-            if (attr.damageDealtPercentBonusHoly != null)
-            {
-                characteristicsAttr.Add(new AttributePercentListItem(Resource.String.damageDealtPercent_Holy, attr.damageDealtPercentBonusHoly));
-            }
-            if (attr.damageDealtPercentBonusLightning != null)
-            {
-                characteristicsAttr.Add(new AttributePercentListItem(Resource.String.damageDealtPercent_Lightning, attr.damageDealtPercentBonusLightning));
-            }
-            if (attr.damageDealtPercentBonusPhysical != null)
-            {
-                characteristicsAttr.Add(new AttributePercentListItem(Resource.String.damageDealtPercent_Physical, attr.damageDealtPercentBonusPhysical));
-            }
-            if (attr.damageDealtPercentBonusPoison != null)
-            {
-                characteristicsAttr.Add(new AttributePercentListItem(Resource.String.damageDealtPercent_Poison, attr.damageDealtPercentBonusPoison));
-            }
+            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.damageDealtPercent_Arcane, attr.damageDealtPercentBonusArcane);
+            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.damageDealtPercent_Cold, attr.damageDealtPercentBonusCold);
+            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.damageDealtPercent_Fire, attr.damageDealtPercentBonusFire);
+            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.damageDealtPercent_Holy, attr.damageDealtPercentBonusHoly);
+            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.damageDealtPercent_Lightning, attr.damageDealtPercentBonusLightning);
+            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.damageDealtPercent_Physical, attr.damageDealtPercentBonusPhysical);
+            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.damageDealtPercent_Poison, attr.damageDealtPercentBonusPoison);
 
             characteristicsAttr.AddRange(new List<IListItem>
             {
@@ -160,34 +137,20 @@ namespace ZTnDroid.D3Calculator.Fragments
                 new AttributeListItem(Resource.String.life, d3Calculator.GetHeroHitpoints())
             });
 
-            if (attr.hitpointsOnHit != null)
-            {
-                characteristicsAttr.Add(new AttributeListItem(Resource.String.lifeOnHit, attr.hitpointsOnHit));
-            }
-            if (attr.stealHealthPercent != null)
-            {
-                characteristicsAttr.Add(new AttributePercentListItem(Resource.String.lifeSteal, attr.stealHealthPercent));
-            }
-            if (attr.hitpointsOnKill != null)
-            {
-                characteristicsAttr.Add(new AttributeListItem(Resource.String.lifePerKill, attr.hitpointsOnKill));
-            }
-            if (attr.healthGlobeBonusHealth != null)
-            {
-                characteristicsAttr.Add(new AttributeListItem(Resource.String.lifeBonusPerGlobe, attr.healthGlobeBonusHealth));
-            }
-            if (attr.hitpointsRegenPerSecond != null)
-            {
-                characteristicsAttr.Add(new AttributeListItem(Resource.String.lifeRegenPerSecond, attr.hitpointsRegenPerSecond));
-            }
+            AddAttributeListItemIfNotNull(characteristicsAttr, Resource.String.lifeOnHit, attr.hitpointsOnHit);
+            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.lifeSteal, attr.stealHealthPercent);
+            AddAttributeListItemIfNotNull(characteristicsAttr, Resource.String.lifePerKill, attr.hitpointsOnKill);
+            AddAttributeListItemIfNotNull(characteristicsAttr, Resource.String.lifeBonusPerGlobe, attr.healthGlobeBonusHealth);
+            AddAttributeListItemIfNotNull(characteristicsAttr, Resource.String.lifeRegenPerSecond, attr.hitpointsRegenPerSecond);
 
             characteristicsAttr.AddRange(new List<IListItem>
             {
                 new AttributeListItem(Resource.String.effectiveHitpoints, Math.Round(d3Calculator.GetHeroEffectiveHitpoints(hero.level + 3))),
-                new AttributeListItem(Resource.String.EHP_DPS, Math.Round((d3Calculator.GetHeroEffectiveHitpoints(hero.level + 3)*d3Calculator.GetHeroDps()).Min/1000000)),
+                new AttributeListItem(Resource.String.EHP_DPS, Math.Round((d3Calculator.GetHeroEffectiveHitpoints(hero.level + 3) * d3Calculator.GetHeroDps()).Min / 1000000)),
                 new SectionHeaderListItem(Resource.String.defense),
                 new AttributeListItem(Resource.String.dodge, d3Calculator.GetHeroDodge()),
-                new AttributeListItem(Resource.String.armor, Math.Round(d3Calculator.GetHeroArmor().Min)),
+                new AttributeListItem(Resource.String.armor, Math.Round(d3Calculator.GetHeroArmor()
+                    .Min)),
                 new AttributeListItem(Resource.String.arcaneResist, d3Calculator.GetHeroResistance("Arcane")),
                 new AttributeListItem(Resource.String.coldResist, d3Calculator.GetHeroResistance("Cold")),
                 new AttributeListItem(Resource.String.fireResist, d3Calculator.GetHeroResistance("Fire")),
@@ -197,16 +160,30 @@ namespace ZTnDroid.D3Calculator.Fragments
                 new SectionHeaderListItem(Resource.String.bonuses)
             });
 
-            if (attr.goldFind != null)
-            {
-                characteristicsAttr.Add(new AttributePercentListItem(Resource.String.goldFind, attr.goldFind));
-            }
-            if (attr.magicFind != null)
-            {
-                characteristicsAttr.Add(new AttributePercentListItem(Resource.String.magicFind, attr.magicFind));
-            }
+            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.goldFind, attr.goldFind);
+            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.magicFind, attr.magicFind);
 
             heroStatsListView.Adapter = new ListAdapter(Activity, characteristicsAttr.ToArray());
+        }
+
+        private static void AddAttributePercentListItemIfNotNull(List<IListItem> listItems, int resource, ItemValueRange valueRange)
+        {
+            if (valueRange == null)
+            {
+                return;
+            }
+
+            listItems.Add(new AttributePercentListItem(resource, valueRange));
+        }
+
+        private static void AddAttributeListItemIfNotNull(List<IListItem> listItems, int resource, ItemValueRange valueRange)
+        {
+            if (valueRange == null)
+            {
+                return;
+            }
+
+            listItems.Add(new AttributeListItem(resource, valueRange));
         }
     }
 }
