@@ -54,7 +54,7 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             RetainInstance = true;
 
-            SetHasOptionsMenu(true);
+            HasOptionsMenu = true;
         }
 
         /// <inheritdoc/>
@@ -77,7 +77,6 @@ namespace ZTnDroid.D3Calculator.Fragments
             base.OnCreateOptionsMenu(menu, inflater);
 
             inflater.Inflate(Resource.Menu.ViewHeroActivity, menu);
-
         }
 
         /// <inheritdoc/>
@@ -102,7 +101,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         {
             ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
-            ProgressDialog progressDialog = ProgressDialog.Show(Activity, Resources.GetString(Resource.String.LoadingHero), Resources.GetString(Resource.String.WaitWhileRetrievingData), true);
+            var progressDialog = ProgressDialog.Show(Activity, Resources.GetString(Resource.String.LoadingHero), Resources.GetString(Resource.String.WaitWhileRetrievingData), true);
 
             new Thread(() =>
             {

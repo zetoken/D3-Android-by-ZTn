@@ -73,7 +73,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         {
             base.OnActivityCreated(savedInstanceState);
 
-            SetHasOptionsMenu(true);
+            HasOptionsMenu = true;
         }
 
         /// <inheritdoc />

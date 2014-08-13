@@ -61,7 +61,7 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             RetainInstance = true;
 
-            SetHasOptionsMenu(true);
+            HasOptionsMenu = true;
 
             Activity.Title = Resources.GetString(Resource.String.HomeActivityLabel);
         }

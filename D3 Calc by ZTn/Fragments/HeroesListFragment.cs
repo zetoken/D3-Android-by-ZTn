@@ -38,7 +38,7 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             RetainInstance = true;
 
-            SetHasOptionsMenu(true);
+            HasOptionsMenu = true;
 
             battleTag = D3Context.Instance.BattleTag;
             host = D3Context.Instance.Host;

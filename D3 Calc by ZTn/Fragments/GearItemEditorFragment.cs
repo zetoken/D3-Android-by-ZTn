@@ -131,7 +131,7 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             base.OnCreate(savedInstanceState);
 
-            SetHasOptionsMenu(true);
+            HasOptionsMenu = true;
 
             // Get inflater service
             layoutInflater = (LayoutInflater)Activity.GetSystemService(Context.LayoutInflaterService);
