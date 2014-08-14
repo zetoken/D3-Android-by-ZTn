@@ -61,7 +61,7 @@ namespace ZTnDroid.D3Calculator.Adapters
         public AttributeListItem(String name, ItemValueRange value)
         {
             Name = name;
-            Value = value.Min.ToString();
+            Value = value.Min.ToString("N2");
         }
 
         public AttributeListItem(int id, long value)
@@ -72,7 +72,7 @@ namespace ZTnDroid.D3Calculator.Adapters
         public AttributeListItem(String name, long value)
         {
             Name = name;
-            Value = value.ToString();
+            Value = value.ToString("N0");
         }
 
         public AttributeListItem(int id, double value)
@@ -83,7 +83,7 @@ namespace ZTnDroid.D3Calculator.Adapters
         public AttributeListItem(String name, double value)
         {
             Name = name;
-            Value = String.Format("{0:0.00}", value);
+            Value = String.Format("{0:N2}", value);
         }
 
         #endregion

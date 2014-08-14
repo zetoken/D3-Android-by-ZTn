@@ -106,30 +106,35 @@ namespace ZTnDroid.D3Calculator.Fragments
             var characteristicsAttr = new List<IListItem>
             {
                 new SectionHeaderListItem(Resource.String.Progress),
-                new AttributeListItem(Resource.String.heroClass, hero.heroClass),
-                new AttributeListItem(Resource.String.level, hero.level),
-                new AttributeListItem(Resource.String.paragon, hero.paragonLevel),
-                new SectionHeaderListItem(Resource.String.attributes),
-                new AttributeListItem(Resource.String.dexterity, d3Calculator.GetHeroDexterity()),
-                new AttributeListItem(Resource.String.intelligence, d3Calculator.GetHeroIntelligence()),
-                new AttributeListItem(Resource.String.strength, d3Calculator.GetHeroStrength()),
-                new AttributeListItem(Resource.String.vitality, d3Calculator.GetHeroVitality()),
-                new SectionHeaderListItem(Resource.String.damages),
-                new AttributeListItem(Resource.String.damage, dps),
+                new AttributeListItem(Resource.String.heroClass, hero.heroClass)
             };
 
-            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.criticChance, attr.critPercentBonusCapped);
-            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.criticDamage, attr.critDamagePercent + 1);
+            characteristicsAttr.Add(new AttributeListItem(Resource.String.level, hero.level));
 
-            characteristicsAttr.Add(new AttributePercentListItem(Resource.String.attackSpeed, d3Calculator.GetActualAttackSpeed()));
+            AddAttributeIntegerListItem(characteristicsAttr, Resource.String.paragon, hero.paragonLevel);
 
-            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.damageDealtPercent_Arcane, attr.damageDealtPercentBonusArcane);
-            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.damageDealtPercent_Cold, attr.damageDealtPercentBonusCold);
-            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.damageDealtPercent_Fire, attr.damageDealtPercentBonusFire);
-            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.damageDealtPercent_Holy, attr.damageDealtPercentBonusHoly);
-            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.damageDealtPercent_Lightning, attr.damageDealtPercentBonusLightning);
-            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.damageDealtPercent_Physical, attr.damageDealtPercentBonusPhysical);
-            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.damageDealtPercent_Poison, attr.damageDealtPercentBonusPoison);
+            characteristicsAttr.Add(new SectionHeaderListItem(Resource.String.attributes));
+
+            AddAttributeIntegerListItem(characteristicsAttr, Resource.String.dexterity, d3Calculator.GetHeroDexterity());
+            AddAttributeIntegerListItem(characteristicsAttr, Resource.String.intelligence, d3Calculator.GetHeroIntelligence());
+            AddAttributeIntegerListItem(characteristicsAttr, Resource.String.strength, d3Calculator.GetHeroStrength());
+            AddAttributeIntegerListItem(characteristicsAttr, Resource.String.vitality, d3Calculator.GetHeroVitality());
+
+            characteristicsAttr.Add(new SectionHeaderListItem(Resource.String.damages));
+
+            characteristicsAttr.Add(new AttributeListItem(Resource.String.damage, dps));
+            AddAttributePercentListItem(characteristicsAttr, Resource.String.criticChance, attr.critPercentBonusCapped + 0.05);
+            AddAttributePercentListItem(characteristicsAttr, Resource.String.criticDamage, attr.critDamagePercent + 1);
+
+            AddAttributeListItem(characteristicsAttr, Resource.String.attackSpeed, d3Calculator.GetActualAttackSpeed());
+
+            AddAttributeElementaryDamageListItem(characteristicsAttr, Resource.String.damageDealtPercent_Arcane, attr.damageDealtPercentBonusArcane, dps);
+            AddAttributeElementaryDamageListItem(characteristicsAttr, Resource.String.damageDealtPercent_Cold, attr.damageDealtPercentBonusCold, dps);
+            AddAttributeElementaryDamageListItem(characteristicsAttr, Resource.String.damageDealtPercent_Fire, attr.damageDealtPercentBonusFire, dps);
+            AddAttributeElementaryDamageListItem(characteristicsAttr, Resource.String.damageDealtPercent_Holy, attr.damageDealtPercentBonusHoly, dps);
+            AddAttributeElementaryDamageListItem(characteristicsAttr, Resource.String.damageDealtPercent_Lightning, attr.damageDealtPercentBonusLightning, dps);
+            AddAttributeElementaryDamageListItem(characteristicsAttr, Resource.String.damageDealtPercent_Physical, attr.damageDealtPercentBonusPhysical, dps);
+            AddAttributeElementaryDamageListItem(characteristicsAttr, Resource.String.damageDealtPercent_Poison, attr.damageDealtPercentBonusPoison, dps);
 
             characteristicsAttr.AddRange(new List<IListItem>
             {
@@ -137,36 +142,35 @@ namespace ZTnDroid.D3Calculator.Fragments
                 new AttributeListItem(Resource.String.life, d3Calculator.GetHeroHitpoints())
             });
 
-            AddAttributeListItemIfNotNull(characteristicsAttr, Resource.String.lifeOnHit, attr.hitpointsOnHit);
-            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.lifeSteal, attr.stealHealthPercent);
-            AddAttributeListItemIfNotNull(characteristicsAttr, Resource.String.lifePerKill, attr.hitpointsOnKill);
-            AddAttributeListItemIfNotNull(characteristicsAttr, Resource.String.lifeBonusPerGlobe, attr.healthGlobeBonusHealth);
-            AddAttributeListItemIfNotNull(characteristicsAttr, Resource.String.lifeRegenPerSecond, attr.hitpointsRegenPerSecond);
+            AddAttributeIntegerListItem(characteristicsAttr, Resource.String.lifeOnHit, attr.hitpointsOnHit);
+            AddAttributeIntegerListItem(characteristicsAttr, Resource.String.lifeSteal, attr.stealHealthPercent);
+            AddAttributeIntegerListItem(characteristicsAttr, Resource.String.lifePerKill, attr.hitpointsOnKill);
+            AddAttributeIntegerListItem(characteristicsAttr, Resource.String.lifeBonusPerGlobe, attr.healthGlobeBonusHealth);
+            AddAttributeIntegerListItem(characteristicsAttr, Resource.String.lifeRegenPerSecond, attr.hitpointsRegenPerSecond);
+            AddAttributeIntegerListItem(characteristicsAttr, Resource.String.effectiveHitpoints, Math.Round(d3Calculator.GetHeroEffectiveHitpoints(hero.level)));
+            AddAttributeIntegerListItem(characteristicsAttr, Resource.String.EHP_DPS, Math.Round((d3Calculator.GetHeroEffectiveHitpoints(hero.level) * d3Calculator.GetHeroDps()).Min / 1000000));
 
             characteristicsAttr.AddRange(new List<IListItem>
             {
-                new AttributeListItem(Resource.String.effectiveHitpoints, Math.Round(d3Calculator.GetHeroEffectiveHitpoints(hero.level + 3))),
-                new AttributeListItem(Resource.String.EHP_DPS, Math.Round((d3Calculator.GetHeroEffectiveHitpoints(hero.level + 3) * d3Calculator.GetHeroDps()).Min / 1000000)),
                 new SectionHeaderListItem(Resource.String.defense),
                 new AttributeListItem(Resource.String.dodge, d3Calculator.GetHeroDodge()),
-                new AttributeListItem(Resource.String.armor, Math.Round(d3Calculator.GetHeroArmor()
-                    .Min)),
-                new AttributeListItem(Resource.String.arcaneResist, d3Calculator.GetHeroResistance("Arcane")),
-                new AttributeListItem(Resource.String.coldResist, d3Calculator.GetHeroResistance("Cold")),
-                new AttributeListItem(Resource.String.fireResist, d3Calculator.GetHeroResistance("Fire")),
-                new AttributeListItem(Resource.String.lightningResist, d3Calculator.GetHeroResistance("Lightning")),
-                new AttributeListItem(Resource.String.physicalResist, d3Calculator.GetHeroResistance("Physical")),
-                new AttributeListItem(Resource.String.poisonResist, d3Calculator.GetHeroResistance("Poison")),
+                new AttributeMitigationListItem(Resource.String.armor, d3Calculator.GetHeroArmor(), d3Calculator.GetHeroDamageReduction_Armor(hero.level)),
+                new AttributeMitigationListItem(Resource.String.arcaneResist, d3Calculator.GetHeroResistance("Arcane"), d3Calculator.GetHeroDamageReduction(hero.level,"Arcane")),
+                new AttributeMitigationListItem(Resource.String.coldResist, d3Calculator.GetHeroResistance("Cold"), d3Calculator.GetHeroDamageReduction(hero.level,"Cold")),
+                new AttributeMitigationListItem(Resource.String.fireResist, d3Calculator.GetHeroResistance("Fire"), d3Calculator.GetHeroDamageReduction(hero.level,"Fire")),
+                new AttributeMitigationListItem(Resource.String.lightningResist, d3Calculator.GetHeroResistance("Lightning"), d3Calculator.GetHeroDamageReduction(hero.level,"Lightning")),
+                new AttributeMitigationListItem(Resource.String.physicalResist, d3Calculator.GetHeroResistance("Physical"), d3Calculator.GetHeroDamageReduction(hero.level,"Physical")),
+                new AttributeMitigationListItem(Resource.String.poisonResist, d3Calculator.GetHeroResistance("Poison"), d3Calculator.GetHeroDamageReduction(hero.level,"Poison")),
                 new SectionHeaderListItem(Resource.String.bonuses)
             });
 
-            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.goldFind, attr.goldFind);
-            AddAttributePercentListItemIfNotNull(characteristicsAttr, Resource.String.magicFind, attr.magicFind);
+            AddAttributePercentListItem(characteristicsAttr, Resource.String.goldFind, attr.goldFind);
+            AddAttributePercentListItem(characteristicsAttr, Resource.String.magicFind, attr.magicFind);
 
             heroStatsListView.Adapter = new ListAdapter(Activity, characteristicsAttr.ToArray());
         }
 
-        private static void AddAttributePercentListItemIfNotNull(List<IListItem> listItems, int resource, ItemValueRange valueRange)
+        private static void AddAttributePercentListItem(List<IListItem> listItems, int resource, ItemValueRange valueRange)
         {
             if (valueRange == null)
             {
@@ -176,7 +180,32 @@ namespace ZTnDroid.D3Calculator.Fragments
             listItems.Add(new AttributePercentListItem(resource, valueRange));
         }
 
-        private static void AddAttributeListItemIfNotNull(List<IListItem> listItems, int resource, ItemValueRange valueRange)
+        private static void AddAttributeElementaryDamageListItem(List<IListItem> listItems, int resource, ItemValueRange elementaryDamageIncrease, double dps)
+        {
+            if (elementaryDamageIncrease == null)
+            {
+                return;
+            }
+
+            listItems.Add(new AttributeElementaryDamageListItem(resource, elementaryDamageIncrease, dps));
+        }
+
+        private static void AddAttributeIntegerListItem(List<IListItem> listItems, int resource, ItemValueRange valueRange)
+        {
+            if (valueRange == null)
+            {
+                return;
+            }
+
+            listItems.Add(new AttributeListItem(resource, (long)Math.Round(valueRange.Min)));
+        }
+
+        private static void AddAttributeIntegerListItem(List<IListItem> listItems, int resource, double value)
+        {
+            listItems.Add(new AttributeListItem(resource, (long)Math.Round(value)));
+        }
+
+        private static void AddAttributeListItem(List<IListItem> listItems, int resource, ItemValueRange valueRange)
         {
             if (valueRange == null)
             {

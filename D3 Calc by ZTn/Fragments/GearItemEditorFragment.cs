@@ -471,7 +471,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             spinner.ItemSelected +=
                 (sender, e) =>
                 {
-                    Console.WriteLine("OK: " + gems[e.Position]);
+                    Console.WriteLine("OK: " + gems[e.Position - 1]);
                     // Note: spinner has the additional "no gem" choice
                     ((View)((Spinner)sender).Parent).Tag = (e.Position >= 1 ? new JavaLangObject<Item>(gems[e.Position - 1]) : null);
                 };
