@@ -193,6 +193,9 @@
   <string name="weaponPercent_Lightning">+% lightning damage</string>
   <string name="weaponPercent_Physical">+% physical damage</string>
   <string name="weaponPercent_Poison">+% poison damage</string>
+
+  <string name="damagePercentBonusVsElites">+% damage vs elites</string>
+
   <string name="damageDealtPercent_Arcane">+% arcane skills</string>
   <string name="damageDealtPercent_Cold">+% cold skills</string>
   <string name="damageDealtPercent_Fire">+% fire skills</string>
@@ -201,8 +204,18 @@
   <string name="damageDealtPercent_Physical">+% physical skills</string>
   <string name="damageDealtPercent_Poison">+% poison skills</string>
 
+  <string name="damageDealtPercentVsElites_Arcane">+% arcane skills vs elites</string>
+  <string name="damageDealtPercentVsElites_Cold">+% cold skills vs elites</string>
+  <string name="damageDealtPercentVsElites_Fire">+% fire skills vs elites</string>
+  <string name="damageDealtPercentVsElites_Holy">+% holy skills vs elites</string>
+  <string name="damageDealtPercentVsElites_Lightning">+% lightning skills vs elites</string>
+  <string name="damageDealtPercentVsElites_Physical">+% physical skills vs elites</string>
+  <string name="damageDealtPercentVsElites_Poison">+% poison skills vs elites</string>
+
+  <string name="powerCooldownReductionPercentAll">skills cooldown reduction</string>
+
   <string name="EditedItem">Edited item.</string>
-  <string name="ItemEditingFinished">Item edition is done: computed data are updated.</string>
+  <string name="ItemEditingFinished">Item edition is done: computed data are updated. Swipe left to computed tab to see the changes.</string>
   <string name="ItemEditingCanceled">Item edition is CANCELED: no change occurs.</string>
 
 </resources>

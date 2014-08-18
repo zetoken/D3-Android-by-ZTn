@@ -56,14 +56,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             new Field(Resource.String.damagePercent_Holy, "damageTypePercentBonus_Holy") { Percent = true },
             new Field(Resource.String.damagePercent_Lightning, "damageTypePercentBonus_Lightning") { Percent = true },
             new Field(Resource.String.damagePercent_Physical, "damageTypePercentBonus_Physical") { Percent = true },
-            new Field(Resource.String.damagePercent_Poison, "damageTypePercentBonus_Poison") { Percent = true },
-            new Field(Resource.String.damageDealtPercent_Arcane,"damageDealtPercentBonusArcane") {Percent = true},
-            new Field(Resource.String.damageDealtPercent_Cold,"damageDealtPercentBonusCold") {Percent = true},
-            new Field(Resource.String.damageDealtPercent_Fire,"damageDealtPercentBonusFire") {Percent = true},
-            new Field(Resource.String.damageDealtPercent_Holy,"damageDealtPercentBonusHoly") {Percent = true},
-            new Field(Resource.String.damageDealtPercent_Lightning,"damageDealtPercentBonusLightning") {Percent = true},
-            new Field(Resource.String.damageDealtPercent_Physical,"damageDealtPercentBonusPhysical") {Percent = true},
-            new Field(Resource.String.damageDealtPercent_Physical,"damageDealtPercentBonusPoison") {Percent = true}
+            new Field(Resource.String.damagePercent_Poison, "damageTypePercentBonus_Poison") { Percent = true }
         };
 
         private static readonly Field[] WeaponDamageFields =
@@ -92,6 +85,19 @@ namespace ZTnDroid.D3Calculator.Fragments
             new Field(Resource.String.weaponPercent_Poison, "damageWeaponPercentBonus_Poison")
         };
 
+        private static readonly Field[] SkillBonusFields =
+        {
+            new Field(Resource.String.damageDealtPercent_Arcane, "damageDealtPercentBonusArcane") { Percent = true },
+            new Field(Resource.String.damageDealtPercent_Cold, "damageDealtPercentBonusCold") { Percent = true },
+            new Field(Resource.String.damageDealtPercent_Fire, "damageDealtPercentBonusFire") { Percent = true },
+            new Field(Resource.String.damageDealtPercent_Holy, "damageDealtPercentBonusHoly") { Percent = true },
+            new Field(Resource.String.damageDealtPercent_Lightning, "damageDealtPercentBonusLightning") { Percent = true },
+            new Field(Resource.String.damageDealtPercent_Physical, "damageDealtPercentBonusPhysical") { Percent = true },
+            new Field(Resource.String.damageDealtPercent_Poison, "damageDealtPercentBonusPoison") { Percent = true },
+            new Field(Resource.String.damagePercentBonusVsElites, "damagePercentBonusVsElites") { Percent = true },
+            new Field(Resource.String.powerCooldownReductionPercentAll, "powerCooldownReductionPercentAll") { Percent = true }
+        };
+
         private static readonly Field[] DefenseFields =
         {
             new Field(Resource.String.armor, "armorItem"),
@@ -118,11 +124,13 @@ namespace ZTnDroid.D3Calculator.Fragments
         private List<String> defenseLabels;
         private List<String> socketLabels;
         private List<String> weaponDamageLabels;
+        private List<String> skillBonusLabels;
 
         private LinearLayout layoutAttributes;
         private LinearLayout layoutItemDamage;
         private LinearLayout layoutWeaponDamage;
         private LinearLayout layoutDefense;
+        private LinearLayout layoutSkillBonus;
         private LinearLayout layoutSockets;
 
         public static KnownGems KnownGems = KnownGems.GetKnownGemsFromJsonStream(D3Calc.Instance.Assets.Open("d3gem.json"));
@@ -151,6 +159,8 @@ namespace ZTnDroid.D3Calculator.Fragments
             defenseLabels = DefenseFields.Select(o => o.Label)
                 .ToList();
             weaponDamageLabels = WeaponDamageFields.Select(o => o.Label)
+                .ToList();
+            skillBonusLabels = SkillBonusFields.Select(o => o.Label)
                 .ToList();
 
             socketLabels = new List<string> { "( no gem )" };
@@ -236,6 +246,16 @@ namespace ZTnDroid.D3Calculator.Fragments
                 CreateDefenseRowView(descriptor);
             }
 
+            // Skills
+            layoutSkillBonus = view.FindViewById<LinearLayout>(Resource.Id.layoutSkillBonus);
+            layoutSkillBonus.FindViewById<ImageButton>(Resource.Id.add)
+                .Click += (sender, e) => layoutSkillBonus.AddView(CreateRowView(skillBonusLabels, SkillBonusFields), layoutSkillBonus.ChildCount - 1);
+
+            foreach (var descriptor in SkillBonusFields)
+            {
+                CreateSkillBonusRowView(descriptor);
+            }
+
             // Sockets
             layoutSockets = view.FindViewById<LinearLayout>(Resource.Id.layoutSockets);
             layoutSockets.FindViewById<ImageButton>(Resource.Id.add)
@@ -271,6 +291,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                     UpdateEditedItem(layoutDefense);
                     UpdateEditedItem(layoutItemDamage);
                     UpdateEditedItem(layoutWeaponDamage);
+                    UpdateEditedItem(layoutSkillBonus);
                     UpdateEditedItemSockets(layoutSockets);
                     D3Context.Instance.EditingItem.UpdateStats();
                     Activity.SetResult(Result.Ok, new Intent());
@@ -361,7 +382,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         private void CreateAttributeRowView(Field field)
         {
             var value = field.GetValue(D3Context.Instance.EditingItem.AttributesRaw);
-            if (value == null || value.IsZero() != false)
+            if (value == null || value.IsZero())
             {
                 return;
             }
@@ -372,7 +393,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         private void CreateItemDamageRowView(Field field)
         {
             var value = field.GetValue(D3Context.Instance.EditingItem.AttributesRaw);
-            if (value == null || value.IsZero() != false)
+            if (value == null || value.IsZero())
             {
                 return;
             }
@@ -383,7 +404,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         private void CreateWeaponDamageRowView(Field field)
         {
             var value = field.GetValue(D3Context.Instance.EditingItem.AttributesRaw);
-            if (value == null || value.IsZero() != false)
+            if (value == null || value.IsZero())
             {
                 return;
             }
@@ -394,12 +415,23 @@ namespace ZTnDroid.D3Calculator.Fragments
         private void CreateDefenseRowView(Field field)
         {
             var value = field.GetValue(D3Context.Instance.EditingItem.AttributesRaw);
-            if (value == null || value.IsZero() != false)
+            if (value == null || value.IsZero())
             {
                 return;
             }
 
             layoutDefense.AddView(CreateRowView(defenseLabels, DefenseFields, field, value), layoutDefense.ChildCount - 1);
+        }
+
+        private void CreateSkillBonusRowView(Field field)
+        {
+            var value = field.GetValue(D3Context.Instance.EditingItem.AttributesRaw);
+            if (value == null || value.IsZero())
+            {
+                return;
+            }
+
+            layoutSkillBonus.AddView(CreateRowView(skillBonusLabels, SkillBonusFields, field, value), layoutSkillBonus.ChildCount - 1);
         }
 
         private View CreateRowView(List<String> labels, Field[] fields)
