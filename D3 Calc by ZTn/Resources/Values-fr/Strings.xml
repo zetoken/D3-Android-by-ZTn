@@ -186,6 +186,9 @@
   <string name="damagePercent_Lightning">+% dégâts électrique</string>
   <string name="damagePercent_Physical">+% dégâts physique</string>
   <string name="damagePercent_Poison">+% dégâts poison</string>
+
+  <string name="damagePercentBonusVsElites">+% dégâts vs elites</string>
+
   <string name="damageDealtPercent_Arcane">+% compétences (arcane)</string>
   <string name="damageDealtPercent_Cold">+% compétences (froid)</string>
   <string name="damageDealtPercent_Fire">+% compétences (feu)</string>
@@ -194,8 +197,18 @@
   <string name="damageDealtPercent_Physical">+% compétences (physique)</string>
   <string name="damageDealtPercent_Poison">+% compétences (poison)</string>
 
+  <string name="damageDealtPercentVsElites_Arcane">+% compétences vs elites (arcane)</string>
+  <string name="damageDealtPercentVsElites_Cold">+% compétences vs elites (froid)</string>
+  <string name="damageDealtPercentVsElites_Fire">+% compétences vs elites (feu)</string>
+  <string name="damageDealtPercentVsElites_Holy">+% compétences vs elites (sacré)</string>
+  <string name="damageDealtPercentVsElites_Lightning">+% compétences vs elites (électrique)</string>
+  <string name="damageDealtPercentVsElites_Physical">+% compétences vs elites (physique)</string>
+  <string name="damageDealtPercentVsElites_Poison">+% compétences vs elites (poison)</string>
+
+  <string name="powerCooldownReductionPercentAll">réduction de cooldown</string>
+
   <string name="EditedItem">Caractéristiques éditées.</string>
-  <string name="ItemEditingFinished">Edition de l\'objet terminée: le calculateur a été mis à jour.</string>
+  <string name="ItemEditingFinished">Edition de l\'objet terminée: le calculateur a été mis à jour. Balayez vers la gauche pour voir les changements dans l\'onglet Calculs.</string>
   <string name="ItemEditingCanceled">Edition de l\'objet ANNULEE: aucun changement n\'a été fait.</string>
 
 </resources>

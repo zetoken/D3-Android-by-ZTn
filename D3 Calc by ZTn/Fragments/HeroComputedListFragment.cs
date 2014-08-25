@@ -5,6 +5,7 @@ using System.Reflection;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using ZTn.BNet.D3.Calculator.Helpers;
 using ZTn.BNet.D3.Calculator.Skills;
 using ZTn.BNet.D3.Helpers;
 using ZTn.BNet.D3.Items;
@@ -128,6 +129,8 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             AddAttributeListItem(characteristicsAttr, Resource.String.attackSpeed, d3Calculator.GetActualAttackSpeed());
 
+            characteristicsAttr.Add(new SectionHeaderListItem(Resource.String.skills));
+
             AddAttributeElementaryDamageListItem(characteristicsAttr, Resource.String.damageDealtPercent_Arcane, attr.damageDealtPercentBonusArcane, dps);
             AddAttributeElementaryDamageListItem(characteristicsAttr, Resource.String.damageDealtPercent_Cold, attr.damageDealtPercentBonusCold, dps);
             AddAttributeElementaryDamageListItem(characteristicsAttr, Resource.String.damageDealtPercent_Fire, attr.damageDealtPercentBonusFire, dps);
@@ -135,6 +138,18 @@ namespace ZTnDroid.D3Calculator.Fragments
             AddAttributeElementaryDamageListItem(characteristicsAttr, Resource.String.damageDealtPercent_Lightning, attr.damageDealtPercentBonusLightning, dps);
             AddAttributeElementaryDamageListItem(characteristicsAttr, Resource.String.damageDealtPercent_Physical, attr.damageDealtPercentBonusPhysical, dps);
             AddAttributeElementaryDamageListItem(characteristicsAttr, Resource.String.damageDealtPercent_Poison, attr.damageDealtPercentBonusPoison, dps);
+
+            AddAttributeElementaryDamageListItem(characteristicsAttr, Resource.String.damagePercentBonusVsElites, attr.damagePercentBonusVsElites, dps);
+
+            AddAttributeElementaryDamageListItem(characteristicsAttr, Resource.String.damageDealtPercentVsElites_Arcane, attr.damageDealtPercentBonusArcane, attr.damagePercentBonusVsElites, dps);
+            AddAttributeElementaryDamageListItem(characteristicsAttr, Resource.String.damageDealtPercentVsElites_Cold, attr.damageDealtPercentBonusCold, attr.damagePercentBonusVsElites, dps);
+            AddAttributeElementaryDamageListItem(characteristicsAttr, Resource.String.damageDealtPercentVsElites_Fire, attr.damageDealtPercentBonusFire, attr.damagePercentBonusVsElites, dps);
+            AddAttributeElementaryDamageListItem(characteristicsAttr, Resource.String.damageDealtPercentVsElites_Holy, attr.damageDealtPercentBonusHoly, attr.damagePercentBonusVsElites, dps);
+            AddAttributeElementaryDamageListItem(characteristicsAttr, Resource.String.damageDealtPercentVsElites_Lightning, attr.damageDealtPercentBonusLightning, attr.damagePercentBonusVsElites, dps);
+            AddAttributeElementaryDamageListItem(characteristicsAttr, Resource.String.damageDealtPercentVsElites_Physical, attr.damageDealtPercentBonusPhysical, attr.damagePercentBonusVsElites, dps);
+            AddAttributeElementaryDamageListItem(characteristicsAttr, Resource.String.damageDealtPercentVsElites_Poison, attr.damageDealtPercentBonusPoison, attr.damagePercentBonusVsElites, dps);
+
+            AddAttributePercentListItem(characteristicsAttr, Resource.String.powerCooldownReductionPercentAll, attr.powerCooldownReductionPercentAll);
 
             characteristicsAttr.AddRange(new List<IListItem>
             {
@@ -188,6 +203,16 @@ namespace ZTnDroid.D3Calculator.Fragments
             }
 
             listItems.Add(new AttributeElementaryDamageListItem(resource, elementaryDamageIncrease, dps));
+        }
+
+        private static void AddAttributeElementaryDamageListItem(List<IListItem> listItems, int resource, ItemValueRange elementaryDamageIncrease, ItemValueRange bonusVsElites, double dps)
+        {
+            if (elementaryDamageIncrease == null || bonusVsElites == null)
+            {
+                return;
+            }
+
+            listItems.Add(new AttributeElementaryDamageListItem(resource, (1 + elementaryDamageIncrease) * (1 + bonusVsElites) - 1, dps));
         }
 
         private static void AddAttributeIntegerListItem(List<IListItem> listItems, int resource, ItemValueRange valueRange)
