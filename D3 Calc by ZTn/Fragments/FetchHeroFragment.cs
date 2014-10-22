@@ -149,7 +149,7 @@ namespace ZTnDroid.D3Calculator.Fragments
         {
             ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
-            var heroItems = D3Context.Instance.CurrentHero.items;
+            var heroItems = D3Context.Instance.CurrentHero.Items;
 
             var dataProvider = (CacheableDataProvider)D3Api.DataProvider;
             dataProvider.FetchMode = online;
@@ -208,9 +208,9 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             try
             {
-                icons.FetchItemIcons(D3Context.Instance.CurrentHero.items);
-                icons.FetchActiveSkillIcons(D3Context.Instance.CurrentHero.skills.active);
-                icons.FetchPassiveSkillIcons(D3Context.Instance.CurrentHero.skills.passive);
+                icons.FetchItemIcons(D3Context.Instance.CurrentHero.Items);
+                icons.FetchActiveSkillIcons(D3Context.Instance.CurrentHero.Skills.active);
+                icons.FetchPassiveSkillIcons(D3Context.Instance.CurrentHero.Skills.passive);
             }
             catch (Exception exception)
             {
@@ -238,7 +238,7 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             try
             {
-                hero = Hero.CreateFromHeroId(new BattleTag(D3Context.Instance.BattleTag), D3Context.Instance.CurrentHeroSummary.id);
+                hero = Hero.CreateFromHeroId(new BattleTag(D3Context.Instance.BattleTag), D3Context.Instance.CurrentHeroSummary.Id);
             }
             catch (Exception exception)
             {
