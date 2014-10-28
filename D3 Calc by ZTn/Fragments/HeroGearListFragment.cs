@@ -50,7 +50,7 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         private static IListItem GetDataForItem(String label, Item item, D3Picture icon)
         {
-            if (item == null)
+            if (item == null || item.Name == null)
             {
                 return null;
             }
