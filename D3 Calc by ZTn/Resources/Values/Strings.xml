@@ -87,6 +87,8 @@
   <string name="intelligence">intelligence</string>
   <string name="strength">strength</string>
   <string name="vitality">vitality</string>
+  <string name="healing">healing</string>
+  <string name="toughness">toughness</string>
 
   <!-- Kills -->
   <string name="elites">elites</string>

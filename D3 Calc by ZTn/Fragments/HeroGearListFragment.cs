@@ -78,36 +78,36 @@ namespace ZTnDroid.D3Calculator.Fragments
             var heroGearListView = view.FindViewById<ListView>(Resource.Id.heroGearListView);
             var gearListItems = new List<IListItem>
             {
-                GetDataForItem(Resource.String.itemHead, heroItems.head as Item, icons.Head),
-                GetDataForItem(Resource.String.itemTorso, heroItems.torso as Item, icons.Torso),
-                GetDataForItem(Resource.String.itemFeet, heroItems.feet as Item, icons.Feet),
-                GetDataForItem(Resource.String.itemHands, heroItems.hands as Item, icons.Hands),
-                GetDataForItem(Resource.String.itemShoulders, heroItems.shoulders as Item, icons.Shoulders),
-                GetDataForItem(Resource.String.itemLegs, heroItems.legs as Item, icons.Legs),
-                GetDataForItem(Resource.String.itemBracers, heroItems.bracers as Item, icons.Bracers),
-                GetDataForItem(Resource.String.itemMainHand, heroItems.mainHand as Item, icons.MainHand),
-                GetDataForItem(Resource.String.itemOffHand, heroItems.offHand as Item, icons.OffHand),
-                GetDataForItem(Resource.String.itemWaist, heroItems.waist as Item, icons.Waist),
-                GetDataForItem(Resource.String.itemRightFinger, heroItems.rightFinger as Item, icons.RightFinger),
-                GetDataForItem(Resource.String.itemLeftFinger, heroItems.leftFinger as Item, icons.LeftFinger),
-                GetDataForItem(Resource.String.itemNeck, heroItems.neck as Item, icons.Neck)
+                GetDataForItem(Resource.String.itemHead, heroItems.Head as Item, icons.Head),
+                GetDataForItem(Resource.String.itemTorso, heroItems.Torso as Item, icons.Torso),
+                GetDataForItem(Resource.String.itemFeet, heroItems.Feet as Item, icons.Feet),
+                GetDataForItem(Resource.String.itemHands, heroItems.Hands as Item, icons.Hands),
+                GetDataForItem(Resource.String.itemShoulders, heroItems.Shoulders as Item, icons.Shoulders),
+                GetDataForItem(Resource.String.itemLegs, heroItems.Legs as Item, icons.Legs),
+                GetDataForItem(Resource.String.itemBracers, heroItems.Bracers as Item, icons.Bracers),
+                GetDataForItem(Resource.String.itemMainHand, heroItems.MainHand as Item, icons.MainHand),
+                GetDataForItem(Resource.String.itemOffHand, heroItems.OffHand as Item, icons.OffHand),
+                GetDataForItem(Resource.String.itemWaist, heroItems.Waist as Item, icons.Waist),
+                GetDataForItem(Resource.String.itemRightFinger, heroItems.RightFinger as Item, icons.RightFinger),
+                GetDataForItem(Resource.String.itemLeftFinger, heroItems.LeftFinger as Item, icons.LeftFinger),
+                GetDataForItem(Resource.String.itemNeck, heroItems.Neck as Item, icons.Neck)
             };
 
             var items = new List<Item>
             {
-                (Item)heroItems.bracers,
-                (Item)heroItems.feet,
-                (Item)heroItems.hands,
-                (Item)heroItems.head,
-                (Item)heroItems.leftFinger,
-                (Item)heroItems.legs,
-                (Item)heroItems.neck,
-                (Item)heroItems.rightFinger,
-                (Item)heroItems.shoulders,
-                (Item)heroItems.torso,
-                (Item)heroItems.waist,
-                (Item)heroItems.mainHand,
-                (Item)heroItems.offHand
+                (Item)heroItems.Bracers,
+                (Item)heroItems.Feet,
+                (Item)heroItems.Hands,
+                (Item)heroItems.Head,
+                (Item)heroItems.LeftFinger,
+                (Item)heroItems.Legs,
+                (Item)heroItems.Neck,
+                (Item)heroItems.RightFinger,
+                (Item)heroItems.Shoulders,
+                (Item)heroItems.Torso,
+                (Item)heroItems.Waist,
+                (Item)heroItems.MainHand,
+                (Item)heroItems.OffHand
             };
             items = items
                 .Where(i => i != null)

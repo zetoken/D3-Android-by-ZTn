@@ -41,8 +41,8 @@ namespace ZTnDroid.D3Calculator.Adapters
         /// <inheritdoc/>
         public void UpdateView(View view, Boolean recycled)
         {
-            view.FindViewById<TextView>(Resource.Id.runeName).Text = Rune.name;
-            view.FindViewById<TextView>(Resource.Id.runeDescription).Text = Rune.description;
+            view.FindViewById<TextView>(Resource.Id.runeName).Text = Rune.Name;
+            view.FindViewById<TextView>(Resource.Id.runeDescription).Text = Rune.Description;
             //view.FindViewById<ImageView>(Resource.Id.imageSkill)
         }
 

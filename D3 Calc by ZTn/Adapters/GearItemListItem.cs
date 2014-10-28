@@ -187,6 +187,19 @@ namespace ZTnDroid.D3Calculator.Adapters
                     passive.Visibility = ViewStates.Gone;
                 }
             }
+            else
+            {
+                view.FindViewById<TextView>(Resource.Id.gearPrimaryTitle)
+                    .Visibility = ViewStates.Gone;
+                view.FindViewById<TextView>(Resource.Id.gearPrimaryDescription)
+                    .Visibility = ViewStates.Gone;
+                view.FindViewById<TextView>(Resource.Id.gearSecondaryTitle)
+                    .Visibility = ViewStates.Gone;
+                view.FindViewById<TextView>(Resource.Id.gearSecondaryDescription)
+                    .Visibility = ViewStates.Gone;
+                view.FindViewById<TextView>(Resource.Id.gearPassiveDescription)
+                    .Visibility = ViewStates.Gone;
+            }
 
             if (Item.Gems != null)
             {

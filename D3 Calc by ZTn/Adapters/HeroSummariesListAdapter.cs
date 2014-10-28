@@ -44,13 +44,13 @@ namespace ZTnDroid.D3Calculator.Adapters
 
             HeroSummary hero = heroes[position];
             view.FindViewById<TextView>(Resource.Id.heroName).Text = heroes[position].Name;
-            view.FindViewById<TextView>(Resource.Id.heroClass).Text = hero.heroClass.Translate().CapitalizeFirstLetter();
+            view.FindViewById<TextView>(Resource.Id.heroClass).Text = hero.HeroClass.Translate().CapitalizeFirstLetter();
             view.FindViewById<TextView>(Resource.Id.heroLevel).Text = String.Format("{0}", hero.Level);
             view.FindViewById<TextView>(Resource.Id.heroParagon).Text = String.Format("+{0}", hero.ParagonLevel);
             view.FindViewById<TextView>(Resource.Id.heroHardcore).Text = (hero.Hardcore ? "hardcore" : "");
             view.FindViewById<TextView>(Resource.Id.heroLastUpdated).Text = hero.LastUpdated.ToString("dd/MM/yyyy HH:mm");
 
-            int imageResource = hero.heroClass.GetPortraitResource(hero.Gender);
+            int imageResource = hero.HeroClass.GetPortraitResource(hero.Gender);
             view.FindViewById<ImageView>(Resource.Id.imageClass).SetImageResource(imageResource);
 
             return view;

@@ -196,6 +196,11 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             if (career == null)
             {
+                var messageView = Activity.FindViewById<TextView>(Resource.Id.messageLabel);
+                messageView.Text = Resources.GetString(Resource.String.ErrorOccuredWhileRetrievingData);
+                messageView.Visibility = ViewStates.Visible;
+                var heroesLabel = Activity.FindViewById<TextView>(Resource.Id.sectionLabel);
+                heroesLabel.Visibility = ViewStates.Gone;
                 return;
             }
 

@@ -53,33 +53,33 @@ namespace ZTnDroid.D3Calculator.Fragments
             // Retrieve worn items
             var items = new List<Item>
             {
-                (Item)heroItems.bracers,
-                (Item)heroItems.feet,
-                (Item)heroItems.hands,
-                (Item)heroItems.head,
-                (Item)heroItems.leftFinger,
-                (Item)heroItems.legs,
-                (Item)heroItems.neck,
-                (Item)heroItems.rightFinger,
-                (Item)heroItems.shoulders,
-                (Item)heroItems.torso,
-                (Item)heroItems.waist,
+                (Item)heroItems.Bracers,
+                (Item)heroItems.Feet,
+                (Item)heroItems.Hands,
+                (Item)heroItems.Head,
+                (Item)heroItems.LeftFinger,
+                (Item)heroItems.Legs,
+                (Item)heroItems.Neck,
+                (Item)heroItems.RightFinger,
+                (Item)heroItems.Shoulders,
+                (Item)heroItems.Torso,
+                (Item)heroItems.Waist,
                 D3Context.Instance.ActivatedSetBonus
             };
             items = items.Where(i => i != null)
                 .Select(i => i.DeepClone())
                 .ToList();
 
-            if (heroItems.mainHand == null)
+            if (heroItems.MainHand == null)
             {
-                heroItems.mainHand = new Item(new ItemAttributes());
+                heroItems.MainHand = new Item(new ItemAttributes());
             }
-            if (heroItems.offHand == null)
+            if (heroItems.OffHand == null)
             {
-                heroItems.offHand = new Item(new ItemAttributes());
+                heroItems.OffHand = new Item(new ItemAttributes());
             }
 
-            var d3Calculator = new ZTn.BNet.D3.Calculator.D3Calculator(hero, ((Item)heroItems.mainHand).DeepClone(), ((Item)heroItems.offHand).DeepClone(), items.ToArray());
+            var d3Calculator = new ZTn.BNet.D3.Calculator.D3Calculator(hero, ((Item)heroItems.MainHand).DeepClone(), ((Item)heroItems.OffHand).DeepClone(), items.ToArray());
 
             return d3Calculator;
         }
@@ -106,7 +106,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             var characteristicsAttr = new List<IListItem>
             {
                 new SectionHeaderListItem(Resource.String.Progress),
-                new AttributeListItem(Resource.String.heroClass, hero.heroClass),
+                new AttributeListItem(Resource.String.heroClass, hero.HeroClass),
                 new AttributeListItem(Resource.String.level, hero.Level)
             };
 

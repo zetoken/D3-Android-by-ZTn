@@ -49,13 +49,13 @@ namespace ZTnDroid.D3Calculator.Fragments
                 new SectionHeaderListItem(headerText)
             };
 
-            if (active.skill != null)
+            if (active.Skill != null)
             {
-                list.Add(new SkillListItem(active.skill, icon));
+                list.Add(new SkillListItem(active.Skill, icon));
             }
-            if (active.rune != null)
+            if (active.Rune != null)
             {
-                list.Add(new RuneListItem(active.rune));
+                list.Add(new RuneListItem(active.Rune));
             }
 
             return list;
@@ -68,9 +68,9 @@ namespace ZTnDroid.D3Calculator.Fragments
                 new SectionHeaderListItem(headerText)
             };
 
-            if (passive.skill != null)
+            if (passive.Skill != null)
             {
-                list.Add(new SkillListItem(passive.skill, icon));
+                list.Add(new SkillListItem(passive.Skill, icon));
             }
 
             return list;
@@ -91,22 +91,22 @@ namespace ZTnDroid.D3Calculator.Fragments
             var heroSkillsListView = view.FindViewById<ListView>(Resource.Id.heroSkillsListView);
             var skillsAttr = new List<IListItem>();
 
-            skillsAttr.AddRange(GetPartialListViewForActiveSkill(Resources.GetString(Resource.String.skill) + " L", hero.Skills.active[0], icons.ActiveSkill1));
-            skillsAttr.AddRange(GetPartialListViewForActiveSkill(Resources.GetString(Resource.String.skill) + " R", hero.Skills.active[1], icons.ActiveSkill2));
-            skillsAttr.AddRange(GetPartialListViewForActiveSkill(Resources.GetString(Resource.String.skill) + " 1", hero.Skills.active[2], icons.ActiveSkill3));
-            skillsAttr.AddRange(GetPartialListViewForActiveSkill(Resources.GetString(Resource.String.skill) + " 2", hero.Skills.active[3], icons.ActiveSkill4));
-            skillsAttr.AddRange(GetPartialListViewForActiveSkill(Resources.GetString(Resource.String.skill) + " 3", hero.Skills.active[4], icons.ActiveSkill5));
-            skillsAttr.AddRange(GetPartialListViewForActiveSkill(Resources.GetString(Resource.String.skill) + " 4", hero.Skills.active[5], icons.ActiveSkill6));
+            skillsAttr.AddRange(GetPartialListViewForActiveSkill(Resources.GetString(Resource.String.skill) + " L", hero.Skills.Active[0], icons.ActiveSkill1));
+            skillsAttr.AddRange(GetPartialListViewForActiveSkill(Resources.GetString(Resource.String.skill) + " R", hero.Skills.Active[1], icons.ActiveSkill2));
+            skillsAttr.AddRange(GetPartialListViewForActiveSkill(Resources.GetString(Resource.String.skill) + " 1", hero.Skills.Active[2], icons.ActiveSkill3));
+            skillsAttr.AddRange(GetPartialListViewForActiveSkill(Resources.GetString(Resource.String.skill) + " 2", hero.Skills.Active[3], icons.ActiveSkill4));
+            skillsAttr.AddRange(GetPartialListViewForActiveSkill(Resources.GetString(Resource.String.skill) + " 3", hero.Skills.Active[4], icons.ActiveSkill5));
+            skillsAttr.AddRange(GetPartialListViewForActiveSkill(Resources.GetString(Resource.String.skill) + " 4", hero.Skills.Active[5], icons.ActiveSkill6));
 
-            var passiveCount = hero.Skills.passive.Count();
+            var passiveCount = hero.Skills.Passive.Count();
             if (passiveCount >= 1)
-                skillsAttr.AddRange(GetPartialListViewForPassiveSkill(Resources.GetString(Resource.String.passiveSkill) + " 1", hero.Skills.passive[0], icons.PassiveSkill1));
+                skillsAttr.AddRange(GetPartialListViewForPassiveSkill(Resources.GetString(Resource.String.passiveSkill) + " 1", hero.Skills.Passive[0], icons.PassiveSkill1));
             if (passiveCount >= 2)
-                skillsAttr.AddRange(GetPartialListViewForPassiveSkill(Resources.GetString(Resource.String.passiveSkill) + " 2", hero.Skills.passive[1], icons.PassiveSkill2));
+                skillsAttr.AddRange(GetPartialListViewForPassiveSkill(Resources.GetString(Resource.String.passiveSkill) + " 2", hero.Skills.Passive[1], icons.PassiveSkill2));
             if (passiveCount >= 3)
-                skillsAttr.AddRange(GetPartialListViewForPassiveSkill(Resources.GetString(Resource.String.passiveSkill) + " 3", hero.Skills.passive[2], icons.PassiveSkill3));
+                skillsAttr.AddRange(GetPartialListViewForPassiveSkill(Resources.GetString(Resource.String.passiveSkill) + " 3", hero.Skills.Passive[2], icons.PassiveSkill3));
             if (passiveCount >= 4)
-                skillsAttr.AddRange(GetPartialListViewForPassiveSkill(Resources.GetString(Resource.String.passiveSkill) + " 4", hero.Skills.passive[3], icons.PassiveSkill4));
+                skillsAttr.AddRange(GetPartialListViewForPassiveSkill(Resources.GetString(Resource.String.passiveSkill) + " 4", hero.Skills.Passive[3], icons.PassiveSkill4));
 
             heroSkillsListView.Adapter = new ListAdapter(Activity, skillsAttr.ToArray());
         }

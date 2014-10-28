@@ -1,3 +1,4 @@
+using System.Reflection;
 using ZTn.BNet.D3.Heroes;
 using ZTn.BNet.D3.Items;
 
@@ -21,20 +22,22 @@ namespace ZTnDroid.D3Calculator.Helpers
         /// <param name="heroItems"></param>
         public static void UpdateToFullItems(this HeroItems heroItems)
         {
-            UpdateToFullItem(ref heroItems.head);
-            UpdateToFullItem(ref heroItems.torso);
-            UpdateToFullItem(ref heroItems.feet);
-            UpdateToFullItem(ref heroItems.hands);
-            UpdateToFullItem(ref heroItems.shoulders);
-            UpdateToFullItem(ref heroItems.legs);
-            UpdateToFullItem(ref heroItems.bracers);
-            UpdateToFullItem(ref heroItems.waist);
-            UpdateToFullItem(ref heroItems.rightFinger);
-            UpdateToFullItem(ref heroItems.leftFinger);
-            UpdateToFullItem(ref heroItems.neck);
+            UpdateToFullItem(ref heroItems.Head);
+            UpdateToFullItem(ref heroItems.Torso);
+            UpdateToFullItem(ref heroItems.Feet);
+            UpdateToFullItem(ref heroItems.Hands);
+            UpdateToFullItem(ref heroItems.Shoulders);
+            UpdateToFullItem(ref heroItems.Legs);
+            UpdateToFullItem(ref heroItems.Bracers);
+            UpdateToFullItem(ref heroItems.Waist);
+            UpdateToFullItem(ref heroItems.RightFinger);
+            UpdateToFullItem(ref heroItems.LeftFinger);
+            UpdateToFullItem(ref heroItems.Neck);
+            UpdateToFullItem(ref heroItems.MainHand);
+            UpdateToFullItem(ref heroItems.OffHand);
 
-            heroItems.mainHand = heroItems.mainHand != null ? heroItems.mainHand.GetFullItem() : ZTn.BNet.D3.Calculator.D3Calculator.NakedHandWeapon;
-            heroItems.offHand = heroItems.offHand != null ? heroItems.offHand.GetFullItem() : ZTn.BNet.D3.Calculator.D3Calculator.BlankWeapon;
+            heroItems.MainHand = heroItems.MainHand ?? ZTn.BNet.D3.Calculator.D3Calculator.NakedHandWeapon;
+            heroItems.OffHand = heroItems.OffHand ?? ZTn.BNet.D3.Calculator.D3Calculator.BlankWeapon;
         }
     }
 }

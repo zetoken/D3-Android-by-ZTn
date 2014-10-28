@@ -50,8 +50,8 @@ namespace ZTnDroid.D3Calculator.Adapters
         /// <inheritdoc/>
         public void UpdateView(View view, Boolean recycled)
         {
-            view.FindViewById<TextView>(Resource.Id.skillName).Text = Skill.name;
-            view.FindViewById<TextView>(Resource.Id.skillDescription).Text = Skill.description;
+            view.FindViewById<TextView>(Resource.Id.skillName).Text = Skill.Name;
+            view.FindViewById<TextView>(Resource.Id.skillDescription).Text = Skill.Description;
             if (Icon != null)
             {
                 Bitmap bitmap = BitmapFactory.DecodeByteArray(Icon.Bytes, 0, Icon.Bytes.Length);

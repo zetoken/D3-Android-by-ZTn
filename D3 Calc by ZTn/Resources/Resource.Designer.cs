@@ -174,29 +174,29 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f070033
 			public const int AccountsListView = 2131165235;
 			
-			// aapt resource value: 0x7f070046
-			public const int AddNewAccount = 2131165254;
+			// aapt resource value: 0x7f070047
+			public const int AddNewAccount = 2131165255;
 			
-			// aapt resource value: 0x7f070044
-			public const int CancelEditedItem = 2131165252;
+			// aapt resource value: 0x7f070045
+			public const int CancelEditedItem = 2131165253;
 			
-			// aapt resource value: 0x7f070048
-			public const int DeleteContent = 2131165256;
+			// aapt resource value: 0x7f070049
+			public const int DeleteContent = 2131165257;
 			
-			// aapt resource value: 0x7f07003f
-			public const int HeroesListView = 2131165247;
+			// aapt resource value: 0x7f070040
+			public const int HeroesListView = 2131165248;
 			
 			// aapt resource value: 0x7f070039
 			public const int Pager = 2131165241;
 			
-			// aapt resource value: 0x7f070047
-			public const int RefreshContent = 2131165255;
+			// aapt resource value: 0x7f070048
+			public const int RefreshContent = 2131165256;
 			
-			// aapt resource value: 0x7f070045
-			public const int SubmitEditedItem = 2131165253;
+			// aapt resource value: 0x7f070046
+			public const int SubmitEditedItem = 2131165254;
 			
-			// aapt resource value: 0x7f070043
-			public const int SubmitNewAccount = 2131165251;
+			// aapt resource value: 0x7f070044
+			public const int SubmitNewAccount = 2131165252;
 			
 			// aapt resource value: 0x7f07003a
 			public const int Title = 2131165242;
@@ -285,8 +285,8 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f070031
 			public const int heroClass = 2131165233;
 			
-			// aapt resource value: 0x7f070041
-			public const int heroGearListView = 2131165249;
+			// aapt resource value: 0x7f070042
+			public const int heroGearListView = 2131165250;
 			
 			// aapt resource value: 0x7f070032
 			public const int heroHardcore = 2131165234;
@@ -303,11 +303,11 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f07002f
 			public const int heroParagon = 2131165231;
 			
-			// aapt resource value: 0x7f070042
-			public const int heroSkillsListView = 2131165250;
+			// aapt resource value: 0x7f070043
+			public const int heroSkillsListView = 2131165251;
 			
-			// aapt resource value: 0x7f070040
-			public const int heroStatsListView = 2131165248;
+			// aapt resource value: 0x7f070041
+			public const int heroStatsListView = 2131165249;
 			
 			// aapt resource value: 0x7f070003
 			public const int hostSpinner = 2131165187;
@@ -321,8 +321,8 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f07003b
 			public const int imageSkill = 2131165243;
 			
-			// aapt resource value: 0x7f07003e
-			public const int killsLifetimeListView = 2131165246;
+			// aapt resource value: 0x7f07003f
+			public const int killsLifetimeListView = 2131165247;
 			
 			// aapt resource value: 0x7f07000a
 			public const int label = 2131165194;
@@ -347,6 +347,9 @@ namespace ZTnDroid.D3Calculator
 			
 			// aapt resource value: 0x7f070012
 			public const int linearLayout = 2131165202;
+			
+			// aapt resource value: 0x7f07003e
+			public const int messageLabel = 2131165246;
 			
 			// aapt resource value: 0x7f070035
 			public const int navigation_drawer = 2131165237;
@@ -531,8 +534,8 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f040024
 			public const int BattleTags = 2130968612;
 			
-			// aapt resource value: 0x7f040070
-			public const int BonusDamage = 2130968688;
+			// aapt resource value: 0x7f040072
+			public const int BonusDamage = 2130968690;
 			
 			// aapt resource value: 0x7f04000a
 			public const int Cancel = 2130968586;
@@ -552,11 +555,11 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f04000d
 			public const int DeleteContent = 2130968589;
 			
-			// aapt resource value: 0x7f040051
-			public const int EHP_DPS = 2130968657;
+			// aapt resource value: 0x7f040053
+			public const int EHP_DPS = 2130968659;
 			
-			// aapt resource value: 0x7f0400ac
-			public const int EditedItem = 2130968748;
+			// aapt resource value: 0x7f0400ae
+			public const int EditedItem = 2130968750;
 			
 			// aapt resource value: 0x7f04001d
 			public const int ErrorOccuredWhileRetrievingData = 2130968605;
@@ -579,11 +582,11 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f040025
 			public const int Host = 2130968613;
 			
-			// aapt resource value: 0x7f0400ae
-			public const int ItemEditingCanceled = 2130968750;
+			// aapt resource value: 0x7f0400b0
+			public const int ItemEditingCanceled = 2130968752;
 			
-			// aapt resource value: 0x7f0400ad
-			public const int ItemEditingFinished = 2130968749;
+			// aapt resource value: 0x7f0400af
+			public const int ItemEditingFinished = 2130968751;
 			
 			// aapt resource value: 0x7f040013
 			public const int KillsLifetime = 2130968595;
@@ -639,35 +642,35 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f04001c
 			public const int WaitWhileRetrievingData = 2130968604;
 			
-			// aapt resource value: 0x7f04006f
-			public const int WeaponOnlyDamage = 2130968687;
+			// aapt resource value: 0x7f040071
+			public const int WeaponOnlyDamage = 2130968689;
+			
+			// aapt resource value: 0x7f040057
+			public const int allResists = 2130968663;
+			
+			// aapt resource value: 0x7f040075
+			public const int arcaneMax = 2130968693;
+			
+			// aapt resource value: 0x7f040083
+			public const int arcaneMaxWeapon = 2130968707;
+			
+			// aapt resource value: 0x7f040074
+			public const int arcaneMin = 2130968692;
+			
+			// aapt resource value: 0x7f040082
+			public const int arcaneMinWeapon = 2130968706;
+			
+			// aapt resource value: 0x7f040058
+			public const int arcaneResist = 2130968664;
 			
 			// aapt resource value: 0x7f040055
-			public const int allResists = 2130968661;
+			public const int armor = 2130968661;
+			
+			// aapt resource value: 0x7f04004b
+			public const int attackSpeed = 2130968651;
 			
 			// aapt resource value: 0x7f040073
-			public const int arcaneMax = 2130968691;
-			
-			// aapt resource value: 0x7f040081
-			public const int arcaneMaxWeapon = 2130968705;
-			
-			// aapt resource value: 0x7f040072
-			public const int arcaneMin = 2130968690;
-			
-			// aapt resource value: 0x7f040080
-			public const int arcaneMinWeapon = 2130968704;
-			
-			// aapt resource value: 0x7f040056
-			public const int arcaneResist = 2130968662;
-			
-			// aapt resource value: 0x7f040053
-			public const int armor = 2130968659;
-			
-			// aapt resource value: 0x7f040049
-			public const int attackSpeed = 2130968649;
-			
-			// aapt resource value: 0x7f040071
-			public const int attacksPerSecond = 2130968689;
+			public const int attacksPerSecond = 2130968691;
 			
 			// aapt resource value: 0x7f04003d
 			public const int attributes = 2130968637;
@@ -675,113 +678,113 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f040026
 			public const int barbarian = 2130968614;
 			
-			// aapt resource value: 0x7f04005f
-			public const int bonuses = 2130968671;
+			// aapt resource value: 0x7f040061
+			public const int bonuses = 2130968673;
 			
-			// aapt resource value: 0x7f040075
-			public const int coldMax = 2130968693;
+			// aapt resource value: 0x7f040077
+			public const int coldMax = 2130968695;
 			
-			// aapt resource value: 0x7f040083
-			public const int coldMaxWeapon = 2130968707;
+			// aapt resource value: 0x7f040085
+			public const int coldMaxWeapon = 2130968709;
 			
-			// aapt resource value: 0x7f040074
-			public const int coldMin = 2130968692;
+			// aapt resource value: 0x7f040076
+			public const int coldMin = 2130968694;
 			
-			// aapt resource value: 0x7f040082
-			public const int coldMinWeapon = 2130968706;
+			// aapt resource value: 0x7f040084
+			public const int coldMinWeapon = 2130968708;
 			
-			// aapt resource value: 0x7f040057
-			public const int coldResist = 2130968663;
+			// aapt resource value: 0x7f040059
+			public const int coldResist = 2130968665;
 			
 			// aapt resource value: 0x7f04001f
 			public const int computed = 2130968607;
 			
-			// aapt resource value: 0x7f040047
-			public const int criticChance = 2130968647;
+			// aapt resource value: 0x7f040049
+			public const int criticChance = 2130968649;
 			
-			// aapt resource value: 0x7f040048
-			public const int criticDamage = 2130968648;
+			// aapt resource value: 0x7f04004a
+			public const int criticDamage = 2130968650;
 			
 			// aapt resource value: 0x7f040027
 			public const int crusader = 2130968615;
 			
-			// aapt resource value: 0x7f040046
-			public const int damage = 2130968646;
-			
-			// aapt resource value: 0x7f0400a4
-			public const int damageDealtPercentVsElites_Arcane = 2130968740;
-			
-			// aapt resource value: 0x7f0400a5
-			public const int damageDealtPercentVsElites_Cold = 2130968741;
+			// aapt resource value: 0x7f040048
+			public const int damage = 2130968648;
 			
 			// aapt resource value: 0x7f0400a6
-			public const int damageDealtPercentVsElites_Fire = 2130968742;
+			public const int damageDealtPercentVsElites_Arcane = 2130968742;
 			
 			// aapt resource value: 0x7f0400a7
-			public const int damageDealtPercentVsElites_Holy = 2130968743;
+			public const int damageDealtPercentVsElites_Cold = 2130968743;
 			
 			// aapt resource value: 0x7f0400a8
-			public const int damageDealtPercentVsElites_Lightning = 2130968744;
+			public const int damageDealtPercentVsElites_Fire = 2130968744;
 			
 			// aapt resource value: 0x7f0400a9
-			public const int damageDealtPercentVsElites_Physical = 2130968745;
+			public const int damageDealtPercentVsElites_Holy = 2130968745;
 			
 			// aapt resource value: 0x7f0400aa
-			public const int damageDealtPercentVsElites_Poison = 2130968746;
+			public const int damageDealtPercentVsElites_Lightning = 2130968746;
 			
-			// aapt resource value: 0x7f04009d
-			public const int damageDealtPercent_Arcane = 2130968733;
+			// aapt resource value: 0x7f0400ab
+			public const int damageDealtPercentVsElites_Physical = 2130968747;
 			
-			// aapt resource value: 0x7f04009e
-			public const int damageDealtPercent_Cold = 2130968734;
+			// aapt resource value: 0x7f0400ac
+			public const int damageDealtPercentVsElites_Poison = 2130968748;
 			
 			// aapt resource value: 0x7f04009f
-			public const int damageDealtPercent_Fire = 2130968735;
+			public const int damageDealtPercent_Arcane = 2130968735;
 			
 			// aapt resource value: 0x7f0400a0
-			public const int damageDealtPercent_Holy = 2130968736;
+			public const int damageDealtPercent_Cold = 2130968736;
 			
 			// aapt resource value: 0x7f0400a1
-			public const int damageDealtPercent_Lightning = 2130968737;
+			public const int damageDealtPercent_Fire = 2130968737;
 			
 			// aapt resource value: 0x7f0400a2
-			public const int damageDealtPercent_Physical = 2130968738;
+			public const int damageDealtPercent_Holy = 2130968738;
 			
 			// aapt resource value: 0x7f0400a3
-			public const int damageDealtPercent_Poison = 2130968739;
+			public const int damageDealtPercent_Lightning = 2130968739;
+			
+			// aapt resource value: 0x7f0400a4
+			public const int damageDealtPercent_Physical = 2130968740;
+			
+			// aapt resource value: 0x7f0400a5
+			public const int damageDealtPercent_Poison = 2130968741;
 			
 			// aapt resource value: 0x7f04002f
 			public const int damagePerSecond = 2130968623;
 			
-			// aapt resource value: 0x7f04009c
-			public const int damagePercentBonusVsElites = 2130968732;
-			
-			// aapt resource value: 0x7f04008e
-			public const int damagePercent_Arcane = 2130968718;
-			
-			// aapt resource value: 0x7f04008f
-			public const int damagePercent_Cold = 2130968719;
+			// aapt resource value: 0x7f04009e
+			public const int damagePercentBonusVsElites = 2130968734;
 			
 			// aapt resource value: 0x7f040090
-			public const int damagePercent_Fire = 2130968720;
+			public const int damagePercent_Arcane = 2130968720;
 			
 			// aapt resource value: 0x7f040091
-			public const int damagePercent_Holy = 2130968721;
+			public const int damagePercent_Cold = 2130968721;
 			
 			// aapt resource value: 0x7f040092
-			public const int damagePercent_Lightning = 2130968722;
+			public const int damagePercent_Fire = 2130968722;
 			
 			// aapt resource value: 0x7f040093
-			public const int damagePercent_Physical = 2130968723;
+			public const int damagePercent_Holy = 2130968723;
 			
 			// aapt resource value: 0x7f040094
-			public const int damagePercent_Poison = 2130968724;
+			public const int damagePercent_Lightning = 2130968724;
 			
-			// aapt resource value: 0x7f040045
-			public const int damages = 2130968645;
+			// aapt resource value: 0x7f040095
+			public const int damagePercent_Physical = 2130968725;
 			
-			// aapt resource value: 0x7f040052
-			public const int defense = 2130968658;
+			// aapt resource value: 0x7f040096
+			public const int damagePercent_Poison = 2130968726;
+			
+			// aapt resource value: 0x7f040047
+			public const int damages = 2130968647;
+			
+			// aapt resource value: 0x7f040054
+			public const int defense = 2130968660;
 			
 			// aapt resource value: 0x7f040028
 			public const int demonHunter = 2130968616;
@@ -792,92 +795,95 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f04003e
 			public const int dexterity = 2130968638;
 			
-			// aapt resource value: 0x7f040054
-			public const int dodge = 2130968660;
+			// aapt resource value: 0x7f040056
+			public const int dodge = 2130968662;
 			
-			// aapt resource value: 0x7f040050
-			public const int effectiveHitpoints = 2130968656;
+			// aapt resource value: 0x7f040052
+			public const int effectiveHitpoints = 2130968658;
 			
-			// aapt resource value: 0x7f040042
-			public const int elites = 2130968642;
+			// aapt resource value: 0x7f040044
+			public const int elites = 2130968644;
 			
-			// aapt resource value: 0x7f040077
-			public const int fireMax = 2130968695;
+			// aapt resource value: 0x7f040079
+			public const int fireMax = 2130968697;
 			
-			// aapt resource value: 0x7f040085
-			public const int fireMaxWeapon = 2130968709;
+			// aapt resource value: 0x7f040087
+			public const int fireMaxWeapon = 2130968711;
 			
-			// aapt resource value: 0x7f040076
-			public const int fireMin = 2130968694;
+			// aapt resource value: 0x7f040078
+			public const int fireMin = 2130968696;
 			
-			// aapt resource value: 0x7f040084
-			public const int fireMinWeapon = 2130968708;
+			// aapt resource value: 0x7f040086
+			public const int fireMinWeapon = 2130968710;
 			
-			// aapt resource value: 0x7f040058
-			public const int fireResist = 2130968664;
+			// aapt resource value: 0x7f04005a
+			public const int fireResist = 2130968666;
 			
 			// aapt resource value: 0x7f040030
 			public const int gear = 2130968624;
 			
-			// aapt resource value: 0x7f040060
-			public const int goldFind = 2130968672;
+			// aapt resource value: 0x7f040062
+			public const int goldFind = 2130968674;
+			
+			// aapt resource value: 0x7f040042
+			public const int healing = 2130968642;
 			
 			// aapt resource value: 0x7f040039
 			public const int heroClass = 2130968633;
 			
-			// aapt resource value: 0x7f040079
-			public const int holyMax = 2130968697;
+			// aapt resource value: 0x7f04007b
+			public const int holyMax = 2130968699;
 			
-			// aapt resource value: 0x7f040087
-			public const int holyMaxWeapon = 2130968711;
+			// aapt resource value: 0x7f040089
+			public const int holyMaxWeapon = 2130968713;
 			
-			// aapt resource value: 0x7f040078
-			public const int holyMin = 2130968696;
+			// aapt resource value: 0x7f04007a
+			public const int holyMin = 2130968698;
 			
-			// aapt resource value: 0x7f040086
-			public const int holyMinWeapon = 2130968710;
+			// aapt resource value: 0x7f040088
+			public const int holyMinWeapon = 2130968712;
 			
 			// aapt resource value: 0x7f04003f
 			public const int intelligence = 2130968639;
 			
-			// aapt resource value: 0x7f040068
-			public const int itemBracers = 2130968680;
-			
-			// aapt resource value: 0x7f040064
-			public const int itemFeet = 2130968676;
-			
-			// aapt resource value: 0x7f040065
-			public const int itemHands = 2130968677;
-			
-			// aapt resource value: 0x7f040062
-			public const int itemHead = 2130968674;
-			
-			// aapt resource value: 0x7f04006d
-			public const int itemLeftFinger = 2130968685;
-			
-			// aapt resource value: 0x7f040067
-			public const int itemLegs = 2130968679;
-			
-			// aapt resource value: 0x7f040069
-			public const int itemMainHand = 2130968681;
-			
-			// aapt resource value: 0x7f04006e
-			public const int itemNeck = 2130968686;
-			
 			// aapt resource value: 0x7f04006a
-			public const int itemOffHand = 2130968682;
-			
-			// aapt resource value: 0x7f04006c
-			public const int itemRightFinger = 2130968684;
+			public const int itemBracers = 2130968682;
 			
 			// aapt resource value: 0x7f040066
-			public const int itemShoulders = 2130968678;
+			public const int itemFeet = 2130968678;
 			
-			// aapt resource value: 0x7f040063
-			public const int itemTorso = 2130968675;
+			// aapt resource value: 0x7f040067
+			public const int itemHands = 2130968679;
+			
+			// aapt resource value: 0x7f040064
+			public const int itemHead = 2130968676;
+			
+			// aapt resource value: 0x7f04006f
+			public const int itemLeftFinger = 2130968687;
+			
+			// aapt resource value: 0x7f040069
+			public const int itemLegs = 2130968681;
 			
 			// aapt resource value: 0x7f04006b
-			public const int itemWaist = 2130968683;
+			public const int itemMainHand = 2130968683;
+			
+			// aapt resource value: 0x7f040070
+			public const int itemNeck = 2130968688;
+			
+			// aapt resource value: 0x7f04006c
+			public const int itemOffHand = 2130968684;
+			
+			// aapt resource value: 0x7f04006e
+			public const int itemRightFinger = 2130968686;
+			
+			// aapt resource value: 0x7f040068
+			public const int itemShoulders = 2130968680;
+			
+			// aapt resource value: 0x7f040065
+			public const int itemTorso = 2130968677;
+			
+			// aapt resource value: 0x7f04006d
+			public const int itemWaist = 2130968685;
 			
 			// aapt resource value: 0x7f040038
 			public const int lastUpdated = 2130968632;
@@ -885,50 +891,50 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f04003a
 			public const int level = 2130968634;
 			
-			// aapt resource value: 0x7f04004a
-			public const int life = 2130968650;
+			// aapt resource value: 0x7f04004c
+			public const int life = 2130968652;
 			
-			// aapt resource value: 0x7f04004e
-			public const int lifeBonusPerGlobe = 2130968654;
-			
-			// aapt resource value: 0x7f04004b
-			public const int lifeOnHit = 2130968651;
+			// aapt resource value: 0x7f040050
+			public const int lifeBonusPerGlobe = 2130968656;
 			
 			// aapt resource value: 0x7f04004d
-			public const int lifePerKill = 2130968653;
+			public const int lifeOnHit = 2130968653;
 			
 			// aapt resource value: 0x7f04004f
-			public const int lifeRegenPerSecond = 2130968655;
+			public const int lifePerKill = 2130968655;
 			
-			// aapt resource value: 0x7f04004c
-			public const int lifeSteal = 2130968652;
+			// aapt resource value: 0x7f040051
+			public const int lifeRegenPerSecond = 2130968657;
 			
-			// aapt resource value: 0x7f04007b
-			public const int lightningMax = 2130968699;
+			// aapt resource value: 0x7f04004e
+			public const int lifeSteal = 2130968654;
 			
-			// aapt resource value: 0x7f040089
-			public const int lightningMaxWeapon = 2130968713;
+			// aapt resource value: 0x7f04007d
+			public const int lightningMax = 2130968701;
 			
-			// aapt resource value: 0x7f04007a
-			public const int lightningMin = 2130968698;
+			// aapt resource value: 0x7f04008b
+			public const int lightningMaxWeapon = 2130968715;
 			
-			// aapt resource value: 0x7f040088
-			public const int lightningMinWeapon = 2130968712;
+			// aapt resource value: 0x7f04007c
+			public const int lightningMin = 2130968700;
 			
-			// aapt resource value: 0x7f040059
-			public const int lightningResist = 2130968665;
+			// aapt resource value: 0x7f04008a
+			public const int lightningMinWeapon = 2130968714;
 			
-			// aapt resource value: 0x7f040061
-			public const int magicFind = 2130968673;
+			// aapt resource value: 0x7f04005b
+			public const int lightningResist = 2130968667;
+			
+			// aapt resource value: 0x7f040063
+			public const int magicFind = 2130968675;
 			
 			// aapt resource value: 0x7f040029
 			public const int monk = 2130968617;
 			
-			// aapt resource value: 0x7f040043
-			public const int monsters = 2130968643;
+			// aapt resource value: 0x7f040045
+			public const int monsters = 2130968645;
 			
-			// aapt resource value: 0x7f040044
-			public const int monstersHardcore = 2130968644;
+			// aapt resource value: 0x7f040046
+			public const int monstersHardcore = 2130968646;
 			
 			// aapt resource value: 0x7f04003b
 			public const int paragon = 2130968635;
@@ -939,53 +945,53 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f040033
 			public const int passiveSkill = 2130968627;
 			
-			// aapt resource value: 0x7f04007d
-			public const int physicalMax = 2130968701;
-			
-			// aapt resource value: 0x7f04008b
-			public const int physicalMaxWeapon = 2130968715;
-			
-			// aapt resource value: 0x7f04007c
-			public const int physicalMin = 2130968700;
-			
-			// aapt resource value: 0x7f04008a
-			public const int physicalMinWeapon = 2130968714;
-			
-			// aapt resource value: 0x7f04005b
-			public const int physicalResist = 2130968667;
-			
 			// aapt resource value: 0x7f04007f
-			public const int poisonMax = 2130968703;
+			public const int physicalMax = 2130968703;
 			
 			// aapt resource value: 0x7f04008d
-			public const int poisonMaxWeapon = 2130968717;
+			public const int physicalMaxWeapon = 2130968717;
 			
 			// aapt resource value: 0x7f04007e
-			public const int poisonMin = 2130968702;
+			public const int physicalMin = 2130968702;
 			
 			// aapt resource value: 0x7f04008c
-			public const int poisonMinWeapon = 2130968716;
+			public const int physicalMinWeapon = 2130968716;
 			
-			// aapt resource value: 0x7f04005a
-			public const int poisonResist = 2130968666;
+			// aapt resource value: 0x7f04005d
+			public const int physicalResist = 2130968669;
 			
-			// aapt resource value: 0x7f0400ab
-			public const int powerCooldownReductionPercentAll = 2130968747;
+			// aapt resource value: 0x7f040081
+			public const int poisonMax = 2130968705;
+			
+			// aapt resource value: 0x7f04008f
+			public const int poisonMaxWeapon = 2130968719;
+			
+			// aapt resource value: 0x7f040080
+			public const int poisonMin = 2130968704;
+			
+			// aapt resource value: 0x7f04008e
+			public const int poisonMinWeapon = 2130968718;
+			
+			// aapt resource value: 0x7f04005c
+			public const int poisonResist = 2130968668;
+			
+			// aapt resource value: 0x7f0400ad
+			public const int powerCooldownReductionPercentAll = 2130968749;
 			
 			// aapt resource value: 0x7f040036
 			public const int primary = 2130968630;
 			
-			// aapt resource value: 0x7f04005d
-			public const int primaryResource = 2130968669;
+			// aapt resource value: 0x7f04005f
+			public const int primaryResource = 2130968671;
 			
-			// aapt resource value: 0x7f04005c
-			public const int resources = 2130968668;
+			// aapt resource value: 0x7f04005e
+			public const int resources = 2130968670;
 			
 			// aapt resource value: 0x7f040037
 			public const int secondary = 2130968631;
 			
-			// aapt resource value: 0x7f04005e
-			public const int secondaryResource = 2130968670;
+			// aapt resource value: 0x7f040060
+			public const int secondaryResource = 2130968672;
 			
 			// aapt resource value: 0x7f040031
 			public const int setBonuses = 2130968625;
@@ -999,29 +1005,32 @@ namespace ZTnDroid.D3Calculator
 			// aapt resource value: 0x7f040040
 			public const int strength = 2130968640;
 			
+			// aapt resource value: 0x7f040043
+			public const int toughness = 2130968643;
+			
 			// aapt resource value: 0x7f040041
 			public const int vitality = 2130968641;
 			
-			// aapt resource value: 0x7f040095
-			public const int weaponPercent_Arcane = 2130968725;
-			
-			// aapt resource value: 0x7f040096
-			public const int weaponPercent_Cold = 2130968726;
-			
 			// aapt resource value: 0x7f040097
-			public const int weaponPercent_Fire = 2130968727;
+			public const int weaponPercent_Arcane = 2130968727;
 			
 			// aapt resource value: 0x7f040098
-			public const int weaponPercent_Holy = 2130968728;
+			public const int weaponPercent_Cold = 2130968728;
 			
 			// aapt resource value: 0x7f040099
-			public const int weaponPercent_Lightning = 2130968729;
+			public const int weaponPercent_Fire = 2130968729;
 			
 			// aapt resource value: 0x7f04009a
-			public const int weaponPercent_Physical = 2130968730;
+			public const int weaponPercent_Holy = 2130968730;
 			
 			// aapt resource value: 0x7f04009b
-			public const int weaponPercent_Poison = 2130968731;
+			public const int weaponPercent_Lightning = 2130968731;
+			
+			// aapt resource value: 0x7f04009c
+			public const int weaponPercent_Physical = 2130968732;
+			
+			// aapt resource value: 0x7f04009d
+			public const int weaponPercent_Poison = 2130968733;
 			
 			// aapt resource value: 0x7f04002a
 			public const int witchDoctor = 2130968618;
