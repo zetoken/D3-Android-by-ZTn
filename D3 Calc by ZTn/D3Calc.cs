@@ -7,6 +7,7 @@ using ZTn.BNet.D3;
 using ZTn.BNet.D3.DataProviders;
 using ZTn.Bnet.Portable.Android;
 using ZTnDroid.D3Calculator.Storage;
+using ZTnDroid.D3Calculator.Upgrades;
 using CacheableDataProvider = ZTnDroid.D3Calculator.DataProviders.CacheableDataProvider;
 
 namespace ZTnDroid.D3Calculator
@@ -18,6 +19,8 @@ namespace ZTnDroid.D3Calculator
 #endif
     public class D3Calc : Application
     {
+        private const string ApiKey = "zrxxcy3qzp8jcbgrce2es4yq52ew2k7r";
+
         #region >> Fields
 
         public static ISharedPreferences Preferences;
@@ -34,6 +37,7 @@ namespace ZTnDroid.D3Calculator
 
         public static readonly String SettingsFilename = "settings";
         public static readonly String SettingsOnlinemode = "onlineMode";
+        public static readonly String UpToDateVersion = "upToDateVersion";
 
         #endregion
 
@@ -43,6 +47,8 @@ namespace ZTnDroid.D3Calculator
             : base(javaReference, transfer)
         {
             RegisterPcl.Register();
+
+            D3Api.ApiKey = ApiKey;
         }
 
         #endregion
@@ -59,6 +65,13 @@ namespace ZTnDroid.D3Calculator
             Preferences = GetSharedPreferences(SettingsFilename, FileCreationMode.Private);
             // Default offline mode
             D3Context.Instance.FetchMode = (Preferences.GetBoolean(SettingsOnlinemode, false) ? FetchMode.Online : FetchMode.OnlineIfMissing);
+
+            // Checks if some migration operations are needed
+            var upToDateVersion = Preferences.GetInt(UpToDateVersion, 1);
+            if (upToDateVersion < 20)
+            {
+                new MigrationTo20().DoMigration();
+            }
 
             // Always start D3Api with cache available
             var dataProvider = new CacheableDataProvider(new HttpRequestDataProvider())

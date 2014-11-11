@@ -56,12 +56,12 @@ namespace ZTnDroid.D3Calculator.Storage
         /// <returns></returns>
         private static D3Picture FetchIconOf(ActiveSkill activeSkill)
         {
-            if (activeSkill == null || activeSkill.skill == null || activeSkill.skill.icon == null)
+            if (activeSkill == null || activeSkill.Skill == null || activeSkill.Skill.Icon == null)
             {
                 return null;
             }
 
-            return D3Api.GetSkillIcon(activeSkill.skill.icon, "64");
+            return D3Api.GetSkillIcon(activeSkill.Skill.Icon, "64");
         }
 
         /// <summary>
@@ -71,12 +71,12 @@ namespace ZTnDroid.D3Calculator.Storage
         /// <returns></returns>
         private static D3Picture FetchIconOf(PassiveSkill passiveSkill)
         {
-            if (passiveSkill == null || passiveSkill.skill == null || passiveSkill.skill.icon == null)
+            if (passiveSkill == null || passiveSkill.Skill == null || passiveSkill.Skill.Icon == null)
             {
                 return null;
             }
 
-            return D3Api.GetSkillIcon(passiveSkill.skill.icon, "64");
+            return D3Api.GetSkillIcon(passiveSkill.Skill.Icon, "64");
         }
 
         /// <summary>
@@ -109,19 +109,19 @@ namespace ZTnDroid.D3Calculator.Storage
                 return;
             }
 
-            Head = FetchIconOf(items.head);
-            Torso = FetchIconOf(items.torso);
-            Feet = FetchIconOf(items.feet);
-            Hands = FetchIconOf(items.hands);
-            Shoulders = FetchIconOf(items.shoulders);
-            Legs = FetchIconOf(items.legs);
-            Bracers = FetchIconOf(items.bracers);
-            MainHand = FetchIconOf(items.mainHand);
-            OffHand = FetchIconOf(items.offHand);
-            Waist = FetchIconOf(items.waist);
-            RightFinger = FetchIconOf(items.rightFinger);
-            LeftFinger = FetchIconOf(items.leftFinger);
-            Neck = FetchIconOf(items.neck);
+            Head = FetchIconOf(items.Head);
+            Torso = FetchIconOf(items.Torso);
+            Feet = FetchIconOf(items.Feet);
+            Hands = FetchIconOf(items.Hands);
+            Shoulders = FetchIconOf(items.Shoulders);
+            Legs = FetchIconOf(items.Legs);
+            Bracers = FetchIconOf(items.Bracers);
+            MainHand = FetchIconOf(items.MainHand);
+            OffHand = FetchIconOf(items.OffHand);
+            Waist = FetchIconOf(items.Waist);
+            RightFinger = FetchIconOf(items.RightFinger);
+            LeftFinger = FetchIconOf(items.LeftFinger);
+            Neck = FetchIconOf(items.Neck);
         }
 
         /// <summary>

@@ -1,10 +1,6 @@
 ﻿using Android.App;
 using Android.OS;
-using Android.Support.V4.App;
-using Android.Support.V4.Widget;
-using Android.Views;
 using System.Reflection;
-using ZTnDroid.D3Calculator.Fragments;
 using ZTnDroid.D3Calculator.Helpers;
 
 namespace ZTnDroid.D3Calculator

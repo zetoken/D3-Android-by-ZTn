@@ -31,7 +31,7 @@ namespace ZTnDroid.D3Calculator.Storage
             return db.Insert(AccountsOpenHelper.TABLE_NAME, null, values);
         }
 
-        public long Update(String oldBattleTag, String battleTag, String host)
+        public long Update(String oldBattleTag, String battleTag, String host, Action<AccountFields> action)
         {
             var db = dbHelper.WritableDatabase;
             var values = new ContentValues();
@@ -57,6 +57,22 @@ namespace ZTnDroid.D3Calculator.Storage
                 new[] { "_id", AccountsOpenHelper.FIELD_BATTLETAG, AccountsOpenHelper.FIELD_HOST, AccountsOpenHelper.FIELD_UPDATED },
                 AccountsOpenHelper.FIELD_BATTLETAG + "=? AND " + AccountsOpenHelper.FIELD_HOST + "=?", new[] { battleTag, host },
                 null, null, null);
+        }
+
+        public void UpdateAccount(String battleTag, String host, Action<string, string, string> updateAction)
+        {
+            var db = dbHelper.ReadableDatabase;
+            var cursor = db.Query(AccountsOpenHelper.TABLE_NAME,
+                new[] { "_id", AccountsOpenHelper.FIELD_BATTLETAG, AccountsOpenHelper.FIELD_HOST, AccountsOpenHelper.FIELD_UPDATED },
+                AccountsOpenHelper.FIELD_BATTLETAG + "=? AND " + AccountsOpenHelper.FIELD_HOST + "=?", new[] { battleTag, host },
+                null, null, null);
+            while (cursor.MoveToNext())
+            {
+                cursor.GetString(0);
+                cursor.GetString(1);
+                cursor.GetString(2);
+            }
+            cursor.Close();
         }
     }
 }

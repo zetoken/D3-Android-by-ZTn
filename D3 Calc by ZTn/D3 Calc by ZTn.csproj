@@ -3,8 +3,6 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{7C9AA930-92EF-4364-80CF-BF5810B3FCBA}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
@@ -48,12 +46,8 @@
     </JavaMaximumHeapSize>
     <JavaOptions>
     </JavaOptions>
-    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
-    <BundleAssemblies>False</BundleAssemblies>
-    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
-    <AndroidSupportedAbis>armeabi,armeabi-v7a</AndroidSupportedAbis>
-    <MandroidI18n />
-    <MonoDroidExtraArgs />
+    <MonoDroidExtraArgs>
+    </MonoDroidExtraArgs>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="D3 Calculator Library by ZTn">
@@ -77,7 +71,7 @@
       <HintPath>..\Libraries\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Android.Support.v4">
-      <HintPath>..\Components\xamandroidsupportv4-18-20.0.0\lib\android\Xamarin.Android.Support.v4.dll</HintPath>
+      <HintPath>..\Components\xamandroidsupportv4-18-20.0.0.3\lib\android\Xamarin.Android.Support.v4.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -114,10 +108,12 @@
     <Compile Include="Helpers\JavaLangObject.cs" />
     <Compile Include="Helpers\StringExtension.cs" />
     <Compile Include="Helpers\ZTnTrace.cs" />
+    <Compile Include="Storage\AccountFields.cs" />
     <Compile Include="Storage\IconsContainer.cs" />
     <Compile Include="Storage\AccountsDB.cs" />
     <Compile Include="Storage\AccountsOpenHelper.cs" />
     <Compile Include="Storage\D3Context.cs" />
+    <Compile Include="Upgrades\MigrationTo20.cs" />
     <Compile Include="ViewHeroActivity.cs" />
     <Compile Include="ViewCareerActivity.cs" />
     <Compile Include="HomeActivity.cs" />
@@ -245,14 +241,14 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PCL Adapter for Android\PCL Adapter for Android.csproj">
-      <Project>{6d08fa58-738f-40b2-8260-d53dc215c8f0}</Project>
+      <Project>{6D08FA58-738F-40B2-8260-D53DC215C8F0}</Project>
       <Name>PCL Adapter for Android</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="xamandroidsupportv4-18">
-      <Visible>False</Visible>
       <Version>20.0.0.3</Version>
+      <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

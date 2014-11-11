@@ -43,14 +43,14 @@ namespace ZTnDroid.D3Calculator.Adapters
                 view = convertView;
 
             HeroSummary hero = heroes[position];
-            view.FindViewById<TextView>(Resource.Id.heroName).Text = heroes[position].name;
-            view.FindViewById<TextView>(Resource.Id.heroClass).Text = hero.heroClass.Translate().CapitalizeFirstLetter();
-            view.FindViewById<TextView>(Resource.Id.heroLevel).Text = String.Format("{0}", hero.level);
-            view.FindViewById<TextView>(Resource.Id.heroParagon).Text = String.Format("+{0}", hero.paragonLevel);
-            view.FindViewById<TextView>(Resource.Id.heroHardcore).Text = (hero.hardcore ? "hardcore" : "");
-            view.FindViewById<TextView>(Resource.Id.heroLastUpdated).Text = hero.lastUpdated.ToString("dd/MM/yyyy HH:mm");
+            view.FindViewById<TextView>(Resource.Id.heroName).Text = heroes[position].Name;
+            view.FindViewById<TextView>(Resource.Id.heroClass).Text = hero.HeroClass.Translate().CapitalizeFirstLetter();
+            view.FindViewById<TextView>(Resource.Id.heroLevel).Text = String.Format("{0}", hero.Level);
+            view.FindViewById<TextView>(Resource.Id.heroParagon).Text = String.Format("+{0}", hero.ParagonLevel);
+            view.FindViewById<TextView>(Resource.Id.heroHardcore).Text = (hero.Hardcore ? "hardcore" : "");
+            view.FindViewById<TextView>(Resource.Id.heroLastUpdated).Text = hero.LastUpdated.ToString("dd/MM/yyyy HH:mm");
 
-            int imageResource = hero.heroClass.GetPortraitResource(hero.gender);
+            int imageResource = hero.HeroClass.GetPortraitResource(hero.Gender);
             view.FindViewById<ImageView>(Resource.Id.imageClass).SetImageResource(imageResource);
 
             return view;

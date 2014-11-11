@@ -61,7 +61,7 @@ namespace ZTnDroid.D3Calculator
 
             SetContentView(Resource.Layout.SimpleViewPager);
 
-            Title = D3Context.Instance.CurrentHeroSummary.name;
+            Title = D3Context.Instance.CurrentHeroSummary.Name;
             ActionBar.Subtitle = D3Context.Instance.BattleTag;
 
             // ViewPager initialization

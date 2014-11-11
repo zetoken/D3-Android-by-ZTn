@@ -62,7 +62,7 @@
   <string name="Armor">Armor</string>
   <string name="AttacksPerSecond">Attacks per second</string>
   <string name="Damages">Damage</string>
-  <string name="damagePerSecond">attacks per second</string>
+  <string name="damagePerSecond">damage per second</string>
   <string name="gear">gear</string>
   <string name="setBonuses">set bonus</string>
   <string name="Socket">Socket</string>
@@ -87,6 +87,8 @@
   <string name="intelligence">intelligence</string>
   <string name="strength">strength</string>
   <string name="vitality">vitality</string>
+  <string name="healing">healing</string>
+  <string name="toughness">toughness</string>
 
   <!-- Kills -->
   <string name="elites">elites</string>

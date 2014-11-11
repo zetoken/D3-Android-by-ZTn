@@ -53,48 +53,50 @@ namespace ZTnDroid.D3Calculator.Fragments
             var characteristicsAttr = new List<IListItem>
             {
                 new SectionHeaderListItem(Resource.String.Progress),
-                new AttributeListItem(Resource.String.lastUpdated, hero.lastUpdated),
-                new AttributeListItem(Resource.String.heroClass, hero.heroClass.Translate().CapitalizeFirstLetter()),
-                new AttributeListItem(Resource.String.level, hero.level),
-                new AttributeListItem(Resource.String.paragon, hero.paragonLevel),
+                new AttributeListItem(Resource.String.lastUpdated, hero.LastUpdated),
+                new AttributeListItem(Resource.String.heroClass, hero.HeroClass.Translate().CapitalizeFirstLetter()),
+                new AttributeListItem(Resource.String.level, hero.Level),
+                new AttributeListItem(Resource.String.paragon, hero.ParagonLevel),
 
                 new SectionHeaderListItem(Resource.String.KillsLifetime),
-                new AttributeListItem(Resource.String.elites, hero.kills.elites),
+                new AttributeListItem(Resource.String.elites, hero.Kills.Elites),
 
                 new SectionHeaderListItem(Resource.String.attributes),
-                new AttributeListItem(Resource.String.dexterity, hero.stats.dexterity),
-                new AttributeListItem(Resource.String.intelligence, hero.stats.intelligence),
-                new AttributeListItem(Resource.String.strength, hero.stats.strength),
-                new AttributeListItem(Resource.String.vitality, hero.stats.vitality),
+                new AttributeListItem(Resource.String.dexterity, hero.Stats.Dexterity),
+                new AttributeListItem(Resource.String.intelligence, hero.Stats.Intelligence),
+                new AttributeListItem(Resource.String.strength, hero.Stats.Strength),
+                new AttributeListItem(Resource.String.vitality, hero.Stats.Vitality),
+                new AttributeListItem(Resource.String.healing, hero.Stats.Healing),
+                new AttributeListItem(Resource.String.toughness, hero.Stats.Toughness),
 
                 new SectionHeaderListItem(Resource.String.damages),
-                new AttributeListItem(Resource.String.damage, hero.stats.damage),
-                new AttributePercentListItem(Resource.String.criticChance, hero.stats.critChance),
-                new AttributePercentListItem(Resource.String.criticDamage, hero.stats.critDamage),
-                new AttributePercentListItem(Resource.String.attackSpeed , hero.stats.attackSpeed),
+                new AttributeListItem(Resource.String.damage, hero.Stats.Damage),
+                new AttributePercentListItem(Resource.String.criticChance, hero.Stats.CritChance),
+                new AttributePercentListItem(Resource.String.criticDamage, hero.Stats.CritDamage),
+                new AttributePercentListItem(Resource.String.attackSpeed , hero.Stats.AttackSpeed),
 
                 new SectionHeaderListItem(Resource.String.life),
-                new AttributeListItem(Resource.String.life, hero.stats.life),
-                new AttributeListItem(Resource.String.lifeOnHit, hero.stats.lifeOnHit),
-                new AttributePercentListItem(Resource.String.lifeSteal, hero.stats.lifeSteal),
-                new AttributeListItem(Resource.String.lifePerKill, hero.stats.lifePerKill),
+                new AttributeListItem(Resource.String.life, hero.Stats.Life),
+                new AttributeListItem(Resource.String.lifeOnHit, hero.Stats.LifeOnHit),
+                new AttributePercentListItem(Resource.String.lifeSteal, hero.Stats.LifeSteal),
+                new AttributeListItem(Resource.String.lifePerKill, hero.Stats.LifePerKill),
 
                 new SectionHeaderListItem(Resource.String.defense),
-                new AttributeListItem(Resource.String.armor, hero.stats.armor),
-                new AttributeListItem(Resource.String.arcaneResist, hero.stats.arcaneResist),
-                new AttributeListItem(Resource.String.coldResist, hero.stats.coldResist),
-                new AttributeListItem(Resource.String.fireResist, hero.stats.fireResist),
-                new AttributeListItem(Resource.String.lightningResist, hero.stats.lightningResist),
-                new AttributeListItem(Resource.String.physicalResist, hero.stats.physicalResist),
-                new AttributeListItem(Resource.String.poisonResist, hero.stats.poisonResist),
+                new AttributeListItem(Resource.String.armor, hero.Stats.Armor),
+                new AttributeListItem(Resource.String.arcaneResist, hero.Stats.ArcaneResist),
+                new AttributeListItem(Resource.String.coldResist, hero.Stats.ColdResist),
+                new AttributeListItem(Resource.String.fireResist, hero.Stats.FireResist),
+                new AttributeListItem(Resource.String.lightningResist, hero.Stats.LightningResist),
+                new AttributeListItem(Resource.String.physicalResist, hero.Stats.PhysicalResist),
+                new AttributeListItem(Resource.String.poisonResist, hero.Stats.PoisonResist),
 
                 new SectionHeaderListItem(Resource.String.resources),
-                new AttributeListItem(Resource.String.primaryResource, hero.stats.primaryResource),
-                new AttributeListItem(Resource.String.secondaryResource,hero.stats.secondaryResource),
+                new AttributeListItem(Resource.String.primaryResource, hero.Stats.PrimaryResource),
+                new AttributeListItem(Resource.String.secondaryResource,hero.Stats.SecondaryResource),
 
                 new SectionHeaderListItem(Resource.String.bonuses),
-                new AttributePercentListItem(Resource.String.goldFind, hero.stats.goldFind),
-                new AttributePercentListItem(Resource.String.magicFind, hero.stats.magicFind)
+                new AttributePercentListItem(Resource.String.goldFind, hero.Stats.GoldFind),
+                new AttributePercentListItem(Resource.String.magicFind, hero.Stats.MagicFind)
             };
             heroStatsListView.Adapter = new ListAdapter(Activity, characteristicsAttr.ToArray());
         }
