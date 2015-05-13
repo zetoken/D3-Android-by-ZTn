@@ -68,4 +68,14 @@
         android:layout_alignBottom="@id/heroClass"
         android:textStyle="italic"
         android:textColor="@color/hardcore_text" />
+    <TextView
+        android:id="@+id/heroSeasonal"
+        android:text="Seasonal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="?android:attr/listPreferredItemPaddingLeft"
+        android:layout_toLeftOf="@id/heroHardcore"
+        android:layout_alignBottom="@id/heroClass"
+        android:textStyle="italic"
+        android:textColor="@color/seasonal_text" />
 </RelativeLayout>

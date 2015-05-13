@@ -66,6 +66,7 @@
   <string name="gear">équipement</string>
   <string name="setBonuses">bonus de set</string>
   <string name="Socket">Chasse</string>
+  <string name="Rank">Rang</string>
 
   <!-- Skills -->
   <string name="passiveSkill">compétence passive</string>
