@@ -13,11 +13,11 @@
     <AndroidApplication>true</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <TargetFrameworkVersion>v4.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
     <AndroidSupportedAbis>armeabi,armeabi-v7a</AndroidSupportedAbis>
     <MandroidI18n />
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-    <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -90,8 +90,13 @@
     <Reference Include="D3 API by ZTn">
       <HintPath>..\Libraries\D3 API by ZTn.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Android.Support.v4">
-      <HintPath>..\Components\xamandroidsupportv4-18-20.0.0.3\lib\android\Xamarin.Android.Support.v4.dll</HintPath>
+    <Reference Include="Xamarin.Android.Support.v4, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Xamarin.Android.Support.v4.21.0.3.0\lib\MonoAndroid10\Xamarin.Android.Support.v4.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.AppCompat, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Android.Support.v7.AppCompat.21.0.3.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +114,8 @@
     <Compile Include="D3Calc.cs" />
     <Compile Include="DataProviders\CacheableDataProvider.cs" />
     <Compile Include="Adapters\AttributeElementaryDamageListItem.cs" />
+    <Compile Include="NavigationDrawer\NavigationDrawerItemSelectedEventArgs.cs" />
+    <Compile Include="NavigationDrawer\NavigationDrawerChangedEventArgs.cs" />
     <Compile Include="Fragments\CareersListFragment.cs" />
     <Compile Include="Fragments\FetchHeroFragment.cs" />
     <Compile Include="Fragments\GearItemEditorFragment.cs" />
@@ -121,6 +128,7 @@
     <Compile Include="Fragments\SettingsFragment.cs" />
     <Compile Include="Fragments\SimpleTabListener.cs" />
     <Compile Include="Fragments\UpdatableFragment.cs" />
+    <Compile Include="NavigationDrawer\NavigationDrawerToggle.cs" />
     <Compile Include="GearItemEditorActivity.cs" />
     <Compile Include="Helpers\AndroidHelper.cs" />
     <Compile Include="Helpers\HeroClassExtension.cs" />
@@ -240,11 +248,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\drawer_shadow.9.png" />
     <AndroidResource Include="Resources\drawable-mdpi\drawer_shadow.9.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\drawer_shadow.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_navigation_drawer.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\ic_navigation_drawer.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_navigation_drawer.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\drawer_shadow.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\ic_navigation_drawer.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable-mdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_launcher.png" />
@@ -270,8 +274,12 @@
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="xamandroidsupportv4-18">
-      <Version>20.0.0.3</Version>
       <Visible>False</Visible>
+      <Version>21.0.3.0</Version>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="xamandroidsupportv7appcompat">
+      <Visible>False</Visible>
+      <Version>21.0.3.0</Version>
     </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>

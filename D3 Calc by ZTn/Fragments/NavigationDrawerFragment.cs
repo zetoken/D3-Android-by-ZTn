@@ -1,42 +1,30 @@
+using System;
 using System.Reflection;
-using Android.App;
 using Android.Content.Res;
 using Android.OS;
-using Android.Preferences;
 using Android.Support.V4.App;
 using Android.Support.V4.View;
 using Android.Support.V4.Widget;
 using Android.Views;
 using Android.Widget;
-using Java.Lang;
 using ZTnDroid.D3Calculator.Helpers;
-using Fragment = Android.Support.V4.App.Fragment;
-using String = System.String;
+using ZTnDroid.D3Calculator.NavigationDrawer;
 
 namespace ZTnDroid.D3Calculator.Fragments
 {
     public class NavigationDrawerFragment : Fragment
     {
         /// <summary>
-        /// Per the design guidelines, you should show the drawer on launch until the user manually expands it. This shared preference tracks this.
-        /// </summary>
-        const String PrefUserLearnedDrawer = "NavigationDrawerLearned";
-
-        /// <summary>
         /// Remember the position of the selected item.
         /// </summary>
-        const String StateSelectedPosition = "SelectedNavigationDrawerPosition";
-
-        bool userLearnedDrawer;
+        const string StateSelectedPosition = "SelectedNavigationDrawerPosition";
 
         int currentSelectedPosition;
-
-        bool fromSavedInstanceState;
 
         /// <summary>
         /// Helper component that ties the action bar to the navigation drawer.
         /// </summary>
-        private ActionBarDrawerToggle drawerToggle;
+        private NavigationDrawerToggle drawerToggle;
 
         DrawerLayout drawerLayout;
 
@@ -44,10 +32,7 @@ namespace ZTnDroid.D3Calculator.Fragments
 
         View fragmentContainerView;
 
-        /// <summary>
-        /// A pointer to the current callbacks instance (the <see cref="Activity"/>).
-        /// </summary>
-        private ICallbacks drawerCallbacks;
+        public EventHandler<NavigationDrawerItemSelectedEventArgs> ItemSelected { get; set; }
 
         private void SelectItem(int position)
         {
@@ -60,9 +45,9 @@ namespace ZTnDroid.D3Calculator.Fragments
             {
                 drawerLayout.CloseDrawer(fragmentContainerView);
             }
-            if (drawerCallbacks != null)
+            if (ItemSelected != null)
             {
-                drawerCallbacks.OnNavigationDrawerItemSelected(position);
+                ItemSelected(this, new NavigationDrawerItemSelectedEventArgs { Position = position });
             }
         }
 
@@ -74,15 +59,6 @@ namespace ZTnDroid.D3Calculator.Fragments
             base.OnActivityCreated(savedInstanceState);
 
             HasOptionsMenu = true;
-        }
-
-        /// <inheritdoc />
-        public override void OnAttach(Activity activity)
-        {
-            base.OnAttach(activity);
-
-            drawerCallbacks = activity as ICallbacks;
-            System.Diagnostics.Debug.Assert(drawerCallbacks != null);
         }
 
         /// <inheritdoc />
@@ -98,29 +74,10 @@ namespace ZTnDroid.D3Calculator.Fragments
         {
             base.OnCreate(savedInstanceState);
 
-            var preferences = PreferenceManager.GetDefaultSharedPreferences(Activity);
-            userLearnedDrawer = preferences.GetBoolean(PrefUserLearnedDrawer, false);
-
             if (savedInstanceState != null)
             {
                 currentSelectedPosition = savedInstanceState.GetInt(StateSelectedPosition);
-                fromSavedInstanceState = true;
             }
-
-            // Select either the default item (0) or the last selected item.
-            SelectItem(currentSelectedPosition);
-        }
-
-        /// <inheritdoc />
-        public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
-        {
-            if (IsDrawerOpen())
-            {
-                // TODO ? inflater.Inflate(Resource.Menu.SomeMenuDefinition, menu);
-                // TODO ? Activity.ActionBar.Title = Resources.GetString(Resource.String.ApplicationName);
-            }
-
-            base.OnCreateOptionsMenu(menu, inflater);
         }
 
         /// <inheritdoc />
@@ -147,14 +104,6 @@ namespace ZTnDroid.D3Calculator.Fragments
             drawerListView.SetItemChecked(currentSelectedPosition, true);
 
             return drawerListView;
-        }
-
-        /// <inheritdoc />
-        public override void OnDetach()
-        {
-            base.OnDetach();
-
-            drawerCallbacks = null;
         }
 
         /// <inheritdoc />
@@ -201,101 +150,20 @@ namespace ZTnDroid.D3Calculator.Fragments
 
             drawerLayout.SetDrawerShadow(Resource.Drawable.drawer_shadow, GravityCompat.Start);
 
-            var actionBar = Activity.ActionBar;
-            actionBar.SetDisplayHomeAsUpEnabled(true);
-            actionBar.SetHomeButtonEnabled(true);
-
-            drawerToggle = new ActionBarToggle(
-                this,
-                Activity,
+            drawerToggle = new NavigationDrawerToggle(Activity,
                 drawerLayout,
-                Resource.Drawable.ic_navigation_drawer,
                 0,
                 0);
 
-            if (!userLearnedDrawer && !fromSavedInstanceState)
-            {
-                drawerLayout.OpenDrawer(fragmentContainerView);
-            }
+            drawerToggle.Closed += (sender, args) => Activity.InvalidateOptionsMenu();
+            drawerToggle.Opened += (sender, args) => Activity.InvalidateOptionsMenu();
 
-            // Defer code dependent on restoration of previous instance state.
-            drawerLayout.Post(new Runnable(() => drawerToggle.SyncState()));
+            drawerToggle.SyncState();
 
             drawerLayout.SetDrawerListener(drawerToggle);
-        }
 
-        /// <summary>
-        /// Callbacks interface that all activities using this fragment must implement.
-        /// </summary>
-        public interface ICallbacks
-        {
-            /// <summary>
-            /// Called when an item in the navigation drawer is selected.
-            /// </summary>
-            /// <param name="position"></param>
-            void OnNavigationDrawerItemSelected(int position);
-        }
-
-        /// <summary>
-        /// ActionBarDrawerToggle implementation.
-        /// </summary>
-        private class ActionBarToggle : ActionBarDrawerToggle
-        {
-            readonly NavigationDrawerFragment navigationDrawerFragment;
-            readonly Activity activity;
-
-            public ActionBarToggle(NavigationDrawerFragment navigationDrawerFragment, Activity activity, DrawerLayout drawerLayout, int drawerImageRes, int openDrawerContentDescRes, int closeDrawerContentDescRes)
-                : base(activity, drawerLayout, drawerImageRes, openDrawerContentDescRes, closeDrawerContentDescRes)
-            {
-                this.activity = activity;
-                this.navigationDrawerFragment = navigationDrawerFragment;
-            }
-
-            #region >> ActionBarDrawerToggle
-
-            /// <inheritdoc />
-            public override void OnDrawerClosed(View drawerView)
-            {
-                ZTnTrace.Trace(MethodBase.GetCurrentMethod());
-
-                base.OnDrawerClosed(drawerView);
-
-                if (!navigationDrawerFragment.IsAdded)
-                {
-                    return;
-                }
-
-                // Force call OnPrepareOptionsMenu()
-                activity.InvalidateOptionsMenu();
-            }
-
-            /// <inheritdoc />
-            public override void OnDrawerOpened(View drawerView)
-            {
-                ZTnTrace.Trace(MethodBase.GetCurrentMethod());
-
-                base.OnDrawerOpened(drawerView);
-
-                if (!navigationDrawerFragment.IsAdded)
-                {
-                    return;
-                }
-
-                if (!navigationDrawerFragment.userLearnedDrawer)
-                {
-                    // The user manually opened the drawer; store this flag to prevent auto-showing the navigation drawer automatically in the future.
-                    navigationDrawerFragment.userLearnedDrawer = true;
-                    PreferenceManager.GetDefaultSharedPreferences(activity)
-                        .Edit()
-                        .PutBoolean(PrefUserLearnedDrawer, true)
-                        .Apply();
-                }
-
-                // Force call OnPrepareOptionsMenu()
-                activity.InvalidateOptionsMenu();
-            }
-
-            #endregion
+            // Select either the default item (0) or the last selected item.
+            SelectItem(currentSelectedPosition);
         }
     }
 }

@@ -9,3 +9,6 @@ TestResults
 *.user
 
 *.userprefs
+/Components
+/.vs
+/packages
