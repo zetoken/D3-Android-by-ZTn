@@ -16,6 +16,7 @@ using ZTnDroid.D3Calculator.Adapters.Delegated;
 using ZTnDroid.D3Calculator.Helpers;
 using ZTnDroid.D3Calculator.Storage;
 using Debug = System.Diagnostics.Debug;
+using Environment = System.Environment;
 using Fragment = Android.Support.V4.App.Fragment;
 
 namespace ZTnDroid.D3Calculator.Fragments
@@ -129,30 +130,34 @@ namespace ZTnDroid.D3Calculator.Fragments
                 }
                 catch (FileNotInCacheException)
                 {
-                    Activity.RunOnUiThread(() =>
+                    if (Activity != null)
                     {
-                        if (online == FetchMode.Online)
+                        Activity.RunOnUiThread(() =>
                         {
-                            Debug.Assert(progressDialog != null, "progressDialog != null");
-                            progressDialog.Dismiss();
-                        }
-                        Toast.MakeText(Activity, "Career not in cache" + System.Environment.NewLine + "Please use refresh action", ToastLength.Long)
-                            .Show();
-                    });
+                            if (online == FetchMode.Online)
+                            {
+                                progressDialog.Dismiss();
+                            }
+                            Toast.MakeText(Activity, "Career not in cache" + Environment.NewLine + "Please use refresh action", ToastLength.Long)
+                                .Show();
+                        });
+                    }
                 }
                 catch (Exception exception)
                 {
-                    Activity.RunOnUiThread(() =>
+                    Debug.WriteLine("An exception occured in activity {0}: {1}", Activity, exception);
+                    if (Activity != null)
                     {
-                        if (online == FetchMode.Online)
+                        Activity.RunOnUiThread(() =>
                         {
-                            Debug.Assert(progressDialog != null, "progressDialog != null");
-                            progressDialog.Dismiss();
-                        }
-                        Toast.MakeText(Activity, Resources.GetString(Resource.String.ErrorOccuredWhileRetrievingData), ToastLength.Long)
-                            .Show();
-                        Console.WriteLine(exception);
-                    });
+                            if (online == FetchMode.Online)
+                            {
+                                progressDialog.Dismiss();
+                            }
+                            Toast.MakeText(Activity, Resources.GetString(Resource.String.ErrorOccuredWhileRetrievingData), ToastLength.Long)
+                                .Show();
+                        });
+                    }
                 }
             }).Start();
         }

@@ -36,21 +36,18 @@ namespace ZTnDroid.D3Calculator.Adapters
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
-            View view;
-            if (convertView == null)
-                view = ((Activity)context).LayoutInflater.Inflate(Resource.Layout.HeroesListItem, parent, false);
-            else
-                view = convertView;
+            var view = convertView ?? ((Activity)context).LayoutInflater.Inflate(Resource.Layout.HeroesListItem, parent, false);
 
-            HeroSummary hero = heroes[position];
+            var hero = heroes[position];
             view.FindViewById<TextView>(Resource.Id.heroName).Text = heroes[position].Name;
             view.FindViewById<TextView>(Resource.Id.heroClass).Text = hero.HeroClass.Translate().CapitalizeFirstLetter();
             view.FindViewById<TextView>(Resource.Id.heroLevel).Text = String.Format("{0}", hero.Level);
             view.FindViewById<TextView>(Resource.Id.heroParagon).Text = String.Format("+{0}", hero.ParagonLevel);
             view.FindViewById<TextView>(Resource.Id.heroHardcore).Text = (hero.Hardcore ? "hardcore" : "");
+            view.FindViewById<TextView>(Resource.Id.heroSeasonal).Text = (hero.Seasonal ? "season" : "");
             view.FindViewById<TextView>(Resource.Id.heroLastUpdated).Text = hero.LastUpdated.ToString("dd/MM/yyyy HH:mm");
 
-            int imageResource = hero.HeroClass.GetPortraitResource(hero.Gender);
+            var imageResource = hero.HeroClass.GetPortraitResource(hero.Gender);
             view.FindViewById<ImageView>(Resource.Id.imageClass).SetImageResource(imageResource);
 
             return view;

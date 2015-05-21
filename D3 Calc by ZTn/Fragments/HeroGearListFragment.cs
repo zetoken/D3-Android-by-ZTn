@@ -48,7 +48,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             return GetDataForItem(Resources.GetString(id), itemSummary, icon);
         }
 
-        private static IListItem GetDataForItem(String label, Item item, D3Picture icon)
+        private static IListItem GetDataForItem(string label, Item item, D3Picture icon)
         {
             if (item == null || item.Name == null)
             {
@@ -128,7 +128,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                 {
                     var setItem = new Item
                     {
-                        Name = string.Format("{0} ({1})", set.name, rank.Required),
+                        Name = String.Format("{0} ({1})", set.name, rank.Required),
                         Attributes = rank.Attributes,
                         DisplayColor = "green"
                     };

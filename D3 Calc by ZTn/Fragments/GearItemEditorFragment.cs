@@ -166,19 +166,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             socketLabels = new List<string> { "( no gem )" };
             foreach (var gem in KnownGems.GetGemsForItem(D3Context.Instance.EditingItem))
             {
-                var text = string.Empty;
-                if (gem.Attributes.Primary != null && gem.Attributes.Primary.Any())
-                {
-                    text = gem.Attributes.Primary[0].Text;
-                }
-                if (gem.Attributes.Secondary != null && gem.Attributes.Secondary.Any())
-                {
-                    text = gem.Attributes.Secondary[0].Text;
-                }
-                if (gem.Attributes.Passive != null && gem.Attributes.Passive.Any())
-                {
-                    text = gem.Attributes.Passive[0].Text;
-                }
+                var text = gem.Name;
                 socketLabels.Add(text);
             }
         }
@@ -315,12 +303,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             public readonly string Label;
             public bool Percent;
 
-            public Field(int id, string attribute)
-                : this(id, attribute, null)
-            {
-            }
-
-            public Field(int id, string targetAttribute, string refAttribute)
+            public Field(int id, string targetAttribute, string refAttribute = null)
             {
                 Percent = false;
                 Id = id;
@@ -434,7 +417,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             layoutSkillBonus.AddView(CreateRowView(skillBonusLabels, SkillBonusFields, field, value), layoutSkillBonus.ChildCount - 1);
         }
 
-        private View CreateRowView(List<String> labels, Field[] fields)
+        private View CreateRowView(List<string> labels, Field[] fields)
         {
             // Get the view from inflater
             var rowView = layoutInflater.Inflate(Resource.Layout.GearItemRowEditor, null);
@@ -456,7 +439,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             return rowView;
         }
 
-        private View CreateRowView(List<String> labels, Field[] fields, Field selected, ItemValueRange value)
+        private View CreateRowView(List<string> labels, Field[] fields, Field selected, ItemValueRange value)
         {
             var rowView = CreateRowView(labels, fields);
 
@@ -482,7 +465,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             return rowView;
         }
 
-        private View CreateSocketRowView(List<String> labels, List<Item> gems)
+        private View CreateSocketRowView(IList<string> labels, List<Item> gems)
         {
             // Get the view from inflater
             var rowView = layoutInflater.Inflate(Resource.Layout.GearSocketRowEditor, null);
@@ -499,7 +482,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                 };
 
             var spinner = rowView.FindViewById<Spinner>(Resource.Id.socketLabel);
-            spinner.Adapter = new ArrayAdapter<String>(Activity, Android.Resource.Layout.SimpleSpinnerItem, labels);
+            spinner.Adapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleSpinnerItem, labels);
             spinner.ItemSelected +=
                 (sender, e) =>
                 {
@@ -510,7 +493,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             return rowView;
         }
 
-        private View CreateSocketRowView(List<String> labels, List<Item> gems, ItemSummary selected)
+        private View CreateSocketRowView(List<string> labels, List<Item> gems, ItemSummary selected)
         {
             var rowView = CreateSocketRowView(labels, gems);
 

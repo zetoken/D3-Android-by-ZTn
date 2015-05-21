@@ -13,10 +13,11 @@
     <AndroidApplication>true</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
     <AndroidSupportedAbis>armeabi,armeabi-v7a</AndroidSupportedAbis>
     <MandroidI18n />
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -27,7 +28,17 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
-    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
+    <AndroidLinkSkip />
+    <BundleAssemblies>False</BundleAssemblies>
+    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+    <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
+    <AndroidStoreUncompressedFileExtensions />
+    <MandroidI18n />
+    <Debugger>Xamarin</Debugger>
+    <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+    <DevInstrumentationEnabled>True</DevInstrumentationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,12 +53,17 @@
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     <AndroidStoreUncompressedFileExtensions>
     </AndroidStoreUncompressedFileExtensions>
-    <JavaMaximumHeapSize>
-    </JavaMaximumHeapSize>
-    <JavaOptions>
-    </JavaOptions>
-    <MonoDroidExtraArgs>
-    </MonoDroidExtraArgs>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <BundleAssemblies>False</BundleAssemblies>
+    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+    <AndroidSupportedAbis>armeabi,armeabi-v7a,arm64-v8a</AndroidSupportedAbis>
+    <MandroidI18n />
+    <Debugger>Xamarin</Debugger>
+    <AotAssemblies>False</AotAssemblies>
+    <EnableLLVM>False</EnableLLVM>
+    <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+    <EnableProguard>False</EnableProguard>
+    <DevInstrumentationEnabled>False</DevInstrumentationEnabled>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="D3 Calculator Library by ZTn">
@@ -55,11 +71,18 @@
     </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PCL Adapter">
       <HintPath>..\Libraries\PCL Adapter.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Collections" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO" />
+    <Reference Include="System.Runtime" />
     <Reference Include="System.Xml" />
     <Reference Include="BNet API by ZTn">
       <HintPath>..\Libraries\BNet API by ZTn.dll</HintPath>
@@ -67,11 +90,13 @@
     <Reference Include="D3 API by ZTn">
       <HintPath>..\Libraries\D3 API by ZTn.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\Libraries\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Xamarin.Android.Support.v4, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Xamarin.Android.Support.v4.21.0.3.0\lib\MonoAndroid10\Xamarin.Android.Support.v4.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Android.Support.v4">
-      <HintPath>..\Components\xamandroidsupportv4-18-20.0.0.3\lib\android\Xamarin.Android.Support.v4.dll</HintPath>
+    <Reference Include="Xamarin.Android.Support.v7.AppCompat, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Android.Support.v7.AppCompat.21.0.3.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -89,6 +114,8 @@
     <Compile Include="D3Calc.cs" />
     <Compile Include="DataProviders\CacheableDataProvider.cs" />
     <Compile Include="Adapters\AttributeElementaryDamageListItem.cs" />
+    <Compile Include="NavigationDrawer\NavigationDrawerItemSelectedEventArgs.cs" />
+    <Compile Include="NavigationDrawer\NavigationDrawerChangedEventArgs.cs" />
     <Compile Include="Fragments\CareersListFragment.cs" />
     <Compile Include="Fragments\FetchHeroFragment.cs" />
     <Compile Include="Fragments\GearItemEditorFragment.cs" />
@@ -101,6 +128,7 @@
     <Compile Include="Fragments\SettingsFragment.cs" />
     <Compile Include="Fragments\SimpleTabListener.cs" />
     <Compile Include="Fragments\UpdatableFragment.cs" />
+    <Compile Include="NavigationDrawer\NavigationDrawerToggle.cs" />
     <Compile Include="GearItemEditorActivity.cs" />
     <Compile Include="Helpers\AndroidHelper.cs" />
     <Compile Include="Helpers\HeroClassExtension.cs" />
@@ -220,11 +248,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\drawer_shadow.9.png" />
     <AndroidResource Include="Resources\drawable-mdpi\drawer_shadow.9.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\drawer_shadow.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_navigation_drawer.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\ic_navigation_drawer.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_navigation_drawer.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\drawer_shadow.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\ic_navigation_drawer.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable-mdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_launcher.png" />
@@ -232,6 +256,9 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable\crusader_female.png" />
     <AndroidResource Include="Resources\drawable\crusader_male.png" />
+    <AndroidResource Include="Resources\drawable\ancientborder.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <Content Include="SupportLib\android-support-v4.jar" />
   </ItemGroup>
   <ItemGroup>
@@ -247,9 +274,16 @@
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="xamandroidsupportv4-18">
-      <Version>20.0.0.3</Version>
       <Visible>False</Visible>
+      <Version>21.0.3.0</Version>
     </XamarinComponentReference>
+    <XamarinComponentReference Include="xamandroidsupportv7appcompat">
+      <Visible>False</Visible>
+      <Version>21.0.3.0</Version>
+    </XamarinComponentReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

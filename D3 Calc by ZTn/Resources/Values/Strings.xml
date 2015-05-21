@@ -66,6 +66,7 @@
   <string name="gear">gear</string>
   <string name="setBonuses">set bonus</string>
   <string name="Socket">Socket</string>
+  <string name="Rank">Rank</string>
 
   <!-- Skills -->
   <string name="passiveSkill">passive skill</string>

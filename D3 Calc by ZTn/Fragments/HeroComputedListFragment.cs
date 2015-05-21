@@ -122,7 +122,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             characteristicsAttr.Add(new SectionHeaderListItem(Resource.String.damages));
 
             characteristicsAttr.Add(new AttributeListItem(Resource.String.damage, dps));
-            AddAttributePercentListItem(characteristicsAttr, Resource.String.criticChance, attr.critPercentBonusCapped + 0.05);
+            AddAttributePercentListItem(characteristicsAttr, Resource.String.criticChance, attr.critPercentBonusCapped);
             AddAttributePercentListItem(characteristicsAttr, Resource.String.criticDamage, attr.critDamagePercent + 1);
 
             AddAttributeListItem(characteristicsAttr, Resource.String.attackSpeed, d3Calculator.GetActualAttackSpeed());
