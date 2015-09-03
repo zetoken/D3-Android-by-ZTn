@@ -5,6 +5,8 @@ using System.Reflection;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using ZTn.BNet.D3.Heroes;
+using ZTn.BNet.D3.Items;
 using ZTn.BNet.D3.Medias;
 using ZTn.BNet.D3.Skills;
 using ZTnDroid.D3Calculator.Adapters;
@@ -76,6 +78,17 @@ namespace ZTnDroid.D3Calculator.Fragments
             return list;
         }
 
+        private static List<IListItem> GetPartialListViewForLegendaryPower(string headerText, LegendaryPower power, D3Picture icon)
+        {
+            var list = new List<IListItem>
+            {
+                new SectionHeaderListItem(headerText),
+                new PowerListItem(power, icon)
+            };
+
+            return list;
+        }
+
         private void UpdateView(View view)
         {
             ZTnTrace.Trace(MethodBase.GetCurrentMethod());
@@ -107,6 +120,14 @@ namespace ZTnDroid.D3Calculator.Fragments
                 skillsAttr.AddRange(GetPartialListViewForPassiveSkill(Resources.GetString(Resource.String.passiveSkill) + " 3", hero.Skills.Passive[2], icons.PassiveSkill3));
             if (passiveCount >= 4)
                 skillsAttr.AddRange(GetPartialListViewForPassiveSkill(Resources.GetString(Resource.String.passiveSkill) + " 4", hero.Skills.Passive[3], icons.PassiveSkill4));
+
+            var legendaryCount = hero.LegendaryPowers.Count();
+            if (legendaryCount >= 1)
+                skillsAttr.AddRange(GetPartialListViewForLegendaryPower(Resources.GetString(Resource.String.legendaryPower) + " 1", hero.LegendaryPowers[0], icons.LegendaryPower1));
+            if (legendaryCount >= 2)
+                skillsAttr.AddRange(GetPartialListViewForLegendaryPower(Resources.GetString(Resource.String.legendaryPower) + " 2", hero.LegendaryPowers[1], icons.LegendaryPower2));
+            if (legendaryCount >= 3)
+                skillsAttr.AddRange(GetPartialListViewForLegendaryPower(Resources.GetString(Resource.String.legendaryPower) + " 3", hero.LegendaryPowers[2], icons.LegendaryPower3));
 
             heroSkillsListView.Adapter = new ListAdapter(Activity, skillsAttr.ToArray());
         }

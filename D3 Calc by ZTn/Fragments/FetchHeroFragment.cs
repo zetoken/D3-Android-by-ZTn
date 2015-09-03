@@ -209,6 +209,7 @@ namespace ZTnDroid.D3Calculator.Fragments
                 icons.FetchItemIcons(D3Context.Instance.CurrentHero.Items);
                 icons.FetchActiveSkillIcons(D3Context.Instance.CurrentHero.Skills.Active);
                 icons.FetchPassiveSkillIcons(D3Context.Instance.CurrentHero.Skills.Passive);
+                icons.FetchLegendaryPowerIcons(D3Context.Instance.CurrentHero.LegendaryPowers);
             }
             catch (Exception exception)
             {

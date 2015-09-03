@@ -1,3 +1,5 @@
+using Android.OS;
+using Java.IO;
 using ZTn.BNet.D3;
 using ZTn.BNet.D3.Heroes;
 using ZTn.BNet.D3.Items;
@@ -19,6 +21,10 @@ namespace ZTnDroid.D3Calculator.Storage
         public D3Picture PassiveSkill2;
         public D3Picture PassiveSkill3;
         public D3Picture PassiveSkill4;
+
+        public D3Picture LegendaryPower1;
+        public D3Picture LegendaryPower2;
+        public D3Picture LegendaryPower3;
 
         public D3Picture Head;
         public D3Picture Torso;
@@ -77,6 +83,21 @@ namespace ZTnDroid.D3Calculator.Storage
             }
 
             return D3Api.GetSkillIcon(passiveSkill.Skill.Icon, "64");
+        }
+
+        /// <summary>
+        /// Fetches the icon of a given legendary power.
+        /// </summary>
+        /// <param name="power"></param>
+        /// <returns></returns>
+        private static D3Picture FetchIconOf(LegendaryPower power)
+        {
+            if (power == null || power.Icon == null)
+            {
+                return null;
+            }
+
+            return D3Api.GetItemIcon(power.Icon, "large");
         }
 
         /// <summary>
@@ -151,6 +172,36 @@ namespace ZTnDroid.D3Calculator.Storage
             if (passiveCount >= 4)
             {
                 PassiveSkill4 = FetchIconOf(skills[3]);
+            }
+        }
+
+        /// <summary>
+        /// Fetches the icons of all hero legendary powers.
+        /// </summary>
+        /// <param name="powers"></param>
+        public void FetchLegendaryPowerIcons(LegendaryPower[] powers)
+        {
+            if (powers == null)
+            {
+                return;
+            }
+
+            var powerCount = powers.Length;
+            System.Console.WriteLine(powerCount);
+            if (powerCount >= 1)
+            {
+                LegendaryPower1 = FetchIconOf(powers[0]);
+                System.Console.WriteLine(LegendaryPower1);
+            }
+            if (powerCount >= 2)
+            {
+                LegendaryPower2 = FetchIconOf(powers[1]);
+                System.Console.WriteLine(LegendaryPower2);
+            }
+            if (powerCount >= 3)
+            {
+                LegendaryPower3 = FetchIconOf(powers[2]);
+                System.Console.WriteLine(LegendaryPower3);
             }
         }
     }
