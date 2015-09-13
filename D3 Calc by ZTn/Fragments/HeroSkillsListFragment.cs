@@ -121,13 +121,16 @@ namespace ZTnDroid.D3Calculator.Fragments
             if (passiveCount >= 4)
                 skillsAttr.AddRange(GetPartialListViewForPassiveSkill(Resources.GetString(Resource.String.passiveSkill) + " 4", hero.Skills.Passive[3], icons.PassiveSkill4));
 
-            var legendaryCount = hero.LegendaryPowers.Count();
-            if (legendaryCount >= 1)
-                skillsAttr.AddRange(GetPartialListViewForLegendaryPower(Resources.GetString(Resource.String.legendaryPower) + " 1", hero.LegendaryPowers[0], icons.LegendaryPower1));
-            if (legendaryCount >= 2)
-                skillsAttr.AddRange(GetPartialListViewForLegendaryPower(Resources.GetString(Resource.String.legendaryPower) + " 2", hero.LegendaryPowers[1], icons.LegendaryPower2));
-            if (legendaryCount >= 3)
-                skillsAttr.AddRange(GetPartialListViewForLegendaryPower(Resources.GetString(Resource.String.legendaryPower) + " 3", hero.LegendaryPowers[2], icons.LegendaryPower3));
+            if (hero.LegendaryPowers != null)
+            {
+                var legendaryCount = hero.LegendaryPowers.Count();
+                if (legendaryCount >= 1 && hero.LegendaryPowers[0] != null)
+                    skillsAttr.AddRange(GetPartialListViewForLegendaryPower(Resources.GetString(Resource.String.legendaryPower) + " 1", hero.LegendaryPowers[0], icons.LegendaryPower1));
+                if (legendaryCount >= 2 && hero.LegendaryPowers[1] != null)
+                    skillsAttr.AddRange(GetPartialListViewForLegendaryPower(Resources.GetString(Resource.String.legendaryPower) + " 2", hero.LegendaryPowers[1], icons.LegendaryPower2));
+                if (legendaryCount >= 3 && hero.LegendaryPowers[2] != null)
+                    skillsAttr.AddRange(GetPartialListViewForLegendaryPower(Resources.GetString(Resource.String.legendaryPower) + " 3", hero.LegendaryPowers[2], icons.LegendaryPower3));
+            }
 
             heroSkillsListView.Adapter = new ListAdapter(Activity, skillsAttr.ToArray());
         }
