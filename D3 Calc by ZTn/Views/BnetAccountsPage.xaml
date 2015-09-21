@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ZTn.Pcl.D3Calculator.Views;assembly=ZTn.Pcl.D3Calculator"
+             x:Class="ZTn.Pcl.D3Calculator.Views.BnetAccountsPage"
+             Title="D3 Calc by ZTn">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Add Account" Icon="ic_menu_add.png" Order="Primary" Clicked="OnAddAccount" />
+  </ContentPage.ToolbarItems>
+  <ContentPage.Content>
+    <ListView ItemsSource="{x:Static local:BnetAccountsPage.Items}" HasUnevenRows="True" ItemSelected="OnSelection" ItemTapped="OnTap" IsPullToRefreshEnabled="true" Refreshing="OnRefresh">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <ViewCell.ContextActions>
+              <MenuItem Clicked="OnEdit" Icon="" Text="Edit" CommandParameter="{Binding .}" />
+              <MenuItem Clicked="OnDelete" Text="Delete" IsDestructive="true" CommandParameter="{Binding .}" />
+            </ViewCell.ContextActions>
+            <StackLayout Padding="10,5">
+              <Label Text="{Binding BattleTag}" TextColor="Accent" FontSize="Large" />
+              <Label Text="{Binding Host}" FontAttributes="Italic" />
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </ContentPage.Content>
+</ContentPage>

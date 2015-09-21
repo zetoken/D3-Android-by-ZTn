@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ZTn.Pcl.D3Calculator.Views;assembly=ZTn.Pcl.D3Calculator"
+             x:Class="ZTn.Pcl.D3Calculator.Views.MenuPage"
+             Title="Menu Title">
+  <ContentPage.Content>
+    <ListView ItemsSource="{x:Static local:MenuPage.Items}" HasUnevenRows="True" ItemSelected="OnSelection">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <StackLayout Padding="10,5">
+              <Label Text="{Binding .}" TextColor="Accent" FontSize="Large" />
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </ContentPage.Content>
+
+</ContentPage>
