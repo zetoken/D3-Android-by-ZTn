@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:ZTn.Pcl.D3Calculator.Resources;assembly=ZTn.Pcl.D3Calculator"
+             xmlns:controls="clr-namespace:ZTn.Pcl.D3Calculator.Controls;assembly=ZTn.Pcl.D3Calculator"
+             x:Class="ZTn.Pcl.D3Calculator.Views.BnetAccountEditorPage">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Add Account" Icon="ic_menu_send.png" Order="Primary" Clicked="OnSubmit" />
+  </ContentPage.ToolbarItems>
+  <StackLayout Orientation="Vertical">
+    <Label Text="{x:Static resx:Lang.BattleTag}" />
+    <Entry Text="{Binding BattleTagString}" Placeholder="name#code" />
+    <Label Text="{x:Static resx:Lang.Host}" />
+    <controls:ZTnPicker ItemsSource="{Binding HostNames}" SelectedIndex="{Binding HostSelectedIndex}" />
+  </StackLayout>
+</ContentPage>

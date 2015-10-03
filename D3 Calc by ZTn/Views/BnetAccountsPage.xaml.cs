@@ -8,13 +8,13 @@ namespace ZTn.Pcl.D3Calculator.Views
 {
     public partial class BnetAccountsPage : ContentPage
     {
-        public static ObservableCollection<BnetAccount> Items { get; set; }
+        public static ObservableCollection<BnetAccount> Accounts { get; set; }
         private static BnetAccounts _accounts;
 
         public BnetAccountsPage()
         {
             _accounts = new BnetAccounts();
-            Items = new ObservableCollection<BnetAccount>(_accounts.GetAllAccounts());
+            Accounts = new ObservableCollection<BnetAccount>(_accounts.GetAllAccounts());
 
             InitializeComponent();
         }
@@ -39,11 +39,11 @@ namespace ZTn.Pcl.D3Calculator.Views
         {
             var listView = (ListView)sender;
 
-            var itemList = Items.Reverse().ToList();
-            Items.Clear();
+            var itemList = Accounts.Reverse().ToList();
+            Accounts.Clear();
             foreach (var item in itemList)
             {
-                Items.Add(item);
+                Accounts.Add(item);
             }
 
             listView.IsRefreshing = false;
@@ -52,13 +52,16 @@ namespace ZTn.Pcl.D3Calculator.Views
         private void OnTap(object sender, ItemTappedEventArgs e)
         {
             var account = (BnetAccount)e.Item;
+
             DisplayAlert("Item Tapped", $"{account}", "Ok");
         }
 
         private void OnEdit(object sender, EventArgs e)
         {
             var item = (MenuItem)sender;
-            DisplayAlert("More Context Action", item.CommandParameter + " more context action", "OK");
+            var account = (BnetAccount)item.CommandParameter;
+
+            Navigation.PushAsync(new BnetAccountEditorPage(account));
         }
 
         private void OnDelete(object sender, EventArgs e)
@@ -68,12 +71,12 @@ namespace ZTn.Pcl.D3Calculator.Views
 
             _accounts.DeleteAccount(account);
 
-            Items.Remove(account);
+            Accounts.Remove(account);
         }
 
         private void OnAddAccount(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AddBnetAccountPage());
+            Navigation.PushAsync(new BnetAccountEditorPage());
         }
 
         #endregion

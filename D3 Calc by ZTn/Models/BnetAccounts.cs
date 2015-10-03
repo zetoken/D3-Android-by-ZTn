@@ -22,9 +22,6 @@ namespace ZTn.Pcl.D3Calculator.Models
 
             Database = DependencyService.Get<ISqLite>().GetConnection();
             Database.CreateTable<BnetAccount>();
-            Database.Insert(new BnetAccount { BattleTag = "Tok#2360", Host = "eu.api.battle.net" });
-            Database.Insert(new BnetAccount { BattleTag = "Solo#2284", Host = "eu.api.battle.net" });
-            Database.Insert(new BnetAccount { BattleTag = "None#0000", Host = "us.api.battle.net" });
         }
 
         /// <summary>
@@ -77,6 +74,18 @@ namespace ZTn.Pcl.D3Calculator.Models
             lock (Locker)
             {
                 Database.Delete<BnetAccount>(account.Id);
+            }
+        }
+
+        /// <summary>
+        /// Updates an existing account.
+        /// </summary>
+        /// <param name="account"></param>
+        public void UpdateAccount(BnetAccount account)
+        {
+            lock (Locker)
+            {
+                Database.Update(account);
             }
         }
     }

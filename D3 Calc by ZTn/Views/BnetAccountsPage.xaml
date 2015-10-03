@@ -8,7 +8,7 @@
     <ToolbarItem Text="Add Account" Icon="ic_menu_add.png" Order="Primary" Clicked="OnAddAccount" />
   </ContentPage.ToolbarItems>
   <ContentPage.Content>
-    <ListView ItemsSource="{x:Static local:BnetAccountsPage.Items}" HasUnevenRows="True" ItemSelected="OnSelection" ItemTapped="OnTap" IsPullToRefreshEnabled="true" Refreshing="OnRefresh">
+    <ListView ItemsSource="{x:Static local:BnetAccountsPage.Accounts}" HasUnevenRows="True" ItemSelected="OnSelection" ItemTapped="OnTap" IsPullToRefreshEnabled="true" Refreshing="OnRefresh">
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
