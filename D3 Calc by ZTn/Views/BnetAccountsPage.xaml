@@ -8,13 +8,13 @@
     <ToolbarItem Text="Add Account" Icon="ic_menu_add.png" Order="Primary" Clicked="OnAddAccount" />
   </ContentPage.ToolbarItems>
   <ContentPage.Content>
-    <ListView ItemsSource="{x:Static local:BnetAccountsPage.Accounts}" HasUnevenRows="True" ItemSelected="OnSelection" ItemTapped="OnTap" IsPullToRefreshEnabled="true" Refreshing="OnRefresh">
+    <ListView ItemsSource="{x:Static local:BnetAccountsPage.Accounts}" HasUnevenRows="True" ItemSelected="OnSelection" IsPullToRefreshEnabled="true" Refreshing="OnRefresh">
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
             <ViewCell.ContextActions>
-              <MenuItem Clicked="OnEdit" Icon="" Text="Edit" CommandParameter="{Binding .}" />
-              <MenuItem Clicked="OnDelete" Text="Delete" IsDestructive="true" CommandParameter="{Binding .}" />
+              <MenuItem Text="Edit" Icon="ic_menu_edit.png" CommandParameter="{Binding .}" Clicked="OnEdit" />
+              <MenuItem Text="Delete" Icon="ic_menu_delete.png" IsDestructive="true" CommandParameter="{Binding .}" Clicked="OnDelete" />
             </ViewCell.ContextActions>
             <StackLayout Padding="10,5">
               <Label Text="{Binding BattleTag}" TextColor="Accent" FontSize="Large" />

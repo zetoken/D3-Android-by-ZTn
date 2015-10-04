@@ -117,10 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Barbarian" xml:space="preserve">
+    <value>Barbarian</value>
+  </data>
   <data name="BattleTag" xml:space="preserve">
     <value>Battle Tag</value>
   </data>
+  <data name="Career" xml:space="preserve">
+    <value>Career</value>
+  </data>
+  <data name="Crusader" xml:space="preserve">
+    <value>Crusader</value>
+  </data>
+  <data name="DemonHunter" xml:space="preserve">
+    <value>Demon Hunter</value>
+  </data>
+  <data name="Hardcore" xml:space="preserve">
+    <value>Hardcore</value>
+  </data>
+  <data name="Hero" xml:space="preserve">
+    <value>Hero</value>
+  </data>
+  <data name="Heroes" xml:space="preserve">
+    <value>Heroes</value>
+  </data>
   <data name="Host" xml:space="preserve">
     <value>Game server</value>
+  </data>
+  <data name="Monk" xml:space="preserve">
+    <value>Monk</value>
+  </data>
+  <data name="Season" xml:space="preserve">
+    <value>Season</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="WitchDoctor" xml:space="preserve">
+    <value>Witch Doctor</value>
+  </data>
+  <data name="Wizard" xml:space="preserve">
+    <value>Wizard</value>
   </data>
 </root>

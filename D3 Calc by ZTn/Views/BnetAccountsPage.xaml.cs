@@ -29,7 +29,8 @@ namespace ZTn.Pcl.D3Calculator.Views
             }
 
             var account = (BnetAccount)e.SelectedItem;
-            DisplayAlert("Item Selected", account.BattleTag, "Ok");
+
+            Navigation.PushAsync(new CareersPage(account));
 
             var listView = (ListView)sender;
             listView.SelectedItem = null;
@@ -47,13 +48,6 @@ namespace ZTn.Pcl.D3Calculator.Views
             }
 
             listView.IsRefreshing = false;
-        }
-
-        private void OnTap(object sender, ItemTappedEventArgs e)
-        {
-            var account = (BnetAccount)e.Item;
-
-            DisplayAlert("Item Tapped", $"{account}", "Ok");
         }
 
         private void OnEdit(object sender, EventArgs e)

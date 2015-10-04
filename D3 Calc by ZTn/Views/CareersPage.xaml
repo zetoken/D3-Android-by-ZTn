@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:ZTn.Pcl.D3Calculator.Resources;assembly=ZTn.Pcl.D3Calculator"
+             xmlns:d3Calculator="clr-namespace:ZTn.Pcl.D3Calculator;assembly=ZTn.Pcl.D3Calculator"
+             xmlns:converters="clr-namespace:ZTn.Pcl.D3Calculator.Converters;assembly=ZTn.Pcl.D3Calculator"
+             x:Class="ZTn.Pcl.D3Calculator.Views.CareersPage">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:HeroClassConverter x:Key="HeroClassConverter" />
+      <converters:HeroToImageConverter x:Key="HeroToImageConverter" />
+      <converters:LastUpdatedConverter x:Key="LastUpdatedConverter" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Refresh" Icon="" Order="Primary" Clicked="OnRefresh" />
+  </ContentPage.ToolbarItems>
+
+  <ContentPage.Content>
+    <StackLayout Orientation="Vertical">
+      <Label Text="{x:Static resx:Lang.Career}" TextColor="{x:Static d3Calculator:Colors.Title}"></Label>
+      <Label Text="{Binding Career.GuildName}" />
+      <Label Text="{Binding Career.Kills.Elites}" />
+      <Label Text="{Binding Career.Kills.Monsters}" />
+      <Label Text="{Binding Career.Kills.HardcoreMonsters}" />
+      <Label Text="{Binding Career.ParagonLevel}" />
+      <Label Text="{Binding Career.ParagonLevelHardcore}" />
+      <Label Text="{Binding Career.ParagonLevelSeason}" />
+      <Label Text="{Binding Career.ParagonLevelSeasonHardcore}" />
+      <Label Text="{x:Static resx:Lang.Heroes}" TextColor="{x:Static d3Calculator:Colors.Title}" />
+      <ListView ItemsSource="{Binding Heroes}" HasUnevenRows="True" ItemSelected="OnSelection" IsPullToRefreshEnabled="true" Refreshing="OnRefresh">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <ViewCell.View>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                  <Image Source="{Binding Converter={StaticResource HeroToImageConverter}}" />
+                  <StackLayout Orientation="Vertical" Padding="10,5" HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal">
+                      <Label Text="{Binding Name}" TextColor="{x:Static d3Calculator:Colors.Legendary}" FontSize="Large" />
+                      <Label Text="{Binding Level}" />
+                      <Label Text=" +" YAlign="Start" />
+                      <Label Text="{Binding ParagonLevel}" YAlign="Start" />
+                      <Label Text="{Binding LastUpdated, Converter={StaticResource LastUpdatedConverter}}" YAlign="End" XAlign="End" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                      <Label Text="{Binding HeroClass, Converter={StaticResource HeroClassConverter}}" TextColor="{x:Static d3Calculator:Colors.HeroClass}" />
+                      <Label Text="{x:Static resx:Lang.Hardcore}" TextColor="{x:Static d3Calculator:Colors.Hardcore}" IsVisible="{Binding Hardcore}" XAlign="End" HorizontalOptions="EndAndExpand" />
+                      <Label Text="{x:Static resx:Lang.Season}" TextColor="{x:Static d3Calculator:Colors.Seasonal}" IsVisible="{Binding Seasonal}" XAlign="End" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                  </StackLayout>
+                </StackLayout>
+              </ViewCell.View>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </StackLayout>
+  </ContentPage.Content>
+
+</ContentPage>

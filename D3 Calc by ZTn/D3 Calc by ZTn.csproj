@@ -36,6 +36,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Colors.cs" />
+    <Compile Include="Converters\HeroToImageConverter.cs" />
+    <Compile Include="Converters\HeroClassConverter.cs" />
+    <Compile Include="Converters\LastUpdatedConverter.cs" />
     <Compile Include="Models\BnetAccount.cs" />
     <Compile Include="Models\BnetAccounts.cs" />
     <Compile Include="ISQLite.cs" />
@@ -53,11 +57,15 @@
       <DependentUpon>Lang.fr.resx</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BnetAccountEditorViewModel.cs" />
+    <Compile Include="ViewModels\CareersViewModel.cs" />
     <Compile Include="Views\BnetAccountEditorPage.xaml.cs">
       <DependentUpon>BnetAccountEditorPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\BnetAccountsPage.xaml.cs">
       <DependentUpon>BnetAccountsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CareersPage.xaml.cs">
+      <DependentUpon>CareersPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MasterPage.cs" />
     <Compile Include="Views\MenuPage.xaml.cs">
@@ -134,7 +142,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Views\CareersPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.4.4.6449\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.4.4.6449\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

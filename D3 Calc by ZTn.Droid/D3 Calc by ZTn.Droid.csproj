@@ -165,6 +165,14 @@
     <AndroidResource Include="Resources\drawable-mdpi\ic_menu_send.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_menu_send.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_menu_send.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_menu_delete.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_menu_edit.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_menu_delete.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_menu_edit.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_menu_delete.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_menu_edit.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_menu_delete.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_menu_edit.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\D3 Calc by ZTn\D3 Calc by ZTn.csproj">
