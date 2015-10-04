@@ -13,7 +13,7 @@ namespace ZTn.Pcl.D3Calculator.Views
 {
     public partial class CareersPage : ContentPage
     {
-        private BnetAccount _account;
+        private readonly BnetAccount _account;
         private CareersViewModel _viewModel;
 
         public CareersPage(BnetAccount account)
@@ -31,7 +31,9 @@ namespace ZTn.Pcl.D3Calculator.Views
 
         private void OnRefresh(object sender, EventArgs e)
         {
-            // TODO
+            _viewModel = new CareersViewModel(_account);
+
+            BindingContext = _viewModel;
         }
 
         private void OnSelection(object sender, SelectedItemChangedEventArgs e)

@@ -50,7 +50,7 @@ namespace ZTn.Pcl.D3Calculator.Views
 
             if (_account == null)
             {
-                _account = new BnetAccount { BattleTag = _viewModel.BattleTagString, Host = _viewModel.HostNames[_viewModel.HostSelectedIndex] };
+                _account = new BnetAccount { BattleTag = _viewModel.BattleTagString, Host = App.Hosts[_viewModel.HostSelectedIndex].Url };
 
                 BnetAccountsPage.Accounts.Add(_account);
 

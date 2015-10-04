@@ -19,6 +19,9 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
         public Career Career { get; private set; }
         public HeroSummary[] Heroes { get; private set; }
 
+        public string CareerTitle => Resources.Lang.Career.ToUpper();
+        public string HeroesTitle => Resources.Lang.Heroes.ToUpper();
+
         public CareersViewModel(BnetAccount account)
         {
             _account = account;

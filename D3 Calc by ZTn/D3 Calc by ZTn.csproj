@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="Colors.cs" />
+    <Compile Include="Resources\Colors.cs" />
     <Compile Include="Converters\HeroToImageConverter.cs" />
     <Compile Include="Converters\HeroClassConverter.cs" />
     <Compile Include="Converters\LastUpdatedConverter.cs" />
