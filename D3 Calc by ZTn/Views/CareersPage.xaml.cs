@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 using ZTn.BNet.BattleNet;
 using ZTn.BNet.D3;
 using ZTn.BNet.D3.Careers;
