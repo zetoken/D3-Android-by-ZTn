@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using ZTn.Bnet.Portable.Android;
 using ZTn.Pcl.D3Calculator;
 
 namespace ZTn.Droid.D3Calculator
@@ -13,6 +14,9 @@ namespace ZTn.Droid.D3Calculator
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            RegisterPcl.Register();
+
             LoadApplication(new App());
         }
     }

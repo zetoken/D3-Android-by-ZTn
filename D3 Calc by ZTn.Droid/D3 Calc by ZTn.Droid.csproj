@@ -71,12 +71,19 @@
     <DevInstrumentationEnabled>False</DevInstrumentationEnabled>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="D3 API by ZTn, Version=3.0.0.42924, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\D3 API by ZTn.dll</HintPath>
+    </Reference>
     <Reference Include="FormsViewGroup, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.Forms.1.4.4.6449\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
+    <Reference Include="PCL Adapter">
+      <HintPath>..\Libraries\PCL Adapter.dll</HintPath>
+    </Reference>
     <Reference Include="SQLite-net, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\sqlite-net-pcl.1.0.11\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLite-net.dll</HintPath>
       <Private>True</Private>
@@ -128,6 +135,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CacheDataProvider.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -182,6 +190,10 @@
     <ProjectReference Include="..\D3 Calc by ZTn\D3 Calc by ZTn.csproj">
       <Project>{D9309A8C-CEFE-4D28-B68A-FA3D63C62505}</Project>
       <Name>D3 Calc by ZTn</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PCL Adapter for Android\PCL Adapter for Android.csproj">
+      <Project>{6d08fa58-738f-40b2-8260-d53dc215c8f0}</Project>
+      <Name>PCL Adapter for Android</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

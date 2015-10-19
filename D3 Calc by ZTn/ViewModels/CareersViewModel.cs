@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 using ZTn.BNet.BattleNet;
 using ZTn.BNet.D3;
 using ZTn.BNet.D3.Careers;
+using ZTn.BNet.D3.DataProviders;
 using ZTn.BNet.D3.Heroes;
 using ZTn.Pcl.D3Calculator.Annotations;
 using ZTn.Pcl.D3Calculator.Models;
@@ -67,21 +69,29 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
         public CareersViewModel(BnetAccount account)
         {
             _account = account;
-            BusyIndicatorLoadingCareer = new BusyIndicatorViewModel { IsBusy = true , BusyMessage = "Loading Career"};
+            BusyIndicatorLoadingCareer = new BusyIndicatorViewModel { IsBusy = true, BusyMessage = "Loading Career" };
 
             LoadCareerAsync();
         }
 
-        private void LoadCareerAsync()
+        public Task<Career> LoadCareerAsync(FetchMode fetchMode = FetchMode.OnlineIfMissing)
         {
-            Task.Run(() =>
+            return Task.Run(() =>
             {
                 BusyMessage = "Loading career";
                 IsBusy = true;
 
-                D3Api.Host = _account.Host;
+                var dataProvider = DependencyService.Get<CacheableDataProvider>();
+                dataProvider.FetchMode = fetchMode;
 
-                Career = Career.CreateFromBattleTag(new BattleTag(_account.BattleTag));
+                var d3Api = new D3ApiRequester
+                {
+                    ApiKey = App.ApiKey,
+                    DataProvider = dataProvider,
+                    Host = _account.Host
+                };
+
+                Career = d3Api.GetCareerFromBattleTag(new BattleTag(_account.BattleTag));
 
                 Heroes = Career?.Heroes;
 

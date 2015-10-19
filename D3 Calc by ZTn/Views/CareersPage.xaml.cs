@@ -6,6 +6,7 @@ using Xamarin.Forms.Xaml;
 using ZTn.BNet.BattleNet;
 using ZTn.BNet.D3;
 using ZTn.BNet.D3.Careers;
+using ZTn.BNet.D3.DataProviders;
 using ZTn.BNet.D3.Heroes;
 using ZTn.Pcl.D3Calculator.Models;
 using ZTn.Pcl.D3Calculator.ViewModels;
@@ -32,7 +33,7 @@ namespace ZTn.Pcl.D3Calculator.Views
 
         private void OnRefresh(object sender, EventArgs e)
         {
-            _viewModel = new CareersViewModel(_account);
+            _viewModel.LoadCareerAsync(FetchMode.Online);
 
             BindingContext = _viewModel;
         }
