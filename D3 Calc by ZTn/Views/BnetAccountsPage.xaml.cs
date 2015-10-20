@@ -8,8 +8,11 @@ namespace ZTn.Pcl.D3Calculator.Views
 {
     public partial class BnetAccountsPage : ContentPage
     {
-        public static ObservableCollection<BnetAccount> Accounts { get; set; }
         private static BnetAccounts _accounts;
+
+        public static ObservableCollection<BnetAccount> Accounts { get; set; }
+
+        public string CareersTitle => D3Calculator.Resources.Lang.Careers.ToUpper();
 
         public BnetAccountsPage()
         {
@@ -17,6 +20,8 @@ namespace ZTn.Pcl.D3Calculator.Views
             Accounts = new ObservableCollection<BnetAccount>(_accounts.GetAllAccounts());
 
             InitializeComponent();
+
+            BindingContext = this;
         }
 
         #region >> Page event handlers

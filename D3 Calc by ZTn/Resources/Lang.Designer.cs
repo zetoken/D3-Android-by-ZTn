@@ -62,6 +62,15 @@ namespace ZTn.Pcl.D3Calculator.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Type your account information.
+        /// </summary>
+        internal static string AccountEditorTitle {
+            get {
+                return ResourceManager.GetString("AccountEditorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Barbarian.
         /// </summary>
         internal static string Barbarian {
@@ -85,6 +94,15 @@ namespace ZTn.Pcl.D3Calculator.Resources {
         internal static string Career {
             get {
                 return ResourceManager.GetString("Career", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diablo 3 Careers.
+        /// </summary>
+        internal static string Careers {
+            get {
+                return ResourceManager.GetString("Careers", resourceCulture);
             }
         }
         

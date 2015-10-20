@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Careers" xml:space="preserve">
+    <value>Carrières Diablo 3</value>
+  </data>
   <data name="Barbarian" xml:space="preserve">
     <value>Barbare</value>
   </data>
@@ -158,5 +161,8 @@
   </data>
   <data name="Wizard" xml:space="preserve">
     <value>Sorcier</value>
+  </data>
+  <data name="AccountEditorTitle" xml:space="preserve">
+    <value>Entrez les informations du compte</value>
   </data>
 </root>
