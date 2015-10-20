@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using ZTn.BNet.BattleNet;
 using ZTn.BNet.D3;
@@ -10,6 +11,8 @@ namespace ZTn.Pcl.D3Calculator
 {
     public class App : Application
     {
+        private static Task<Host[]> _hostLoadTask;
+
         public const string ApiKey = "zrxxcy3qzp8jcbgrce2es4yq52ew2k7r";
 
         private static Host[] _hosts;
@@ -19,10 +22,8 @@ namespace ZTn.Pcl.D3Calculator
             {
                 if (_hosts == null)
                 {
-                    using (var stream = typeof(App).GetTypeInfo().Assembly.GetManifestResourceStream($"{typeof(App).Namespace}.Resources.hosts.json"))
-                    {
-                        _hosts = stream.CreateFromJsonPersistentStream<Host[]>();
-                    }
+                    _hostLoadTask.Wait();
+                    _hosts = _hostLoadTask.Result;
                 }
 
                 return _hosts;
@@ -34,9 +35,22 @@ namespace ZTn.Pcl.D3Calculator
             MainPage = new MasterPage();
         }
 
+        public static Task<Host[]> LoadHostAsync()
+        {
+            return Task.Run(() =>
+            {
+                using (var stream = typeof(App).GetTypeInfo().Assembly.GetManifestResourceStream($"{typeof(App).Namespace}.Resources.hosts.json"))
+                {
+                    return stream.CreateFromJsonPersistentStream<Host[]>();
+                }
+            });
+        }
+
         protected override void OnStart()
         {
             // Handle when your app starts
+
+            _hostLoadTask = LoadHostAsync();
         }
 
         protected override void OnSleep()
