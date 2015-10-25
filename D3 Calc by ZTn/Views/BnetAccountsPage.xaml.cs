@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using ZTn.Pcl.D3Calculator.Models;
 
@@ -55,10 +56,13 @@ namespace ZTn.Pcl.D3Calculator.Views
             listView.IsRefreshing = false;
         }
 
-        private void OnEdit(object sender, EventArgs e)
+        private async void OnEdit(object sender, EventArgs e)
         {
             var item = (MenuItem)sender;
             var account = (BnetAccount)item.CommandParameter;
+
+            // Workaround for a Xamarin 1.5+ issue (latest stable ok: 1.4.4)
+            await Task.Yield();
 
             Navigation.PushAsync(new BnetAccountEditorPage(account));
         }
