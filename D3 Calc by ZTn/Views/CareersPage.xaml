@@ -25,21 +25,21 @@
       <Label Text="{Binding CareerTitle}" TextColor="{x:Static resx:Colors.Title}"></Label>
       <BoxView HeightRequest="1" Color="{x:Static resx:Colors.Title}" />
 
-      <Label Text="{Binding Career.GuildName}" />
-      <Label Text="{Binding Career.Kills.Elites}" />
-      <Label Text="{Binding Career.Kills.Monsters}" />
-      <Label Text="{Binding Career.Kills.HardcoreMonsters}" />
-      <Label Text="{Binding Career.ParagonLevel}" />
-      <Label Text="{Binding Career.ParagonLevelHardcore}" />
-      <Label Text="{Binding Career.ParagonLevelSeason}" />
-      <Label Text="{Binding Career.ParagonLevelSeasonHardcore}" />
+      <Label Text="{Binding Career.Result.GuildName}" />
+      <Label Text="{Binding Career.Result.Kills.Elites}" />
+      <Label Text="{Binding Career.Result.Kills.Monsters}" />
+      <Label Text="{Binding Career.Result.Kills.HardcoreMonsters}" />
+      <Label Text="{Binding Career.Result.ParagonLevel}" />
+      <Label Text="{Binding Career.Result.ParagonLevelHardcore}" />
+      <Label Text="{Binding Career.Result.ParagonLevelSeason}" />
+      <Label Text="{Binding Career.Result.ParagonLevelSeasonHardcore}" />
 
       <Label Text="{Binding HeroesTitle}" TextColor="{x:Static resx:Colors.Title}" />
       <BoxView HeightRequest="1" Color="{x:Static resx:Colors.Title}" />
 
       <controls:BusyIndicatorView BindingContext="{Binding BusyIndicatorLoadingCareer}" />
 
-      <ListView ItemsSource="{Binding Heroes}" HasUnevenRows="True" ItemSelected="OnSelection">
+      <ListView ItemsSource="{Binding Career.Result.Heroes}" HasUnevenRows="True" ItemSelected="OnSelection">
         <ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>

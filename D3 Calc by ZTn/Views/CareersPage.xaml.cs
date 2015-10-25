@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using ZTn.BNet.BattleNet;
-using ZTn.BNet.D3;
-using ZTn.BNet.D3.Careers;
 using ZTn.BNet.D3.DataProviders;
 using ZTn.BNet.D3.Heroes;
 using ZTn.Pcl.D3Calculator.Models;
@@ -15,13 +9,10 @@ namespace ZTn.Pcl.D3Calculator.Views
 {
     public partial class CareersPage : ContentPage
     {
-        private readonly BnetAccount _account;
-        private CareersViewModel _viewModel;
+        private readonly CareersViewModel _viewModel;
 
         public CareersPage(BnetAccount account)
         {
-            _account = account;
-
             _viewModel = new CareersViewModel(account);
 
             Title = account.BattleTag;
@@ -33,14 +24,22 @@ namespace ZTn.Pcl.D3Calculator.Views
 
         private void OnRefresh(object sender, EventArgs e)
         {
-            _viewModel.LoadCareerAsync(FetchMode.Online);
-
-            BindingContext = _viewModel;
+            _viewModel.RefreshCareer(FetchMode.Online);
         }
 
         private void OnSelection(object sender, SelectedItemChangedEventArgs e)
         {
-            // TODO
+            if (e.SelectedItem == null)
+            {
+                return;
+            }
+
+            var heroSummary = (HeroSummary)e.SelectedItem;
+
+            Navigation.PushAsync(new HeroItemsPage(_viewModel.Account, heroSummary));
+
+            var listView = (ListView)sender;
+            listView.SelectedItem = null;
         }
     }
 }

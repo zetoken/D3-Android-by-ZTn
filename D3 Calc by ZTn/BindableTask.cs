@@ -11,7 +11,7 @@ namespace ZTn.Pcl.D3Calculator
     /// <typeparam name="TResult">Type of data returned by the task.</typeparam>
     public class BindableTask<TResult> : INotifyPropertyChanged
     {
-        public Task<TResult> Task { get; private set; }
+        public Task<TResult> Task { get; }
 
         public TResult Result => (Task.Status == TaskStatus.RanToCompletion ? Task.Result : default(TResult));
 

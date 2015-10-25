@@ -161,6 +161,33 @@ namespace ZTn.Pcl.D3Calculator.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Items.
+        /// </summary>
+        internal static string Items {
+            get {
+                return ResourceManager.GetString("Items", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loading Career.
+        /// </summary>
+        internal static string LoadingCareer {
+            get {
+                return ResourceManager.GetString("LoadingCareer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loading Hero.
+        /// </summary>
+        internal static string LoadingHero {
+            get {
+                return ResourceManager.GetString("LoadingHero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Monk.
         /// </summary>
         internal static string Monk {

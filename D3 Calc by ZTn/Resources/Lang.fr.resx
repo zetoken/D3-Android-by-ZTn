@@ -165,4 +165,13 @@
   <data name="AccountEditorTitle" xml:space="preserve">
     <value>Entrez les informations du compte</value>
   </data>
+  <data name="LoadingCareer" xml:space="preserve">
+    <value>Chargement de la Carrière</value>
+  </data>
+  <data name="LoadingHero" xml:space="preserve">
+    <value>Chargement du Héro</value>
+  </data>
+  <data name="Items" xml:space="preserve">
+    <value>Equipement</value>
+  </data>
 </root>

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using ZTn.Pcl.D3Calculator.Models;
@@ -42,20 +41,6 @@ namespace ZTn.Pcl.D3Calculator.Views
             listView.SelectedItem = null;
         }
 
-        private void OnRefresh(object sender, EventArgs e)
-        {
-            var listView = (ListView)sender;
-
-            var itemList = Accounts.Reverse().ToList();
-            Accounts.Clear();
-            foreach (var item in itemList)
-            {
-                Accounts.Add(item);
-            }
-
-            listView.IsRefreshing = false;
-        }
-
         private async void OnEdit(object sender, EventArgs e)
         {
             var item = (MenuItem)sender;
@@ -64,7 +49,7 @@ namespace ZTn.Pcl.D3Calculator.Views
             // Workaround for a Xamarin 1.5+ issue (latest stable ok: 1.4.4)
             await Task.Yield();
 
-            Navigation.PushAsync(new BnetAccountEditorPage(account));
+            await Navigation.PushAsync(new BnetAccountEditorPage(account));
         }
 
         private void OnDelete(object sender, EventArgs e)

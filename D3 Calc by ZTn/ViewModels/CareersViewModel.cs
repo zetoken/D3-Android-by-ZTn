@@ -6,7 +6,6 @@ using ZTn.BNet.BattleNet;
 using ZTn.BNet.D3;
 using ZTn.BNet.D3.Careers;
 using ZTn.BNet.D3.DataProviders;
-using ZTn.BNet.D3.Heroes;
 using ZTn.Pcl.D3Calculator.Annotations;
 using ZTn.Pcl.D3Calculator.Models;
 
@@ -14,28 +13,15 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
 {
     class CareersViewModel : INotifyPropertyChanged
     {
-        private readonly BnetAccount _account;
-        private bool _isBusy;
-        private string _busyMessage;
-        private Career _career;
-        private HeroSummary[] _heroes;
+        private BindableTask<Career> _career;
+        public BnetAccount Account { get; }
 
-        public Career Career
+        public BindableTask<Career> Career
         {
             get { return _career; }
-            private set
+            set
             {
                 _career = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public HeroSummary[] Heroes
-        {
-            get { return _heroes; }
-            private set
-            {
-                _heroes = value;
                 OnPropertyChanged();
             }
         }
@@ -43,62 +29,41 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
         public string CareerTitle => Resources.Lang.Career.ToUpper();
         public string HeroesTitle => Resources.Lang.Heroes.ToUpper();
 
-        public bool IsBusy
-        {
-            get { return _isBusy; }
-            set
-            {
-                BusyIndicatorLoadingCareer.IsBusy = value;
-                _isBusy = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string BusyMessage
-        {
-            get { return _busyMessage; }
-            set
-            {
-                _busyMessage = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public BusyIndicatorViewModel BusyIndicatorLoadingCareer { get; set; }
+        public BusyIndicatorViewModel BusyIndicatorLoadingCareer { get; }
 
         public CareersViewModel(BnetAccount account)
         {
-            _account = account;
-            BusyIndicatorLoadingCareer = new BusyIndicatorViewModel { IsBusy = true, BusyMessage = "Loading Career" };
+            Account = account;
 
-            LoadCareerAsync();
+            BusyIndicatorLoadingCareer = new BusyIndicatorViewModel { IsBusy = true, BusyMessage = Resources.Lang.LoadingCareer };
+
+            RefreshCareer();
         }
 
-        public Task<Career> LoadCareerAsync(FetchMode fetchMode = FetchMode.OnlineIfMissing)
+        public void RefreshCareer(FetchMode fetchMode = FetchMode.OnlineIfMissing)
         {
-            return Task.Run(() =>
+            Career = new BindableTask<Career>(LoadCareerAsync(fetchMode));
+        }
+
+        private async Task<Career> LoadCareerAsync(FetchMode fetchMode)
+        {
+            BusyIndicatorLoadingCareer.IsBusy = true;
+
+            var dataProvider = DependencyService.Get<CacheableDataProvider>();
+            dataProvider.FetchMode = fetchMode;
+
+            var d3Api = new D3ApiRequester
             {
-                BusyMessage = "Loading career";
-                IsBusy = true;
+                ApiKey = App.ApiKey,
+                DataProvider = dataProvider,
+                Host = Account.Host
+            };
 
-                var dataProvider = DependencyService.Get<CacheableDataProvider>();
-                dataProvider.FetchMode = fetchMode;
+            var career = await d3Api.GetCareerFromBattleTagAsync(new BattleTag(Account.BattleTag));
 
-                var d3Api = new D3ApiRequester
-                {
-                    ApiKey = App.ApiKey,
-                    DataProvider = dataProvider,
-                    Host = _account.Host
-                };
+            BusyIndicatorLoadingCareer.IsBusy = false;
 
-                Career = d3Api.GetCareerFromBattleTag(new BattleTag(_account.BattleTag));
-
-                Heroes = Career?.Heroes;
-
-                IsBusy = false;
-
-                return Career;
-            });
+            return career;
         }
 
         #region >> INotifyPropertyChanged
