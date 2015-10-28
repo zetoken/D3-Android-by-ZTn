@@ -3684,6 +3684,9 @@ namespace ZTn.Droid.D3Calculator
 			// aapt resource value: 0x7f0b0012
 			public const int showTitle = 2131427346;
 			
+			// aapt resource value: 0x7f0b0081
+			public const int sliding_tabs = 2131427457;
+			
 			// aapt resource value: 0x7f0b0065
 			public const int snackbar_action = 2131427429;
 			
@@ -3740,6 +3743,9 @@ namespace ZTn.Droid.D3Calculator
 			
 			// aapt resource value: 0x7f0b0044
 			public const int title_template = 2131427396;
+			
+			// aapt resource value: 0x7f0b0082
+			public const int toolbar = 2131427458;
 			
 			// aapt resource value: 0x7f0b0030
 			public const int top = 2131427376;
@@ -3950,6 +3956,12 @@ namespace ZTn.Droid.D3Calculator
 			// aapt resource value: 0x7f03002f
 			public const int support_simple_spinner_dropdown_item = 2130903087;
 			
+			// aapt resource value: 0x7f030030
+			public const int TabLayout = 2130903088;
+			
+			// aapt resource value: 0x7f030031
+			public const int Toolbar = 2130903089;
+			
 			static Layout()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -4083,6 +4095,9 @@ namespace ZTn.Droid.D3Calculator
 			
 			// aapt resource value: 0x7f070084
 			public const int Animation_AppCompat_DropDownUp = 2131165316;
+			
+			// aapt resource value: 0x7f070146
+			public const int AppCompatDialogStyle = 2131165510;
 			
 			// aapt resource value: 0x7f070085
 			public const int Base_AlertDialog_AppCompat = 2131165317;
@@ -4509,6 +4524,12 @@ namespace ZTn.Droid.D3Calculator
 			
 			// aapt resource value: 0x7f070006
 			public const int CardView_Light = 2131165190;
+			
+			// aapt resource value: 0x7f070144
+			public const int MyTheme = 2131165508;
+			
+			// aapt resource value: 0x7f070145
+			public const int MyTheme_Base = 2131165509;
 			
 			// aapt resource value: 0x7f070016
 			public const int Platform_AppCompat = 2131165206;

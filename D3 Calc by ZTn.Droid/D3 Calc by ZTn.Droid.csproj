@@ -152,6 +152,8 @@
     </None>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
+    <AndroidResource Include="Resources\layout\TabLayout.axml" />
+    <AndroidResource Include="Resources\layout\Toolbar.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
@@ -190,6 +192,7 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ic_menu_edit.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_menu_delete.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_menu_edit.png" />
+    <AndroidResource Include="Resources\values\style.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\D3 Calc by ZTn\D3 Calc by ZTn.csproj">
