@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -15,6 +17,8 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
     {
         private BindableTask<Career> _career;
         public BnetAccount Account { get; }
+
+        public ObservableCollection<IListViewRowData> Details { get; set; }
 
         public BindableTask<Career> Career
         {
@@ -36,7 +40,7 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
             Account = account;
 
             BusyIndicatorLoadingCareer = new BusyIndicatorViewModel { IsBusy = true, BusyMessage = Resources.Lang.LoadingCareer };
-
+            Details = new ObservableCollection<IListViewRowData>(new[] { new TextListViewData { Label = "LABEL", Value = "TEXT" } });
             RefreshCareer();
         }
 

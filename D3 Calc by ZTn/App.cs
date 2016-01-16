@@ -2,8 +2,6 @@
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using ZTn.BNet.BattleNet;
-using ZTn.BNet.D3;
-using ZTn.BNet.D3.DataProviders;
 using ZTn.BNet.D3.Helpers;
 using ZTn.Pcl.D3Calculator.Views;
 
