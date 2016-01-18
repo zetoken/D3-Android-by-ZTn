@@ -1,9 +1,8 @@
 ﻿<forms:WindowsPage
-    x:Class="D3_Calc_by_ZTn.UniversalW.MainPage"
+    x:Class="ZTn.Windows.D3Calculator.MainPage"
     xmlns:forms="using:Xamarin.Forms.Platform.UWP"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:D3_Calc_by_ZTn.UniversalW"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">

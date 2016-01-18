@@ -26,8 +26,6 @@ namespace ZTn.Droid.D3Calculator
 		
 		public static void UpdateIdValues()
 		{
-			global::ZTn.Bnet.Portable.Android.Resource.String.ApplicationName = global::ZTn.Droid.D3Calculator.Resource.String.ApplicationName;
-			global::ZTn.Bnet.Portable.Android.Resource.String.Hello = global::ZTn.Droid.D3Calculator.Resource.String.Hello;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_in = global::ZTn.Droid.D3Calculator.Resource.Animation.abc_fade_in;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_out = global::ZTn.Droid.D3Calculator.Resource.Animation.abc_fade_out;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_grow_fade_in_from_bottom = global::ZTn.Droid.D3Calculator.Resource.Animation.abc_grow_fade_in_from_bottom;

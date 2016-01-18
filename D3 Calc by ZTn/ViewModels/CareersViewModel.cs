@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -53,7 +52,7 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
         {
             BusyIndicatorLoadingCareer.IsBusy = true;
 
-            var dataProvider = DependencyService.Get<CacheableDataProvider>();
+            var dataProvider = DependencyService.Get<ICacheableD3DataProvider>();
             dataProvider.FetchMode = fetchMode;
 
             var d3Api = new D3ApiRequester

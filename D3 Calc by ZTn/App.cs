@@ -9,7 +9,7 @@ namespace ZTn.Pcl.D3Calculator
 {
     public class App : Application
     {
-        private static Task<Host[]> _hostLoadTask;
+        private static Task<Host[]> _hostLoadTask= LoadHostAsync();
 
         public const string ApiKey = "zrxxcy3qzp8jcbgrce2es4yq52ew2k7r";
 
@@ -47,8 +47,6 @@ namespace ZTn.Pcl.D3Calculator
         protected override void OnStart()
         {
             // Handle when your app starts
-
-            _hostLoadTask = LoadHostAsync();
         }
 
         protected override void OnSleep()
