@@ -112,6 +112,19 @@
     <None Include="D3 Calc by ZTn.Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="barbarian_female.png" />
+    <Content Include="barbarian_male.png" />
+    <Content Include="crusader_female.png" />
+    <Content Include="crusader_male.png" />
+    <Content Include="demonhunter_female.png" />
+    <Content Include="demonhunter_male.png" />
+    <Content Include="icon.png" />
+    <Content Include="monk_female.png" />
+    <Content Include="monk_male.png" />
+    <Content Include="witchdoctor_female.png" />
+    <Content Include="witchdoctor_male.png" />
+    <Content Include="wizard_female.png" />
+    <Content Include="wizard_male.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

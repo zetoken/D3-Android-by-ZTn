@@ -39,7 +39,10 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
             Account = account;
 
             BusyIndicatorLoadingCareer = new BusyIndicatorViewModel { IsBusy = true, BusyMessage = Resources.Lang.LoadingCareer };
-            Details = new ObservableCollection<IListViewRowData>(new[] { new TextListViewData { Label = "LABEL", Value = "TEXT" } });
+            Details = new ObservableCollection<IListViewRowData>(new[]
+            {
+                new TextListViewData { Label = "LABEL", Value = "TEXT" }
+            });
             RefreshCareer();
         }
 
@@ -65,6 +68,16 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
             var career = await d3Api.GetCareerFromBattleTagAsync(new BattleTag(Account.BattleTag));
 
             BusyIndicatorLoadingCareer.IsBusy = false;
+
+            Details.Clear();
+            Details.Add(new TextListViewData { Label = "Guild Name", Value = career.GuildName });
+            Details.Add(new TextListViewData { Label = "Elites", Value = $"{career.Kills.Elites}" });
+            Details.Add(new TextListViewData { Label = "Monsters", Value = $"{career.Kills.Monsters}" });
+            Details.Add(new TextListViewData { Label = "Hardcore Monsters", Value = $"{career.Kills.HardcoreMonsters}" });
+            Details.Add(new TextListViewData { Label = "Paragon Level", Value = $"{career.ParagonLevel}" });
+            Details.Add(new TextListViewData { Label = "Paragon Level Hardcore", Value = $"{career.ParagonLevelHardcore}" });
+            Details.Add(new TextListViewData { Label = "Paragon Level Season", Value = $"{career.ParagonLevelSeason}" });
+            Details.Add(new TextListViewData { Label = "Paragon Level Season Hardcore", Value = $"{career.ParagonLevelSeasonHardcore}" });
 
             return career;
         }

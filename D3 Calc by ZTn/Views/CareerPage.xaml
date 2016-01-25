@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:ZTn.Pcl.D3Calculator.Resources;assembly=ZTn.Pcl.D3Calculator"
+             xmlns:converters="clr-namespace:ZTn.Pcl.D3Calculator.Converters;assembly=ZTn.Pcl.D3Calculator"
+             xmlns:controls="clr-namespace:ZTn.Pcl.D3Calculator.Controls;assembly=ZTn.Pcl.D3Calculator"
+             xmlns:extensions="clr-namespace:ZTn.Pcl.D3Calculator.Extensions;assembly=ZTn.Pcl.D3Calculator"
+             x:Class="ZTn.Pcl.D3Calculator.Views.CareersPage"
+             x:Name="ContentPage">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:HeroClassConverter x:Key="HeroClassConverter" />
+      <converters:HeroToImageConverter x:Key="HeroToImageConverter" />
+      <converters:LastUpdatedConverter x:Key="LastUpdatedConverter" />
+
+      <DataTemplate x:Key="TextListViewData">
+        <ViewCell>
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="{Binding Label}" Grid.Column="0" />
+            <Label Text="{Binding Value}" Grid.Column="1" />
+          </Grid>
+        </ViewCell>
+      </DataTemplate>
+
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Refresh" Icon="" Order="Primary" Clicked="OnRefresh" />
+  </ContentPage.ToolbarItems>
+
+  <ContentPage.Content>
+
+    <StackLayout Orientation="Vertical" Padding="5,10" Spacing="0,0">
+
+      <Label Text="{Binding CareerTitle}" TextColor="{x:Static resx:Colors.Title}"></Label>
+      <BoxView HeightRequest="1" Color="{x:Static resx:Colors.Title}" />
+
+      <StackLayout VerticalOptions="Start">
+        <ListView ItemsSource="{Binding Details}" ItemTemplate="{extensions:DataTemplateSelector Page={x:Reference ContentPage}}" VerticalOptions="Start"/>
+      </StackLayout>
+
+      <Label Text="{Binding HeroesTitle}" TextColor="{x:Static resx:Colors.Title}" />
+      <BoxView HeightRequest="1" Color="{x:Static resx:Colors.Title}" />
+
+      <controls:BusyIndicatorView BindingContext="{Binding BusyIndicatorLoadingCareer}" />
+
+      <ListView ItemsSource="{Binding Career.Result.Heroes}" HasUnevenRows="True" ItemSelected="OnSelection" VerticalOptions="FillAndExpand">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <ViewCell.View>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0,0">
+                  <Image Source="{Binding Converter={StaticResource HeroToImageConverter}}" />
+                  <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0,0">
+                    <StackLayout Orientation="Horizontal" Spacing="0,0">
+                      <Label Text="{Binding Name}" TextColor="{x:Static resx:Colors.Legendary}" FontSize="Large" />
+                      <Label Text="{Binding Level}" TextColor="{x:Static resx:Colors.Level}" />
+                      <Label Text=" +" TextColor="{x:Static resx:Colors.Level}" YAlign="Start" />
+                      <Label Text="{Binding ParagonLevel}" TextColor="{x:Static resx:Colors.Level}" YAlign="Start" />
+                      <Label Text="{Binding LastUpdated, Converter={StaticResource LastUpdatedConverter}}" YAlign="End" XAlign="End" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0,0">
+                      <Label Text="{Binding HeroClass, Converter={StaticResource HeroClassConverter}}" TextColor="{x:Static resx:Colors.HeroClass}" />
+                      <Label Text="{x:Static resx:Lang.Hardcore}" TextColor="{x:Static resx:Colors.Hardcore}" IsVisible="{Binding Hardcore}" XAlign="End" HorizontalOptions="EndAndExpand" />
+                      <Label Text="{x:Static resx:Lang.Season}" TextColor="{x:Static resx:Colors.Seasonal}" IsVisible="{Binding Seasonal}" XAlign="End" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                  </StackLayout>
+                </StackLayout>
+              </ViewCell.View>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+
+    </StackLayout>
+
+  </ContentPage.Content>
+
+</ContentPage>
