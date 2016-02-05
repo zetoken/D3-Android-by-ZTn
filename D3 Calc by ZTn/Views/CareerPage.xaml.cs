@@ -1,7 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
 using ZTn.BNet.D3.DataProviders;
-using ZTn.BNet.D3.Heroes;
 using ZTn.Pcl.D3Calculator.Models;
 using ZTn.Pcl.D3Calculator.ViewModels;
 
@@ -34,9 +33,11 @@ namespace ZTn.Pcl.D3Calculator.Views
                 return;
             }
 
-            var heroSummary = (HeroSummary)e.SelectedItem;
-
-            Navigation.PushAsync(new HeroPage(_viewModel.Account, heroSummary));
+            var heroListViewData = e.SelectedItem as HeroListViewData;
+            if (heroListViewData != null)
+            {
+                Navigation.PushAsync(new HeroPage(_viewModel.Account, heroListViewData.Hero));
+            }
 
             var listView = (ListView)sender;
             listView.SelectedItem = null;

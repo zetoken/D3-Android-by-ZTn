@@ -12,7 +12,7 @@ using ZTn.Pcl.D3Calculator.Models;
 
 namespace ZTn.Pcl.D3Calculator.ViewModels
 {
-    class CareersViewModel : INotifyPropertyChanged
+    internal class CareersViewModel : INotifyPropertyChanged
     {
         private BindableTask<Career> _career;
         public BnetAccount Account { get; }
@@ -29,9 +29,6 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
             }
         }
 
-        public string CareerTitle => Resources.Lang.Career.ToUpper();
-        public string HeroesTitle => Resources.Lang.Heroes.ToUpper();
-
         public BusyIndicatorViewModel BusyIndicatorLoadingCareer { get; }
 
         public CareersViewModel(BnetAccount account)
@@ -39,10 +36,7 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
             Account = account;
 
             BusyIndicatorLoadingCareer = new BusyIndicatorViewModel { IsBusy = true, BusyMessage = Resources.Lang.LoadingCareer };
-            Details = new ObservableCollection<IListViewRowData>(new[]
-            {
-                new TextListViewData { Label = "LABEL", Value = "TEXT" }
-            });
+            Details = new ObservableCollection<IListViewRowData>();
             RefreshCareer();
         }
 
@@ -70,6 +64,8 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
             BusyIndicatorLoadingCareer.IsBusy = false;
 
             Details.Clear();
+
+            Details.Add(new TitleListViewData { Title = Resources.Lang.Career.ToUpper() });
             Details.Add(new TextListViewData { Label = "Guild Name", Value = career.GuildName });
             Details.Add(new TextListViewData { Label = "Elites", Value = $"{career.Kills.Elites}" });
             Details.Add(new TextListViewData { Label = "Monsters", Value = $"{career.Kills.Monsters}" });
@@ -78,6 +74,12 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
             Details.Add(new TextListViewData { Label = "Paragon Level Hardcore", Value = $"{career.ParagonLevelHardcore}" });
             Details.Add(new TextListViewData { Label = "Paragon Level Season", Value = $"{career.ParagonLevelSeason}" });
             Details.Add(new TextListViewData { Label = "Paragon Level Season Hardcore", Value = $"{career.ParagonLevelSeasonHardcore}" });
+
+            Details.Add(new TitleListViewData { Title = Resources.Lang.Heroes.ToUpper() });
+            foreach (var hero in career.Heroes)
+            {
+                Details.Add(new HeroListViewData { Hero = hero });
+            }
 
             return career;
         }
