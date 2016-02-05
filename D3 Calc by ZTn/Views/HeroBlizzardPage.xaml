@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ZTn.Pcl.D3Calculator.Controls;assembly=ZTn.Pcl.D3Calculator"
+             xmlns:resx="clr-namespace:ZTn.Pcl.D3Calculator.Resources;assembly=ZTn.Pcl.D3Calculator"
+             x:Class="ZTn.Pcl.D3Calculator.Views.HeroBlizzardPage">
+
+  <ContentPage.Content>
+
+    <StackLayout Orientation="Vertical" Padding="5,10" Spacing="0,0">
+
+      <Label Text="{Binding HeroTitle}" TextColor="{x:Static resx:Colors.Title}"></Label>
+      <BoxView HeightRequest="1" Color="{x:Static resx:Colors.Title}" />
+
+      <controls:BusyIndicatorView BindingContext="{Binding BusyIndicatorLoadingCareer}" />
+
+      <Label Text="{Binding Hero.Result.LastUpdated}" />
+      <Label Text="{Binding Hero.Result.ParagonLevel}" />
+      <Label Text="{Binding Hero.Result.Kills.Elites}" />
+
+    </StackLayout>
+
+  </ContentPage.Content>
+
+</ContentPage>

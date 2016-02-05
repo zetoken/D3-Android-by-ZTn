@@ -4,7 +4,7 @@ using ZTn.Pcl.D3Calculator.Annotations;
 
 namespace ZTn.Pcl.D3Calculator.ViewModels
 {
-    class BusyIndicatorViewModel : INotifyPropertyChanged
+    public class BusyIndicatorViewModel : INotifyPropertyChanged
     {
         private bool _isBusy;
         private string _busyMessage;

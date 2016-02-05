@@ -44,16 +44,14 @@
       <Label Text="{Binding CareerTitle}" TextColor="{x:Static resx:Colors.Title}"></Label>
       <BoxView HeightRequest="1" Color="{x:Static resx:Colors.Title}" />
 
-      <StackLayout VerticalOptions="Start">
-        <ListView ItemsSource="{Binding Details}" ItemTemplate="{extensions:DataTemplateSelector Page={x:Reference ContentPage}}" VerticalOptions="Start"/>
-      </StackLayout>
+      <ListView ItemsSource="{Binding Details}" ItemTemplate="{extensions:DataTemplateSelector Page={x:Reference ContentPage}}" HasUnevenRows="True" BackgroundColor="Fuchsia" VerticalOptions="Fill" />
 
       <Label Text="{Binding HeroesTitle}" TextColor="{x:Static resx:Colors.Title}" />
       <BoxView HeightRequest="1" Color="{x:Static resx:Colors.Title}" />
 
       <controls:BusyIndicatorView BindingContext="{Binding BusyIndicatorLoadingCareer}" />
 
-      <ListView ItemsSource="{Binding Career.Result.Heroes}" HasUnevenRows="True" ItemSelected="OnSelection" VerticalOptions="FillAndExpand">
+      <ListView ItemsSource="{Binding Career.Result.Heroes}" HasUnevenRows="True" ItemSelected="OnSelection" >
         <ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>
@@ -64,14 +62,14 @@
                     <StackLayout Orientation="Horizontal" Spacing="0,0">
                       <Label Text="{Binding Name}" TextColor="{x:Static resx:Colors.Legendary}" FontSize="Large" />
                       <Label Text="{Binding Level}" TextColor="{x:Static resx:Colors.Level}" />
-                      <Label Text=" +" TextColor="{x:Static resx:Colors.Level}" YAlign="Start" />
-                      <Label Text="{Binding ParagonLevel}" TextColor="{x:Static resx:Colors.Level}" YAlign="Start" />
-                      <Label Text="{Binding LastUpdated, Converter={StaticResource LastUpdatedConverter}}" YAlign="End" XAlign="End" HorizontalOptions="EndAndExpand" />
+                      <Label Text=" +" TextColor="{x:Static resx:Colors.Level}" VerticalTextAlignment="Start" />
+                      <Label Text="{Binding ParagonLevel}" TextColor="{x:Static resx:Colors.Level}" VerticalTextAlignment="Start" />
+                      <Label Text="{Binding LastUpdated, Converter={StaticResource LastUpdatedConverter}}" VerticalTextAlignment="End" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0,0">
                       <Label Text="{Binding HeroClass, Converter={StaticResource HeroClassConverter}}" TextColor="{x:Static resx:Colors.HeroClass}" />
-                      <Label Text="{x:Static resx:Lang.Hardcore}" TextColor="{x:Static resx:Colors.Hardcore}" IsVisible="{Binding Hardcore}" XAlign="End" HorizontalOptions="EndAndExpand" />
-                      <Label Text="{x:Static resx:Lang.Season}" TextColor="{x:Static resx:Colors.Seasonal}" IsVisible="{Binding Seasonal}" XAlign="End" HorizontalOptions="EndAndExpand" />
+                      <Label Text="{x:Static resx:Lang.Hardcore}" TextColor="{x:Static resx:Colors.Hardcore}" IsVisible="{Binding Hardcore}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" />
+                      <Label Text="{x:Static resx:Lang.Season}" TextColor="{x:Static resx:Colors.Seasonal}" IsVisible="{Binding Seasonal}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
                   </StackLayout>
                 </StackLayout>

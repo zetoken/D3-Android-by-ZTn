@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using ZTn.BNet.D3.DataProviders;
 using ZTn.BNet.D3.Heroes;
@@ -7,24 +12,24 @@ using ZTn.Pcl.D3Calculator.ViewModels;
 
 namespace ZTn.Pcl.D3Calculator.Views
 {
-    public partial class HeroItemsPage : ContentPage
+    public partial class HeroPage
     {
-        private readonly HeroViewModel _viewModel;
+        public HeroViewModel ViewModel { get; }
 
-        public HeroItemsPage(BnetAccount bnetAccount, HeroSummary heroSummary)
+        public HeroPage(BnetAccount account, HeroSummary heroSummary)
         {
-            _viewModel = new HeroViewModel(bnetAccount, heroSummary);
-
-            Title = $"{heroSummary.Name} @ {bnetAccount.BattleTag}";
+            ViewModel = new HeroViewModel(account, heroSummary);
 
             InitializeComponent();
 
-            BindingContext = _viewModel;
+            Title = $"{heroSummary.Name} @ {account.BattleTag}";
+
+            BindingContext = ViewModel;
         }
 
-        private void OnRefresh(object sender, EventArgs e)
+        private void OnRefresh(object sender, EventArgs eventArgs)
         {
-            _viewModel.RefreshHero(FetchMode.Online);
+            ViewModel.RefreshHero(FetchMode.Online);
         }
     }
 }

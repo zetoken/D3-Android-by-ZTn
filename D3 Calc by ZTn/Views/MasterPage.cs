@@ -9,6 +9,7 @@ namespace ZTn.Pcl.D3Calculator.Views
             Title = "MasterDetail Title";
 
             MasterBehavior = MasterBehavior.Popover;
+            IsGestureEnabled = false;
 
             Master = new MenuPage();
             Detail = new NavigationPage(new BnetAccountsPage());

@@ -11,7 +11,7 @@ using ZTn.Pcl.D3Calculator.Models;
 
 namespace ZTn.Pcl.D3Calculator.ViewModels
 {
-    class HeroViewModel : INotifyPropertyChanged
+    public class HeroViewModel : INotifyPropertyChanged
     {
         private readonly BnetAccount _account;
         private BindableTask<Hero> _hero;
@@ -26,6 +26,8 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        public HeroViewModel ViewModel => this;
 
         public string HeroTitle => Resources.Lang.Hero.ToUpper();
 

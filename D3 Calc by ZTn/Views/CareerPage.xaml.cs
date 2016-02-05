@@ -36,7 +36,7 @@ namespace ZTn.Pcl.D3Calculator.Views
 
             var heroSummary = (HeroSummary)e.SelectedItem;
 
-            Navigation.PushAsync(new HeroItemsPage(_viewModel.Account, heroSummary));
+            Navigation.PushAsync(new HeroPage(_viewModel.Account, heroSummary));
 
             var listView = (ListView)sender;
             listView.SelectedItem = null;

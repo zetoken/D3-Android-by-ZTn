@@ -9,7 +9,7 @@
     "sqlite-net": "1.0.8",
     "sqlite-net-pcl": "1.1.1",
     "SQLitePCL.raw_basic": "0.8.6",
-    "Xamarin.Forms": "2.0.1.6495"
+    "Xamarin.Forms": "2.0.1.6505"
   },
   "frameworks": {
     "uap10.0": {}

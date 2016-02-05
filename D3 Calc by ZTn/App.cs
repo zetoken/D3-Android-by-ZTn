@@ -9,7 +9,7 @@ namespace ZTn.Pcl.D3Calculator
 {
     public class App : Application
     {
-        private static Task<Host[]> _hostLoadTask= LoadHostAsync();
+        private static readonly Task<Host[]> HostLoadTask = LoadHostAsync();
 
         public const string ApiKey = "zrxxcy3qzp8jcbgrce2es4yq52ew2k7r";
 
@@ -20,8 +20,8 @@ namespace ZTn.Pcl.D3Calculator
             {
                 if (_hosts == null)
                 {
-                    _hostLoadTask.Wait();
-                    _hosts = _hostLoadTask.Result;
+                    HostLoadTask.Wait();
+                    _hosts = HostLoadTask.Result;
                 }
 
                 return _hosts;
@@ -30,7 +30,7 @@ namespace ZTn.Pcl.D3Calculator
 
         public App()
         {
-            MainPage = new MasterPage();
+            MainPage = new NavigationPage(new BnetAccountsPage());
         }
 
         public static Task<Host[]> LoadHostAsync()
