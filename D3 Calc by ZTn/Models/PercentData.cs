@@ -1,8 +1,8 @@
 ﻿namespace ZTn.Pcl.D3Calculator.Models
 {
-    internal class PercentListViewData : ValueListViewData
+    internal class PercentData : ValueData
     {
-        public PercentListViewData(string label, double value, int precision = 0)
+        public PercentData(string label, double value, int precision = 0)
             : base(label, 100 * value, precision)
         {
             Value = $"{Value} %";

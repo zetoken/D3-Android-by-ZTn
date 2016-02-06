@@ -9,10 +9,10 @@
   </TabbedPage.ToolbarItems>
 
   <TabbedPage.Children>
-    <views:HeroBlizzardPage BindingContext="{Binding ViewModel}" />
-    <views:HeroComputedPage BindingContext="{Binding ViewModel}" />
-    <!--views:HeroSkillsPage BindingContext="{Binding ViewModel}" /-->
-    <!--views:HeroItemsPage BindingContext="{Binding ViewModel}" /-->
+    <views:HeroBlizzardPage BindingContext="{Binding .}" />
+    <!--views:HeroComputedPage BindingContext="{Binding .}" /-->
+    <!--views:HeroSkillsPage BindingContext="{Binding .}" /-->
+    <views:HeroItemsPage BindingContext="{Binding .}" />
   </TabbedPage.Children>
 
 </TabbedPage>

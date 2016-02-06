@@ -1,6 +1,6 @@
 ﻿namespace ZTn.Pcl.D3Calculator.Models
 {
-    public interface IListViewRowData
+    public interface IControlData
     {
     }
 }

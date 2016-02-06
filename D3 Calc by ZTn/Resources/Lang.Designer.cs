@@ -341,11 +341,128 @@ namespace ZTn.Pcl.D3Calculator.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bracers.
+        /// </summary>
+        internal static string ItemBracers {
+            get {
+                return ResourceManager.GetString("ItemBracers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Feet.
+        /// </summary>
+        internal static string ItemFeet {
+            get {
+                return ResourceManager.GetString("ItemFeet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hands.
+        /// </summary>
+        internal static string ItemHands {
+            get {
+                return ResourceManager.GetString("ItemHands", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Head.
+        /// </summary>
+        internal static string ItemHead {
+            get {
+                return ResourceManager.GetString("ItemHead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Left finger.
+        /// </summary>
+        internal static string ItemLeftFinger {
+            get {
+                return ResourceManager.GetString("ItemLeftFinger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Legs.
+        /// </summary>
+        internal static string ItemLegs {
+            get {
+                return ResourceManager.GetString("ItemLegs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main hand.
+        /// </summary>
+        internal static string ItemMainHand {
+            get {
+                return ResourceManager.GetString("ItemMainHand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neck.
+        /// </summary>
+        internal static string ItemNeck {
+            get {
+                return ResourceManager.GetString("ItemNeck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Off hand.
+        /// </summary>
+        internal static string ItemOffHand {
+            get {
+                return ResourceManager.GetString("ItemOffHand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Right finger.
+        /// </summary>
+        internal static string ItemRightFinger {
+            get {
+                return ResourceManager.GetString("ItemRightFinger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Items.
         /// </summary>
         internal static string Items {
             get {
                 return ResourceManager.GetString("Items", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shoulders.
+        /// </summary>
+        internal static string ItemShoulders {
+            get {
+                return ResourceManager.GetString("ItemShoulders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Torso.
+        /// </summary>
+        internal static string ItemTorso {
+            get {
+                return ResourceManager.GetString("ItemTorso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Waist.
+        /// </summary>
+        internal static string ItemWaist {
+            get {
+                return ResourceManager.GetString("ItemWaist", resourceCulture);
             }
         }
         

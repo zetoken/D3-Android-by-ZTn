@@ -291,6 +291,45 @@
   <data name="HardcoreMonsters" xml:space="preserve">
     <value>Hardcore monsters</value>
   </data>
+  <data name="ItemBracers" xml:space="preserve">
+    <value>Bracers</value>
+  </data>
+  <data name="ItemFeet" xml:space="preserve">
+    <value>Feet</value>
+  </data>
+  <data name="ItemHands" xml:space="preserve">
+    <value>Hands</value>
+  </data>
+  <data name="ItemHead" xml:space="preserve">
+    <value>Head</value>
+  </data>
+  <data name="ItemLeftFinger" xml:space="preserve">
+    <value>Left finger</value>
+  </data>
+  <data name="ItemLegs" xml:space="preserve">
+    <value>Legs</value>
+  </data>
+  <data name="ItemMainHand" xml:space="preserve">
+    <value>Main hand</value>
+  </data>
+  <data name="ItemNeck" xml:space="preserve">
+    <value>Neck</value>
+  </data>
+  <data name="ItemOffHand" xml:space="preserve">
+    <value>Off hand</value>
+  </data>
+  <data name="ItemRightFinger" xml:space="preserve">
+    <value>Right finger</value>
+  </data>
+  <data name="ItemShoulders" xml:space="preserve">
+    <value>Shoulders</value>
+  </data>
+  <data name="ItemTorso" xml:space="preserve">
+    <value>Torso</value>
+  </data>
+  <data name="ItemWaist" xml:space="preserve">
+    <value>Waist</value>
+  </data>
   <data name="Monsters" xml:space="preserve">
     <value>Monsters</value>
   </data>

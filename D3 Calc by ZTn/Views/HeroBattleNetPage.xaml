@@ -10,7 +10,7 @@
   <ContentPage.Resources>
     <ResourceDictionary>
 
-      <DataTemplate x:Key="TitleListViewData">
+      <DataTemplate x:Key="TitleData">
         <ViewCell>
           <ViewCell.View>
             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="0,0">
@@ -21,7 +21,7 @@
         </ViewCell>
       </DataTemplate>
 
-      <DataTemplate x:Key="TextListViewData">
+      <DataTemplate x:Key="TextData">
         <ViewCell>
           <Grid>
             <Grid.RowDefinitions>

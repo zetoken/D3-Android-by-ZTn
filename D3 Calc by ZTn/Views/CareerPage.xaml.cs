@@ -33,7 +33,7 @@ namespace ZTn.Pcl.D3Calculator.Views
                 return;
             }
 
-            var heroListViewData = e.SelectedItem as HeroListViewData;
+            var heroListViewData = e.SelectedItem as HeroData;
             if (heroListViewData != null)
             {
                 Navigation.PushAsync(new HeroPage(_viewModel.Account, heroListViewData.Hero));

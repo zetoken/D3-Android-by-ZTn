@@ -2,11 +2,11 @@
 
 namespace ZTn.Pcl.D3Calculator.Models
 {
-    internal class HeroListViewData : IListViewRowData
+    internal class HeroData : IControlData
     {
         public HeroSummary Hero { get; set; }
 
-        public HeroListViewData(HeroSummary hero)
+        public HeroData(HeroSummary hero)
         {
             Hero = hero;
         }

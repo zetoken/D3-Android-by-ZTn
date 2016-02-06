@@ -40,13 +40,16 @@
       <DependentUpon>BusyIndicatorView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Extensions\DataTemplateSelectorExtension.cs" />
-    <Compile Include="Models\BonusPercentListViewData.cs" />
-    <Compile Include="Models\HeroListViewData.cs" />
-    <Compile Include="Models\IListViewRowData.cs" />
-    <Compile Include="Models\ValueListViewData.cs" />
-    <Compile Include="Models\PercentListViewData.cs" />
-    <Compile Include="Models\TextListViewData.cs" />
-    <Compile Include="Models\TitleListViewData.cs" />
+    <Compile Include="Models\BonusPercentData.cs" />
+    <Compile Include="Models\HeroData.cs" />
+    <Compile Include="Models\IControlData.cs" />
+    <Compile Include="Models\ItemData.cs" />
+    <Compile Include="Models\ItemPosition.cs" />
+    <Compile Include="Models\ItemSummaryData.cs" />
+    <Compile Include="Models\ValueData.cs" />
+    <Compile Include="Models\PercentData.cs" />
+    <Compile Include="Models\TextData.cs" />
+    <Compile Include="Models\TitleData.cs" />
     <Compile Include="ViewModels\HeroViewModel.cs" />
     <Compile Include="Resources\Colors.cs" />
     <Compile Include="Converters\HeroToImageConverter.cs" />

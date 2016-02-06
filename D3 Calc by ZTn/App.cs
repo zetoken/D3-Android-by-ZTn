@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using ZTn.BNet.BattleNet;
+using ZTn.BNet.D3;
+using ZTn.BNet.D3.DataProviders;
 using ZTn.BNet.D3.Helpers;
 using ZTn.Pcl.D3Calculator.Views;
 
@@ -42,6 +44,21 @@ namespace ZTn.Pcl.D3Calculator
                     return stream.CreateFromJsonPersistentStream<Host[]>();
                 }
             });
+        }
+
+        public static D3ApiRequester GetD3ApiRequester(string host, FetchMode fetchMode)
+        {
+            var dataProvider = DependencyService.Get<CacheableDataProvider>();
+            dataProvider.FetchMode = fetchMode;
+
+            var d3Api = new D3ApiRequester
+            {
+                ApiKey = ApiKey,
+                DataProvider = dataProvider,
+                Host = host
+            };
+
+            return d3Api;
         }
 
         protected override void OnStart()

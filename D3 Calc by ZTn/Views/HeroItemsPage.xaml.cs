@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace ZTn.Pcl.D3Calculator.Views
 {
@@ -15,6 +9,11 @@ namespace ZTn.Pcl.D3Calculator.Views
             InitializeComponent();
 
             Title = "Items";
+        }
+
+        private void OnSelection(object sender, SelectedItemChangedEventArgs e)
+        {
+            // TODO
         }
     }
 }

@@ -1,15 +1,15 @@
 ﻿namespace ZTn.Pcl.D3Calculator.Models
 {
-    internal class TextListViewData : IListViewRowData
+    internal class TextData : IControlData
     {
         public string Label { get; set; }
         public string Value { get; set; }
 
-        public TextListViewData()
+        public TextData()
         {
         }
 
-        public TextListViewData(string label, string value)
+        public TextData(string label, string value)
         {
             Label = label;
             Value = value;

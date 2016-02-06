@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ZTn.Pcl.D3Calculator.Models
 {
-    internal class TitleListViewData : IListViewRowData
+    internal class TitleData : IControlData
     {
         public string Title { get; set; }
 
-        public TitleListViewData(string title)
+        public TitleData(string title)
         {
             Title = title.ToUpper();
         }

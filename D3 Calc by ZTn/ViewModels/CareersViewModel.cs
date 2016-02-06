@@ -17,7 +17,7 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
         private BindableTask<Career> _career;
         public BnetAccount Account { get; }
 
-        public ObservableCollection<IListViewRowData> Details { get; set; }
+        public ObservableCollection<IControlData> Details { get; set; }
 
         public BindableTask<Career> Career
         {
@@ -36,7 +36,7 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
             Account = account;
 
             BusyIndicatorLoadingCareer = new BusyIndicatorViewModel { IsBusy = true, BusyMessage = Resources.Lang.LoadingCareer };
-            Details = new ObservableCollection<IListViewRowData>();
+            Details = new ObservableCollection<IControlData>();
 
             RefreshCareer();
         }
@@ -50,15 +50,7 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
         {
             BusyIndicatorLoadingCareer.IsBusy = true;
 
-            var dataProvider = DependencyService.Get<ICacheableD3DataProvider>();
-            dataProvider.FetchMode = fetchMode;
-
-            var d3Api = new D3ApiRequester
-            {
-                ApiKey = App.ApiKey,
-                DataProvider = dataProvider,
-                Host = Account.Host
-            };
+            var d3Api = App.GetD3ApiRequester(Account.Host, fetchMode);
 
             var career = await d3Api.GetCareerFromBattleTagAsync(new BattleTag(Account.BattleTag));
 
@@ -78,20 +70,20 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
 
             Details.Clear();
 
-            Details.Add(new TitleListViewData(Resources.Lang.Career));
-            Details.Add(new TextListViewData(Resources.Lang.GuildName, career.GuildName));
-            Details.Add(new ValueListViewData(Resources.Lang.Elites, career.Kills.Elites));
-            Details.Add(new ValueListViewData(Resources.Lang.Monsters, career.Kills.Monsters));
-            Details.Add(new ValueListViewData(Resources.Lang.HardcoreMonsters, career.Kills.HardcoreMonsters));
-            Details.Add(new ValueListViewData(Resources.Lang.ParagonLevel, career.ParagonLevel));
-            Details.Add(new ValueListViewData(Resources.Lang.ParagonLevelHardcore, career.ParagonLevelHardcore));
-            Details.Add(new ValueListViewData(Resources.Lang.ParagonLevelSeason, career.ParagonLevelSeason));
-            Details.Add(new ValueListViewData(Resources.Lang.ParagonLevelSeasonHardcore, career.ParagonLevelSeasonHardcore));
+            Details.Add(new TitleData(Resources.Lang.Career));
+            Details.Add(new TextData(Resources.Lang.GuildName, career.GuildName));
+            Details.Add(new ValueData(Resources.Lang.Elites, career.Kills.Elites));
+            Details.Add(new ValueData(Resources.Lang.Monsters, career.Kills.Monsters));
+            Details.Add(new ValueData(Resources.Lang.HardcoreMonsters, career.Kills.HardcoreMonsters));
+            Details.Add(new ValueData(Resources.Lang.ParagonLevel, career.ParagonLevel));
+            Details.Add(new ValueData(Resources.Lang.ParagonLevelHardcore, career.ParagonLevelHardcore));
+            Details.Add(new ValueData(Resources.Lang.ParagonLevelSeason, career.ParagonLevelSeason));
+            Details.Add(new ValueData(Resources.Lang.ParagonLevelSeasonHardcore, career.ParagonLevelSeasonHardcore));
 
-            Details.Add(new TitleListViewData(Resources.Lang.Heroes));
+            Details.Add(new TitleData(Resources.Lang.Heroes));
             foreach (var hero in career.Heroes)
             {
-                Details.Add(new HeroListViewData(hero));
+                Details.Add(new HeroData(hero));
             }
         }
 
