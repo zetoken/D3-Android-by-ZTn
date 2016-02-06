@@ -4,5 +4,15 @@
     {
         public string Label { get; set; }
         public string Value { get; set; }
+
+        public TextListViewData()
+        {
+        }
+
+        public TextListViewData(string label, string value)
+        {
+            Label = label;
+            Value = value;
+        }
     }
 }

@@ -9,5 +9,10 @@ namespace ZTn.Pcl.D3Calculator.Models
     internal class TitleListViewData : IListViewRowData
     {
         public string Title { get; set; }
+
+        public TitleListViewData(string title)
+        {
+            Title = title.ToUpper();
+        }
     }
 }

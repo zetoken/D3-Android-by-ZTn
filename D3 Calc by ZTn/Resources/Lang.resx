@@ -174,4 +174,133 @@
   <data name="Items" xml:space="preserve">
     <value>Items</value>
   </data>
+  <data name="LastUpdated" xml:space="preserve">
+    <value>Last updated</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="ParagonLevel" xml:space="preserve">
+    <value>Paragon</value>
+  </data>
+  <data name="Progress" xml:space="preserve">
+    <value>Progress</value>
+  </data>
+  <data name="ArcaneResist" xml:space="preserve">
+    <value>Arcane resist</value>
+  </data>
+  <data name="Armor" xml:space="preserve">
+    <value>Armor</value>
+  </data>
+  <data name="AttackSpeed" xml:space="preserve">
+    <value>Attack speed</value>
+  </data>
+  <data name="Attributes" xml:space="preserve">
+    <value>Attributes</value>
+  </data>
+  <data name="Bonuses" xml:space="preserve">
+    <value>Bonuses</value>
+  </data>
+  <data name="ColdResist" xml:space="preserve">
+    <value>Cold resist</value>
+  </data>
+  <data name="CriticChance" xml:space="preserve">
+    <value>Critic chance</value>
+  </data>
+  <data name="CriticDamage" xml:space="preserve">
+    <value>Critic damage</value>
+  </data>
+  <data name="Damage" xml:space="preserve">
+    <value>Damage</value>
+  </data>
+  <data name="Damages" xml:space="preserve">
+    <value>Damages</value>
+  </data>
+  <data name="Defense" xml:space="preserve">
+    <value>Defense</value>
+  </data>
+  <data name="Dexterity" xml:space="preserve">
+    <value>Dexterity</value>
+  </data>
+  <data name="Elites" xml:space="preserve">
+    <value>Elites</value>
+  </data>
+  <data name="FireResist" xml:space="preserve">
+    <value>Fire resist</value>
+  </data>
+  <data name="GoldFind" xml:space="preserve">
+    <value>GoldFind</value>
+  </data>
+  <data name="Healing" xml:space="preserve">
+    <value>Healing</value>
+  </data>
+  <data name="HeroClass" xml:space="preserve">
+    <value>Class</value>
+  </data>
+  <data name="Intelligence" xml:space="preserve">
+    <value>Intelligence</value>
+  </data>
+  <data name="KillsLifetime" xml:space="preserve">
+    <value>Kills lifetime</value>
+  </data>
+  <data name="Life" xml:space="preserve">
+    <value>Life</value>
+  </data>
+  <data name="LifeOnHit" xml:space="preserve">
+    <value>Life on hit</value>
+  </data>
+  <data name="LifePerKill" xml:space="preserve">
+    <value>Life per kill</value>
+  </data>
+  <data name="LifeSteal" xml:space="preserve">
+    <value>Life steal</value>
+  </data>
+  <data name="LightningResist" xml:space="preserve">
+    <value>Lightning resist</value>
+  </data>
+  <data name="MagicFind" xml:space="preserve">
+    <value>MagicFind</value>
+  </data>
+  <data name="PhysicalResist" xml:space="preserve">
+    <value>Physical resist</value>
+  </data>
+  <data name="PoisonResist" xml:space="preserve">
+    <value>Poison resist</value>
+  </data>
+  <data name="PrimaryResource" xml:space="preserve">
+    <value>Primary resource</value>
+  </data>
+  <data name="Resources" xml:space="preserve">
+    <value>Resources</value>
+  </data>
+  <data name="SecondaryResource" xml:space="preserve">
+    <value>Secondary resource</value>
+  </data>
+  <data name="Strength" xml:space="preserve">
+    <value>Strength</value>
+  </data>
+  <data name="Toughness" xml:space="preserve">
+    <value>Toughness</value>
+  </data>
+  <data name="Vitality" xml:space="preserve">
+    <value>Vitality</value>
+  </data>
+  <data name="GuildName" xml:space="preserve">
+    <value>Guild name</value>
+  </data>
+  <data name="HardcoreMonsters" xml:space="preserve">
+    <value>Hardcore monsters</value>
+  </data>
+  <data name="Monsters" xml:space="preserve">
+    <value>Monsters</value>
+  </data>
+  <data name="ParagonLevelHardcore" xml:space="preserve">
+    <value>Paragon level hardcore</value>
+  </data>
+  <data name="ParagonLevelSeason" xml:space="preserve">
+    <value>Paragon level season</value>
+  </data>
+  <data name="ParagonLevelSeasonHardcore" xml:space="preserve">
+    <value>Paragon level season hardcore</value>
+  </data>
 </root>

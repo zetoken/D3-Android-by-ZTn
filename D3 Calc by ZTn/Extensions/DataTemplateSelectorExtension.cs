@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -46,6 +48,16 @@ namespace ZTn.Pcl.D3Calculator.Extensions
             return null;
         }
 
+        static IEnumerable<string> GetInheritedClasses(object anObject)
+        {
+            var type = anObject.GetType();
+            while (type != typeof(object))
+            {
+                yield return type.Name;
+                type = type.GetTypeInfo().BaseType;
+            }
+        }
+
         internal void OnBindingContextChanged(object sender, EventArgs e)
         {
             var cell = (ViewCell)sender;
@@ -56,10 +68,14 @@ namespace ZTn.Pcl.D3Calculator.Extensions
                 return;
             }
 
-            var dataTemplate = FindDataTemplateByName(bindingContext.GetType().Name);
-            if (dataTemplate != null)
+            foreach (var inheritedClassName in GetInheritedClasses(bindingContext))
             {
-                cell.View = ((ViewCell)dataTemplate.CreateContent()).View;
+                var dataTemplate = FindDataTemplateByName(inheritedClassName);
+                if (dataTemplate != null)
+                {
+                    cell.View = ((ViewCell)dataTemplate.CreateContent()).View;
+                    break;
+                }
             }
         }
     }

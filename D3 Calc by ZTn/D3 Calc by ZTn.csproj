@@ -40,8 +40,11 @@
       <DependentUpon>BusyIndicatorView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Extensions\DataTemplateSelectorExtension.cs" />
+    <Compile Include="Models\BonusPercentListViewData.cs" />
     <Compile Include="Models\HeroListViewData.cs" />
     <Compile Include="Models\IListViewRowData.cs" />
+    <Compile Include="Models\ValueListViewData.cs" />
+    <Compile Include="Models\PercentListViewData.cs" />
     <Compile Include="Models\TextListViewData.cs" />
     <Compile Include="Models\TitleListViewData.cs" />
     <Compile Include="ViewModels\HeroViewModel.cs" />
@@ -86,8 +89,8 @@
     <Compile Include="Views\HeroPage.xaml.cs">
       <DependentUpon>HeroPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\HeroBlizzardPage.xaml.cs">
-      <DependentUpon>HeroBlizzardPage.xaml</DependentUpon>
+    <Compile Include="Views\HeroBattleNetPage.xaml.cs">
+      <DependentUpon>HeroBattleNetPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HeroSkillsPage.xaml.cs">
       <DependentUpon>HeroSkillsPage.xaml</DependentUpon>
@@ -189,7 +192,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\HeroBlizzardPage.xaml">
+    <EmbeddedResource Include="Views\HeroBattleNetPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

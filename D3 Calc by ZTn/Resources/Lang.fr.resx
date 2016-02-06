@@ -174,4 +174,130 @@
   <data name="Items" xml:space="preserve">
     <value>Equipement</value>
   </data>
+  <data name="LastUpdated" xml:space="preserve">
+    <value>Dernière mise à jour</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>Niveau</value>
+  </data>
+  <data name="ParagonLevel" xml:space="preserve">
+    <value>Parangon</value>
+  </data>
+  <data name="Progress" xml:space="preserve">
+    <value>Progression</value>
+  </data>
+  <data name="ArcaneResist" xml:space="preserve">
+    <value>Résistance aux arcanes</value>
+  </data>
+  <data name="Armor" xml:space="preserve">
+    <value>Armure</value>
+  </data>
+  <data name="AttackSpeed" xml:space="preserve">
+    <value>Vitesse d'attaque</value>
+  </data>
+  <data name="Attributes" xml:space="preserve">
+    <value>Attributs</value>
+  </data>
+  <data name="Bonuses" xml:space="preserve">
+    <value>Bonus</value>
+  </data>
+  <data name="ColdResist" xml:space="preserve">
+    <value>Résistance au froid</value>
+  </data>
+  <data name="CriticChance" xml:space="preserve">
+    <value>Chance de coup critique</value>
+  </data>
+  <data name="CriticDamage" xml:space="preserve">
+    <value>Dégâts des coups critiques</value>
+  </data>
+  <data name="Damage" xml:space="preserve">
+    <value>Dégât</value>
+  </data>
+  <data name="Damages" xml:space="preserve">
+    <value>Dégâts</value>
+  </data>
+  <data name="Defense" xml:space="preserve">
+    <value>Défense</value>
+  </data>
+  <data name="Dexterity" xml:space="preserve">
+    <value>Dextérité</value>
+  </data>
+  <data name="Elites" xml:space="preserve">
+    <value>Elites</value>
+  </data>
+  <data name="FireResist" xml:space="preserve">
+    <value>Résistance au feu</value>
+  </data>
+  <data name="GoldFind" xml:space="preserve">
+    <value>Découverte d'or</value>
+  </data>
+  <data name="Healing" xml:space="preserve">
+    <value>Soin</value>
+  </data>
+  <data name="HeroClass" xml:space="preserve">
+    <value>Classe</value>
+  </data>
+  <data name="Intelligence" xml:space="preserve">
+    <value>Intelligence</value>
+  </data>
+  <data name="KillsLifetime" xml:space="preserve">
+    <value>Victimes cumulées</value>
+  </data>
+  <data name="Life" xml:space="preserve">
+    <value>Vie</value>
+  </data>
+  <data name="LifeOnHit" xml:space="preserve">
+    <value>Vie par coup</value>
+  </data>
+  <data name="LifePerKill" xml:space="preserve">
+    <value>Vie par tué</value>
+  </data>
+  <data name="LifeSteal" xml:space="preserve">
+    <value>Vol de vie</value>
+  </data>
+  <data name="LightningResist" xml:space="preserve">
+    <value>Résistance à la foudre</value>
+  </data>
+  <data name="MagicFind" xml:space="preserve">
+    <value>Découverte d'objets magiques</value>
+  </data>
+  <data name="PhysicalResist" xml:space="preserve">
+    <value>Résistance physique</value>
+  </data>
+  <data name="PoisonResist" xml:space="preserve">
+    <value>Résistance au poison</value>
+  </data>
+  <data name="PrimaryResource" xml:space="preserve">
+    <value>Ressource principale</value>
+  </data>
+  <data name="Resources" xml:space="preserve">
+    <value>Ressources</value>
+  </data>
+  <data name="SecondaryResource" xml:space="preserve">
+    <value>Ressource secondaire</value>
+  </data>
+  <data name="Strength" xml:space="preserve">
+    <value>Force</value>
+  </data>
+  <data name="Toughness" xml:space="preserve">
+    <value>Robustesse</value>
+  </data>
+  <data name="GuildName" xml:space="preserve">
+    <value>Guilde</value>
+  </data>
+  <data name="HardcoreMonsters" xml:space="preserve">
+    <value>Monstres en extrême</value>
+  </data>
+  <data name="Monsters" xml:space="preserve">
+    <value>Monstres</value>
+  </data>
+  <data name="ParagonLevelHardcore" xml:space="preserve">
+    <value>Parangon extrême</value>
+  </data>
+  <data name="ParagonLevelSeason" xml:space="preserve">
+    <value>Parangon saison</value>
+  </data>
+  <data name="ParagonSeasonLevelHardcore" xml:space="preserve">
+    <value>Parangon saison extrême</value>
+  </data>
 </root>

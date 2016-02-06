@@ -10,5 +10,10 @@ namespace ZTn.Pcl.D3Calculator.Views
 
             Title = "Blizzard";
         }
+
+        private void OnSelection(object sender, SelectedItemChangedEventArgs e)
+        {
+            // TODO ?
+        }
     }
 }

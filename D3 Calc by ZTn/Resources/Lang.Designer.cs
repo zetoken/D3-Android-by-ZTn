@@ -71,6 +71,42 @@ namespace ZTn.Pcl.D3Calculator.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Arcane resist.
+        /// </summary>
+        internal static string ArcaneResist {
+            get {
+                return ResourceManager.GetString("ArcaneResist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Armor.
+        /// </summary>
+        internal static string Armor {
+            get {
+                return ResourceManager.GetString("Armor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attack speed.
+        /// </summary>
+        internal static string AttackSpeed {
+            get {
+                return ResourceManager.GetString("AttackSpeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attributes.
+        /// </summary>
+        internal static string Attributes {
+            get {
+                return ResourceManager.GetString("Attributes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Barbarian.
         /// </summary>
         internal static string Barbarian {
@@ -85,6 +121,15 @@ namespace ZTn.Pcl.D3Calculator.Resources {
         internal static string BattleTag {
             get {
                 return ResourceManager.GetString("BattleTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bonuses.
+        /// </summary>
+        internal static string Bonuses {
+            get {
+                return ResourceManager.GetString("Bonuses", resourceCulture);
             }
         }
         
@@ -107,11 +152,65 @@ namespace ZTn.Pcl.D3Calculator.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cold resist.
+        /// </summary>
+        internal static string ColdResist {
+            get {
+                return ResourceManager.GetString("ColdResist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Critic chance.
+        /// </summary>
+        internal static string CriticChance {
+            get {
+                return ResourceManager.GetString("CriticChance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Critic damage.
+        /// </summary>
+        internal static string CriticDamage {
+            get {
+                return ResourceManager.GetString("CriticDamage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Crusader.
         /// </summary>
         internal static string Crusader {
             get {
                 return ResourceManager.GetString("Crusader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Damage.
+        /// </summary>
+        internal static string Damage {
+            get {
+                return ResourceManager.GetString("Damage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Damages.
+        /// </summary>
+        internal static string Damages {
+            get {
+                return ResourceManager.GetString("Damages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Defense.
+        /// </summary>
+        internal static string Defense {
+            get {
+                return ResourceManager.GetString("Defense", resourceCulture);
             }
         }
         
@@ -125,6 +224,51 @@ namespace ZTn.Pcl.D3Calculator.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dexterity.
+        /// </summary>
+        internal static string Dexterity {
+            get {
+                return ResourceManager.GetString("Dexterity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Elites.
+        /// </summary>
+        internal static string Elites {
+            get {
+                return ResourceManager.GetString("Elites", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fire resist.
+        /// </summary>
+        internal static string FireResist {
+            get {
+                return ResourceManager.GetString("FireResist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GoldFind.
+        /// </summary>
+        internal static string GoldFind {
+            get {
+                return ResourceManager.GetString("GoldFind", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Guild name.
+        /// </summary>
+        internal static string GuildName {
+            get {
+                return ResourceManager.GetString("GuildName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hardcore.
         /// </summary>
         internal static string Hardcore {
@@ -134,11 +278,38 @@ namespace ZTn.Pcl.D3Calculator.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hardcore monsters.
+        /// </summary>
+        internal static string HardcoreMonsters {
+            get {
+                return ResourceManager.GetString("HardcoreMonsters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Healing.
+        /// </summary>
+        internal static string Healing {
+            get {
+                return ResourceManager.GetString("Healing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hero.
         /// </summary>
         internal static string Hero {
             get {
                 return ResourceManager.GetString("Hero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Class.
+        /// </summary>
+        internal static string HeroClass {
+            get {
+                return ResourceManager.GetString("HeroClass", resourceCulture);
             }
         }
         
@@ -161,11 +332,92 @@ namespace ZTn.Pcl.D3Calculator.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Intelligence.
+        /// </summary>
+        internal static string Intelligence {
+            get {
+                return ResourceManager.GetString("Intelligence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Items.
         /// </summary>
         internal static string Items {
             get {
                 return ResourceManager.GetString("Items", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kills lifetime.
+        /// </summary>
+        internal static string KillsLifetime {
+            get {
+                return ResourceManager.GetString("KillsLifetime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last updated.
+        /// </summary>
+        internal static string LastUpdated {
+            get {
+                return ResourceManager.GetString("LastUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Level.
+        /// </summary>
+        internal static string Level {
+            get {
+                return ResourceManager.GetString("Level", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Life.
+        /// </summary>
+        internal static string Life {
+            get {
+                return ResourceManager.GetString("Life", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Life on hit.
+        /// </summary>
+        internal static string LifeOnHit {
+            get {
+                return ResourceManager.GetString("LifeOnHit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Life per kill.
+        /// </summary>
+        internal static string LifePerKill {
+            get {
+                return ResourceManager.GetString("LifePerKill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Life steal.
+        /// </summary>
+        internal static string LifeSteal {
+            get {
+                return ResourceManager.GetString("LifeSteal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lightning resist.
+        /// </summary>
+        internal static string LightningResist {
+            get {
+                return ResourceManager.GetString("LightningResist", resourceCulture);
             }
         }
         
@@ -188,11 +440,110 @@ namespace ZTn.Pcl.D3Calculator.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MagicFind.
+        /// </summary>
+        internal static string MagicFind {
+            get {
+                return ResourceManager.GetString("MagicFind", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Monk.
         /// </summary>
         internal static string Monk {
             get {
                 return ResourceManager.GetString("Monk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monsters.
+        /// </summary>
+        internal static string Monsters {
+            get {
+                return ResourceManager.GetString("Monsters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paragon.
+        /// </summary>
+        internal static string ParagonLevel {
+            get {
+                return ResourceManager.GetString("ParagonLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paragon level hardcore.
+        /// </summary>
+        internal static string ParagonLevelHardcore {
+            get {
+                return ResourceManager.GetString("ParagonLevelHardcore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paragon level season.
+        /// </summary>
+        internal static string ParagonLevelSeason {
+            get {
+                return ResourceManager.GetString("ParagonLevelSeason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paragon level season hardcore.
+        /// </summary>
+        internal static string ParagonLevelSeasonHardcore {
+            get {
+                return ResourceManager.GetString("ParagonLevelSeasonHardcore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Physical resist.
+        /// </summary>
+        internal static string PhysicalResist {
+            get {
+                return ResourceManager.GetString("PhysicalResist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poison resist.
+        /// </summary>
+        internal static string PoisonResist {
+            get {
+                return ResourceManager.GetString("PoisonResist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Primary resource.
+        /// </summary>
+        internal static string PrimaryResource {
+            get {
+                return ResourceManager.GetString("PrimaryResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Progress.
+        /// </summary>
+        internal static string Progress {
+            get {
+                return ResourceManager.GetString("Progress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resources.
+        /// </summary>
+        internal static string Resources {
+            get {
+                return ResourceManager.GetString("Resources", resourceCulture);
             }
         }
         
@@ -206,11 +557,47 @@ namespace ZTn.Pcl.D3Calculator.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Secondary resource.
+        /// </summary>
+        internal static string SecondaryResource {
+            get {
+                return ResourceManager.GetString("SecondaryResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Strength.
+        /// </summary>
+        internal static string Strength {
+            get {
+                return ResourceManager.GetString("Strength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toughness.
+        /// </summary>
+        internal static string Toughness {
+            get {
+                return ResourceManager.GetString("Toughness", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unknown.
         /// </summary>
         internal static string Unknown {
             get {
                 return ResourceManager.GetString("Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vitality.
+        /// </summary>
+        internal static string Vitality {
+            get {
+                return ResourceManager.GetString("Vitality", resourceCulture);
             }
         }
         
