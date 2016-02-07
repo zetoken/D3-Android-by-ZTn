@@ -1,4 +1,6 @@
-﻿using ZTn.BNet.D3.Items;
+﻿using Xamarin.Forms;
+using ZTn.BNet.D3.Items;
+using ZTn.Pcl.D3Calculator.Resources;
 
 namespace ZTn.Pcl.D3Calculator.Models
 {
@@ -6,6 +8,30 @@ namespace ZTn.Pcl.D3Calculator.Models
     {
         public ItemSummary Item { get; }
         public ItemPosition Position { get; }
+
+        public Color Color
+        {
+            get
+            {
+                switch (Item.DisplayColor)
+                {
+                    case "orange":
+                        return Colors.Legendary;
+                    case "blue":
+                        return Colors.Magic;
+                    case "green":
+                        return Colors.Set;
+                    case "yellow":
+                        return Colors.Rare;
+                    case "white":
+                        return Colors.Trash;
+                    case "gray":
+                        return Colors.Normal;
+                    default:
+                        return Colors.Normal;
+                }
+            }
+        }
 
         public ItemSummaryData(ItemSummary itemItem, ItemPosition position)
         {
