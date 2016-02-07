@@ -5,7 +5,7 @@
              xmlns:controls="clr-namespace:ZTn.Pcl.D3Calculator.Controls;assembly=ZTn.Pcl.D3Calculator"
              x:Class="ZTn.Pcl.D3Calculator.Views.BnetAccountEditorPage">
   <ContentPage.ToolbarItems>
-    <ToolbarItem Text="Add Account" Icon="ic_menu_send.png" Order="Primary" Clicked="OnSubmit" />
+    <ToolbarItem Text="Set Account" Order="Primary" Clicked="OnSubmit" />
   </ContentPage.ToolbarItems>
 
   <StackLayout Orientation="Vertical" Padding="5,10" Spacing="0,0">

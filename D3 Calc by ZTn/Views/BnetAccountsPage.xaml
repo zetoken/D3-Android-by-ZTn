@@ -7,7 +7,7 @@
              Title="D3 Calc by ZTn">
 
   <ContentPage.ToolbarItems>
-    <ToolbarItem Text="Add Account" Icon="ic_menu_add.png" Order="Primary" Clicked="OnAddAccount" />
+    <ToolbarItem Text="Add Account" Order="Primary" Clicked="OnAddAccount" />
   </ContentPage.ToolbarItems>
 
   <ContentPage.Content>

@@ -22,7 +22,7 @@
 
       <DataTemplate x:Key="ItemSummaryData">
         <ViewCell>
-          <Label Text="{Binding Item.Name}" TextColor="{Binding Color}"/>
+          <Label Text="{Binding Item.Name}" TextColor="{Binding Color}" FontSize="16"/>
         </ViewCell>
       </DataTemplate>
 

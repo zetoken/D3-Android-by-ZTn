@@ -12,7 +12,7 @@ using ZTn.Pcl.D3Calculator.ViewModels;
 
 namespace ZTn.Pcl.D3Calculator.Views
 {
-    public partial class HeroPage
+    public partial class HeroPage : TabbedPage
     {
         public HeroViewModel ViewModel { get; }
 

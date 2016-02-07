@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("App1.iOS")]
+[assembly: AssemblyTitle("PCL Adapter for iOS")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("ZTn")]
-[assembly: AssemblyProduct("D3 Calc by ZTn")]
+[assembly: AssemblyProduct("PCL Adapter for iOS")]
 [assembly: AssemblyCopyright("Copyright © ZTn 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("72bdc44f-c588-44f3-b6df-9aace7daafdd")]
+[assembly: Guid("4a20a379-885f-47c3-874e-553a3e6f6c3d")]
 
 // Version information for an assembly consists of the following four values:
 //
