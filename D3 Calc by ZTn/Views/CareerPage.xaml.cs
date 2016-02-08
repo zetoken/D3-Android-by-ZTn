@@ -6,11 +6,11 @@ using ZTn.Pcl.D3Calculator.ViewModels;
 
 namespace ZTn.Pcl.D3Calculator.Views
 {
-    public partial class CareersPage : ContentPage
+    public partial class CareerPage : ContentPage
     {
         private readonly CareersViewModel _viewModel;
 
-        public CareersPage(BnetAccount account)
+        public CareerPage(BnetAccount account)
         {
             _viewModel = new CareersViewModel(account);
 

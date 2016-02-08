@@ -4,7 +4,11 @@ namespace ZTn.Pcl.D3Calculator.Resources
 {
     public static class Colors
     {
+        public static Color Background = Color.FromHex("#FFFFFFFF");
+        public static Color DefaultText = Color.FromHex("#FF000000");
+
         public static Color Title = Color.FromHex("#FF3BB5E5");
+        public static Color BattleTag = Color.FromHex("#FFBF642F");
 
         public static Color Seasonal = Color.FromHex("#FF01E601");
         public static Color Hardcore = Color.FromHex("#FFE60101");

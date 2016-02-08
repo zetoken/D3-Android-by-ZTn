@@ -5,41 +5,15 @@
              xmlns:converters="clr-namespace:ZTn.Pcl.D3Calculator.Converters;assembly=ZTn.Pcl.D3Calculator"
              xmlns:controls="clr-namespace:ZTn.Pcl.D3Calculator.Controls;assembly=ZTn.Pcl.D3Calculator"
              xmlns:extensions="clr-namespace:ZTn.Pcl.D3Calculator.Extensions;assembly=ZTn.Pcl.D3Calculator"
-             x:Class="ZTn.Pcl.D3Calculator.Views.CareersPage"
-             x:Name="ContentPage">
+             x:Class="ZTn.Pcl.D3Calculator.Views.CareerPage"
+             x:Name="ContentPage"
+             BackgroundColor="{x:Static resx:Colors.Background}">
 
   <ContentPage.Resources>
     <ResourceDictionary>
       <converters:HeroClassConverter x:Key="HeroClassConverter" />
       <converters:HeroToImageConverter x:Key="HeroToImageConverter" />
       <converters:LastUpdatedConverter x:Key="LastUpdatedConverter" />
-
-      <DataTemplate x:Key="TitleData">
-        <ViewCell>
-          <ViewCell.View>
-            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="0,0">
-              <Label Text="{Binding Title}" TextColor="{x:Static resx:Colors.Title}" />
-              <BoxView HeightRequest="1" Color="{x:Static resx:Colors.Title}" />
-            </StackLayout>
-          </ViewCell.View>
-        </ViewCell>
-      </DataTemplate>
-
-      <DataTemplate x:Key="TextData">
-        <ViewCell>
-          <Grid>
-            <Grid.RowDefinitions>
-              <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="*" />
-              <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Label Text="{Binding Label}" Grid.Column="0" />
-            <Label Text="{Binding Value}" Grid.Column="1" />
-          </Grid>
-        </ViewCell>
-      </DataTemplate>
 
       <DataTemplate x:Key="HeroData">
         <ViewCell>
@@ -74,11 +48,11 @@
 
   <ContentPage.Content>
 
-    <StackLayout Orientation="Vertical" Padding="5,10" Spacing="0,0">
+    <StackLayout Orientation="Vertical" Padding="5,10" Spacing="0,0" VerticalOptions="FillAndExpand">
 
       <controls:BusyIndicatorView BindingContext="{Binding BusyIndicatorLoadingCareer}" />
 
-      <ListView ItemsSource="{Binding Details}" ItemSelected="OnSelection" ItemTemplate="{extensions:DataTemplateSelector Page={x:Reference ContentPage}}" HasUnevenRows="True" VerticalOptions="Fill" />
+      <ListView ItemsSource="{Binding Details}" ItemSelected="OnSelection" ItemTemplate="{extensions:DataTemplateSelector Page={x:Reference ContentPage}}" HasUnevenRows="True" VerticalOptions="FillAndExpand" />
 
     </StackLayout>
 

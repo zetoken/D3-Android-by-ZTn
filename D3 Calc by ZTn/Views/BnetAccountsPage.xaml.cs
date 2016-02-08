@@ -35,7 +35,7 @@ namespace ZTn.Pcl.D3Calculator.Views
 
             var account = (BnetAccount)e.SelectedItem;
 
-            Navigation.PushAsync(new CareersPage(account));
+            Navigation.PushAsync(new CareerPage(account));
 
             var listView = (ListView)sender;
             listView.SelectedItem = null;

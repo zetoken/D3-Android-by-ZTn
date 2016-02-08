@@ -4,7 +4,8 @@
              xmlns:local="clr-namespace:ZTn.Pcl.D3Calculator.Views;assembly=ZTn.Pcl.D3Calculator"
              xmlns:resx="clr-namespace:ZTn.Pcl.D3Calculator.Resources;assembly=ZTn.Pcl.D3Calculator"
              x:Class="ZTn.Pcl.D3Calculator.Views.BnetAccountsPage"
-             Title="D3 Calc by ZTn">
+             Title="D3 Calc by ZTn"
+             BackgroundColor="{x:Static resx:Colors.Background}">
 
   <ContentPage.ToolbarItems>
     <ToolbarItem Text="Add Account" Order="Primary" Clicked="OnAddAccount" />
@@ -26,7 +27,7 @@
                 <MenuItem Text="Delete" Icon="ic_menu_delete.png" IsDestructive="true" CommandParameter="{Binding .}" Clicked="OnDelete" />
               </ViewCell.ContextActions>
               <StackLayout Padding="10,5">
-                <Label Text="{Binding BattleTag}" TextColor="Accent" FontSize="Large" />
+                <Label Text="{Binding BattleTag}" TextColor="{x:Static resx:Colors.BattleTag}" FontSize="Large" />
                 <Label Text="{Binding Host}" FontAttributes="Italic" />
               </StackLayout>
             </ViewCell>
