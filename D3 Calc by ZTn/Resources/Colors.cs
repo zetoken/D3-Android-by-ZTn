@@ -1,11 +1,12 @@
-﻿using Xamarin.Forms;
+﻿using System.Net;
+using Xamarin.Forms;
 
 namespace ZTn.Pcl.D3Calculator.Resources
 {
     public static class Colors
     {
-        public static Color Background = Color.FromHex("#FFFFFFFF");
-        public static Color DefaultText = Color.FromHex("#FF000000");
+        public static Color Background = Color.FromHex("#FF000000");
+        public static Color DefaultText = Color.FromHex("#FFFFFFFF");
 
         public static Color Title = Color.FromHex("#FF3BB5E5");
         public static Color BattleTag = Color.FromHex("#FFBF642F");
@@ -18,8 +19,11 @@ namespace ZTn.Pcl.D3Calculator.Resources
         public static Color Trash = Color.FromHex("#FFDDDDDD");
         public static Color Normal = Color.FromHex("#FFFFFFFF");
         public static Color Magic = Color.FromHex("#FF7979D4");
-        public static Color Rare = Color.FromHex("#FFF8CC35");
-        public static Color Set = Color.FromHex("#FF8BD442");
+        public static Color Rare = Color.FromHex("#FFFFFF00");
+        public static Color Set = Color.FromHex("#FF00FF00");
         public static Color Legendary = Color.FromHex("#FFBF642F");
+
+        public static Color Gray = Color.FromHex("FF909090");
+        public static Color Gold = Color.FromHex("FFC7B277");
     }
 }

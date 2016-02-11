@@ -339,4 +339,19 @@
   <data name="ParagonSeasonLevelHardcore" xml:space="preserve">
     <value>Parangon saison extrême</value>
   </data>
+  <data name="Jewelry" xml:space="preserve">
+    <value>Bijoux</value>
+  </data>
+  <data name="Passive" xml:space="preserve">
+    <value>Passif</value>
+  </data>
+  <data name="Primary" xml:space="preserve">
+    <value>Primaire</value>
+  </data>
+  <data name="Secondary" xml:space="preserve">
+    <value>Secondaire</value>
+  </data>
+  <data name="Weapon" xml:space="preserve">
+    <value>Arme</value>
+  </data>
 </root>

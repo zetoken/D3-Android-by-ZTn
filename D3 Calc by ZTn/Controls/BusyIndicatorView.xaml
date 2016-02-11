@@ -1,8 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:resx="clr-namespace:ZTn.Pcl.D3Calculator.Resources;assembly=ZTn.Pcl.D3Calculator"
     x:Class="ZTn.Pcl.D3Calculator.Controls.BusyIndicatorView"
-    IsVisible="{Binding IsBusy}" BackgroundColor="Black">
+    IsVisible="{Binding IsBusy}" BackgroundColor="{x:Static resx:Colors.Background}">
+
   <ActivityIndicator IsRunning="{Binding IsBusy}" />
   <Label Text="{Binding BusyMessage}" HorizontalOptions="Center" />
+
 </StackLayout>

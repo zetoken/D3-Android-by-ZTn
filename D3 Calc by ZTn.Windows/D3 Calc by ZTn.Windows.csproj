@@ -112,6 +112,10 @@
     <None Include="D3 Calc by ZTn.Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\BadgeLogo.scale-150.png" />
+    <Content Include="Assets\BadgeLogo.scale-200.png" />
+    <Content Include="Assets\BadgeLogo.scale-400.png" />
+    <Content Include="Assets\Square71x71Logo.scale-400.png" />
     <Content Include="barbarian_female.png" />
     <Content Include="barbarian_male.png" />
     <Content Include="crusader_female.png" />

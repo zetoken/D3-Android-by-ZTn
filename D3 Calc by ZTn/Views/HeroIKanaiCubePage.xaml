@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:ZTn.Pcl.D3Calculator.Resources;assembly=ZTn.Pcl.D3Calculator"
+             xmlns:extensions="clr-namespace:ZTn.Pcl.D3Calculator.Extensions;assembly=ZTn.Pcl.D3Calculator"
+             x:Class="ZTn.Pcl.D3Calculator.Views.HeroKanaiCubePage"
+             x:Name="ContentPage">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+
+      <DataTemplate x:Key="LegendaryPowerData">
+        <ViewCell>
+          <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0,0">
+            <Image Source="{Binding Icon}" />
+            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0,0">
+              <StackLayout Orientation="Horizontal" Spacing="0,0">
+                <Label Text="{Binding LegendaryPower.Name}" TextColor="{Binding Color}" FontSize="Medium" />
+              </StackLayout>
+              <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0,0">
+                <Label Text="{Binding LegendaryPower.Id}" TextColor="{x:Static resx:Colors.HeroClass}" />
+              </StackLayout>
+            </StackLayout>
+          </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <ContentPage.Content>
+
+    <StackLayout Orientation="Vertical" Padding="5,10" Spacing="0,0" VerticalOptions="FillAndExpand">
+
+      <ListView ItemsSource="{Binding LegendaryPowersData}" ItemSelected="OnSelection" ItemTemplate="{extensions:DataTemplateSelector Page={x:Reference ContentPage}}" HasUnevenRows="True" VerticalOptions="FillAndExpand" />
+
+    </StackLayout>
+
+  </ContentPage.Content>
+
+</ContentPage>

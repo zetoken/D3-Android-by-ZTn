@@ -1,19 +1,19 @@
 ﻿using Xamarin.Forms;
-using ZTn.BNet.D3.Items;
+using ZTn.BNet.D3.Heroes;
 using ZTn.Pcl.D3Calculator.Resources;
 
 namespace ZTn.Pcl.D3Calculator.Models
 {
-    internal class ItemSummaryData : IControlData
+    internal class LegendaryPowerData : IControlData
     {
-        public ItemSummary Item { get; }
-        public ItemPosition Position { get; }
+        public LegendaryPower LegendaryPower { get; }
+        public KanaiCubePosition Position { get; }
 
         public Color Color
         {
             get
             {
-                switch (Item.DisplayColor)
+                switch (LegendaryPower.DisplayColor)
                 {
                     case "orange":
                         return Colors.Legendary;
@@ -33,12 +33,15 @@ namespace ZTn.Pcl.D3Calculator.Models
             }
         }
 
-        public ImageSource Icon => ImageSource.FromFile("icon.png");
+        public ImageSource Icon
+        {
+            get { return ImageSource.FromFile("icon.png"); }
+        }
 
-        public ItemSummaryData(ItemSummary itemItem, ItemPosition position)
+        public LegendaryPowerData(LegendaryPower legendaryPowerLegendaryPower, KanaiCubePosition position)
         {
             Position = position;
-            Item = itemItem;
+            LegendaryPower = legendaryPowerLegendaryPower;
         }
     }
 }

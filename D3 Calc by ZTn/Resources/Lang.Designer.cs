@@ -467,6 +467,15 @@ namespace ZTn.Pcl.D3Calculator.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Jewelry.
+        /// </summary>
+        internal static string Jewelry {
+            get {
+                return ResourceManager.GetString("Jewelry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kills lifetime.
         /// </summary>
         internal static string KillsLifetime {
@@ -620,6 +629,15 @@ namespace ZTn.Pcl.D3Calculator.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Passive.
+        /// </summary>
+        internal static string Passive {
+            get {
+                return ResourceManager.GetString("Passive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Physical resist.
         /// </summary>
         internal static string PhysicalResist {
@@ -634,6 +652,15 @@ namespace ZTn.Pcl.D3Calculator.Resources {
         internal static string PoisonResist {
             get {
                 return ResourceManager.GetString("PoisonResist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Primary.
+        /// </summary>
+        internal static string Primary {
+            get {
+                return ResourceManager.GetString("Primary", resourceCulture);
             }
         }
         
@@ -670,6 +697,15 @@ namespace ZTn.Pcl.D3Calculator.Resources {
         internal static string Season {
             get {
                 return ResourceManager.GetString("Season", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secondary.
+        /// </summary>
+        internal static string Secondary {
+            get {
+                return ResourceManager.GetString("Secondary", resourceCulture);
             }
         }
         
@@ -715,6 +751,15 @@ namespace ZTn.Pcl.D3Calculator.Resources {
         internal static string Vitality {
             get {
                 return ResourceManager.GetString("Vitality", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weapon.
+        /// </summary>
+        internal static string Weapon {
+            get {
+                return ResourceManager.GetString("Weapon", resourceCulture);
             }
         }
         

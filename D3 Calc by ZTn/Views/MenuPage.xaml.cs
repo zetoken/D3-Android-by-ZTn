@@ -9,7 +9,7 @@ namespace ZTn.Pcl.D3Calculator.Views
 
         public MenuPage()
         {
-            Items = new ObservableCollection<string>(new[] { "Menu Item 1", "Menu Item 2" });
+            Items = new ObservableCollection<string>(new[] { "Menu Item 1", "Menu LegendaryPower 2" });
 
             InitializeComponent();
         }

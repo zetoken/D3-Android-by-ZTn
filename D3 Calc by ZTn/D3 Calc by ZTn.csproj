@@ -47,6 +47,8 @@
     <Compile Include="Models\IControlData.cs" />
     <Compile Include="Models\ItemData.cs" />
     <Compile Include="Models\ItemPosition.cs" />
+    <Compile Include="Models\KanaiCubePosition.cs" />
+    <Compile Include="Models\LegendaryPowerData.cs" />
     <Compile Include="Models\ItemSummaryData.cs" />
     <Compile Include="Models\ValueData.cs" />
     <Compile Include="Models\PercentData.cs" />
@@ -90,6 +92,9 @@
     </Compile>
     <Compile Include="Views\HeroItemsPage.xaml.cs">
       <DependentUpon>HeroItemsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HeroIKanaiCubePage.xaml.cs">
+      <DependentUpon>HeroIKanaiCubePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HeroPage.xaml.cs">
       <DependentUpon>HeroPage.xaml</DependentUpon>
@@ -215,7 +220,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\HeroItemsPage.xaml">
+    <EmbeddedResource Include="Views\HeroIKanaiCubePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -228,6 +233,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\HeroItemsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

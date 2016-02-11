@@ -3,17 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:ZTn.Pcl.D3Calculator.Views;assembly=ZTn.Pcl.D3Calculator"
              xmlns:resx="clr-namespace:ZTn.Pcl.D3Calculator.Resources;assembly=ZTn.Pcl.D3Calculator"
-             x:Class="ZTn.Pcl.D3Calculator.Views.HeroPage"
-            BackgroundColor="{x:Static resx:Colors.Background}">
+             x:Class="ZTn.Pcl.D3Calculator.Views.HeroPage">
 
   <TabbedPage.ToolbarItems>
     <ToolbarItem Text="Refresh" Icon="" Order="Primary" Clicked="OnRefresh" />
   </TabbedPage.ToolbarItems>
 
   <TabbedPage.Children>
-    <views:HeroBlizzardPage BindingContext="{Binding .}" />
+    <views:HeroBattleNetPage BindingContext="{Binding .}" />
     <!--views:HeroComputedPage BindingContext="{Binding .}" /-->
     <!--views:HeroSkillsPage BindingContext="{Binding .}" /-->
+    <views:HeroKanaiCubePage BindingContext="{Binding .}" />
     <views:HeroItemsPage BindingContext="{Binding .}" />
   </TabbedPage.Children>
 

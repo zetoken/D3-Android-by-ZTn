@@ -15,11 +15,49 @@
           <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0,0">
             <Image Source="{Binding Icon}" />
             <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0,0">
-              <StackLayout Orientation="Horizontal" Spacing="0,0">
-                <Label Text="{Binding Item.Name}" TextColor="{Binding Color}" FontSize="Medium" />
+              <Label Text="{Binding Item.Name}" TextColor="{Binding Color}" FontSize="Medium" />
+              <Label Text="{Binding Item.Id}" TextColor="{x:Static resx:Colors.HeroClass}" />
+            </StackLayout>
+          </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+
+      <DataTemplate x:Key="ItemData">
+        <ViewCell>
+          <StackLayout Orientation="Horizontal" Spacing="0,0" Padding="0,0,0,0" HorizontalOptions="Fill">
+            <Image Source="{Binding Icon}" />
+            <StackLayout Orientation="Vertical" Spacing="0,0">
+              <Label Text="{Binding Item.Name}" TextColor="{Binding Color}" FontSize="Medium" />
+              <StackLayout Orientation="Horizontal" IsVisible="{Binding IsArmor}" Spacing="0,0">
+                <Label Text="{Binding Armor}" FontSize="Large" />
+                <Label Text="{x:Static resx:Lang.Armor}" TextColor="{x:Static resx:Colors.Gray}" VerticalTextAlignment="End" />
               </StackLayout>
-              <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0,0">
-                <Label Text="{Binding Item.Id}" TextColor="{x:Static resx:Colors.HeroClass}" />
+              <StackLayout Orientation="Horizontal" IsVisible="{Binding IsWeapon}" Spacing="0,0">
+                <Label Text="{Binding Dps}" FontSize="Large" />
+                <Label Text="{x:Static resx:Lang.Damage}" TextColor="{x:Static resx:Colors.Gray}" VerticalTextAlignment="End" />
+              </StackLayout>
+              <StackLayout Orientation="Vertical" IsVisible="{Binding HasPrimaryAttributes}" Spacing="0,0">
+                <Label Text="{x:Static resx:Lang.Primary}" />
+                <Label Text="{Binding Primary1}" TextColor="{Binding Primary1Color}" IsVisible="{Binding HasPrimary1}" LineBreakMode="WordWrap" />
+                <Label Text="{Binding Primary2}" TextColor="{Binding Primary2Color}" IsVisible="{Binding HasPrimary2}" LineBreakMode="WordWrap" />
+                <Label Text="{Binding Primary3}" TextColor="{Binding Primary3Color}" IsVisible="{Binding HasPrimary3}" LineBreakMode="WordWrap" />
+                <Label Text="{Binding Primary4}" TextColor="{Binding Primary4Color}" IsVisible="{Binding HasPrimary4}" LineBreakMode="WordWrap" />
+                <Label Text="{Binding Primary5}" TextColor="{Binding Primary5Color}" IsVisible="{Binding HasPrimary6}" LineBreakMode="WordWrap" />
+                <Label Text="{Binding Primary6}" TextColor="{Binding Primary6Color}" IsVisible="{Binding HasPrimary6}" LineBreakMode="WordWrap" />
+              </StackLayout>
+              <StackLayout Orientation="Vertical" IsVisible="{Binding HasSecondaryAttributes}" Spacing="0,0">
+                <Label Text="{x:Static resx:Lang.Secondary}" />
+                <Label Text="{Binding Secondary1}" TextColor="{Binding Secondary1Color}" IsVisible="{Binding HasSecondary1}" LineBreakMode="WordWrap" />
+                <Label Text="{Binding Secondary2}" TextColor="{Binding Secondary2Color}" IsVisible="{Binding HasSecondary2}" LineBreakMode="WordWrap" />
+                <Label Text="{Binding Secondary3}" TextColor="{Binding Secondary3Color}" IsVisible="{Binding HasSecondary3}" LineBreakMode="WordWrap" />
+                <Label Text="{Binding Secondary4}" TextColor="{Binding Secondary4Color}" IsVisible="{Binding HasSecondary4}" LineBreakMode="WordWrap" />
+                <Label Text="{Binding Secondary5}" TextColor="{Binding Secondary5Color}" IsVisible="{Binding HasSecondary6}" LineBreakMode="WordWrap" />
+                <Label Text="{Binding Secondary6}" TextColor="{Binding Secondary6Color}" IsVisible="{Binding HasSecondary6}" LineBreakMode="WordWrap" />
+              </StackLayout>
+              <StackLayout Orientation="Vertical" IsVisible="{Binding HasPassiveAttributes}" Spacing="0,0">
+                <Label Text="{x:Static resx:Lang.Passive}" />
+                <Label Text="{Binding Passive1}" TextColor="{Binding Passive1Color}" IsVisible="{Binding HasPassive1}" LineBreakMode="WordWrap" />
+                <Label Text="{Binding Passive2}" TextColor="{Binding Passive2Color}" IsVisible="{Binding HasPassive2}" LineBreakMode="WordWrap" />
               </StackLayout>
             </StackLayout>
           </StackLayout>

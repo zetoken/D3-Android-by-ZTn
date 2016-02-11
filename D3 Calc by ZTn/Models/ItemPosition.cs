@@ -1,6 +1,6 @@
 ﻿namespace ZTn.Pcl.D3Calculator.Models
 {
-    enum ItemPosition
+    internal enum ItemPosition
     {
         Bracers,
         Feet,

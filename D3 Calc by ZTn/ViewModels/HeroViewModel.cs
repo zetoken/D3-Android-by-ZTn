@@ -1,5 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -25,6 +27,8 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
         public ObservableCollection<IControlData> BattleNetData { get; set; }
 
         public ObservableCollection<IControlData> ItemsData { get; set; }
+
+        public ObservableCollection<IControlData> LegendaryPowersData { get; set; }
 
         public BindableTask<Hero> Hero
         {
@@ -64,6 +68,7 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
                 BusyMessage = Lang.LoadingHero
             };
             BattleNetData = new ObservableCollection<IControlData>();
+
             ItemsData = new ObservableCollection<IControlData>
             {
                 new TitleData(Lang.ItemHead),
@@ -94,39 +99,20 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
                 new ItemSummaryData(new ItemSummary(), ItemPosition.Waist)
             };
 
+            LegendaryPowersData = new ObservableCollection<IControlData>
+            {
+                new TitleData(Lang.Weapon),
+                new LegendaryPowerData(new LegendaryPower(), KanaiCubePosition.Weapon),
+                new TitleData(Lang.Armor),
+                new LegendaryPowerData(new LegendaryPower(), KanaiCubePosition.Armor),
+                new TitleData(Lang.Jewelry),
+                new LegendaryPowerData(new LegendaryPower(), KanaiCubePosition.Jewelry)
+            };
+
             RefreshHero();
         }
 
         #endregion
-
-        private async Task<Hero> LoadHeroAsync(FetchMode fetchMode)
-        {
-            BusyIndicatorLoadingHero.IsBusy = true;
-
-            var d3Api = App.GetD3ApiRequester(_account.Host, fetchMode);
-
-            var hero = await d3Api.GetHeroFromHeroIdAsync(new BattleTag(_account.BattleTag), _heroSummary.Id);
-
-            BusyIndicatorLoadingHero.IsBusy = false;
-
-            BuildBlizzard(hero);
-
-            return hero;
-        }
-
-        private async Task<Item> LoadItemAsync(ItemSummary itemSummary, FetchMode fetchMode)
-        {
-            if (itemSummary?.TooltipParams == null)
-            {
-                return null;
-            }
-
-            var d3Api = App.GetD3ApiRequester(_account.Host, fetchMode);
-
-            var item = await d3Api.GetItemFromTooltipParamsAsync(itemSummary.TooltipParams);
-
-            return item;
-        }
 
         private void BuildBlizzard(Hero hero)
         {
@@ -184,16 +170,50 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
             BattleNetData.Add(new BonusPercentData(Lang.MagicFind, hero.Stats.MagicFind));
         }
 
+        #region >> Hero handling
+
         public void RefreshHero(FetchMode fetchMode = FetchMode.OnlineIfMissing)
         {
             Hero = new BindableTask<Hero>(LoadHeroAsync(fetchMode));
 
-            Hero.Task.ContinueWith(task => RefreshItems(task, fetchMode));
+            Hero.Task.ContinueWith(task =>
+            {
+                RefreshLegendaryPowers(task, fetchMode);
+                RefreshItems(task, fetchMode);
+            });
         }
+
+        private async Task<Hero> LoadHeroAsync(FetchMode fetchMode)
+        {
+            BusyIndicatorLoadingHero.IsBusy = true;
+
+            var d3Api = App.GetD3ApiRequester(_account.Host, fetchMode);
+
+            var hero = await d3Api.GetHeroFromHeroIdAsync(new BattleTag(_account.BattleTag), _heroSummary.Id);
+
+            BusyIndicatorLoadingHero.IsBusy = false;
+
+            BuildBlizzard(hero);
+
+            return hero;
+        }
+
+        #endregion
+
+        #region >> Items handling
 
         private void RefreshItems(Task<Hero> heroTask, FetchMode fetchMode)
         {
-            var hero = heroTask.Result;
+            Hero hero = null;
+
+            try
+            {
+                hero = heroTask.Result;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+            }
 
             if (hero?.Items == null)
             {
@@ -221,6 +241,20 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
             bindableItem.Task.ContinueWith(itemTask => UpdateItemInView(itemTask.Result, position));
         }
 
+        private async Task<Item> LoadItemAsync(ItemSummary itemSummary, FetchMode fetchMode)
+        {
+            if (itemSummary?.TooltipParams == null)
+            {
+                return null;
+            }
+
+            var d3Api = App.GetD3ApiRequester(_account.Host, fetchMode);
+
+            var item = await d3Api.GetItemFromTooltipParamsAsync(itemSummary.TooltipParams);
+
+            return item;
+        }
+
         private void UpdateItemInView(Item item, ItemPosition position)
         {
             if (item == null)
@@ -238,9 +272,80 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
                 }
 
                 var index = ItemsData.IndexOf(itemSummaryData);
-                ItemsData[index] = new ItemSummaryData(item, ItemPosition.Head);
+                ItemsData[index] = new ItemData(item, position);
             });
         }
+
+        #endregion
+
+        #region >> Legendary Powers handling
+
+        private void RefreshLegendaryPowers(Task<Hero> heroTask, FetchMode fetchMode)
+        {
+            Hero hero = null;
+
+            try
+            {
+                hero = heroTask.Result;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+            }
+
+            if (hero?.LegendaryPowers == null || hero.LegendaryPowers.Length == 0)
+            {
+                return;
+            }
+
+            RefreshLegendaryPower(hero.LegendaryPowers[0], KanaiCubePosition.Weapon, fetchMode);
+            RefreshLegendaryPower(hero.LegendaryPowers[1], KanaiCubePosition.Armor, fetchMode);
+            RefreshLegendaryPower(hero.LegendaryPowers[2], KanaiCubePosition.Jewelry, fetchMode);
+        }
+
+        private void RefreshLegendaryPower(LegendaryPower itemSummary, KanaiCubePosition position, FetchMode fetchMode)
+        {
+            var bindableItem = new BindableTask<Item>(LoadLegendaryPowerAsync(itemSummary, fetchMode));
+            bindableItem.Task.ContinueWith(itemTask => UpdateLegendaryPowerInView(itemTask.Result, position));
+        }
+
+        private async Task<Item> LoadLegendaryPowerAsync(LegendaryPower legendaryPower, FetchMode fetchMode)
+        {
+            if (legendaryPower?.TooltipParams == null)
+            {
+                return null;
+            }
+
+            var d3Api = App.GetD3ApiRequester(_account.Host, fetchMode);
+
+            var item = await d3Api.GetItemFromTooltipParamsAsync(legendaryPower.TooltipParams);
+
+            return item;
+        }
+
+        private void UpdateLegendaryPowerInView(Item item, KanaiCubePosition position)
+        {
+            if (item == null)
+            {
+                return;
+            }
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                var legendaryPowerData =
+                    LegendaryPowersData.OfType<LegendaryPowerData>().FirstOrDefault(i => i.Position == position);
+
+                if (legendaryPowerData == null)
+                {
+                    return;
+                }
+
+                var index = ItemsData.IndexOf(legendaryPowerData);
+                // TODO ItemsData[index] = new LegendaryPowerItemData(item, position);
+            });
+        }
+
+        #endregion
 
         #region >> INotifyPropertyChanged
 

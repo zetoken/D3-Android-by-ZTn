@@ -4,7 +4,7 @@
              xmlns:resx="clr-namespace:ZTn.Pcl.D3Calculator.Resources;assembly=ZTn.Pcl.D3Calculator"
              xmlns:controls="clr-namespace:ZTn.Pcl.D3Calculator.Controls;assembly=ZTn.Pcl.D3Calculator"
              xmlns:extensions="clr-namespace:ZTn.Pcl.D3Calculator.Extensions;assembly=ZTn.Pcl.D3Calculator"
-             x:Class="ZTn.Pcl.D3Calculator.Views.HeroBlizzardPage"
+             x:Class="ZTn.Pcl.D3Calculator.Views.HeroBattleNetPage"
              x:Name="ContentPage"
              BackgroundColor="{x:Static resx:Colors.Background}">
 
