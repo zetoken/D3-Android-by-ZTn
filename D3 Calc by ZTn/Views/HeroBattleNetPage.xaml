@@ -14,7 +14,7 @@
 
       <controls:BusyIndicatorView BindingContext="{Binding BusyIndicatorLoadingHero}" />
 
-      <ListView ItemsSource="{Binding BattleNetData}" ItemSelected="OnSelection" ItemTemplate="{extensions:DataTemplateSelector Page={x:Reference ContentPage}}" HasUnevenRows="True" VerticalOptions="FillAndExpand" />
+      <ListView ItemsSource="{Binding BattleNetData}" ItemSelected="OnSelection" ItemTemplate="{extensions:DataTemplateSelector Page={x:Reference ContentPage}}" HasUnevenRows="True" VerticalOptions="FillAndExpand" BackgroundColor="{x:Static resx:Colors.Background}" />
 
     </StackLayout>
 

@@ -71,7 +71,7 @@
 
     <StackLayout Orientation="Vertical" Padding="5,10" Spacing="0,0" VerticalOptions="FillAndExpand">
 
-      <ListView ItemsSource="{Binding ItemsData}" ItemSelected="OnSelection" ItemTemplate="{extensions:DataTemplateSelector Page={x:Reference ContentPage}}" HasUnevenRows="True" VerticalOptions="FillAndExpand" />
+      <ListView ItemsSource="{Binding ItemsData}" ItemSelected="OnSelection" ItemTemplate="{extensions:DataTemplateSelector Page={x:Reference ContentPage}}" HasUnevenRows="True" VerticalOptions="FillAndExpand" BackgroundColor="{x:Static resx:Colors.Background}" />
 
     </StackLayout>
 

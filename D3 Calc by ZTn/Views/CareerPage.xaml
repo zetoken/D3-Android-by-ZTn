@@ -52,7 +52,7 @@
 
       <controls:BusyIndicatorView BindingContext="{Binding BusyIndicatorLoadingCareer}" />
 
-      <ListView ItemsSource="{Binding Details}" ItemSelected="OnSelection" ItemTemplate="{extensions:DataTemplateSelector Page={x:Reference ContentPage}}" HasUnevenRows="True" VerticalOptions="FillAndExpand" />
+      <ListView ItemsSource="{Binding Details}" ItemSelected="OnSelection" ItemTemplate="{extensions:DataTemplateSelector Page={x:Reference ContentPage}}" HasUnevenRows="True" VerticalOptions="FillAndExpand" BackgroundColor="{x:Static resx:Colors.Background}" />
 
     </StackLayout>
 

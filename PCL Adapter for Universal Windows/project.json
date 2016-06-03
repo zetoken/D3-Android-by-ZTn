@@ -1,6 +1,6 @@
 ﻿{
   "dependencies": {
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
     "sqlite-net-pcl": "1.1.1",
     "SQLitePCL.raw_basic": "0.8.6"
   },

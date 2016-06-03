@@ -4,7 +4,8 @@
              xmlns:resx="clr-namespace:ZTn.Pcl.D3Calculator.Resources;assembly=ZTn.Pcl.D3Calculator"
              xmlns:extensions="clr-namespace:ZTn.Pcl.D3Calculator.Extensions;assembly=ZTn.Pcl.D3Calculator"
              x:Class="ZTn.Pcl.D3Calculator.Views.HeroKanaiCubePage"
-             x:Name="ContentPage">
+             x:Name="ContentPage"
+             BackgroundColor="{x:Static resx:Colors.Background}">
 
   <ContentPage.Resources>
     <ResourceDictionary>
@@ -32,7 +33,7 @@
 
     <StackLayout Orientation="Vertical" Padding="5,10" Spacing="0,0" VerticalOptions="FillAndExpand">
 
-      <ListView ItemsSource="{Binding LegendaryPowersData}" ItemSelected="OnSelection" ItemTemplate="{extensions:DataTemplateSelector Page={x:Reference ContentPage}}" HasUnevenRows="True" VerticalOptions="FillAndExpand" />
+      <ListView ItemsSource="{Binding LegendaryPowersData}" ItemSelected="OnSelection" ItemTemplate="{extensions:DataTemplateSelector Page={x:Reference ContentPage}}" HasUnevenRows="True" VerticalOptions="FillAndExpand" BackgroundColor="{x:Static resx:Colors.Background}" />
 
     </StackLayout>
 

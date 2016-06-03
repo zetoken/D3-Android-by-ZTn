@@ -33,10 +33,7 @@ namespace ZTn.Pcl.D3Calculator.Models
             }
         }
 
-        public ImageSource Icon
-        {
-            get { return ImageSource.FromFile("icon.png"); }
-        }
+        public ImageSource Icon => ImageSource.FromFile("icon.png");
 
         public LegendaryPowerData(LegendaryPower legendaryPowerLegendaryPower, KanaiCubePosition position)
         {
