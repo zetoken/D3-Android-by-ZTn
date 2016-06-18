@@ -163,10 +163,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\D3 API by ZTn.dll</HintPath>
     </Reference>
-    <Reference Include="PCL Adapter, Version=1.0.2.38150, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libraries\PCL Adapter.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

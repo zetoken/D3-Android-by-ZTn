@@ -114,9 +114,6 @@
     <EmbeddedResource Include="Properties\PCL_Adapter_for_Universal_Windows.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Xamarin.Forms.Core">
-      <HintPath>..\..\..\Users\tmp\.nuget\packages\Xamarin.Forms\2.0.0.6490\lib\uap10.0\Xamarin.Forms.Core.dll</HintPath>
-    </Reference>
     <Reference Include="ZTn.Bnet.PclAdapter.Common">
       <HintPath>..\Libraries\ZTn.Bnet.PclAdapter.Common.dll</HintPath>
     </Reference>
