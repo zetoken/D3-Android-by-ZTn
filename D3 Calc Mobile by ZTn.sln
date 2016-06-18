@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D3 Calc by ZTn", "D3 Calc by ZTn\D3 Calc by ZTn.csproj", "{D9309A8C-CEFE-4D28-B68A-FA3D63C62505}"
 EndProject
@@ -370,7 +370,6 @@ Global
 		{4A20A379-885F-47C3-874E-553A3E6F6C3D}.AppStore|x86.ActiveCfg = AppStore|Any CPU
 		{4A20A379-885F-47C3-874E-553A3E6F6C3D}.AppStore|x86.Build.0 = AppStore|Any CPU
 		{4A20A379-885F-47C3-874E-553A3E6F6C3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A20A379-885F-47C3-874E-553A3E6F6C3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A20A379-885F-47C3-874E-553A3E6F6C3D}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{4A20A379-885F-47C3-874E-553A3E6F6C3D}.Debug|ARM.Build.0 = Debug|Any CPU
 		{4A20A379-885F-47C3-874E-553A3E6F6C3D}.Debug|iPhone.ActiveCfg = Debug|Any CPU
@@ -382,7 +381,6 @@ Global
 		{4A20A379-885F-47C3-874E-553A3E6F6C3D}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{4A20A379-885F-47C3-874E-553A3E6F6C3D}.Debug|x86.Build.0 = Debug|Any CPU
 		{4A20A379-885F-47C3-874E-553A3E6F6C3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A20A379-885F-47C3-874E-553A3E6F6C3D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4A20A379-885F-47C3-874E-553A3E6F6C3D}.Release|ARM.ActiveCfg = Release|Any CPU
 		{4A20A379-885F-47C3-874E-553A3E6F6C3D}.Release|ARM.Build.0 = Release|Any CPU
 		{4A20A379-885F-47C3-874E-553A3E6F6C3D}.Release|iPhone.ActiveCfg = Release|Any CPU
