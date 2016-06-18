@@ -1,8 +1,8 @@
 using System.IO;
 
-namespace ZTn.Bnet.Portable.Windows
+namespace ZTn.Bnet.PclAdapter
 {
-    internal class PortableFile : IPortableFile
+    public class PortableFile 
     {
         /// <inheritdoc />
         public Stream Create(string path)

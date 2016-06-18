@@ -8,9 +8,9 @@
     <ProjectGuid>{4A20A379-885F-47C3-874E-553A3E6F6C3D}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>ZTn.Bnet.Portable.iOS</RootNamespace>
+    <RootNamespace>ZTn.Bnet.PclAdapter</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>PCL Adapter for iOS</AssemblyName>
+    <AssemblyName>ZTn.Bnet.PclAdapter</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,13 +31,13 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PCL Adapter">
-      <HintPath>..\Libraries\PCL Adapter.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="ZTn.Bnet.PclAdapter.Common">
+      <HintPath>..\Libraries\ZTn.Bnet.PclAdapter.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -47,7 +47,6 @@
     <Compile Include="PortableEncoding.cs" />
     <Compile Include="PortableFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegisterPcl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

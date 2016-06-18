@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using Xamarin.Forms;
-using ZTn.Bnet.Portable;
+using ZTn.Bnet.PclAdapter;
 using ZTn.BNet.D3.DataProviders;
 
 [assembly: Dependency(typeof(ZTn.iOS.D3Calculator.CachedDataProvider))]

@@ -1,5 +1,5 @@
 ﻿using Xamarin.Forms;
-using ZTn.BNet.D3.Heroes;
+using ZTn.BNet.D3.Items;
 using ZTn.Pcl.D3Calculator.Resources;
 
 namespace ZTn.Pcl.D3Calculator.Models

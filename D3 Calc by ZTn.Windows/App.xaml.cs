@@ -4,7 +4,6 @@ using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using ZTn.Bnet.Portable.Windows;
 
 namespace ZTn.Windows.D3Calculator
 {
@@ -24,8 +23,6 @@ namespace ZTn.Windows.D3Calculator
                 Microsoft.ApplicationInsights.WindowsCollectors.Session);
             this.InitializeComponent();
             this.Suspending += OnSuspending;
-
-            RegisterPcl.Register();
         }
 
         /// <summary>
