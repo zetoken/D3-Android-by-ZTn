@@ -71,6 +71,15 @@ namespace ZTn.Pcl.D3Calculator.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to D3 Calculator.
+        /// </summary>
+        internal static string ApplicationName {
+            get {
+                return ResourceManager.GetString("ApplicationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Arcane resist.
         /// </summary>
         internal static string ArcaneResist {
@@ -130,6 +139,15 @@ namespace ZTn.Pcl.D3Calculator.Resources {
         internal static string Bonuses {
             get {
                 return ResourceManager.GetString("Bonuses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
             }
         }
         
@@ -589,6 +607,15 @@ namespace ZTn.Pcl.D3Calculator.Resources {
         internal static string Monsters {
             get {
                 return ResourceManager.GetString("Monsters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured while connecting to battle.net server.
+        /// </summary>
+        internal static string NetworkError {
+            get {
+                return ResourceManager.GetString("NetworkError", resourceCulture);
             }
         }
         

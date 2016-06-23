@@ -28,6 +28,8 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+    <EnableGatekeeperAnalysis>true</EnableGatekeeperAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -159,9 +161,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="BNet API by ZTn, Version=2.1.0.42211, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\BNet API by ZTn.dll</HintPath>
+    </Reference>
     <Reference Include="D3 API by ZTn, Version=3.0.0.33377, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\D3 API by ZTn.dll</HintPath>
+    </Reference>
+    <Reference Include="D3 Calculator Library by ZTn">
+      <HintPath>..\Libraries\D3 Calculator Library by ZTn.dll</HintPath>
+    </Reference>
+    <Reference Include="ZTn.Bnet.PclAdapter.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\ZTn.Bnet.PclAdapter.Common.dll</HintPath>
     </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

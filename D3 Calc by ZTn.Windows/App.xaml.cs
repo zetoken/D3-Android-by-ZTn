@@ -2,8 +2,9 @@
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Application = Windows.UI.Xaml.Application;
+using Frame = Windows.UI.Xaml.Controls.Frame;
 
 namespace ZTn.Windows.D3Calculator
 {
@@ -32,7 +33,6 @@ namespace ZTn.Windows.D3Calculator
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
@@ -51,7 +51,7 @@ namespace ZTn.Windows.D3Calculator
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                // Xamarin.Forms
+                // Xamarin.Forms (see https://developer.xamarin.com/guides/xamarin-forms/platform-features/windows/installation/universal/)
                 Xamarin.Forms.Forms.Init(e); // requires the `e` parameter
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)

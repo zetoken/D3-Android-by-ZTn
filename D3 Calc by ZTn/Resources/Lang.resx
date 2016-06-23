@@ -357,4 +357,13 @@
   <data name="Weapon" xml:space="preserve">
     <value>Weapon</value>
   </data>
+  <data name="ApplicationName" xml:space="preserve">
+    <value>D3 Calculator</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="NetworkError" xml:space="preserve">
+    <value>An error occured while connecting to battle.net server</value>
+  </data>
 </root>

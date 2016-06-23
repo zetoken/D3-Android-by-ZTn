@@ -13,11 +13,13 @@ using ZTn.BNet.D3.Items;
 using ZTn.Pcl.D3Calculator.Annotations;
 using ZTn.Pcl.D3Calculator.Models;
 using ZTn.Pcl.D3Calculator.Resources;
+using ZTn.Pcl.D3Calculator.Views;
 
 namespace ZTn.Pcl.D3Calculator.ViewModels
 {
     public class HeroViewModel : INotifyPropertyChanged
     {
+        private readonly Page _page;
         private readonly BnetAccount _account;
         private BindableTask<Hero> _hero;
         private readonly HeroSummary _heroSummary;
@@ -57,8 +59,9 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
 
         #region >> Constructors
 
-        public HeroViewModel(BnetAccount account, HeroSummary heroSummary)
+        public HeroViewModel(Page page, BnetAccount account, HeroSummary heroSummary)
         {
+            _page = page;
             _account = account;
             _heroSummary = heroSummary;
 
@@ -189,11 +192,23 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
 
             var d3Api = App.GetD3ApiRequester(_account.Host, fetchMode);
 
-            var hero = await d3Api.GetHeroFromHeroIdAsync(new BattleTag(_account.BattleTag), _heroSummary.Id);
+            Hero hero = null;
+            try
+            {
+                hero = await d3Api.GetHeroFromHeroIdAsync(new BattleTag(_account.BattleTag), _heroSummary.Id);
 
-            BusyIndicatorLoadingHero.IsBusy = false;
+                BuildBlizzard(hero);
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception);
 
-            BuildBlizzard(hero);
+                await _page.DisplayAlert(Lang.ApplicationName, Lang.NetworkError, Lang.Cancel);
+            }
+            finally
+            {
+                BusyIndicatorLoadingHero.IsBusy = false;
+            }
 
             return hero;
         }
@@ -250,7 +265,18 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
 
             var d3Api = App.GetD3ApiRequester(_account.Host, fetchMode);
 
-            var item = await d3Api.GetItemFromTooltipParamsAsync(itemSummary.TooltipParams);
+            Item item = null;
+
+            try
+            {
+                item = await d3Api.GetItemFromTooltipParamsAsync(itemSummary.TooltipParams);
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception);
+
+                await _page.DisplayAlert(Lang.ApplicationName, Lang.NetworkError, Lang.Cancel);
+            }
 
             return item;
         }

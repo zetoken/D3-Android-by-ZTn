@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using ZTn.BNet.D3.DataProviders;
 using ZTn.BNet.D3.Heroes;
@@ -18,7 +13,7 @@ namespace ZTn.Pcl.D3Calculator.Views
 
         public HeroPage(BnetAccount account, HeroSummary heroSummary)
         {
-            ViewModel = new HeroViewModel(account, heroSummary);
+            ViewModel = new HeroViewModel(this, account, heroSummary);
 
             InitializeComponent();
 

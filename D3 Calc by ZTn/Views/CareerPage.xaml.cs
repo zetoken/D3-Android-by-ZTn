@@ -12,11 +12,11 @@ namespace ZTn.Pcl.D3Calculator.Views
 
         public CareerPage(BnetAccount account)
         {
-            _viewModel = new CareersViewModel(account);
+            InitializeComponent();
+
+            _viewModel = new CareersViewModel(this, account);
 
             Title = account.BattleTag;
-
-            InitializeComponent();
 
             BindingContext = _viewModel;
         }

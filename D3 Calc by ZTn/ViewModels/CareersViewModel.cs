@@ -1,5 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -9,11 +11,13 @@ using ZTn.BNet.D3.Careers;
 using ZTn.BNet.D3.DataProviders;
 using ZTn.Pcl.D3Calculator.Annotations;
 using ZTn.Pcl.D3Calculator.Models;
+using ZTn.Pcl.D3Calculator.Views;
 
 namespace ZTn.Pcl.D3Calculator.ViewModels
 {
     internal class CareersViewModel : INotifyPropertyChanged
     {
+        private readonly Page _page;
         private BindableTask<Career> _career;
         public BnetAccount Account { get; }
 
@@ -31,8 +35,9 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
 
         public BusyIndicatorViewModel BusyIndicatorLoadingCareer { get; }
 
-        public CareersViewModel(BnetAccount account)
+        public CareersViewModel(Page page, BnetAccount account)
         {
+            _page = page;
             Account = account;
 
             BusyIndicatorLoadingCareer = new BusyIndicatorViewModel { IsBusy = true, BusyMessage = Resources.Lang.LoadingCareer };
@@ -52,11 +57,23 @@ namespace ZTn.Pcl.D3Calculator.ViewModels
 
             var d3Api = App.GetD3ApiRequester(Account.Host, fetchMode);
 
-            var career = await d3Api.GetCareerFromBattleTagAsync(new BattleTag(Account.BattleTag));
+            Career career = null;
+            try
+            {
+                career = await d3Api.GetCareerFromBattleTagAsync(new BattleTag(Account.BattleTag));
 
-            BusyIndicatorLoadingCareer.IsBusy = false;
+                BuildDetails(career);
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception);
 
-            BuildDetails(career);
+                await _page.DisplayAlert(Resources.Lang.ApplicationName, Resources.Lang.NetworkError, Resources.Lang.Cancel);
+            }
+            finally
+            {
+                BusyIndicatorLoadingCareer.IsBusy = false;
+            }
 
             return career;
         }
