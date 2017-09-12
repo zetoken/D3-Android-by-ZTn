@@ -1,8 +1,7 @@
 ﻿using System;
 using System.IO;
-
+using ZTn.Bnet.PclAdapter;
 using ZTn.BNet.D3.DataProviders;
-using ZTn.Bnet.Portable;
 
 namespace ZTnDroid.D3Calculator.DataProviders
 {
@@ -11,9 +10,9 @@ namespace ZTnDroid.D3Calculator.DataProviders
         #region >> Constructors
 
         public CacheableDataProvider(ID3DataProvider dataProvider)
-            : base(dataProvider)
+            : base(Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, "D3CalcByZTn") + "/", dataProvider)
         {
-            var noMediaFile = GetCacheStoragePath() + ".nomedia";
+            var noMediaFile = StoragePath + ".nomedia";
             if (!File.Exists(noMediaFile))
             {
                 var directoryName = Path.GetDirectoryName(noMediaFile);
@@ -23,16 +22,6 @@ namespace ZTnDroid.D3Calculator.DataProviders
                 }
                 File.Create(noMediaFile);
             }
-        }
-
-        #endregion
-
-        #region >> CacheableDataProvider
-
-        /// <inheritdoc/>
-        public override sealed String GetCacheStoragePath()
-        {
-            return Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, "D3CalcByZTn") + "/";
         }
 
         #endregion

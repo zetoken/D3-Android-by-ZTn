@@ -16,6 +16,8 @@ namespace ZTnDroid.D3Calculator.Helpers
                     return D3Calc.Instance.Resources.GetString(Resource.String.demonHunter);
                 case HeroClass.Monk:
                     return D3Calc.Instance.Resources.GetString(Resource.String.monk);
+                case HeroClass.Necromancer:
+                    return D3Calc.Instance.Resources.GetString(Resource.String.necromancer);
                 case HeroClass.WitchDoctor:
                     return D3Calc.Instance.Resources.GetString(Resource.String.witchDoctor);
                 case HeroClass.Wizard:
@@ -37,6 +39,8 @@ namespace ZTnDroid.D3Calculator.Helpers
                     return (gender == HeroGender.Male ? Resource.Drawable.demonhunter_male : Resource.Drawable.demonhunter_female);
                 case HeroClass.Monk:
                     return (gender == HeroGender.Male ? Resource.Drawable.monk_male : Resource.Drawable.monk_female);
+                case HeroClass.Necromancer:
+                    return (gender == HeroGender.Male ? Resource.Drawable.necromancer_male : Resource.Drawable.necromancer_female);
                 case HeroClass.WitchDoctor:
                     return (gender == HeroGender.Male ? Resource.Drawable.witchdoctor_male : Resource.Drawable.witchdoctor_female);
                 case HeroClass.Wizard:

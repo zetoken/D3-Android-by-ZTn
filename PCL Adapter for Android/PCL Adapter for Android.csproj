@@ -9,8 +9,8 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ZTn.Bnet.Portable.Android</RootNamespace>
-    <AssemblyName>PCL Adapter for Android</AssemblyName>
+    <RootNamespace>ZTn.Bnet.PclAdapter</RootNamespace>
+    <AssemblyName>ZTn.Bnet.PclAdapter</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
@@ -37,20 +37,17 @@
   <ItemGroup>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
-    <Reference Include="PCL Adapter">
-      <HintPath>..\Libraries\PCL Adapter.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.IO" />
-    <Reference Include="System.Runtime" />
     <Reference Include="System.Text.Encoding" />
+    <Reference Include="ZTn.Bnet.PclAdapter.Common">
+      <HintPath>..\Libraries\ZTn.Bnet.PclAdapter.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PortableDirectory.cs" />
     <Compile Include="PortableEncoding.cs" />
     <Compile Include="PortableFile.cs" />
-    <Compile Include="RegisterPcl.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -6,14 +6,14 @@ namespace ZTnDroid.D3Calculator.Helpers
 {
     static class HeroItemsExtension
     {
-        private static void UpdateToFullItem(ref ItemSummary item)
+        private static ItemSummary UpdateToFullItem(ItemSummary item)
         {
             if (item == null)
             {
-                return;
+                return item;
             }
 
-            item = item.GetFullItem();
+            return item.GetFullItem();
         }
 
         /// <summary>
@@ -22,22 +22,22 @@ namespace ZTnDroid.D3Calculator.Helpers
         /// <param name="heroItems"></param>
         public static void UpdateToFullItems(this HeroItems heroItems)
         {
-            UpdateToFullItem(ref heroItems.Head);
-            UpdateToFullItem(ref heroItems.Torso);
-            UpdateToFullItem(ref heroItems.Feet);
-            UpdateToFullItem(ref heroItems.Hands);
-            UpdateToFullItem(ref heroItems.Shoulders);
-            UpdateToFullItem(ref heroItems.Legs);
-            UpdateToFullItem(ref heroItems.Bracers);
-            UpdateToFullItem(ref heroItems.Waist);
-            UpdateToFullItem(ref heroItems.RightFinger);
-            UpdateToFullItem(ref heroItems.LeftFinger);
-            UpdateToFullItem(ref heroItems.Neck);
-            UpdateToFullItem(ref heroItems.MainHand);
-            UpdateToFullItem(ref heroItems.OffHand);
+            heroItems.Head = UpdateToFullItem(heroItems.Head);
+            heroItems.Torso = UpdateToFullItem(heroItems.Torso);
+            heroItems.Feet = UpdateToFullItem(heroItems.Feet);
+            heroItems.Hands = UpdateToFullItem(heroItems.Hands);
+            heroItems.Shoulders = UpdateToFullItem(heroItems.Shoulders);
+            heroItems.Legs = UpdateToFullItem(heroItems.Legs);
+            heroItems.Bracers = UpdateToFullItem(heroItems.Bracers);
+            heroItems.Waist = UpdateToFullItem(heroItems.Waist);
+            heroItems.RightFinger = UpdateToFullItem(heroItems.RightFinger);
+            heroItems.LeftFinger = UpdateToFullItem(heroItems.LeftFinger);
+            heroItems.Neck = UpdateToFullItem(heroItems.Neck);
+            heroItems.MainHand = UpdateToFullItem(heroItems.MainHand);
+            heroItems.OffHand = UpdateToFullItem(heroItems.OffHand);
 
-            heroItems.MainHand = heroItems.MainHand ?? ZTn.BNet.D3.Calculator.D3Calculator.NakedHandWeapon;
-            heroItems.OffHand = heroItems.OffHand ?? ZTn.BNet.D3.Calculator.D3Calculator.BlankWeapon;
+            heroItems.MainHand = heroItems.MainHand ?? ZTn.BNet.D3.Calculator.Helpers.Constants.NakedHandWeapon;
+            heroItems.OffHand = heroItems.OffHand ?? ZTn.BNet.D3.Calculator.Helpers.Constants.BlankWeapon;
         }
     }
 }

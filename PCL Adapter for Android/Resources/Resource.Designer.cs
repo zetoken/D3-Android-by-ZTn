@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("ZTn.Bnet.Portable.Android.Resource", IsApplication=false)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("ZTn.Bnet.PclAdapter.Resource", IsApplication=false)]
 
-namespace ZTn.Bnet.Portable.Android
+namespace ZTn.Bnet.PclAdapter
 {
 	
 	

@@ -5,7 +5,6 @@ using System;
 using System.Globalization;
 using ZTn.BNet.D3;
 using ZTn.BNet.D3.DataProviders;
-using ZTn.Bnet.Portable.Android;
 using ZTnDroid.D3Calculator.Storage;
 using ZTnDroid.D3Calculator.Upgrades;
 using CacheableDataProvider = ZTnDroid.D3Calculator.DataProviders.CacheableDataProvider;
@@ -46,8 +45,6 @@ namespace ZTnDroid.D3Calculator
         public D3Calc(IntPtr javaReference, JniHandleOwnership transfer)
             : base(javaReference, transfer)
         {
-            RegisterPcl.Register();
-
             D3Api.ApiKey = ApiKey;
         }
 

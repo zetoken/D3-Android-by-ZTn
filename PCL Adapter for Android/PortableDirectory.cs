@@ -1,11 +1,10 @@
 ﻿using System.IO;
 
-namespace ZTn.Bnet.Portable.Android
+namespace ZTn.Bnet.PclAdapter
 {
-    internal class PortableDirectory : IPortableDirectory
+    public class PortableDirectory
     {
-        /// <inheritdoc />
-        public void CreateDirectory(string path)
+        public static void CreateDirectory(string path)
         {
             Directory.CreateDirectory(path);
         }

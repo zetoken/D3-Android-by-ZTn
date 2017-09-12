@@ -176,7 +176,7 @@ namespace ZTnDroid.D3Calculator.Fragments
             ZTnTrace.Trace(MethodBase.GetCurrentMethod());
 
             D3Api.Host = host;
-            var dataProvider = (DataProviders.CacheableDataProvider)D3Api.DataProvider;
+            var dataProvider = (CacheableDataProvider)D3Api.DataProvider;
             dataProvider.FetchMode = online;
 
             try
@@ -213,9 +213,9 @@ namespace ZTnDroid.D3Calculator.Fragments
             var attributes = new List<IListItem>
             {
                 new SectionHeaderListItem(Resources.GetString(Resource.String.KillsLifetime)),
-                new AttributeListItem(Resources.GetString(Resource.String.elites), career.Kills.elites),
-                new AttributeListItem(Resources.GetString(Resource.String.monsters), career.Kills.monsters),
-                new AttributeListItem(Resources.GetString(Resource.String.monstersHardcore), career.Kills.hardcoreMonsters),
+                new AttributeListItem(Resources.GetString(Resource.String.elites), career.Kills.Elites),
+                new AttributeListItem(Resources.GetString(Resource.String.monsters), career.Kills.Monsters),
+                new AttributeListItem(Resources.GetString(Resource.String.monstersHardcore), career.Kills.HardcoreMonsters),
                 new AttributeListItem(Resources.GetString(Resource.String.paragon), career.ParagonLevel),
                 new AttributeListItem(Resources.GetString(Resource.String.paragonHardcore), career.ParagonLevelHardcore)
             };
